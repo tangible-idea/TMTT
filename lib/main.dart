@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -50,6 +52,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   String _instagramID = "";
+  TextEditingController _idController = new TextEditingController();
 
   void _incrementCounter() {
     setState(() {
@@ -65,8 +68,34 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+            TextFormField(
+              style: GoogleFonts.lato(
+                  fontWeight: FontWeight.bold, fontSize: 30, color: Colors.black),
+              controller: _idController,
+              onTap: () {},
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 15,
+                ),
+                prefixIcon: Padding(
+                  padding: EdgeInsets.only(right: 8.0),
+                ),
+                suffixIcon: InkWell(
+                  onTap: () {
+                    _idController!.text = "";
+                  },
+                ),
+                filled: true,
+              ),
+            ),
+
             const Text(
               'You have pushed the button this many times:',
             ),
@@ -74,6 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
+
             
           ],
         ),
