@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24eef0e7-31f3-4bec-8110-4049dae60715" name="Changes" comment="다트 버전 2.17 사용 가능하게 만듦">
-      <change afterPath="$PROJECT_DIR$/lib/resources/Img.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/resources/languages/language_en.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/resources/languages/language_kr.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/resources/languages/languages.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/resources/languages/strings.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/resources/styles/my_color.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/resources/styles/txt_style.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmtt.iml" beforeDir="false" afterPath="$PROJECT_DIR$/tmtt.iml" afterDir="false" />
-    </list>
+    <list default="true" id="24eef0e7-31f3-4bec-8110-4049dae60715" name="Changes" comment="보일러 플레이트 복붙함.&#10; - 컬러&#10; - 텍스트 스타일&#10; - getx 다국어 지원" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,6 +39,11 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
       <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
@@ -72,7 +66,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662296702797</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="보일러 플레이트 복붙함.&#10; - 컬러&#10; - 텍스트 스타일&#10; - getx 다국어 지원">
+      <created>1662297932535</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1662297932535</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -89,6 +90,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="다트 버전 2.17 사용 가능하게 만듦" />
-    <option name="LAST_COMMIT_MESSAGE" value="다트 버전 2.17 사용 가능하게 만듦" />
+    <MESSAGE value="보일러 플레이트 복붙함.&#10; - 컬러&#10; - 텍스트 스타일&#10; - getx 다국어 지원" />
+    <option name="LAST_COMMIT_MESSAGE" value="보일러 플레이트 복붙함.&#10; - 컬러&#10; - 텍스트 스타일&#10; - getx 다국어 지원" />
   </component>
 </project>
