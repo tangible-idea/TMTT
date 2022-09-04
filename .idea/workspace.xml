@@ -4,15 +4,16 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24eef0e7-31f3-4bec-8110-4049dae60715" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="24eef0e7-31f3-4bec-8110-4049dae60715" name="Changes" comment="다트 버전 2.17 사용 가능하게 만듦">
+      <change afterPath="$PROJECT_DIR$/lib/resources/Img.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/resources/languages/language_en.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/resources/languages/language_kr.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/resources/languages/languages.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/resources/languages/strings.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/resources/styles/my_color.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/resources/styles/txt_style.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tmtt.iml" beforeDir="false" afterPath="$PROJECT_DIR$/tmtt.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,6 +23,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="2EIuhjG76SzGawIWEZyOaHgsLvH" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -38,6 +47,7 @@
     <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RunManager">
@@ -55,6 +65,30 @@
       <option name="presentableId" value="Default" />
       <updated>1662295546825</updated>
     </task>
+    <task id="LOCAL-00001" summary="다트 버전 2.17 사용 가능하게 만듦">
+      <created>1662296702797</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1662296702797</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="다트 버전 2.17 사용 가능하게 만듦" />
+    <option name="LAST_COMMIT_MESSAGE" value="다트 버전 2.17 사용 가능하게 만듦" />
   </component>
 </project>
