@@ -7,29 +7,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="252fbb41-96fb-46a1-b91a-c51bb5255089" name="Changes" comment="- 불필요한 주석 제거">
-      <change afterPath="$PROJECT_DIR$/assets/images/splash_logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/constants/local_storage_keys.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/screens/base/base_get_controller.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/screens/base/base_scaffold.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/screens/base/base_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/screens/home/home_controller.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/screens/home/home_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/screens/splash_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/util/local_storage.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/util/my_logger.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/util/my_navigator.dart" afterDir="false" />
+    <list default="true" id="252fbb41-96fb-46a1-b91a-c51bb5255089" name="Changes" comment="- 로컬 스토리지 기능추가&#10;- 스플래시 -&gt; 홈화면으로 가는 플로우 만듦">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/resources/languages/language_en.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/resources/languages/language_en.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/resources/languages/language_kr.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/resources/languages/language_kr.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/resources/languages/languages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/resources/languages/languages.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/resources/languages/strings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/resources/languages/strings.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/resources/styles/my_color.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/resources/styles/my_color.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/resources/styles/txt_style.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/resources/styles/txt_style.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/widget_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/screens/home/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/screens/home/home_screen.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662787689935</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="- 로컬 스토리지 기능추가&#10;- 스플래시 -&gt; 홈화면으로 가는 플로우 만듦">
+      <created>1662790601111</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1662790601111</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -147,6 +135,7 @@
     <MESSAGE value="- add assets location&#10;- add font file" />
     <MESSAGE value="- getx 버전 명시적으로 적음" />
     <MESSAGE value="- 불필요한 주석 제거" />
-    <option name="LAST_COMMIT_MESSAGE" value="- 불필요한 주석 제거" />
+    <MESSAGE value="- 로컬 스토리지 기능추가&#10;- 스플래시 -&gt; 홈화면으로 가는 플로우 만듦" />
+    <option name="LAST_COMMIT_MESSAGE" value="- 로컬 스토리지 기능추가&#10;- 스플래시 -&gt; 홈화면으로 가는 플로우 만듦" />
   </component>
 </project>
