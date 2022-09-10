@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_insta/flutter_insta.dart';
 import 'package:get/get.dart';
 import 'package:tmtt/src/screens/base/base_app_bar.dart';
 import 'package:tmtt/src/screens/base/base_scaffold.dart';
@@ -40,7 +41,16 @@ class HomeScreen extends GetView<HomeController> {
           const Spacer(),
           BottomPlainButton(
             text: '확인',
-            onPressed: () => controller.getInputValue(),
+            onPressed: () async {
+              String a= controller.getInputValue();
+              FlutterInsta flutterInsta = FlutterInsta();
+              await flutterInsta.getProfileData(a); //instagram username
+
+              print("Username : ${flutterInsta.username}");
+              print("Followers : ${flutterInsta.followers}");
+              print("Folowing : ${flutterInsta.following}");
+
+            },
             enabledObs: RxBool(true),
           )
         ],

@@ -25,8 +25,8 @@ class HomeController extends BaseGetController {
 
   }
 
-  void getInputValue() {
-    Log.d(inputController.text);
+  String getInputValue() {
+    return inputController.text;
   }
 
   @override
