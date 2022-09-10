@@ -1,6 +1,8 @@
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tmtt/src/screens/base/base_get_controller.dart';
+import 'package:tmtt/src/util/my_logger.dart';
 
 class HomeBinding implements Bindings {
   @override
@@ -11,6 +13,8 @@ class HomeBinding implements Bindings {
 
 class HomeController extends BaseGetController {
 
+  late final inputController = TextEditingController();
+
   @override
   void onInit() {
 
@@ -19,6 +23,10 @@ class HomeController extends BaseGetController {
   @override
   void onClose() {
 
+  }
+
+  void getInputValue() {
+    Log.d(inputController.text);
   }
 
   @override

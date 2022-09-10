@@ -26,7 +26,7 @@ enum TextType {
   contents,     // 팝업 콘텐츠 내용
 }
 
-class TxtStyle {
+class MyTextStyle {
   static const TextStyle h1 = TextStyle(
     fontSize: 40,
     fontWeight: FontWeight.w500,

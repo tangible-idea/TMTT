@@ -1,11 +1,12 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:tmtt/src/screens/base/base_scaffold.dart';
 import 'package:tmtt/src/screens/home/home_controller.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 import 'package:tmtt/src/util/my_navigator.dart';
+import 'package:tmtt/src/widgets/bottom_button.dart';
+import 'package:tmtt/src/widgets/plain_text_field.dart';
 
 
 class HomeScreen extends GetView<HomeController> {
@@ -19,11 +20,17 @@ class HomeScreen extends GetView<HomeController> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('home!'),
-          Text('home!'),
-          Text('home!'),
-          Text('home!'),
-          Text('home!'),
+          PlainTextField(
+            hintText: '인스타 아이디 입력',
+            keyboardType: TextInputType.text,
+            controller: controller.inputController,
+          ),
+          const Spacer(),
+          BottomPlainButton(
+            text: '확인',
+            onPressed: () => controller.getInputValue(),
+            enabledObs: RxBool(true),
+          )
         ],
       ),
     );
