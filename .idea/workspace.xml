@@ -7,12 +7,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="252fbb41-96fb-46a1-b91a-c51bb5255089" name="Changes" comment="인풋 폼 추가">
-      <change afterPath="$PROJECT_DIR$/assets/images/ic_back.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/ic_cancel.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/resources/my_images.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/screens/base/base_app_bar.dart" afterDir="false" />
+    <list default="true" id="252fbb41-96fb-46a1-b91a-c51bb5255089" name="Changes" comment="app bar 추가">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/screens/home/home_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/screens/home/home_controller.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/screens/home/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/screens/home/home_screen.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -134,7 +131,28 @@
       <option name="project" value="LOCAL" />
       <updated>1662796928122</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="app bar 추가">
+      <created>1662800795435</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1662800795435</updated>
+    </task>
+    <task id="LOCAL-00008" summary="app bar 추가">
+      <created>1662800851549</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1662800851549</updated>
+    </task>
+    <task id="LOCAL-00009" summary="app bar 추가">
+      <created>1662800884964</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1662800884964</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -156,6 +174,7 @@
     <MESSAGE value="- 로컬 스토리지 기능추가&#10;- 스플래시 -&gt; 홈화면으로 가는 플로우 만듦" />
     <MESSAGE value="안드 버전 수정" />
     <MESSAGE value="인풋 폼 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="인풋 폼 추가" />
+    <MESSAGE value="app bar 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="app bar 추가" />
   </component>
 </project>

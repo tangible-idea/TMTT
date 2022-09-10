@@ -41,16 +41,7 @@ class HomeScreen extends GetView<HomeController> {
           const Spacer(),
           BottomPlainButton(
             text: '확인',
-            onPressed: () async {
-              String a= controller.getInputValue();
-              FlutterInsta flutterInsta = FlutterInsta();
-              await flutterInsta.getProfileData(a); //instagram username
-
-              print("Username : ${flutterInsta.username}");
-              print("Followers : ${flutterInsta.followers}");
-              print("Folowing : ${flutterInsta.following}");
-
-            },
+            onPressed: () => controller.searchInstaUser(),
             enabledObs: RxBool(true),
           )
         ],
