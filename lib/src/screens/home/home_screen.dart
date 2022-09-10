@@ -15,6 +15,7 @@ class HomeScreen extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return BaseScaffold(
       appBar: BaseAppBar(
+        title: 'custom app bar~~~~',
         useBackButton: true,
         onBackPressed: () {
           Log.d('onBackPressed');
