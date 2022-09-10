@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="252fbb41-96fb-46a1-b91a-c51bb5255089" name="Changes" comment=".idea/workspace.xml 제거 (불필요한 커밋 파일)">
-      <change afterPath="$PROJECT_DIR$/assets/fonts/notosanscjkkr_b.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/notosanscjkkr_l.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/notosanscjkkr_m.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/notosanscjkkr_r.otf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="252fbb41-96fb-46a1-b91a-c51bb5255089" name="Changes" comment="- add assets location&#10;- add font file">
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmtt.iml" beforeDir="false" afterPath="$PROJECT_DIR$/tmtt.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +46,11 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
       <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
@@ -67,6 +66,14 @@
       <option name="presentableId" value="Default" />
       <updated>1662295546825</updated>
     </task>
+    <task id="LOCAL-00001" summary="- add assets location&#10;- add font file">
+      <created>1662787461522</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1662787461522</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -80,5 +87,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="- add assets location&#10;- add font file" />
+    <option name="LAST_COMMIT_MESSAGE" value="- add assets location&#10;- add font file" />
   </component>
 </project>
