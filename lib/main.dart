@@ -1,29 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
+import 'package:tmtt/pages.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyTmttApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyTmttApp extends StatelessWidget {
+
+  MyTmttApp({super.key});
+
+  var theme = ThemeData(
+    fontFamily: 'Notosans',
+    primarySwatch: Colors.blue,
+    scaffoldBackgroundColor: Colors.white,
+  );
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+
+    // 앱 세로 고정
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
+    return GetMaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      theme: theme,
+      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      locale: Get.deviceLocale, // 언어 설정
+      getPages: kGetPages,
+      initialRoute: PageName.splash,
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-
 
   final String title;
 

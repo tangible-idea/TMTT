@@ -1,16 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="252fbb41-96fb-46a1-b91a-c51bb5255089" name="Changes" comment="- add assets location&#10;- add font file">
+    <list default="true" id="252fbb41-96fb-46a1-b91a-c51bb5255089" name="Changes" comment="- 불필요한 주석 제거">
+      <change afterPath="$PROJECT_DIR$/assets/images/splash_logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/src/constants/local_storage_keys.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/src/screens/base/base_get_controller.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/src/screens/base/base_scaffold.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/src/screens/base/base_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/src/screens/home/home_controller.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/src/screens/home/home_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/src/screens/splash_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/src/util/local_storage.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/src/util/my_logger.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/src/util/my_navigator.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/resources/languages/language_en.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/resources/languages/language_en.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/resources/languages/language_kr.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/resources/languages/language_kr.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/resources/languages/languages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/resources/languages/languages.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/resources/languages/strings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/resources/languages/strings.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/resources/styles/my_color.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/resources/styles/my_color.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/resources/styles/txt_style.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/resources/styles/txt_style.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/widget_test.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -22,6 +53,9 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
   </component>
   <component name="ProjectId" id="2EIuhjG76SzGawIWEZyOaHgsLvH" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -40,7 +74,7 @@
     <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -48,7 +82,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/src/screens/base" />
+      <recent name="$PROJECT_DIR$/lib/src/constants" />
+      <recent name="$PROJECT_DIR$/lib/src/util" />
+      <recent name="$PROJECT_DIR$/assets/images" />
       <recent name="$PROJECT_DIR$/assets" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/src" />
     </key>
   </component>
   <component name="RunManager">
@@ -60,7 +101,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="24eef0e7-31f3-4bec-8110-4049dae60715" name="Changes" comment="" />
+      <changelist id="252fbb41-96fb-46a1-b91a-c51bb5255089" name="Changes" comment="- 불필요한 주석 제거" />
       <created>1662295546825</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -73,7 +114,21 @@
       <option name="project" value="LOCAL" />
       <updated>1662787461522</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="- getx 버전 명시적으로 적음">
+      <created>1662787613181</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1662787613181</updated>
+    </task>
+    <task id="LOCAL-00003" summary="- 불필요한 주석 제거">
+      <created>1662787689935</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1662787689935</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -90,6 +145,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="- add assets location&#10;- add font file" />
-    <option name="LAST_COMMIT_MESSAGE" value="- add assets location&#10;- add font file" />
+    <MESSAGE value="- getx 버전 명시적으로 적음" />
+    <MESSAGE value="- 불필요한 주석 제거" />
+    <option name="LAST_COMMIT_MESSAGE" value="- 불필요한 주석 제거" />
   </component>
 </project>
