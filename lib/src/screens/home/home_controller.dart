@@ -29,6 +29,7 @@ class HomeController extends BaseGetController {
   void searchInstaUser() async {
 
     String a = inputController.text;
+    Log.d(a);
     FlutterInsta flutterInsta = FlutterInsta();
     await flutterInsta.getProfileData(a); //instagram username
 

@@ -7,10 +7,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="252fbb41-96fb-46a1-b91a-c51bb5255089" name="Changes" comment="app bar 추가">
+    <list default="true" id="252fbb41-96fb-46a1-b91a-c51bb5255089" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/screens/home/home_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/screens/home/home_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/screens/home/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/screens/home/home_screen.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
