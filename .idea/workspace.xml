@@ -7,14 +7,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="252fbb41-96fb-46a1-b91a-c51bb5255089" name="Changes" comment="안드 버전 수정">
-      <change afterPath="$PROJECT_DIR$/lib/src/resources/styles/btn_style.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/widgets/bottom_button.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/widgets/plain_text.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/widgets/plain_text_field.dart" afterDir="false" />
+    <list default="true" id="252fbb41-96fb-46a1-b91a-c51bb5255089" name="Changes" comment="인풋 폼 추가">
+      <change afterPath="$PROJECT_DIR$/assets/images/ic_back.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/ic_cancel.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/src/resources/my_images.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/src/screens/base/base_app_bar.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/resources/styles/txt_style.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/resources/styles/txt_style.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/screens/home/home_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/screens/home/home_controller.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/screens/home/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/screens/home/home_screen.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,7 +58,7 @@
     <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/src/widgets" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/images" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -68,11 +66,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/images" />
+      <recent name="$PROJECT_DIR$/lib/src/screens/base" />
       <recent name="$PROJECT_DIR$/lib/src/widgets" />
       <recent name="$PROJECT_DIR$/lib/src/resources/styles" />
       <recent name="$PROJECT_DIR$/lib/src/util" />
-      <recent name="$PROJECT_DIR$/lib/src/screens/base" />
-      <recent name="$PROJECT_DIR$/lib/src/constants" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/lib/src/widgets" />
@@ -129,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662793811471</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="인풋 폼 추가">
+      <created>1662796928122</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1662796928122</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -150,6 +155,7 @@
     <MESSAGE value="- 불필요한 주석 제거" />
     <MESSAGE value="- 로컬 스토리지 기능추가&#10;- 스플래시 -&gt; 홈화면으로 가는 플로우 만듦" />
     <MESSAGE value="안드 버전 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="안드 버전 수정" />
+    <MESSAGE value="인풋 폼 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="인풋 폼 추가" />
   </component>
 </project>
