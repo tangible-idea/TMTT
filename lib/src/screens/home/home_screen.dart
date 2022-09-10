@@ -17,8 +17,12 @@ class HomeScreen extends GetView<HomeController> {
       appBar: BaseAppBar(
         title: 'custom app bar~~~~',
         useBackButton: true,
+        useCancelButton: true,
         onBackPressed: () {
           Log.d('onBackPressed');
+        },
+        onCancelPressed: () {
+          Log.d('onCancelPressed');
         },
       ),
       onPressedAosBackButton: () {
