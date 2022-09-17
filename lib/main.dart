@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -12,6 +13,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 import 'firebase_options.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_core/firebase_core.dart';
+
 
 void main() {
   runApp(MyTmttApp());
@@ -50,6 +53,7 @@ class MyTmttApp extends StatelessWidget {
   }
 
   void initFirebase() async {
+
     Log.d('start tmtt app');
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
@@ -57,18 +61,25 @@ class MyTmttApp extends StatelessWidget {
     FirebaseAnalytics analytics = FirebaseAnalytics.instance;
     FirebaseFirestore db = FirebaseFirestore.instance;
 
-    // Add a new document with a generated ID
-    db.collection("users")
-        .add(user)
-        .then((DocumentReference doc) {
-      Log.d('DocumentSnapshot added with ID: ${doc.id}');
-    });
+    await FirebaseAppCheck.instance.activate(
+      webRecaptchaSiteKey: 'recaptcha-v3-site-key',  // If you're building a web app.
+    );
 
-    await db.collection("users").get().then((event) {
-      for (var doc in event.docs) {
-        Log.d("${doc.id} => ${doc.data()}");
-      }
-    });
+    final appCheckToken = await FirebaseAppCheck.instance.getToken();
+    Log.d('appCheckToken: $appCheckToken');
+
+    // // Add a new document with a generated ID
+    // db.collection("users")
+    //     .add(user)
+    //     .then((DocumentReference doc) {
+    //   Log.d('DocumentSnapshot added with ID: ${doc.id}');
+    // });
+    //
+    // await db.collection("users").get().then((event) {
+    //   for (var doc in event.docs) {
+    //     Log.d("${doc.id} => ${doc.data()}");
+    //   }
+    // });
   }
 
   // Create a new user with a first and last name
