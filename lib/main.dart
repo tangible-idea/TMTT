@@ -41,15 +41,21 @@ class MyTmttApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'TMTT',
       theme: theme,
-      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
       locale: Get.deviceLocale, // 언어 설정
-      initialRoute: PageName.splash,
-      onGenerateRoute: RouteConfiguration.onGenerateRoute,
-      routes: {
-        OverviewPage.route: (context) => OverviewPage(),
-      },
+      // unknownRoute: GetPage(name: '/notfound', page: () => UnknownRoutePage()), // 404 에러 처리
+      initialRoute: setInitialRoute(),
       getPages: kGetPages,
     );
+  }
+
+  String setInitialRoute() {
+    if(GetPlatform.isWeb) {
+      return PageName.index;
+    } else if(GetPlatform.isAndroid || GetPlatform.isIOS) {
+      return PageName.splash;
+    } else {
+      return PageName.index;
+    }
   }
 
   void initFirebase() async {
@@ -61,8 +67,8 @@ class MyTmttApp extends StatelessWidget {
     FirebaseAnalytics analytics = FirebaseAnalytics.instance;
     FirebaseFirestore db = FirebaseFirestore.instance;
 
-    final appCheckToken = await FirebaseAppCheck.instance.getToken();
-    Log.d('appCheckToken: $appCheckToken');
+    // final appCheckToken = await FirebaseAppCheck.instance.getToken();
+    // Log.d('appCheckToken: $appCheckToken');
 
     // // Add a new document with a generated ID
     // db.collection("users")

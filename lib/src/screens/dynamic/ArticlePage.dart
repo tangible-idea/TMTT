@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:tmtt/pages.dart';
+import 'package:tmtt/src/util/my_navigator.dart';
 
 // In a real application this would probably be some kind of database interface.
 const List<Article> articles = [
@@ -162,9 +164,12 @@ class OverviewPage extends StatelessWidget {
             for (Article article in articles)
               TextButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed(
-                    ArticlePage.routeFromSlug(article.slug),
+                  MyNav.pushNamed(
+                      pageName: '${PageName.dynamicUserPage}/${article.slug}'
                   );
+                  // Navigator.of(context).pushNamed(
+                  //   ArticlePage.routeFromSlug(article.slug),
+                  // );
                 },
                 child: Text(article.title),
               ),
