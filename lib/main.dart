@@ -7,8 +7,13 @@ import 'package:tmtt/pages.dart';
 import 'package:tmtt/src/screens/dynamic/ArticlePage.dart';
 import 'package:tmtt/src/screens/home/home_screen.dart';
 import 'package:tmtt/src/screens/splash_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+Future<void> main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyTmttApp());
 }
 
@@ -24,6 +29,8 @@ class MyTmttApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
 
     // 앱 세로 고정
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
