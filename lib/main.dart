@@ -61,10 +61,6 @@ class MyTmttApp extends StatelessWidget {
     FirebaseAnalytics analytics = FirebaseAnalytics.instance;
     FirebaseFirestore db = FirebaseFirestore.instance;
 
-    await FirebaseAppCheck.instance.activate(
-      webRecaptchaSiteKey: 'recaptcha-v3-site-key',  // If you're building a web app.
-    );
-
     final appCheckToken = await FirebaseAppCheck.instance.getToken();
     Log.d('appCheckToken: $appCheckToken');
 
