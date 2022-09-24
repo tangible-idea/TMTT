@@ -37,8 +37,6 @@ class HomeController extends BaseGetController {
     await flutterInsta.getProfileData(userName); //instagram username
     String a = inputController.text;
     Log.d(a);
-    FlutterInsta flutterInsta = FlutterInsta();
-    await flutterInsta.getProfileData(a); //instagram username
 
     print("Username : ${flutterInsta.username}");
     print("Followers : ${flutterInsta.followers}");
