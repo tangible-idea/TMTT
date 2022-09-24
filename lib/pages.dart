@@ -7,7 +7,7 @@ import 'package:tmtt/src/screens/home/home_screen.dart';
 import 'package:tmtt/src/screens/index.dart';
 import 'package:tmtt/src/screens/splash_screen.dart';
 
-import 'src/screens/dynamic/dynamic_user_page.dart';
+import 'src/screens/dynamic/dynamic_user_screen.dart';
 
 class BaseGetPage extends GetPage {
 
