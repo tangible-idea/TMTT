@@ -8,6 +8,7 @@ import 'package:tmtt/src/screens/home/home_controller.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 import 'package:tmtt/src/util/my_navigator.dart';
 import 'package:tmtt/src/widgets/bottom_button.dart';
+import 'package:tmtt/src/widgets/plain_text.dart';
 import 'package:tmtt/src/widgets/plain_text_field.dart';
 
 
@@ -38,6 +39,9 @@ class HomeScreen extends GetView<HomeController> {
             keyboardType: TextInputType.text,
             controller: controller.inputController,
           ),
+          Obx(() => PlainText(
+            text: controller.userNameObs.value,
+          )),
           const Spacer(),
           BottomPlainButton(
             text: '확인',
