@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_insta/flutter_insta.dart';
 import 'package:get/get.dart';
 import 'package:tmtt/src/screens/base/base_get_controller.dart';
+import 'package:tmtt/src/screens/home/home_fragment.dart';
+import 'package:tmtt/src/screens/home/inbox_fragment.dart';
+import 'package:tmtt/src/screens/home/setting_fragment.dart';
 import 'package:tmtt/src/util/my_logger.dart';
-
 
 class HomeBinding implements Bindings {
   @override
@@ -16,10 +18,6 @@ class HomeBinding implements Bindings {
 }
 
 class HomeController extends BaseGetController {
-
-  late final inputController = TextEditingController();
-
-  var userNameObs = ''.obs;
 
   @override
   void onInit() {
@@ -31,12 +29,31 @@ class HomeController extends BaseGetController {
 
   }
 
+  var currentIndexObs = 0.obs;
+
+  List<Widget> pages = [
+    HomeFragment(),
+    InboxFragment(),
+    SettingFragment(),
+  ];
+
+  List<String> pageTitles = [
+    'home',
+    'inbox',
+    'setting',
+  ];
+
+  late final inputController = TextEditingController();
+
+  var userNameObs = ''.obs;
+
   void searchInstaUser() async {
     String userName = inputController.text;
     Log.d(userName);
 
     FlutterInsta flutterInsta = FlutterInsta();
     await flutterInsta.getProfileData(userName); //instagram username
+
     String a = inputController.text;
     Log.d(a);
     userNameObs.value = flutterInsta.bio;
@@ -47,6 +64,10 @@ class HomeController extends BaseGetController {
       flutterInsta.following + '\n' +
       flutterInsta.imgurl
     );
+  }
+
+  void registerUser() {
+
   }
 
   @override

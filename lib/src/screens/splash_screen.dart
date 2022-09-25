@@ -13,12 +13,7 @@ class SplashScreen extends BaseWidget {
   Widget onBuild(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          children: [
-            const Text('children!!'),
-            SvgPicture.asset('assets/images/splash_logo.svg'),
-          ],
-        ),
+        child: SvgPicture.asset('assets/images/splash_logo.svg'),
       ),
     );
   }
@@ -29,15 +24,13 @@ class SplashScreen extends BaseWidget {
   }
 
   Future startApp() async {
-
-    bool isSetPermission = await LocalStorage.get(Keys.isSetPermission, false);
+    bool isSetPermission = await LocalStorage.get(Keys.isLogin, false);
     Future.delayed(const Duration(milliseconds: 3000), () {
       if(isSetPermission) {
-
+        MyNav.pushReplacementNamed(pageName: PageName.home);
       } else {
-
+        MyNav.pushReplacementNamed(pageName: PageName.register);
       }
-      MyNav.pushReplacementNamed(pageName: PageName.home);
     });
   }
 

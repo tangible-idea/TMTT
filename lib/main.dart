@@ -1,19 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import 'package:tmtt/pages.dart';
-import 'package:tmtt/src/screens/dynamic/ArticlePage.dart';
-import 'package:tmtt/src/screens/home/home_screen.dart';
-import 'package:tmtt/src/screens/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:tmtt/src/screens/index.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 import 'firebase_options.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 
 void main() {
@@ -42,7 +36,7 @@ class MyTmttApp extends StatelessWidget {
       title: 'TMTT',
       theme: theme,
       locale: Get.deviceLocale, // 언어 설정
-      // unknownRoute: GetPage(name: '/notfound', page: () => UnknownRoutePage()), // 404 에러 처리
+      unknownRoute: setUnknownPage(), // 404 에러 처리
       initialRoute: setInitialRoute(),
       getPages: kGetPages,
     );
@@ -58,36 +52,20 @@ class MyTmttApp extends StatelessWidget {
     }
   }
 
-  void initFirebase() async {
+  GetPage setUnknownPage() {
+    return GetPage(
+        name: PageName.index,
+        page: () => IndexScreen()
+    );
+  }
 
-    Log.d('start tmtt app');
+  void initFirebase() async {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
     FirebaseAnalytics analytics = FirebaseAnalytics.instance;
-    FirebaseFirestore db = FirebaseFirestore.instance;
-
     // final appCheckToken = await FirebaseAppCheck.instance.getToken();
     // Log.d('appCheckToken: $appCheckToken');
 
-    // // Add a new document with a generated ID
-    // db.collection("users")
-    //     .add(user)
-    //     .then((DocumentReference doc) {
-    //   Log.d('DocumentSnapshot added with ID: ${doc.id}');
-    // });
-    //
-    // await db.collection("users").get().then((event) {
-    //   for (var doc in event.docs) {
-    //     Log.d("${doc.id} => ${doc.data()}");
-    //   }
-    // });
   }
-
-  // Create a new user with a first and last name
-  final user = <String, dynamic>{
-    "first": "Ada",
-    "last": "Lovelace",
-    "born": 1815
-  };
 }

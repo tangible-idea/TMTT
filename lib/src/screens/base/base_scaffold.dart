@@ -7,6 +7,7 @@ class BaseScaffold extends StatelessWidget {
   Widget body;
   bool? resizeToAvoidBottomInset;
   Function()? onPressedAosBackButton;
+  BottomNavigationBar? bottomNavigationBar;
 
   BaseScaffold({
     Key? key,
@@ -14,6 +15,7 @@ class BaseScaffold extends StatelessWidget {
     required this.body,
     this.resizeToAvoidBottomInset,
     this.onPressedAosBackButton,
+    this.bottomNavigationBar
   }): super(key: key);
 
   @override
@@ -27,6 +29,7 @@ class BaseScaffold extends StatelessWidget {
       },
       child: Scaffold(
         resizeToAvoidBottomInset: resizeToAvoidBottomInset ?? true,
+        bottomNavigationBar: bottomNavigationBar,
         body: SafeArea(
           top: true,
           bottom: true,

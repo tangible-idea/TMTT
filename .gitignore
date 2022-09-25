@@ -128,3 +128,5 @@ app.*.symbols
 .idea
 .firebase
 .DS_Store
+
+*.g.dart
