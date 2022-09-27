@@ -10,7 +10,18 @@ import 'firebase_options.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
 
-void main() {
+void main() async {
+
+  // 앱 세로 고정
+  if (GetPlatform.isMobile) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  }
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(MyTmttApp());
 }
 
@@ -27,10 +38,7 @@ class MyTmttApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    initFirebase();
-
-    // 앱 세로 고정
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+    // initFirebase();
 
     return GetMaterialApp(
       title: 'TMTT',
