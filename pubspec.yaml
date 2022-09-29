@@ -40,6 +40,10 @@ dependencies:
   firebase_analytics: ^9.3.5
   firebase_app_check: ^0.0.7+1
   url_strategy: ^0.2.0
+  social_share: ^2.2.1
+  image_picker: ^0.8.5+3
+  flutter_social_content_share: ^1.0.2
+  loopi_share: ^0.0.4
 
 dev_dependencies:
   flutter_test:
