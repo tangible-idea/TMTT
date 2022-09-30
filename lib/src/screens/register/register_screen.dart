@@ -46,6 +46,11 @@ class RegisterScreen extends GetView<RegisterController> {
               onPressed: () => controller.register(),
               enabledObs: RxBool(true),
             ),
+            BottomPlainButton(
+              text: '홈으로 테스트',
+              onPressed: () => controller.goToHome(),
+              enabledObs: RxBool(true),
+            ),
           ]
       ),
     );

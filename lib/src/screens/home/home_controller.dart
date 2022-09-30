@@ -1,8 +1,10 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:flutter_insta/flutter_insta.dart';
+import 'package:flutter_social_content_share/flutter_social_content_share.dart';
 import 'package:get/get.dart';
 import 'package:tmtt/src/screens/base/base_get_controller.dart';
 import 'package:tmtt/src/screens/home/home_fragment.dart';
@@ -46,6 +48,17 @@ class HomeController extends BaseGetController {
   late final inputController = TextEditingController();
 
   var userNameObs = ''.obs;
+  
+  static const shareInstaChannel= MethodChannel("link.tmtt/shareinsta");
+
+  // 인스타에 공유하기
+  Future<void> shareOnInstagram(BuildContext context) async {
+
+    final arguments= "test";
+    final String resultFromAndroid= await shareInstaChannel.invokeMethod("sharePhotoToInstagram", arguments);
+    //Log.d(resultFromAndroid);
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(resultFromAndroid)));
+  }
 
   void searchInstaUser() async {
     String userName = inputController.text;
