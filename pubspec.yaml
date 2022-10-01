@@ -44,6 +44,7 @@ dependencies:
   loopi_share: ^0.0.4
   uuid: ^3.0.6
   carrier_info_v3: ^1.0.0
+  device_info_plus: ^4.1.2
 
 dev_dependencies:
   flutter_test:

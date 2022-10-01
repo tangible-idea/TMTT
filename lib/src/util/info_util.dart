@@ -6,6 +6,7 @@ import 'package:tmtt/src/constants/local_storage_keys.dart';
 import 'package:tmtt/src/util/local_storage.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 import 'package:uuid/uuid.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 
 class InfoUtil {
 
@@ -15,7 +16,8 @@ class InfoUtil {
         "locale: ${Get.deviceLocale.toString()}\n"
         "uuid: ${await getUUid()}\n"
         "platform: ${getPlatform()}\n"
-        "carrier: ${await getCarrier()}";
+        "carrier: ${await getCarrier()}\n"
+        "device model name: ${await getDeviceModelName()}";
 
     Log.d(result);
 
@@ -32,6 +34,21 @@ class InfoUtil {
     return uuid;
   }
 
+  static Future<String> getDeviceModelName() async {
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    if(GetPlatform.isWeb) {
+      WebBrowserInfo webBrowserInfo = await deviceInfo.webBrowserInfo;
+      return webBrowserInfo.userAgent ?? '';
+    } else if (GetPlatform.isAndroid) {
+      AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+      return androidInfo.model ?? '';
+    } else if (GetPlatform.isIOS) {
+      IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
+      return iosInfo.utsname.machine ?? '';
+    } else {
+      return '';
+    }
+  }
 
   static Future<String> getCarrier() async {
     var result = '';
