@@ -11,19 +11,16 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
 
-
-    <provider
-        android:name="androidx.core.content.FileProvider"
-        android:authorities="link.tmtt.tmtt.com.shekarmudaliyar.social_share"
-        android:exported="false"
-        android:grantUriPermissions="true"
-        tools:replace="android:authorities">
-        <meta-data
-            android:name="android.support.FILE_PROVIDER_PATHS"
-            android:resource="@xml/filepaths" />
-    </provider>
-
-    <queries> <package android:name="com.instagram.android" /> </queries>
-
+    <application>
+        <provider
+            android:name=".TMTTShareProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
 
 </manifest>
