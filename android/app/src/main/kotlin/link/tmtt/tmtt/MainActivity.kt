@@ -31,15 +31,13 @@ class MainActivity: FlutterActivity() {
 
                 "shareInstagramImageStoryWithSticker" -> {
 
-                    val videoPath: String? = call.argument("videoPath")
-                    val stickerPath: String? = call.argument("stickerPath")
+                    val stickerPath: String? = call.argument("imagePath")
 
-                    if (videoPath != null && stickerPath != null) {
-                        val videoUri = getUri(videoPath)
+                    if (stickerPath != null) {
                         val stickerUri = getUri(stickerPath)
-                        shareInstagramImageStoryWithSticker(videoUri, stickerUri)
+                        shareInstagramImageStoryWithSticker(stickerUri)
 
-                        result.success("Send video and sticker with success")
+                        result.success("Send video and sticker with success22222")
                         return@setMethodCallHandler
                     }
                 }
@@ -59,17 +57,17 @@ class MainActivity: FlutterActivity() {
         )
     }
 
-    private fun shareInstagramImageStoryWithSticker(urlVideo: Uri, uriSticker: Uri) {
+    private fun shareInstagramImageStoryWithSticker(uriSticker: Uri) {
 
         val storiesIntent = Intent("com.instagram.share.ADD_TO_STORY").apply {
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             setPackage("com.instagram.android")
-            setDataAndType(urlVideo, "video/*")
-            putExtra("interactive_asset_uri", uriSticker)
-            putExtra("content_url", "something");
-            putExtra("top_background_color", "#33FF33")
-            putExtra("bottom_background_color", "#FF00FF")
+            setDataAndType(uriSticker, "image/*")
+            //putExtra("interactive_asset_uri", uriSticker)
+            putExtra("content_url", "something")
+            putExtra("top_background_color", "#000000")
+            putExtra("bottom_background_color", "#FFFFFF")
         }
 
         context.grantUriPermission(

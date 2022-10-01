@@ -59,17 +59,16 @@ class HomeController extends BaseGetController {
   // 인스타에 공유하기
   Future<void> shareOnInstagram(BuildContext context) async {
 
-    backgroundVideo = await imagePicker.getVideo(
-      source: ImageSource.gallery,
-    );
+    // backgroundVideo = await imagePicker.getVideo(
+    //   source: ImageSource.gallery,
+    // );
     stickerImage = await imagePicker.getImage(
       source: ImageSource.gallery,
     );
 
 
     Map<String, dynamic> arguments = {
-      "videoPath": backgroundVideo!.path,
-      "stickerPath": stickerImage!.path,
+      "imagePath": stickerImage!.path
     };
     //final String resultFromAndroid= await shareInstaChannel.invokeMethod("sharePhotoToInstagram", arguments);
 

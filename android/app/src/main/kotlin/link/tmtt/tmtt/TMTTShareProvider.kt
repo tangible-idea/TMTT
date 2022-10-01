@@ -1,4 +1,4 @@
-package link.tmtt.tmtt.plugin
+package link.tmtt.tmtt
 
 import androidx.core.content.FileProvider
 
