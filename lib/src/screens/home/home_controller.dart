@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_insta/flutter_insta.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:tmtt/firebase/fire_store.dart';
 import 'package:tmtt/src/screens/base/base_get_controller.dart';
 import 'package:tmtt/src/screens/home/home_fragment.dart';
 import 'package:tmtt/src/screens/home/inbox_fragment.dart';
@@ -53,7 +54,8 @@ class HomeController extends BaseGetController {
   late final inputController = TextEditingController();
 
   var userNameObs = ''.obs;
-  
+  var userInfoObs = ''.obs;
+
   static const shareInstaChannel= MethodChannel("link.tmtt/shareinsta");
 
   // 인스타에 공유하기
@@ -94,6 +96,15 @@ class HomeController extends BaseGetController {
       flutterInsta.following + '\n' +
       flutterInsta.imgurl
     );
+  }
+
+  Future<void> getUserInfo() async {
+    var user = await FireStore.getUser('hunkim_food');
+    if(user == null) {
+      userInfoObs.value = '';
+      return;
+    }
+    userInfoObs.value = user.message;
   }
 
   var infoObs = ''.obs;

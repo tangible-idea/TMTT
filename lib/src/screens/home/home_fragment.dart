@@ -12,7 +12,8 @@ class HomeFragment extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return FragmentContainer(
+    controller.getUserInfo();
+    return Obx(() => FragmentContainer(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -22,9 +23,10 @@ class HomeFragment extends GetView<HomeController> {
             keyboardType: TextInputType.text,
             controller: controller.inputController,
           ),
-          Obx(() => PlainText(
-            text: controller.userNameObs.value,
-          )),
+          PlainText(
+            text: '${controller.userNameObs.value}\n'
+                '${controller.userInfoObs.value}',
+          ),
           const Spacer(),
           BottomPlainButton(
             text: '인스타에 공유하기',
@@ -38,6 +40,6 @@ class HomeFragment extends GetView<HomeController> {
           )
         ],
       ),
-    );
+    ));
   }
 }
