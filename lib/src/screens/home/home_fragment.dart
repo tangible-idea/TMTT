@@ -27,6 +27,11 @@ class HomeFragment extends GetView<HomeController> {
           )),
           const Spacer(),
           BottomPlainButton(
+            text: '인스타에 공유하기',
+            onPressed: () => controller.shareOnInstagram(context),
+            enabledObs: RxBool(true),
+          ),
+          BottomPlainButton(
             text: '확인',
             onPressed: () => controller.searchInstaUser(),
             enabledObs: RxBool(true),

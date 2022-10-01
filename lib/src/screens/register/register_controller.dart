@@ -30,6 +30,13 @@ class RegisterController extends BaseGetController {
   @override
   void onClose() { }
 
+  void goToHome() {
+    MyNav.pushReplacementNamed(
+      pageName: PageName.home,
+    );
+  }
+
+
   void register() async {
     var userId = inputController.text;
 
