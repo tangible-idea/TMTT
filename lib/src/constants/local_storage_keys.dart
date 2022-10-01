@@ -6,5 +6,6 @@ class Keys {
   static const String userInstagramId = 'userInstagramId'; // string
   static const String isSetPermission = 'isSetPermission'; // bool
   static const String isLogin = 'isLogin'; // bool
+  static const String uuid = 'uuid'; // bool
 }
 

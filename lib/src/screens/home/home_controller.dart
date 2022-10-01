@@ -10,6 +10,7 @@ import 'package:tmtt/src/screens/base/base_get_controller.dart';
 import 'package:tmtt/src/screens/home/home_fragment.dart';
 import 'package:tmtt/src/screens/home/inbox_fragment.dart';
 import 'package:tmtt/src/screens/home/setting_fragment.dart';
+import 'package:tmtt/src/util/info_util.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 
 class HomeBinding implements Bindings {
@@ -28,7 +29,7 @@ class HomeController extends BaseGetController {
 
   @override
   void onClose() {
-
+    inputController.dispose();
   }
 
   var currentIndexObs = 0.obs;
@@ -95,6 +96,13 @@ class HomeController extends BaseGetController {
       flutterInsta.imgurl
     );
   }
+
+  var infoObs = ''.obs;
+
+  void getDeviceInfoTest() async {
+    infoObs.value = await InfoUtil.getAllDeviceInfo();
+  }
+
 
   void registerUser() {
 

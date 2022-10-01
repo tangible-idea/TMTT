@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:tmtt/pages.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:tmtt/src/screens/index.dart';
+import 'package:tmtt/src/screens/index_screen.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 import 'firebase_options.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
@@ -61,7 +61,7 @@ class MyTmttApp extends StatelessWidget {
   }
 
   GetPage setUnknownPage() {
-    return GetPage(
+    return BaseGetPage(
         name: PageName.index,
         page: () => IndexScreen()
     );

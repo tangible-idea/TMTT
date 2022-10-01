@@ -10,6 +10,7 @@ class SettingFragment extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
+    controller.getDeviceInfoTest();
     return FragmentContainer(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -17,7 +18,10 @@ class SettingFragment extends GetView<HomeController> {
         children: [
           PlainText(
             text: 'SettingFragment',
-          )
+          ),
+          Obx(() => PlainText(
+            text: controller.infoObs.value,
+          )),
         ],
       ),
     );

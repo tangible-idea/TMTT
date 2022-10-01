@@ -2,7 +2,8 @@
 import 'package:get/get.dart';
 import 'package:tmtt/src/screens/home/home_controller.dart';
 import 'package:tmtt/src/screens/home/home_base_screen.dart';
-import 'package:tmtt/src/screens/index.dart';
+import 'package:tmtt/src/screens/index_controller.dart';
+import 'package:tmtt/src/screens/index_screen.dart';
 import 'package:tmtt/src/screens/register/register_controller.dart';
 import 'package:tmtt/src/screens/register/register_screen.dart';
 import 'package:tmtt/src/screens/splash_screen.dart';
@@ -33,6 +34,7 @@ class PageName {
 List<BaseGetPage> kGetPages = [
   BaseGetPage(
     name: PageName.index,
+    binding: IndexBinding(),
     page: () => IndexScreen(),
   ),
   BaseGetPage(

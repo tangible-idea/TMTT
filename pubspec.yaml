@@ -44,6 +44,8 @@ dependencies:
   image_picker: ^0.8.5+3
   flutter_social_content_share: ^1.0.2
   loopi_share: ^0.0.4
+  uuid: ^3.0.6
+  carrier_info_v3: ^1.0.0
 
 dev_dependencies:
   flutter_test:
