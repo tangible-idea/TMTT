@@ -18,9 +18,11 @@ import 'package:tmtt/src/screens/base/base_get_controller.dart';
 import 'package:tmtt/src/screens/home/home_fragment.dart';
 import 'package:tmtt/src/screens/home/inbox_fragment.dart';
 import 'package:tmtt/src/screens/home/setting_fragment.dart';
+import 'package:tmtt/src/util/image_util.dart';
 import 'package:tmtt/src/util/info_util.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 import '../../util/textpainter.dart';
 
@@ -112,6 +114,12 @@ class HomeController extends BaseGetController {
         dstY: image.height~/2 - painterDesc.pictureH~/2 + 30,
         dstW: painterDesc.pictureW.toInt(),
         dstH: painterDesc.pictureH.toInt());
+
+    var newFile= await ImageUtils.imageToFile(imageName: 'images/mytest.png');
+    var newImage = decodePng(newFile.readAsBytesSync());
+    drawImage(image,  newImage!,
+      dstX: image.width~/2 - newImage.width~/2 + 30,
+      dstY: image.height~/2 - newImage.height~/2 + 200,);
 
 
     //drawString(image, newFont, 0, 0, inputController.text);
