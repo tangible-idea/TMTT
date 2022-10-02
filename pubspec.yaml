@@ -43,7 +43,7 @@ dependencies:
   image_picker: ^0.8.5+3
   loopi_share: ^0.0.4
   uuid: ^3.0.6
-  carrier_info_v3: ^1.0.0
+  carrier_info: ^2.0.5
   device_info_plus: ^4.1.2
 
 dev_dependencies:

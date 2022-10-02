@@ -49,7 +49,7 @@ class RegisterController extends BaseGetController {
             flutterInsta.imgurl
     );
 
-    var registerDocId = await FireStore.registerUser(userId);
+    var registerDocId = await FireStore.register(userId);
     await LocalStorage.put(Keys.userInstagramId, userId);
     await LocalStorage.put(Keys.userDocId, registerDocId);
     await LocalStorage.put(Keys.isLogin, true);

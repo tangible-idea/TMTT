@@ -2,6 +2,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
+import 'package:tmtt/data/model/hint.dart';
 import 'package:tmtt/data/model/message.dart';
 import 'package:tmtt/src/util/info_util.dart';
 import 'package:tmtt/src/util/my_logger.dart';
@@ -12,7 +13,7 @@ class FireStore {
 
   static FirebaseFirestore get instance => FirebaseFirestore.instance;
 
-  static Future<String> registerUser(String userId) async {
+  static Future<String> register(String userId) async {
     var user = User(
       instagramUserId: userId,
       userId: userId,
@@ -48,13 +49,13 @@ class FireStore {
   }) async {
 
     var data = Message(
+      senderDeviceId: await InfoUtil.getUUid(),
       receiveUserId: user.userId,
       question: user.message,
       message: message,
       emojiCode: emojiCode,
-      platform: InfoUtil.getPlatform(),
       createDate: DateTime.now().toString(),
-      location: Get.locale.toString(),
+      hint: await InfoUtil.getHint(),
     );
 
     await instance
