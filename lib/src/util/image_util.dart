@@ -5,7 +5,7 @@ import 'package:path_provider/path_provider.dart';
 
 class ImageUtils {
   static Future<File> imageToFile({required String imageName}) async {
-    var bytes = await rootBundle.load('assets/$imageName');
+    var bytes = await rootBundle.load('assets/images/$imageName');
     String tempPath = (await getTemporaryDirectory()).path;
     File file = File('$tempPath/profile.png');
     await file.writeAsBytes(

@@ -6,6 +6,7 @@ import 'package:tmtt/firebase/fire_store.dart';
 import 'package:tmtt/src/screens/base/base_get_controller.dart';
 import 'package:tmtt/src/util/info_util.dart';
 import 'package:tmtt/src/util/my_logger.dart';
+import 'package:tmtt/src/util/my_snackbar.dart';
 
 class WriteMessageBinding implements Bindings {
   @override
@@ -54,7 +55,7 @@ class WriteMessageController extends BaseGetController {
         emojiCode: 0
     );
 
-    Get.snackbar("send success!", "");
+    MySnackBar.show(title: 'send success!');
   }
 
   @override
