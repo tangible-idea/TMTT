@@ -100,7 +100,7 @@ class HomeController extends BaseGetController {
     final image = decodeImage(File(imageToShare!.path).readAsBytesSync())!;
 
 
-    final painterDesc = CustomTextPainter(inputController.text, 120.0, color: 0xFFFFFFFF);
+    final painterDesc = CustomTextPainter(messageInputController.text, 120.0, color: 0xFFFFFFFF);
     final imageDesc = await painterDesc.toImageData();
 
     List<int>? listFont= imageDesc?.buffer.asUint8List().toList(growable: true);
