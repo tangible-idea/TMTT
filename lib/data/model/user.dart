@@ -17,6 +17,7 @@ class User {
   String registerDate = '';
   String pushToken = '';
   String message = '';
+  String documentId = '';
 
   User({
     this.instagramUserId = '',
@@ -29,6 +30,7 @@ class User {
     this.registerDate = '',
     this.pushToken = '',
     this.message = '',
+    this.documentId = '',
   });
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

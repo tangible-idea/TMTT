@@ -62,8 +62,9 @@ class FireStore {
     }
 
     var map = snapshot.docs.first.data();
-
-    return User.fromJson(map);
+    var user = User.fromJson(map);
+    user.documentId = snapshot.docs.first.id;
+    return user;
   }
 
   static Future<void> writeMessage({
@@ -74,7 +75,7 @@ class FireStore {
 
     var data = Message(
       senderDeviceId: await InfoUtil.getUUid(),
-      receiveUserId: user.userId,
+      receiveUserId: user.documentId,
       question: user.message,
       message: message,
       emojiCode: emojiCode,
@@ -85,5 +86,21 @@ class FireStore {
     await instance
         .collection(Collections.message)
         .add(data.toJson());
+  }
+
+  static Future<User?> getMessageList(String userId) async {
+
+    var snapshot = await instance
+        .collection(Collections.users)
+        .where('user_id', isEqualTo: userId)
+        .get();
+
+    if(snapshot.docs.isEmpty) {
+      return null;
+    }
+
+    var map = snapshot.docs.first.data();
+
+    return User.fromJson(map);
   }
 }
