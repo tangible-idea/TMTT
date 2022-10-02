@@ -18,20 +18,33 @@ class HomeFragment extends GetView<HomeController> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          PlainTextField(
-            hintText: '인스타 아이디 입력',
-            keyboardType: TextInputType.text,
-            controller: controller.inputController,
+          Expanded(
+            child: ListView(
+              children: [
+                PlainTextField(
+                  hintText: '인스타 아이디 입력',
+                  keyboardType: TextInputType.text,
+                  controller: controller.inputController,
+                ),
+                PlainText(
+                    text: controller.userNameObs.value
+                ),
+                PlainTextField(
+                  hintText: '상태 메시지',
+                  keyboardType: TextInputType.text,
+                  controller: controller.messageInputController,
+                ),
+                PlainText(
+                    text: 'my link: ${controller.myLinkObs.value}'
+                ),
+              ],
+            ),
           ),
-          PlainText(
-            text: '${controller.userNameObs.value}'
+          BottomPlainButton(
+            text: '링크 복사하기',
+            onPressed: () => controller.copyMyLink(),
+            enabledObs: RxBool(true),
           ),
-          PlainTextField(
-            hintText: '상태 메시지',
-            keyboardType: TextInputType.text,
-            controller: controller.messageInputController,
-          ),
-          const Spacer(),
           BottomPlainButton(
             text: '상태메시지 수정하기',
             onPressed: () => controller.editMyMessage(),

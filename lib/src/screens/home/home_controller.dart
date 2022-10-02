@@ -8,12 +8,14 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tmtt/data/model/user.dart';
 import 'package:tmtt/firebase/fire_store.dart';
+import 'package:tmtt/src/constants/URLs.dart';
 import 'package:tmtt/src/screens/base/base_get_controller.dart';
 import 'package:tmtt/src/screens/home/home_fragment.dart';
 import 'package:tmtt/src/screens/home/inbox_fragment.dart';
 import 'package:tmtt/src/screens/home/setting_fragment.dart';
 import 'package:tmtt/src/util/info_util.dart';
 import 'package:tmtt/src/util/my_logger.dart';
+import 'package:flutter/services.dart';
 
 class HomeBinding implements Bindings {
   @override
@@ -59,6 +61,7 @@ class HomeController extends BaseGetController {
   var userNameObs = ''.obs;
   var deviceInfoObs = ''.obs;
   var myInfoObs = User().obs;
+  var myLinkObs = ''.obs;
 
   static const shareInstaChannel= MethodChannel("link.tmtt/shareinsta");
 
@@ -105,8 +108,10 @@ class HomeController extends BaseGetController {
   Future<void> getMyInfo() async {
     var myInfo = await FireStore.getMyInfo();
     if (myInfo == null) { return; }
+    messageInputController.text = myInfo.message;
+    userNameObs.value = myInfo.userId;
+    myLinkObs.value = '${Urls.baseUrl}#/${myInfo.userId}';
     myInfoObs.value = myInfo;
-    messageInputController.text = myInfoObs.value.message;
   }
 
   Future<void> editMyMessage() async {
@@ -115,6 +120,11 @@ class HomeController extends BaseGetController {
     await FireStore.editMyMessage(text);
     Get.snackbar("edit success!", "");
     myInfoObs.value.message = text;
+  }
+
+  Future<void> copyMyLink() async {
+    Clipboard.setData(ClipboardData(text: myLinkObs.value));
+    Get.snackbar("copy success!", "");
   }
 
   void getDeviceInfoTest() async {
