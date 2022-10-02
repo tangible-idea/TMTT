@@ -33,7 +33,7 @@ class WriteMessageController extends BaseGetController {
 
     String userName = Get.parameters['uid'] ?? '';
     currentUserId = userName;
-    var user = await FireStore.getUser(userName);
+    var user = await FireStore.searchUser(userName);
     if (user == null) {
       userNameObs.value = 'not found user id';
       return;

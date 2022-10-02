@@ -12,7 +12,7 @@ class HomeFragment extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    controller.getUserInfo();
+    controller.getMyInfo();
     return Obx(() => FragmentContainer(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -24,10 +24,19 @@ class HomeFragment extends GetView<HomeController> {
             controller: controller.inputController,
           ),
           PlainText(
-            text: '${controller.userNameObs.value}\n'
-                '${controller.userInfoObs.value}',
+            text: '${controller.userNameObs.value}'
+          ),
+          PlainTextField(
+            hintText: '상태 메시지',
+            keyboardType: TextInputType.text,
+            controller: controller.messageInputController,
           ),
           const Spacer(),
+          BottomPlainButton(
+            text: '상태메시지 수정하기',
+            onPressed: () => controller.editMyMessage(),
+            enabledObs: RxBool(true),
+          ),
           BottomPlainButton(
             text: '인스타에 공유하기',
             onPressed: () => controller.shareOnInstagram(context),

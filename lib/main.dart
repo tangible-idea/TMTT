@@ -12,12 +12,13 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 
 void main() async {
 
+  WidgetsFlutterBinding.ensureInitialized();
+
   // 앱 세로 고정
   if (GetPlatform.isMobile) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   }
 
-  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

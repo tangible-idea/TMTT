@@ -20,7 +20,7 @@ class SettingFragment extends GetView<HomeController> {
             text: 'SettingFragment',
           ),
           Obx(() => PlainText(
-            text: controller.infoObs.value,
+            text: controller.deviceInfoObs.value,
           )),
         ],
       ),

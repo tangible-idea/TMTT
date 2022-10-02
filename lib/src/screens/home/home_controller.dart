@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_insta/flutter_insta.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:tmtt/data/model/user.dart';
 import 'package:tmtt/firebase/fire_store.dart';
 import 'package:tmtt/src/screens/base/base_get_controller.dart';
 import 'package:tmtt/src/screens/home/home_fragment.dart';
@@ -31,6 +32,7 @@ class HomeController extends BaseGetController {
   @override
   void onClose() {
     inputController.dispose();
+    messageInputController.dispose();
   }
 
   var currentIndexObs = 0.obs;
@@ -52,9 +54,11 @@ class HomeController extends BaseGetController {
   PickedFile? stickerImage;
 
   late final inputController = TextEditingController();
+  late final messageInputController = TextEditingController();
 
   var userNameObs = ''.obs;
-  var userInfoObs = ''.obs;
+  var deviceInfoObs = ''.obs;
+  var myInfoObs = User().obs;
 
   static const shareInstaChannel= MethodChannel("link.tmtt/shareinsta");
 
@@ -98,20 +102,31 @@ class HomeController extends BaseGetController {
     );
   }
 
-  Future<void> getUserInfo() async {
-    var user = await FireStore.getUser('hunkim_food');
-    if(user == null) {
-      userInfoObs.value = '';
-      return;
-    }
-    userInfoObs.value = user.message;
+  Future<void> getMyInfo() async {
+    var myInfo = await FireStore.getMyInfo();
+    if (myInfo == null) { return; }
+    myInfoObs.value = myInfo;
+    messageInputController.text = myInfoObs.value.message;
   }
 
-  var infoObs = ''.obs;
+  Future<void> editMyMessage() async {
+    var text = messageInputController.text;
+    if(text.isEmpty) { return; }
+    await FireStore.editMyMessage(text);
+    Get.snackbar("edit success!", "");
+    myInfoObs.value.message = text;
+  }
 
   void getDeviceInfoTest() async {
-    infoObs.value = await InfoUtil.getAllDeviceInfo();
+    deviceInfoObs.value = await InfoUtil.getAllDeviceInfo();
   }
+
+  // void getMyProfile() {
+  //
+  //   FireStore.getMyInfo();
+  //
+  //   myInfoObs;
+  // }
 
 
   void registerUser() {
