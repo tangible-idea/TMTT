@@ -1,13 +1,17 @@
 
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:flutter_insta/flutter_insta.dart';
 import 'package:get/get.dart';
+import 'package:image/image.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tmtt/data/model/message.dart';
 import 'package:tmtt/data/model/user.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:tmtt/firebase/fire_store.dart';
 import 'package:tmtt/src/constants/URLs.dart';
 import 'package:tmtt/src/screens/base/base_get_controller.dart';
@@ -18,12 +22,15 @@ import 'package:tmtt/src/util/info_util.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 import 'package:flutter/services.dart';
 
+import '../../util/textpainter.dart';
+
 class HomeBinding implements Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => HomeController());
   }
 }
+
 
 class HomeController extends BaseGetController {
 
@@ -52,9 +59,10 @@ class HomeController extends BaseGetController {
     'setting',
   ];
 
+  // 이미지 고르기
   ImagePicker imagePicker = ImagePicker();
   PickedFile? backgroundVideo;
-  PickedFile? stickerImage;
+  PickedFile? imageToShare;
 
   late final inputController = TextEditingController();
   late final messageInputController = TextEditingController();
@@ -67,19 +75,54 @@ class HomeController extends BaseGetController {
 
   static const shareInstaChannel= MethodChannel("link.tmtt/shareinsta");
 
+
+  Future<String> get _localPath async {
+    final directory = await getApplicationDocumentsDirectory();
+    return directory.path;
+  }
+
+
   // 인스타에 공유하기
   Future<void> shareOnInstagram(BuildContext context) async {
 
     // backgroundVideo = await imagePicker.getVideo(
     //   source: ImageSource.gallery,
     // );
-    stickerImage = await imagePicker.getImage(
+
+    // Load image from picker
+    imageToShare = await imagePicker.getImage(
       source: ImageSource.gallery,
     );
 
+    // get path to save image.
+    String dirToSave= await _localPath;
+
+    final image = decodeImage(File(imageToShare!.path).readAsBytesSync())!;
+
+
+    final painterDesc = CustomTextPainter(inputController.text, 120.0, color: 0xFFFFFFFF);
+    final imageDesc = await painterDesc.toImageData();
+
+    List<int>? listFont= imageDesc?.buffer.asUint8List().toList(growable: true);
+    //resultImage will be drawn by [imageDesc].
+    // ImageHelper.drawImage(resultImage, ImageHelper.decodePng(imageDesc?.buffer.asUint8List()),
+    //     dstX: (QR_IMG_WIDTH + 2 * padding).toInt(),
+    //     dstY: padding + QR_IMG_WIDTH.toInt() - painterDesc.pictureH.toInt(),
+    //     dstW: painterDesc.pictureW.toInt(),
+    //     dstH: painterDesc.pictureH.toInt());
+
+    //final newFont= BitmapFont.fromZip(listFont!);
+
+
+    drawImage(image, decodePng(listFont!)!);
+    //drawString(image, newFont, 0, 0, inputController.text);
+    // Save the image to disk as a PNG
+    String filePath= '$dirToSave/export.png';
+    File(filePath).writeAsBytesSync(encodePng(image));
+
 
     Map<String, dynamic> arguments = {
-      "imagePath": stickerImage!.path
+      "imagePath": filePath
     };
     //final String resultFromAndroid= await shareInstaChannel.invokeMethod("sharePhotoToInstagram", arguments);
 
