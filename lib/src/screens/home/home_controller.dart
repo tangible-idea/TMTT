@@ -100,21 +100,20 @@ class HomeController extends BaseGetController {
     final image = decodeImage(File(imageToShare!.path).readAsBytesSync())!;
 
 
-    final painterDesc = CustomTextPainter(messageInputController.text, 120.0, color: 0xFFFFFFFF);
+    final painterDesc = CustomTextPainter(messageInputController.text, 60.0, color: 0xFFFFFFFF);
     final imageDesc = await painterDesc.toImageData();
+    //final imageOfFont= await painterDesc.toImage();
 
-    List<int>? listFont= imageDesc?.buffer.asUint8List().toList(growable: true);
-    //resultImage will be drawn by [imageDesc].
-    // ImageHelper.drawImage(resultImage, ImageHelper.decodePng(imageDesc?.buffer.asUint8List()),
-    //     dstX: (QR_IMG_WIDTH + 2 * padding).toInt(),
-    //     dstY: padding + QR_IMG_WIDTH.toInt() - painterDesc.pictureH.toInt(),
-    //     dstW: painterDesc.pictureW.toInt(),
-    //     dstH: painterDesc.pictureH.toInt());
+    List<int>? listFont= imageDesc?.buffer.asUint8List().toList(growable: false);
 
-    //final newFont= BitmapFont.fromZip(listFont!);
+    // 원본 이미지에 텍스트를 canvas로 그려서 입힌다. (가운데 좌표)
+    drawImage(image, decodePng(listFont!)!,
+        dstX: image.width~/2 - painterDesc.pictureW~/2 + 30,
+        dstY: image.height~/2 - painterDesc.pictureH~/2 + 30,
+        dstW: painterDesc.pictureW.toInt(),
+        dstH: painterDesc.pictureH.toInt());
 
 
-    drawImage(image, decodePng(listFont!)!);
     //drawString(image, newFont, 0, 0, inputController.text);
     // Save the image to disk as a PNG
     String filePath= '$dirToSave/export.png';
