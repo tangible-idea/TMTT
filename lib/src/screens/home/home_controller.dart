@@ -1,5 +1,4 @@
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -29,7 +28,7 @@ class HomeController extends BaseGetController {
 
   @override
   void onInit() {
-
+    getMyInfo();
   }
 
   @override
@@ -38,26 +37,24 @@ class HomeController extends BaseGetController {
     messageInputController.dispose();
   }
 
-  var currentIndexObs = 0.obs;
+  /// tab navigation
 
+  var currentPageIndexObs = 0.obs;
   List<Widget> pages = [ HomeFragment(), InboxFragment(), SettingFragment() ];
   List<String> pageTitles = [ 'tmtt', 'inbox', 'other', ];
 
+  /// ========================================================
+
   late final inputController = TextEditingController();
   late final messageInputController = TextEditingController();
+
+  /// ========================================================
 
   var userNameObs = ''.obs;
   var deviceInfoObs = ''.obs;
   var myInfoObs = User().obs;
   var myLinkObs = ''.obs;
   var messagesObs = <Message>[].obs;
-
-  // 인스타에 공유하기
-  Future<void> shareOnInstagram(BuildContext context) async {
-    var message = messageInputController.text;
-    var result = await PostingHelper.shareOnInstagram(message: message);
-    MySnackBar.show(title: result);
-  }
 
   void searchInstaUser() async {
     String userName = inputController.text;
@@ -72,6 +69,8 @@ class HomeController extends BaseGetController {
     );
   }
 
+  /// tmtt page
+
   Future<void> getMyInfo() async {
     var myInfo = await FireStore.getMyInfo();
     if (myInfo == null) { return; }
@@ -79,6 +78,26 @@ class HomeController extends BaseGetController {
     userNameObs.value = myInfo.userId;
     myLinkObs.value = '${Urls.baseUrl}#/${myInfo.userId}';
     myInfoObs.value = myInfo;
+  }
+
+  Future<void> copyMyLink() async {
+    Clipboard.setData(ClipboardData(text: myLinkObs.value));
+    MySnackBar.show(title: 'copy success!');
+  }
+
+  // 인스타에 공유하기
+  Future<void> shareOnInstagram(BuildContext context) async {
+    var message = messageInputController.text;
+    var result = await PostingHelper.shareOnInstagram(message: message);
+    MySnackBar.show(title: result);
+  }
+
+  /// inbox page
+
+  void getMyMessages() async {
+    var message = await FireStore.getMyMessages();
+    messagesObs.value = message;
+    Log.d(message);
   }
 
   Future<void> editMyMessage() async {
@@ -89,19 +108,8 @@ class HomeController extends BaseGetController {
     myInfoObs.value.message = text;
   }
 
-  Future<void> copyMyLink() async {
-    Clipboard.setData(ClipboardData(text: myLinkObs.value));
-    MySnackBar.show(title: 'copy success!');
-  }
-
   void getDeviceInfoTest() async {
     deviceInfoObs.value = await InfoUtil.getAllDeviceInfo();
-  }
-
-  void getMyMessages() async {
-    var message = await FireStore.getMyMessages();
-    messagesObs.value = message;
-    Log.d(message);
   }
 
   @override

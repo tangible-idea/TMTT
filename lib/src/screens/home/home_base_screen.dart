@@ -12,12 +12,12 @@ class HomeScreen extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Obx(() => BaseScaffold(
         appBar: BaseAppBar(
-          title: controller.pageTitles[controller.currentIndexObs.value],
+          title: controller.pageTitles[controller.currentPageIndexObs.value],
         ),
         onPressedAosBackButton: () {
           Log.d('onPressedAosBackButton');
         },
-        body: controller.pages[controller.currentIndexObs.value],
+        body: controller.pages[controller.currentPageIndexObs.value],
         bottomNavigationBar: bottomNavigationBar()
     ));
   }
@@ -26,10 +26,10 @@ class HomeScreen extends GetView<HomeController> {
     return BottomNavigationBar(
       backgroundColor: MyColor.bg04,
       type: BottomNavigationBarType.fixed,
-      currentIndex: controller.currentIndexObs.value,
+      currentIndex: controller.currentPageIndexObs.value,
       showSelectedLabels: true,
       selectedItemColor: MyColor.primary_05,
-      onTap: (index) { controller.currentIndexObs.value = index; },
+      onTap: (index) { controller.currentPageIndexObs.value = index; },
       items: const [
         BottomNavigationBarItem(
             icon: Icon(

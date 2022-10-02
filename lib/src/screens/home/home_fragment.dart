@@ -12,7 +12,6 @@ class HomeFragment extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    controller.getMyInfo();
     return Obx(() => FragmentContainer(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
