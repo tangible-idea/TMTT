@@ -37,7 +37,8 @@ class InboxFragment extends GetView<HomeController> {
       color: MyColor.bg04,
       child: Center(
         child: PlainText(
-          text: 'Item ${data.createDate}',
+          text: 'Item ${data.createDate}\n'
+              '${data.message}',
         ),
       ),
     );
