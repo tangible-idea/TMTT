@@ -88,19 +88,18 @@ class FireStore {
         .add(data.toJson());
   }
 
-  static Future<User?> getMessageList(String userId) async {
-
+  static Future<List<Message>> getMyMessages() async {
+    var docId = await LocalStorage.get(Keys.userDocId, '');
     var snapshot = await instance
-        .collection(Collections.users)
-        .where('user_id', isEqualTo: userId)
+        .collection(Collections.message)
+        .where('receive_user_id', isEqualTo: docId)
         .get();
-
-    if(snapshot.docs.isEmpty) {
-      return null;
+    var messages = <Message>[];
+    for (var doc in snapshot.docs) {
+      var data = Message.fromJson(doc.data());
+      messages.add(data);
     }
-
-    var map = snapshot.docs.first.data();
-
-    return User.fromJson(map);
+    messages.sort((a, b) => b.createDate.compareTo(a.createDate));
+    return messages;
   }
 }

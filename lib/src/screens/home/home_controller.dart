@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_insta/flutter_insta.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:tmtt/data/model/message.dart';
 import 'package:tmtt/data/model/user.dart';
 import 'package:tmtt/firebase/fire_store.dart';
 import 'package:tmtt/src/constants/URLs.dart';
@@ -62,6 +63,7 @@ class HomeController extends BaseGetController {
   var deviceInfoObs = ''.obs;
   var myInfoObs = User().obs;
   var myLinkObs = ''.obs;
+  var messagesObs = <Message>[].obs;
 
   static const shareInstaChannel= MethodChannel("link.tmtt/shareinsta");
 
@@ -131,13 +133,11 @@ class HomeController extends BaseGetController {
     deviceInfoObs.value = await InfoUtil.getAllDeviceInfo();
   }
 
-  // void getMyProfile() {
-  //
-  //   FireStore.getMyInfo();
-  //
-  //   myInfoObs;
-  // }
-
+  void getMyMessages() async {
+    var message = await FireStore.getMyMessages();
+    messagesObs.value = message;
+    Log.d(message);
+  }
 
   void registerUser() {
 
