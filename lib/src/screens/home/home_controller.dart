@@ -85,6 +85,14 @@ class HomeController extends BaseGetController {
     MySnackBar.show(title: 'copy success!');
   }
 
+  Future<void> editMyStateMessage() async {
+    var text = messageInputController.text;
+    if(text.isEmpty) { return; }
+    await FireStore.editMySateMessage(text);
+    MySnackBar.show(title: 'edit success!');
+    myInfoObs.value.message = text;
+  }
+
   // 인스타에 공유하기
   Future<void> shareOnInstagram(BuildContext context) async {
     var message = messageInputController.text;
@@ -100,13 +108,15 @@ class HomeController extends BaseGetController {
     Log.d(message);
   }
 
-  Future<void> editMyMessage() async {
-    var text = messageInputController.text;
-    if(text.isEmpty) { return; }
-    await FireStore.editMyMessage(text);
-    MySnackBar.show(title: 'edit success!');
-    myInfoObs.value.message = text;
+  void onClickMessage(int index, Message data) async {
+    if(data.read == false) {
+      await FireStore.updateReadState(data.docId);
+      messagesObs.value[index].read = true;
+      messagesObs.refresh();
+      MySnackBar.show(title: 'update read state');
+    }
   }
+
 
   void getDeviceInfoTest() async {
     deviceInfoObs.value = await InfoUtil.getAllDeviceInfo();

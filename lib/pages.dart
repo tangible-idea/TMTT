@@ -2,6 +2,8 @@
 import 'package:get/get.dart';
 import 'package:tmtt/src/screens/home/home_controller.dart';
 import 'package:tmtt/src/screens/home/home_base_screen.dart';
+import 'package:tmtt/src/screens/inbox/inbox_controller.dart';
+import 'package:tmtt/src/screens/inbox/inbox_screen.dart';
 import 'package:tmtt/src/screens/index_controller.dart';
 import 'package:tmtt/src/screens/index_screen.dart';
 import 'package:tmtt/src/screens/register/register_controller.dart';
@@ -28,6 +30,7 @@ class PageName {
   static const String splash       = '/splash';
   static const String register     = '/register';
   static const String home         = '/home';
+  static const String inbox        = '/inbox';
   static const String writeMessage = '/:uid';
 }
 
@@ -53,7 +56,12 @@ List<BaseGetPage> kGetPages = [
   ),
   BaseGetPage(
     name: PageName.writeMessage,
-    page: () => DynamicUserScreen(),
+    page: () => WriteMessageScreen(),
     binding: WriteMessageBinding(),
+  ),
+  BaseGetPage(
+    name: PageName.inbox,
+    page: () => InboxScreen(),
+    binding: InboxBinding(),
   ),
 ];
