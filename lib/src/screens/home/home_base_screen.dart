@@ -40,7 +40,7 @@ class HomeScreen extends GetView<HomeController> {
               Icons.home,
               color: MyColor.primary_05,
             ),
-            label: "home"
+            label: 'tmtt'
         ),
         BottomNavigationBarItem(
             icon: Icon(
@@ -51,7 +51,7 @@ class HomeScreen extends GetView<HomeController> {
               Icons.photo,
               color: MyColor.primary_05,
             ),
-            label: "inbox"
+            label: 'inbox'
         ),
         BottomNavigationBarItem(
             icon: Icon(
@@ -62,7 +62,7 @@ class HomeScreen extends GetView<HomeController> {
               Icons.mail_outline,
               color: MyColor.primary_05,
             ),
-            label: "setting"
+            label: 'others'
         ),
       ],
     );

@@ -19,12 +19,12 @@ class InboxScreen extends GetView<InboxController> {
         onBackPressed: () => MyNav.pop(),
       ),
       onPressedAosBackButton: () =>MyNav.pop(),
-      body: Column(
+      body: Obx(() => Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             PlainText(
-              text: "",
+              text: controller.messageObs.value.message,
             ),
             const Spacer(),
             BottomPlainButton(
@@ -38,7 +38,7 @@ class InboxScreen extends GetView<InboxController> {
               enabledObs: RxBool(true),
             ),
           ]
-      ),
+      )),
     );
   }
 }

@@ -55,13 +55,13 @@ List<BaseGetPage> kGetPages = [
     binding: HomeBinding(),
   ),
   BaseGetPage(
-    name: PageName.writeMessage,
-    page: () => WriteMessageScreen(),
-    binding: WriteMessageBinding(),
-  ),
-  BaseGetPage(
     name: PageName.inbox,
     page: () => InboxScreen(),
     binding: InboxBinding(),
+  ),
+  BaseGetPage(
+    name: PageName.writeMessage,
+    page: () => WriteMessageScreen(),
+    binding: WriteMessageBinding(),
   ),
 ];
