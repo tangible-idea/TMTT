@@ -8,7 +8,7 @@ import 'package:tmtt/src/widgets/bottom_button.dart';
 import 'package:tmtt/src/widgets/plain_text.dart';
 import 'package:tmtt/src/widgets/plain_text_field.dart';
 
-class DynamicUserScreen extends GetView<WriteMessageController> {
+class WriteMessageScreen extends GetView<WriteMessageController> {
   @override
   Widget build(BuildContext context) {
     controller.getUserId();

@@ -46,7 +46,7 @@ class HomeFragment extends GetView<HomeController> {
           ),
           BottomPlainButton(
             text: '상태메시지 수정하기',
-            onPressed: () => controller.editMyMessage(),
+            onPressed: () => controller.editMyStateMessage(),
             enabledObs: RxBool(true),
           ),
           BottomPlainButton(

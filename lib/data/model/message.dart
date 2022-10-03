@@ -6,6 +6,7 @@ part 'message.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class Message {
 
+  String docId = ''; // doc id
   String senderDeviceId = ''; // uuid
   String receiveUserId = ''; // 이 메시지를 받는 유저 (document id)
   String question = ''; // 현재 상태 메시지
@@ -16,6 +17,7 @@ class Message {
   Hint hint = Hint();
 
   Message({
+    this.docId = '',
     this.senderDeviceId = '',
     this.receiveUserId = '',
     this.question = '',

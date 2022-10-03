@@ -40,7 +40,7 @@ class FireStore {
     return User.fromJson(data);
   }
 
-  static Future<void> editMyMessage(String message) async {
+  static Future<void> editMySateMessage(String message) async {
     var docId = await LocalStorage.get(Keys.userDocId, '');
     if (docId.isEmpty) { return; }
     await instance
@@ -97,9 +97,17 @@ class FireStore {
     var messages = <Message>[];
     for (var doc in snapshot.docs) {
       var data = Message.fromJson(doc.data());
+      data.docId = doc.id;
       messages.add(data);
     }
     messages.sort((a, b) => b.createDate.compareTo(a.createDate));
     return messages;
+  }
+
+  static Future<void> updateReadState(String docId) async {
+    await instance
+        .collection(Collections.message)
+        .doc(docId)
+        .update({'read': true});
   }
 }

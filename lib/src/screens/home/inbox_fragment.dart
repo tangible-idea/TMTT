@@ -21,7 +21,7 @@ class InboxFragment extends GetView<HomeController> {
             child: GridView.count(
               crossAxisCount: 2,
               children: List.generate(controller.messagesObs.value.length, (index) {
-                return messageItem(controller.messagesObs.value[index]);
+                return messageItem(index, controller.messagesObs.value[index]);
               }),
             ),
           )),
@@ -30,15 +30,19 @@ class InboxFragment extends GetView<HomeController> {
     );
   }
 
-  Widget messageItem(Message data) {
-    return Container(
-      padding: EdgeInsets.all(8),
-      margin: EdgeInsets.all(4),
-      color: MyColor.bg04,
-      child: Center(
-        child: PlainText(
-          text: 'Item ${data.createDate}\n'
-              '${data.message}',
+  Widget messageItem(int index, Message data) {
+    return InkWell(
+      onTap: () => controller.onClickMessage(index, data),
+      child: Container(
+        padding: EdgeInsets.all(8),
+        margin: EdgeInsets.all(4),
+        color: MyColor.bg04,
+        child: Center(
+          child: PlainText(
+            text: 'Item ${data.createDate}\n'
+                'msg: ${data.message}\n'
+                'read: ${data.read}',
+          ),
         ),
       ),
     );
