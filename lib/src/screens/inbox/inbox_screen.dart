@@ -24,7 +24,8 @@ class InboxScreen extends GetView<InboxController> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             PlainText(
-              text: controller.messageObs.value.message,
+              text: 'question: ${controller.messageObs.value.question}\n'
+                  'message: ${controller.messageObs.value.message}',
             ),
             const Spacer(),
             BottomPlainButton(
