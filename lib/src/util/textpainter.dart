@@ -21,13 +21,6 @@ class CustomTextPainter extends CustomPainter {
     final textStyle = ui.TextStyle(
       color: Color(color),
       fontSize: _size,
-      shadows: <Shadow>[
-        const Shadow(
-          offset: Offset(0.0, 0.0),
-          blurRadius: 10.0,
-          color: Color.fromARGB(255, 0, 0, 0),
-        ),
-      ],
     );
     final paragraphStyle = ui.ParagraphStyle(
       textDirection: TextDirection.ltr,
