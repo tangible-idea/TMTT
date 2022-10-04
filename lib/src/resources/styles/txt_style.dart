@@ -81,6 +81,12 @@ class MyTextStyle {
     fontFamily: 'Notosans',
   );
 
+  static const TextStyle body2 = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Notosans',
+  );
+
   static const TextStyle body2Bold = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w700,

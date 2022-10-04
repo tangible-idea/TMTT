@@ -35,7 +35,7 @@ class InboxScreen extends GetView<InboxController> {
             ),
             BottomPlainButton(
               text: '누가 보냈어',
-              // onPressed: () => controller.goToHome(),
+              onPressed: () => controller.onClickHint(),
               enabledObs: RxBool(true),
             ),
           ]
