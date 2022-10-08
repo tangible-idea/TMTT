@@ -3,7 +3,9 @@ import 'package:carrier_info/carrier_info.dart';
 import 'package:get/get.dart';
 import 'package:tmtt/data/model/agent.dart';
 import 'package:tmtt/data/model/hint.dart';
+import 'package:tmtt/data/model/hutils.dart';
 import 'package:tmtt/src/constants/local_storage_keys.dart';
+import 'package:tmtt/src/network/retrofit_manager.dart';
 import 'package:tmtt/src/util/local_storage.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 import 'package:uuid/uuid.dart';
@@ -28,12 +30,14 @@ class InfoUtil {
   static Future<String> getAllDeviceInfo() async {
 
     var agent = await getDeviceModelInfo();
+    var locationInfo = await getLocationInfo();
 
     String result = ""
-        "city: ${Get.deviceLocale.toString()}\n"
+        "city: ${locationInfo.city}\n"
+        "country: ${locationInfo.country}\n"
+        "carrier: ${locationInfo.isp}\n"
         "uuid: ${await getUUid()}\n"
         "platform: ${getPlatform()}\n"
-        "carrier: ${await getCarrier()}\n"
         "device model name: ${agent.deviceName}\n"
         "os: ${agent.os}\n"
         "os version: ${agent.osVersion}";
@@ -42,6 +46,13 @@ class InfoUtil {
 
     return result;
   }
+
+  static Future<HUtils> getLocationInfo() async {
+    var result = await RetrofitManager.retrofitService.getWhoisInfo();
+    Log.d(result);
+    return result;
+  }
+
 
   static Future<String> getUUid() async {
     var uuid = await LocalStorage.get(Keys.uuid, "");
