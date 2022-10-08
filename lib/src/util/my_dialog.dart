@@ -9,14 +9,15 @@ class MyDialog {
 
   static void showBottom({
         required Widget widget,
-        bool isCancelable = true,
+        bool isEnableDrag = true,
         bool isFullScreen = false
       }) {
     Get.bottomSheet(
       widget,
-      enableDrag: isCancelable,
+      enableDrag: isEnableDrag,
       isScrollControlled: isFullScreen,
       backgroundColor: Colors.white,
+      ignoreSafeArea: false,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(16.0),

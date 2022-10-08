@@ -30,13 +30,12 @@ class InboxController extends BaseGetController {
 
   void onClickHint() {
     var dialog = SendEmailAuthDialog(
-        email: 'email',
-        onTermsPressed: () {},
-        onNextPressed: () {}
+      email: 'email',
+      onPayPressed: () {},
     );
     MyDialog.showBottom(
       widget: dialog,
-      isCancelable: true,
+      isEnableDrag: true,
       isFullScreen: false,
     );
   }

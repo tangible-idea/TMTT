@@ -9,6 +9,8 @@ import 'package:tmtt/src/util/my_logger.dart';
 import 'firebase_options.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
+import 'package:tmtt/src/util/url_strategy_native.dart'
+  if (dart.library.html) 'package:tmtt/src/util/url_strategy_web.dart';
 
 void main() async {
 
@@ -24,6 +26,8 @@ void main() async {
   );
 
   runApp(MyTmttApp());
+
+  urlConfig();
 }
 
 class MyTmttApp extends StatelessWidget {
