@@ -25,9 +25,8 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  // urlConfig();
   runApp(MyTmttApp());
-
-  urlConfig();
 }
 
 class MyTmttApp extends StatelessWidget {
