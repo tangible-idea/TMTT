@@ -10,10 +10,16 @@ class Assets {
   static const String imagesBackground2 = 'assets/images/background2.png';
   static const String imagesBackground3 = 'assets/images/background3.png';
   static const String imagesBackground4 = 'assets/images/background4.png';
+  static const String imagesHello = 'assets/images/hello.png';
   static const String imagesIcBack = 'assets/images/ic_back.svg';
   static const String imagesIcCancel = 'assets/images/ic_cancel.svg';
+  static const String imagesIcoRandom = 'assets/images/ico_random.svg';
   static const String imagesMytest = 'assets/images/mytest.png';
   static const String imagesSplashLogo = 'assets/images/splash_logo.svg';
   static const String wwwPrivacypolicy = 'assets/www/privacypolicy.html';
+  static const String imagesSplashBackground = 'assets/images/splash_background.svg';
+  static const String imagesSplashLogo = 'assets/images/splash_logo.png';
+  static const String imagesSplashRippes = 'assets/images/splash_rippes.svg';
+  static const String imagesTmttTextStyle1png = 'assets/images/tmtt_text_style1png.png';
 
 }
