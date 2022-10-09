@@ -3,18 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tmtt/pages.dart';
 import 'package:tmtt/src/constants/local_storage_keys.dart';
+import 'package:tmtt/src/resources/styles/my_color.dart';
 import 'package:tmtt/src/screens/base/base_widget.dart';
 import 'package:tmtt/src/util/local_storage.dart';
 import 'package:tmtt/src/util/my_navigator.dart';
+
+import '../../generated/assets.dart';
 
 class SplashScreen extends BaseWidget {
 
   @override
   Widget onBuild(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: SvgPicture.asset('assets/images/splash_logo.svg'),
-      ),
+      backgroundColor: MyColor.kPrimary,
+      body: Stack(children: [
+          SvgPicture.asset(Assets.imagesSplashRippes),
+        Center(child: Image.asset(Assets.imagesHello)),
+        ]),
     );
   }
 
