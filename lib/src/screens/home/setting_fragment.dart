@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:tmtt/src/screens/base/base_fragment_container.dart';
 import 'package:tmtt/src/screens/home/home_controller.dart';
+import 'package:tmtt/src/widgets/bottom_button.dart';
 import 'package:tmtt/src/widgets/plain_text.dart';
 
 class SettingFragment extends GetView<HomeController> {
@@ -22,6 +23,12 @@ class SettingFragment extends GetView<HomeController> {
           Obx(() => PlainText(
             text: controller.deviceInfoObs.value,
           )),
+          const Spacer(),
+          BottomPlainButton(
+            text: 'privacy',
+            onPressed: () => controller.openPrivacy(),
+            enabledObs: RxBool(true),
+          ),
         ],
       ),
     );

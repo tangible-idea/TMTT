@@ -49,7 +49,8 @@ dependencies:
   image: ^3.2.0
   retrofit: ^3.0.1+1
   retrofit_generator: ^4.0.2
-
+  webview_flutter: ^3.0.4
+  webview_flutter_web: ^0.1.0+4
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +68,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/www/
 
   fonts:
     - family: Notosans

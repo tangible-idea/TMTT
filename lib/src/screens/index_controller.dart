@@ -32,8 +32,8 @@ class IndexController extends BaseGetController {
     infoObs.value = info;
 
 
-    var instaInfo = await InfoUtil.getInstagramInfo('hunkim_food');
-    Log.d(instaInfo);
+    // var instaInfo = await InfoUtil.getInstagramInfo('hunkim_food');
+    // Log.d(instaInfo);
     // instaInfoObs.value =
     // 'fullName: ${instaInfo.graphql?.user?.fullName ?? ''}\n'
     //     'biography: ${instaInfo.graphql?.user?.biography ?? ''}';

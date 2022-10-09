@@ -35,8 +35,8 @@ class HomeController extends BaseGetController {
   }
 
   void getInsta() async {
-    var instaInfo = await InfoUtil.getInstagramInfo('hunkim_food');
-    Log.d(instaInfo);
+    // var instaInfo = await InfoUtil.getInstagramInfo('hunkim_food');
+    // Log.d(instaInfo);
   }
 
   @override
@@ -131,6 +131,10 @@ class HomeController extends BaseGetController {
 
   void getDeviceInfoTest() async {
     deviceInfoObs.value = await InfoUtil.getAllDeviceInfo();
+  }
+
+  void openPrivacy() {
+    MyNav.pushNamed(pageName: PageName.privacy);
   }
 
   @override

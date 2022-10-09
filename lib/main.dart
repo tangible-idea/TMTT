@@ -12,6 +12,11 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:tmtt/src/util/url_strategy_native.dart'
   if (dart.library.html) 'package:tmtt/src/util/url_strategy_web.dart';
 
+import 'package:tmtt/src/util/register_webview.dart'
+  if (dart.library.html) 'package:tmtt/src/util/register_web_webview.dart';
+
+import '';
+
 void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +31,7 @@ void main() async {
   );
 
   // urlConfig();
+  registerWebViewWebImplementation();
   runApp(MyTmttApp());
 }
 
