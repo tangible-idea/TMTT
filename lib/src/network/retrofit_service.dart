@@ -2,6 +2,7 @@ import 'package:retrofit/retrofit.dart';
 
 import 'package:dio/dio.dart';
 import 'package:tmtt/data/model/hutils.dart';
+import 'package:tmtt/data/model/instagram.dart';
 
 
 part 'retrofit_service.g.dart';
@@ -13,6 +14,9 @@ abstract class RetrofitService {
 
   @GET("whois")
   Future<HUtils> getWhoisInfo();
+
+  @GET("?__a=1&__d=dis")
+  Future<Instagram> getInstagramInfo();
 
 }
 

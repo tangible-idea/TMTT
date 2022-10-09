@@ -6,9 +6,9 @@ part 'hutils.g.dart';
 @JsonSerializable()
 class HUtils {
 
-  String city; // "Seongnam-si",
-  String isp; // "Korea Telecom",
-  String country; // "South Korea",
+  String city;
+  String isp;
+  String country;
 
   HUtils({
     this.city = '',

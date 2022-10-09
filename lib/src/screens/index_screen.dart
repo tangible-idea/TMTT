@@ -14,7 +14,7 @@ class IndexScreen extends GetView<IndexController> {
   @override
   Widget build(BuildContext context) {
     controller.getDeviceInfoTest();
-    return BaseScaffold(
+    return Obx(() => BaseScaffold(
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -22,12 +22,20 @@ class IndexScreen extends GetView<IndexController> {
             // PlainText(
             //   text: 'index page. 앱 소개 페이지를 여기에 만들면 좋을듯',
             // ),
-            Obx(() => PlainText(
+            PlainText(
               text: 'index page\n'
                   '${controller.infoObs.value}',
-            )),
+            ),
+            PlainText(
+              marginTop: 24,
+              text: 'instaInfo\n'
+                  '${controller.instaInfoObs.value}',
+            ),
+            controller.instaProfilePictureObs.value.isEmpty ?
+            Container() :
+            Image.network(controller.instaProfilePictureObs.value),
           ],
         )
-    );
+    ));
   }
 }

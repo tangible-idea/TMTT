@@ -7,7 +7,8 @@ import 'package:dio/dio.dart';
 import 'package:dio/src/response.dart';
 import 'package:tmtt/src/network/retrofit_service.dart';
 
-import '../constants/urls.dart';
+import '../constants/URLs.dart';
+
 
 class RetrofitManager {
 
@@ -22,8 +23,7 @@ class RetrofitManager {
   static RetrofitService _client() {
     final dio = Dio();
 
-    // dio.options.baseUrl = kDebugMode ? '${URLs.baseUrlDev}api/v1/' : '${URLs.baseUrl}api/v1/';
-    dio.options.baseUrl = 'https://hutils.loxal.net/';
+    dio.options.baseUrl = kDebugMode ? MyUrl.baseUrl/*dev*/ : MyUrl.baseUrl/*product*/;
     dio.options.headers = {
       HttpHeaders.acceptHeader: "application/json",
       HttpHeaders.contentTypeHeader: "application/json",

@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:tmtt/data/model/agent.dart';
 import 'package:tmtt/data/model/hint.dart';
 import 'package:tmtt/data/model/hutils.dart';
+import 'package:tmtt/data/model/instagram.dart';
+import 'package:tmtt/src/constants/URLs.dart';
 import 'package:tmtt/src/constants/local_storage_keys.dart';
 import 'package:tmtt/src/network/retrofit_manager.dart';
 import 'package:tmtt/src/util/local_storage.dart';
@@ -11,7 +13,14 @@ import 'package:tmtt/src/util/my_logger.dart';
 import 'package:uuid/uuid.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 
+import '../network/retrofit_custom_manager.dart';
+
 class InfoUtil {
+
+  static Future<Instagram> getInstagramInfo(String userName) async {
+    var baseURL = "${MyUrl.instagram}$userName/";
+    return await RetrofitCustomManager(baseURL: baseURL).retrofitService.getInstagramInfo();
+  }
 
   static Future<Hint> getHint() async {
 
@@ -48,7 +57,7 @@ class InfoUtil {
   }
 
   static Future<HUtils> getLocationInfo() async {
-    var result = await RetrofitManager.retrofitService.getWhoisInfo();
+    var result = await RetrofitCustomManager(baseURL: MyUrl.hUtils).retrofitService.getWhoisInfo();
     Log.d(result);
     return result;
   }

@@ -31,6 +31,12 @@ class HomeController extends BaseGetController {
   @override
   void onInit() {
     getMyInfo();
+    getInsta();
+  }
+
+  void getInsta() async {
+    var instaInfo = await InfoUtil.getInstagramInfo('hunkim_food');
+    Log.d(instaInfo);
   }
 
   @override
@@ -78,7 +84,7 @@ class HomeController extends BaseGetController {
     if (myInfo == null) { return; }
     messageInputController.text = myInfo.message;
     userNameObs.value = myInfo.userId;
-    myLinkObs.value = '${Urls.baseUrl}#/${myInfo.userId}';
+    myLinkObs.value = '${MyUrl.baseUrl}#/${myInfo.userId}';
     myInfoObs.value = myInfo;
   }
 
