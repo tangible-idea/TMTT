@@ -15,7 +15,6 @@ class Assets {
   static const String imagesIcCancel = 'assets/images/ic_cancel.svg';
   static const String imagesIcoRandom = 'assets/images/ico_random.svg';
   static const String imagesMytest = 'assets/images/mytest.png';
-  static const String imagesSplashLogo = 'assets/images/splash_logo.svg';
   static const String wwwPrivacypolicy = 'assets/www/privacypolicy.html';
   static const String imagesSplashBackground = 'assets/images/splash_background.svg';
   static const String imagesSplashLogo = 'assets/images/splash_logo.png';

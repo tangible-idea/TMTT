@@ -18,7 +18,15 @@ class SplashScreen extends BaseWidget {
       backgroundColor: MyColor.kPrimary,
       body: Stack(children: [
           SvgPicture.asset(Assets.imagesSplashRippes),
-        Center(child: Image.asset(Assets.imagesHello)),
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(Assets.imagesHello),
+                Image.asset('assets/images/tmtt_logo_white36.png'),
+              ],
+            ),
+          ),
         ]),
     );
   }
