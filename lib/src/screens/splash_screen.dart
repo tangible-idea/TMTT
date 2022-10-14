@@ -23,7 +23,7 @@ class SplashScreen extends BaseWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(Assets.imagesHello),
-                Image.asset('assets/images/tmtt_logo_white36.png'),
+                Image.asset(Assets.imagesTmttLogoWhite36),
               ],
             ),
           ),
