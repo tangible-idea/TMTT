@@ -8,6 +8,7 @@ import 'package:tmtt/src/screens/index_controller.dart';
 import 'package:tmtt/src/screens/index_screen.dart';
 import 'package:tmtt/src/screens/privacy_policy/privacy_controller.dart';
 import 'package:tmtt/src/screens/privacy_policy/privacy_screen.dart';
+import 'package:tmtt/src/screens/register/create_slug_screen.dart';
 import 'package:tmtt/src/screens/register/register_controller.dart';
 import 'package:tmtt/src/screens/register/register_screen.dart';
 import 'package:tmtt/src/screens/splash_screen.dart';
@@ -31,6 +32,7 @@ class PageName {
   static const String index        = '/'; // 여기에 tmtt 소개 웹사이트 페이지 넣으면 될듯
   static const String splash       = '/splash';
   static const String register     = '/register';
+  static const String createslug   = '/createslug';
   static const String home         = '/home';
   static const String inbox        = '/inbox';
   static const String privacy      = '/privacy';
@@ -50,6 +52,11 @@ List<BaseGetPage> kGetPages = [
   BaseGetPage(
     name: PageName.register,
     page: () => RegisterScreen(),
+    binding: RegisterBinding(),
+  ),
+  BaseGetPage(
+    name: PageName.createslug,
+    page: () => CreateSlugScreen(),
     binding: RegisterBinding(),
   ),
   BaseGetPage(

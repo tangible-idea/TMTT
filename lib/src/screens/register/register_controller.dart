@@ -28,7 +28,7 @@ class RegisterBinding implements Bindings {
 class RegisterController extends BaseGetController {
 
 
-  late final inputController = TextEditingController();
+  late final slugInputController = TextEditingController();
 
   @override
   void onInit() {
@@ -41,6 +41,18 @@ class RegisterController extends BaseGetController {
     MyNav.pushReplacementNamed(
       pageName: PageName.home,
     );
+  }
+
+
+  void createYourSlug(String slug) async {
+    if(slug.isEmpty) {
+      MySnackBar.show(title: 'Error', message: 'Please input a valid slug.');
+      return;
+    }
+    bool isSuccess= await FireStore.updateUserValue("slug", slug);
+    if(!isSuccess) {
+      MySnackBar.show(title: 'Error', message: 'There is an error while creating your slug.');
+    }
   }
 
 
@@ -64,10 +76,16 @@ class RegisterController extends BaseGetController {
       await LocalStorage.put(Keys.userDocId, registerDocId);
       await LocalStorage.put(Keys.isLogin, true);
 
-      // Go to home
-      MyNav.pushReplacementNamed(
-        pageName: PageName.home,
-      );
+      if(currentUser == null) {
+        // Go to home
+        MyNav.pushReplacementNamed(
+          pageName: PageName.createslug,
+        );
+      }else{
+        // Go to home
+        goToHome();
+      }
+
 
     }catch(e) {
       MySnackBar.show(title: 'Exception', message: e.toString());
@@ -95,7 +113,7 @@ class RegisterController extends BaseGetController {
 
 
   void register() async {
-    var userId = inputController.text;
+    var userId = slugInputController.text;
 
     FlutterInsta flutterInsta = FlutterInsta();
     await flutterInsta.getProfileData(userId);

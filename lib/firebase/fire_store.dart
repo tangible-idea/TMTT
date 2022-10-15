@@ -40,6 +40,19 @@ class FireStore {
     return User.fromJson(data);
   }
 
+  /// update user's field
+  static Future<bool> updateUserValue(String key, String value) async {
+    var docId = await LocalStorage.get(Keys.userDocId, '');
+    if (docId.isEmpty) { return false; }
+    await instance
+        .collection(Collections.users)
+        .doc(docId)
+        .update({key: value}).onError((error, stackTrace) => {
+
+    });
+    return true;
+  }
+
   static Future<void> editMySateMessage(String message) async {
     var docId = await LocalStorage.get(Keys.userDocId, '');
     if (docId.isEmpty) { return; }
