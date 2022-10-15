@@ -35,11 +35,9 @@ class RegisterScreen extends GetView<RegisterController> {
         Log.d('onPressedAosBackButton');
       },
       body: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              AppSpaces.verticalSpace40,
-
               // logo here
               Center(child: Image.asset(Assets.imagesTmttLogoWhite36)),
               AppSpaces.verticalSpace90,
