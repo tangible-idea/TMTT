@@ -7,6 +7,9 @@ class Strings {
   static String cancel = 'cancel';
   static String next = 'next';
 
+  // register page
+  static String registerDesc1 = "registerDesc1";
+
   // desc == description
   static String permissionScreenDesc1 = 'permissionScreenDesc1';
   static String permissionScreenDesc2 = 'permissionScreenDesc2';

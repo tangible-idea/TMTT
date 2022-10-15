@@ -45,7 +45,7 @@ class RegisterController extends BaseGetController {
 
 
   void createYourSlug(String slug) async {
-    if(slug.isEmpty) {
+    if(slug.isEmpty) { // TODO: validation
       MySnackBar.show(title: 'Error', message: 'Please input a valid slug.');
       return;
     }
@@ -76,6 +76,7 @@ class RegisterController extends BaseGetController {
       await LocalStorage.put(Keys.userDocId, registerDocId);
       await LocalStorage.put(Keys.isLogin, true);
 
+      // TODO: firestore -> slug값이 없으면
       if(currentUser == null) {
         // Go to home
         MyNav.pushReplacementNamed(

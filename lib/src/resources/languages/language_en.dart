@@ -8,6 +8,8 @@ Map<String, String> translations_en = {
   Strings.cancel   : '닫기',
   Strings.next   : '다음',
 
+  Strings.registerDesc1: "Get anonymous messages on any kind of \r\nsocial media apps such as Instagram!",
+
   Strings.permissionScreenDesc1: '원활한 앱 사용을 위해\n다음의 앱 권한을 허용해주세요',
   Strings.permissionScreenDesc2: '카메라',
   Strings.permissionScreenDesc3: '송금 및 주소록 등록 시 주소 스캔 및 사진 업로드 용도로 사용됩니다.',

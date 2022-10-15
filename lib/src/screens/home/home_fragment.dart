@@ -55,7 +55,7 @@ class HomeFragment extends GetView<HomeController> {
             enabledObs: RxBool(true),
           ),
           BottomPlainButton(
-            text: '확인',
+            text: '인스타 아이디 검색',
             onPressed: () => controller.searchInstaUser(),
             enabledObs: RxBool(true),
           )

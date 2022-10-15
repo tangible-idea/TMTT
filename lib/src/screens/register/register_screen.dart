@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:tmtt/src/resources/languages/strings.dart';
 import 'package:tmtt/src/resources/styles/my_color.dart';
 import 'package:tmtt/src/resources/styles/txt_style.dart';
 import 'package:tmtt/src/screens/base/base_app_bar.dart';
@@ -46,18 +47,18 @@ class RegisterScreen extends GetView<RegisterController> {
               SvgPicture.asset(Assets.imagesExplainationSocial),
               AppSpaces.verticalSpace20,
 
-              Text("Get anonymous messages on any kind of \r\n"+
-                  "social media apps such as Instagram!",
+              Text(Strings.registerDesc1.tr,
                 style: MyTextStyle.body.copyWith(color: Colors.white),
                 textAlign: TextAlign.center),
               AppSpaces.verticalSpace40,
 
               // social login buttons
               InkWell(onTap: () async {
-                controller.signInWithGoogle();
+                  controller.signInWithGoogle();
+                },
+                child: SvgPicture.asset(Assets.imagesBtnLoginGoogle),
+              ),
 
-              },
-                child: SvgPicture.asset(Assets.imagesBtnLoginGoogle),),
               AppSpaces.verticalSpace10,
               SvgPicture.asset(Assets.imagesBtnLoginFacebook),
 

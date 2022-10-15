@@ -25,6 +25,11 @@ class SettingFragment extends GetView<HomeController> {
           )),
           const Spacer(),
           BottomPlainButton(
+            text: 'sign out',
+            onPressed: () => controller.signOut(),
+            enabledObs: RxBool(true),
+          ),
+          BottomPlainButton(
             text: 'privacy',
             onPressed: () => controller.openPrivacy(),
             enabledObs: RxBool(true),

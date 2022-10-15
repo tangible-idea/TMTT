@@ -48,7 +48,7 @@ class FireStore {
         .collection(Collections.users)
         .doc(docId)
         .update({key: value}).onError((error, stackTrace) => {
-
+          Log.d(error.toString())
     });
     return true;
   }

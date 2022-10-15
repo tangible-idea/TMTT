@@ -1,9 +1,12 @@
 
+import 'package:firebase_auth/firebase_auth.dart' as firebase_user;
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:flutter_insta/flutter_insta.dart';
 import 'package:get/get.dart';
+
 import 'package:tmtt/data/model/message.dart';
 import 'package:tmtt/data/model/user.dart';
 import 'package:tmtt/firebase/fire_store.dart';
@@ -37,6 +40,7 @@ class HomeController extends BaseGetController {
   void getInsta() async {
     // var instaInfo = await InfoUtil.getInstagramInfo('hunkim_food');
     // Log.d(instaInfo);
+
   }
 
   @override
@@ -131,6 +135,13 @@ class HomeController extends BaseGetController {
 
   void getDeviceInfoTest() async {
     deviceInfoObs.value = await InfoUtil.getAllDeviceInfo();
+  }
+
+  void signOut() {
+    firebase_user.FirebaseAuth.instance.signOut();
+    MyNav.pushNamed(
+      pageName: PageName.register,
+    );
   }
 
   void openPrivacy() {
