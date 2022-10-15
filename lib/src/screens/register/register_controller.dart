@@ -1,6 +1,8 @@
 
 
 
+import 'dart:ffi';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_insta/flutter_insta.dart';
@@ -13,6 +15,7 @@ import 'package:tmtt/src/util/local_storage.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 import 'package:tmtt/src/util/my_navigator.dart';
 
+import '../../util/my_snackbar.dart';
 import '../base/base_get_controller.dart';
 
 class RegisterBinding implements Bindings {
@@ -40,7 +43,40 @@ class RegisterController extends BaseGetController {
     );
   }
 
-  Future<UserCredential> signInWithGoogle() async {
+
+  void signInWithGoogle() async {
+    try {
+      UserCredential credential= await getCredentialFromGoogleFirebase();
+      String userEmail= credential.user?.email.toString() ?? "";
+      MySnackBar.show(title: 'Login', message: userEmail);
+
+      var registerDocId = "";
+
+      // If there's no user : signing-up.
+      var currentUser= await FireStore.searchUser(userEmail);
+      if(currentUser == null) {
+        registerDocId= await FireStore.register(userEmail); // firestore signing up.
+      }else{ // user does exist : get current doc-id.
+        registerDocId= currentUser.documentId;
+      }
+
+      await LocalStorage.put(Keys.userInstagramId, userEmail);
+      await LocalStorage.put(Keys.userDocId, registerDocId);
+      await LocalStorage.put(Keys.isLogin, true);
+
+      // Go to home
+      MyNav.pushReplacementNamed(
+        pageName: PageName.home,
+      );
+
+    }catch(e) {
+      MySnackBar.show(title: 'Exception', message: e.toString());
+
+    }
+}
+
+
+  Future<UserCredential> getCredentialFromGoogleFirebase() async {
     // Trigger the authentication flow
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 

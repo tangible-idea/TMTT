@@ -54,12 +54,8 @@ class RegisterScreen extends GetView<RegisterController> {
 
               // social login buttons
               InkWell(onTap: () async {
-                try {
-                  UserCredential credential= await controller.signInWithGoogle();
-                  MySnackBar.show(title: 'Login', message: credential.user?.email.toString());
-                }catch(e) {
-                  MySnackBar.show(title: 'Exception', message: e.toString());
-                }
+                controller.signInWithGoogle();
+
               },
                 child: SvgPicture.asset(Assets.imagesBtnLoginGoogle),),
               AppSpaces.verticalSpace10,
