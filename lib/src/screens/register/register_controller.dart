@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:tmtt/firebase/fire_store.dart';
 import 'package:tmtt/pages.dart';
-import 'package:tmtt/src/constants/local_storage_keys.dart';
+import 'package:tmtt/src/constants/local_storage_key_store.dart';
 import 'package:tmtt/src/util/local_storage.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 import 'package:tmtt/src/util/my_navigator.dart';
@@ -126,9 +126,9 @@ class RegisterController extends BaseGetController {
     );
 
     var registerDocId = await FireStore.register(userId);
-    await LocalStorage.put(Keys.userInstagramId, userId);
-    await LocalStorage.put(Keys.userDocId, registerDocId);
-    await LocalStorage.put(Keys.isLogin, true);
+    await LocalStorage.put(KeyStore.userInstagramId, userId);
+    await LocalStorage.put(KeyStore.userDocId, registerDocId);
+    await LocalStorage.put(KeyStore.isLogin, true);
 
     Log.d('success register');
     MyNav.pushReplacementNamed(

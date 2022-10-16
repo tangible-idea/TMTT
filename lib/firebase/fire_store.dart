@@ -4,7 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:tmtt/data/model/hint.dart';
 import 'package:tmtt/data/model/message.dart';
-import 'package:tmtt/src/constants/local_storage_keys.dart';
+import 'package:tmtt/src/constants/local_storage_key_store.dart';
 import 'package:tmtt/src/util/info_util.dart';
 import 'package:tmtt/src/util/local_storage.dart';
 import 'package:tmtt/src/util/my_logger.dart';
@@ -29,7 +29,7 @@ class FireStore {
   }
 
   static Future<User?> getMyInfo() async {
-    var docId = await LocalStorage.get(Keys.userDocId, '');
+    var docId = await LocalStorage.get(KeyStore.userDocId, '');
     if (docId.isEmpty) { return null; }
     var snapshot = await instance
         .collection(Collections.users)
@@ -54,7 +54,7 @@ class FireStore {
   }
 
   static Future<void> editMySateMessage(String message) async {
-    var docId = await LocalStorage.get(Keys.userDocId, '');
+    var docId = await LocalStorage.get(KeyStore.userDocId, '');
     if (docId.isEmpty) { return; }
     await instance
         .collection(Collections.users)
@@ -102,7 +102,7 @@ class FireStore {
   }
 
   static Future<List<Message>> getMyMessages() async {
-    var docId = await LocalStorage.get(Keys.userDocId, '');
+    var docId = await LocalStorage.get(KeyStore.userDocId, '');
     var snapshot = await instance
         .collection(Collections.message)
         .where('receive_user_id', isEqualTo: docId)

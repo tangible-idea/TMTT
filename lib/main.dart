@@ -8,6 +8,7 @@ import 'package:tmtt/src/screens/index_screen.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 import 'firebase_options.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:tmtt/src/util/url_strategy_native.dart'
   if (dart.library.html) 'package:tmtt/src/util/url_strategy_web.dart';
@@ -29,6 +30,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  await dotenv.load(fileName: ".env");
 
   // urlConfig();
   registerWebViewWebImplementation();

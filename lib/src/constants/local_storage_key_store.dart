@@ -1,6 +1,6 @@
 
 // LocalStorage keys
-class Keys {
+class KeyStore {
   static const String name = 'name'; // string
   static const String userDocId = 'userDocId'; // string
   static const String userInstagramId = 'userInstagramId'; // string

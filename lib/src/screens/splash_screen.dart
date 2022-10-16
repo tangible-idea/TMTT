@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tmtt/pages.dart';
-import 'package:tmtt/src/constants/local_storage_keys.dart';
+import 'package:tmtt/src/constants/local_storage_key_store.dart';
 import 'package:tmtt/src/resources/styles/my_color.dart';
 import 'package:tmtt/src/screens/base/base_widget.dart';
 import 'package:tmtt/src/util/local_storage.dart';
@@ -37,7 +37,7 @@ class SplashScreen extends BaseWidget {
   }
 
   Future startApp() async {
-    bool isSetPermission = await LocalStorage.get(Keys.isLogin, false);
+    bool isSetPermission = await LocalStorage.get(KeyStore.isLogin, false);
     Future.delayed(const Duration(milliseconds: 3000), () {
       if(isSetPermission) {
         MyNav.pushReplacementNamed(pageName: PageName.home);
