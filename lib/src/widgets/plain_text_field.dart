@@ -40,6 +40,7 @@ class PlainTextField extends StatelessWidget {
       style: textStyle ?? MyTextStyle.formInput,
       keyboardType: keyboardType ?? TextInputType.text,
       maxLength: maxLength,
+      cursorColor: MyColor.kPrimary,
       textAlign: textAlign ?? TextAlign.left,
       maxLengthEnforcement: MaxLengthEnforcement.enforced,
       onChanged: (text) {

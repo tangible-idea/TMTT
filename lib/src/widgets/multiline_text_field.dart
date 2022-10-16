@@ -34,6 +34,7 @@ class MultiLineTextField extends StatelessWidget {
       controller: controller,
       obscureText: false,
       maxLines: maxLine,
+      cursorColor: MyColor.kPrimary,
       style: textStyle ?? MyTextStyle.formInput,
       keyboardType: TextInputType.multiline,
       maxLength: maxLength,
@@ -63,7 +64,7 @@ class MultiLineTextField extends StatelessWidget {
         color: MyColor.kGrey5,
         width: 0.1,
       ),
-      borderRadius: BorderRadius.all(Radius.circular(15.0)),
+      borderRadius: BorderRadius.all(Radius.circular(20.0)),
     );
   }
 }
