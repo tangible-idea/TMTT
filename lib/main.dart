@@ -7,6 +7,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:tmtt/src/resources/languages/languages.dart';
 import 'package:tmtt/src/screens/index_screen.dart';
 import 'package:tmtt/src/util/my_logger.dart';
+import 'package:tmtt/src/util/puchase_util.dart';
 import 'firebase_options.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -32,6 +33,8 @@ void main() async {
   );
 
   await dotenv.load(fileName: ".env");
+
+  Purchase.initPlatformState();
 
   // urlConfig();
   registerWebViewWebImplementation();
