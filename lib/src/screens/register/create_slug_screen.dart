@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:tmtt/src/resources/languages/strings.dart';
 import 'package:tmtt/src/resources/styles/my_color.dart';
 import 'package:tmtt/src/resources/styles/txt_style.dart';
 import 'package:tmtt/src/screens/base/base_app_bar.dart';
@@ -46,16 +47,19 @@ class CreateSlugScreen extends GetView<RegisterController> {
               Center(child: Image.asset(Assets.imagesTmttLogoBlack36)),
               AppSpaces.verticalSpace50,
 
-              const Text("this web address is how people will find\r\n"
-                  "your TMTT profile online.",
+              Text(Strings.registerDesc2.tr,
                   style: MyTextStyle.body,
                   textAlign: TextAlign.center),
-              AppSpaces.verticalSpace40,
+              AppSpaces.verticalSpace10,
+              Text("(For example, your instagram ID.)",
+                  style: MyTextStyle.body.copyWith(color: Colors.black38),
+                  textAlign: TextAlign.center),
+              AppSpaces.verticalSpace30,
 
               Obx(() =>
                 PrefixInputField(
                   prefixString: 'https://tmtt.link/',
-                  hintText: 'tangibleidea',
+                  hintText: 'tmtt.link',
                   keyboardType: TextInputType.text,
                   controller: controller.slugInputController,
                   errorValidation: controller.errorObs.value,

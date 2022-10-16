@@ -8,7 +8,8 @@ Map<String, String> translations_kr = {
   Strings.cancel   : '닫기',
   Strings.next   : '다음',
 
-  Strings.registerDesc1: 'Get anonymous messages on any kind of \r\nsocial media apps such as Instagram!',
+  Strings.registerDesc1: '인스타그램 등 SNS에서 익명 메시지를 받을 수 있는 계정을 만들어 드릴게요.',
+  Strings.registerDesc2: '친구에게 익명 메시지를 받을 수 있는 URL을 만들어볼까요.',
 
   Strings.permissionScreenDesc1: '원활한 앱 사용을 위해\n다음의 앱 권한을 허용해주세요',
   Strings.permissionScreenDesc2: '카메라',
