@@ -5,31 +5,37 @@ import 'package:tmtt/src/resources/styles/txt_style.dart';
 
 import '../resources/styles/my_color.dart';
 
-class PlainTextField extends StatelessWidget {
+class PrefixInputField extends StatelessWidget {
 
+  final TextEditingController controller;
   final String? hintText;
   final int? maxLength;
   final TextInputType? keyboardType;
   final bool? isObscure;
-  final TextEditingController? controller;
   final Function(String text)? onChanged;
   final TextAlign? textAlign;
   final TextStyle? textStyle;
   final FocusNode? focusNode;
+
+  // prefix string
   final String? prefixString;
 
-  PlainTextField({
+  // error validation condition.
+  final String? errorValidation;
+
+  PrefixInputField({
     Key? key,
+    required this.controller,
     this.hintText,
     this.keyboardType,
     this.maxLength,
     this.isObscure,
     this.onChanged,
-    this.controller,
     this.textAlign,
     this.textStyle,
     this.focusNode,
     this.prefixString,
+    this.errorValidation,
   }) : super(key: key);
 
   @override
@@ -58,18 +64,24 @@ class PlainTextField extends StatelessWidget {
           color: MyColor.typo01,
         ),
         counterText:'',
-        prefixText: prefixString ?? ''
+        prefixText: prefixString ?? '',
+        prefixStyle: MyTextStyle.body,
+        errorText: errorValidation,
+        errorBorder: plainOutlineInputBorder(borderColor : MyColor.point02),
+        focusedErrorBorder: plainOutlineInputBorder(borderColor : MyColor.point02),
       ),
     );
   }
 
-  OutlineInputBorder plainOutlineInputBorder() {
-    return const OutlineInputBorder(
+
+
+  OutlineInputBorder plainOutlineInputBorder({Color? borderColor}) {
+    return OutlineInputBorder(
       borderSide: BorderSide(
-        color: MyColor.gray_02,
+        color: borderColor ?? MyColor.gray_02,
         width: 1.2,
       ),
-      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+      borderRadius: const BorderRadius.all(Radius.circular(10.0)),
     );
   }
 }

@@ -17,9 +17,28 @@ import 'package:tmtt/src/widgets/bottom_button.dart';
 import '../../../generated/assets.dart';
 import '../../widgets/plain_text.dart';
 import '../../widgets/plain_text_field.dart';
+import '../../widgets/prefix_text_field.dart';
 
 class CreateSlugScreen extends GetView<RegisterController> {
 
+
+  // error
+  String? get _errorText {
+    // at any time, we can get the text from _controller.value.text
+    final text = controller.slugInputController.text;
+    // Note: you can do your own custom validation here
+    // Move this logic this outside the widget for more testable code
+    if (text.isEmpty) {
+      return 'The slug can\'t be blank.';
+    }
+    if (text.length < 4) {
+      return 'The slug should be longer than 4 letters.';
+    }
+    else if (text.length < 16) {
+      return 'Your slug is too long :\'(';
+    }
+    return null;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,10 +69,12 @@ class CreateSlugScreen extends GetView<RegisterController> {
                   textAlign: TextAlign.center),
               AppSpaces.verticalSpace40,
 
-              PlainTextField(
-                hintText: 'https://tmtt.link/',
+              PrefixInputField(
+                prefixString: 'https://tmtt.link/',
+                hintText: 'tangibleidea',
                 keyboardType: TextInputType.text,
                 controller: controller.slugInputController,
+                errorValidation: _errorText,
               ),
 
               AppSpaces.verticalSpace10,

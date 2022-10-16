@@ -84,7 +84,10 @@ class RegisterController extends BaseGetController {
         );
       }else{
         // Go to home
-        goToHome();
+        //goToHome();
+        MyNav.pushReplacementNamed(
+          pageName: PageName.createslug,
+        );
       }
 
 
