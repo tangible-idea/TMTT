@@ -14,6 +14,7 @@ import 'package:tmtt/src/util/app_space.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 import 'package:tmtt/src/util/my_snackbar.dart';
 import 'package:tmtt/src/widgets/bottom_button.dart';
+import 'package:tmtt/src/widgets/plain_text.dart';
 
 import '../../../generated/assets.dart';
 
@@ -36,44 +37,48 @@ class RegisterScreen extends GetView<RegisterController> {
         Log.d('onPressedAosBackButton');
       },
       body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              // logo here
-              Center(child: Image.asset(Assets.imagesTmttLogoWhite36)),
-              AppSpaces.verticalSpace90,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            // logo here
+            Center(child: Image.asset(Assets.imagesTmttLogoWhite36)),
+            AppSpaces.verticalSpace90,
 
-              // explanation image
-              SvgPicture.asset(Assets.imagesExplainationSocial),
-              AppSpaces.verticalSpace20,
+            // explanation image
+            SvgPicture.asset(Assets.imagesExplainationSocial),
+            AppSpaces.verticalSpace20,
 
-              Text(Strings.registerDesc1.tr,
-                style: MyTextStyle.body.copyWith(color: Colors.white),
-                textAlign: TextAlign.center),
-              AppSpaces.verticalSpace40,
-
-              // social login buttons
-              InkWell(onTap: () async {
-                  controller.signInWithGoogle();
-                },
-                child: SvgPicture.asset(Assets.imagesBtnLoginGoogle),
+            PlainText(
+              text: Strings.registerDesc1.tr,
+              style: MyTextStyle.body.copyWith(
+                color: Colors.white,
               ),
+              align: TextAlign.center
+            ),
+            AppSpaces.verticalSpace40,
 
-              AppSpaces.verticalSpace10,
-              SvgPicture.asset(Assets.imagesBtnLoginFacebook),
+            // social login buttons
+            InkWell(onTap: () async {
+                controller.signInWithGoogle();
+              },
+              child: SvgPicture.asset(Assets.imagesBtnLoginGoogle),
+            ),
 
-              // BottomPlainButton(
-              //   text: '확인',
-              //   onPressed: () => controller.register(),
-              //   enabledObs: RxBool(true),
-              // ),
-              // BottomPlainButton(
-              //   text: '홈으로 테스트',
-              //   onPressed: () => controller.goToHome(),
-              //   enabledObs: RxBool(true),
-              // ),
-            ]
-        ),
+            AppSpaces.verticalSpace10,
+            SvgPicture.asset(Assets.imagesBtnLoginFacebook),
+
+            // BottomPlainButton(
+            //   text: '확인',
+            //   onPressed: () => controller.register(),
+            //   enabledObs: RxBool(true),
+            // ),
+            // BottomPlainButton(
+            //   text: '홈으로 테스트',
+            //   onPressed: () => controller.goToHome(),
+            //   enabledObs: RxBool(true),
+            // ),
+          ]
+      ),
     );
   }
 }

@@ -7,8 +7,8 @@ part 'user.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 class User {
 
-  String instagramUserId = '';
-  String instagramProfileImage = '';
+  String slugId = '';
+  String profileImage = '';
   int signature = 0;
   String userId = '';
   String bio = '';
@@ -18,10 +18,13 @@ class User {
   String pushToken = '';
   String message = '';
   String documentId = '';
+  String googleUid = '';
+  String facebookUid = '';
+  String appleUid = '';
 
   User({
-    this.instagramUserId = '',
-    this.instagramProfileImage = '',
+    this.slugId = '',
+    this.profileImage = '',
     this.signature = 0,
     this.userId = '',
     this.bio = '',
@@ -31,6 +34,9 @@ class User {
     this.pushToken = '',
     this.message = '',
     this.documentId = '',
+    this.googleUid = '',
+    this.facebookUid = '',
+    this.appleUid = '',
   });
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

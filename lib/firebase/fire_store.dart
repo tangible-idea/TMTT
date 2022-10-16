@@ -4,22 +4,27 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:tmtt/data/model/hint.dart';
 import 'package:tmtt/data/model/message.dart';
+import 'package:tmtt/data/model/user.dart';
 import 'package:tmtt/src/constants/local_storage_key_store.dart';
 import 'package:tmtt/src/util/info_util.dart';
 import 'package:tmtt/src/util/local_storage.dart';
 import 'package:tmtt/src/util/my_logger.dart';
-import '../data/model/user.dart';
+
 import 'fire_store_collections.dart';
+
+enum LoginUserType {
+  google, faceBook, apple
+}
 
 class FireStore {
 
   static FirebaseFirestore get instance => FirebaseFirestore.instance;
 
-  static Future<String> register(String userId) async {
-    var user = User(
-      instagramUserId: userId,
-      userId: userId,
-    );
+  static Future<String> register(User user) async {
+    // var user = User(
+    //   slugId: userId,
+    //   userId: userId,
+    // );
 
     var doc = await instance
         .collection(Collections.users)
@@ -42,7 +47,7 @@ class FireStore {
 
   /// update user's field
   static Future<bool> updateUserValue(String key, String value) async {
-    var docId = await LocalStorage.get(Keys.userDocId, '');
+    var docId = await LocalStorage.get(KeyStore.userDocId, '');
     if (docId.isEmpty) { return false; }
     await instance
         .collection(Collections.users)
@@ -63,11 +68,16 @@ class FireStore {
   }
 
 
-  static Future<User?> searchUser(String userId) async {
+  static Future<User?> searchUserSocialType(LoginUserType type, String userId) async {
+
+    var idKey = 'user_id';
+    if(type == LoginUserType.google) {
+      idKey = 'google_uid';
+    }
 
     var snapshot = await instance
         .collection(Collections.users)
-        .where('user_id', isEqualTo: userId)
+        .where(idKey, isEqualTo: userId)
         .get();
 
     if(snapshot.docs.isEmpty) {
@@ -79,6 +89,24 @@ class FireStore {
     user.documentId = snapshot.docs.first.id;
     return user;
   }
+
+  static Future<User?> searchUserSlug(String userSlug) async {
+
+    var snapshot = await instance
+        .collection(Collections.users)
+        .where('slug_id', isEqualTo: userSlug)
+        .get();
+
+    if(snapshot.docs.isEmpty) {
+      return null;
+    }
+
+    var map = snapshot.docs.first.data();
+    var user = User.fromJson(map);
+    user.documentId = snapshot.docs.first.id;
+    return user;
+  }
+
 
   static Future<void> writeMessage({
     required User user,

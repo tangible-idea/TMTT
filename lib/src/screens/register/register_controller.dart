@@ -14,6 +14,7 @@ import 'package:tmtt/src/constants/local_storage_key_store.dart';
 import 'package:tmtt/src/util/local_storage.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 import 'package:tmtt/src/util/my_navigator.dart';
+import 'package:tmtt/data/model/user.dart' as userModel;
 
 import '../../util/my_snackbar.dart';
 import '../base/base_get_controller.dart';
@@ -49,32 +50,40 @@ class RegisterController extends BaseGetController {
       MySnackBar.show(title: 'Error', message: 'Please input a valid slug.');
       return;
     }
-    bool isSuccess= await FireStore.updateUserValue("slug", slug);
+    bool isSuccess= await FireStore.updateUserValue("slug_id", slug);
     if(!isSuccess) {
       MySnackBar.show(title: 'Error', message: 'There is an error while creating your slug.');
+    } else {
+      await LocalStorage.put(KeyStore.userSlugId, slug);
+      MyNav.pushReplacementNamed(
+        pageName: PageName.home,
+      );
     }
   }
-
 
   void signInWithGoogle() async {
     try {
       UserCredential credential= await getCredentialFromGoogleFirebase();
+      String uid = credential.user?.uid ?? '';
+
       String userEmail= credential.user?.email.toString() ?? "";
       MySnackBar.show(title: 'Login', message: userEmail);
 
       var registerDocId = "";
 
-      // If there's no user : signing-up.
-      var currentUser= await FireStore.searchUser(userEmail);
+      var currentUser= await FireStore.searchUserSocialType(LoginUserType.google, uid);
       if(currentUser == null) {
-        registerDocId= await FireStore.register(userEmail); // firestore signing up.
+        var user = userModel.User(
+          googleUid: credential.user?.uid ?? '',
+        );
+        registerDocId= await FireStore.register(user); // firestore signing up.
       }else{ // user does exist : get current doc-id.
         registerDocId= currentUser.documentId;
       }
 
-      await LocalStorage.put(Keys.userInstagramId, userEmail);
-      await LocalStorage.put(Keys.userDocId, registerDocId);
-      await LocalStorage.put(Keys.isLogin, true);
+      // await LocalStorage.put(KeyStore.userSlugId, userEmail);
+      await LocalStorage.put(KeyStore.userDocId, registerDocId);
+      await LocalStorage.put(KeyStore.isLogin, true);
 
       // TODO: firestore -> slug값이 없으면
       if(currentUser == null) {
@@ -87,12 +96,11 @@ class RegisterController extends BaseGetController {
         goToHome();
       }
 
-
     }catch(e) {
       MySnackBar.show(title: 'Exception', message: e.toString());
 
     }
-}
+  }
 
 
   Future<UserCredential> getCredentialFromGoogleFirebase() async {
@@ -113,27 +121,27 @@ class RegisterController extends BaseGetController {
   }
 
 
-  void register() async {
-    var userId = slugInputController.text;
-
-    FlutterInsta flutterInsta = FlutterInsta();
-    await flutterInsta.getProfileData(userId);
-    Log.d(
-        flutterInsta.username + '\n' +
-            flutterInsta.followers + '\n' +
-            flutterInsta.following + '\n' +
-            flutterInsta.imgurl
-    );
-
-    var registerDocId = await FireStore.register(userId);
-    await LocalStorage.put(KeyStore.userInstagramId, userId);
-    await LocalStorage.put(KeyStore.userDocId, registerDocId);
-    await LocalStorage.put(KeyStore.isLogin, true);
-
-    Log.d('success register');
-    MyNav.pushReplacementNamed(
-      pageName: PageName.home,
-    );
-  }
+  // void register() async {
+  //   var userId = slugInputController.text;
+  //
+  //   FlutterInsta flutterInsta = FlutterInsta();
+  //   await flutterInsta.getProfileData(userId);
+  //   Log.d(
+  //       flutterInsta.username + '\n' +
+  //           flutterInsta.followers + '\n' +
+  //           flutterInsta.following + '\n' +
+  //           flutterInsta.imgurl
+  //   );
+  //
+  //   var registerDocId = await FireStore.register(userId);
+  //   await LocalStorage.put(KeyStore.userInstagramId, userId);
+  //   await LocalStorage.put(KeyStore.userDocId, registerDocId);
+  //   await LocalStorage.put(KeyStore.isLogin, true);
+  //
+  //   Log.d('success register');
+  //   MyNav.pushReplacementNamed(
+  //     pageName: PageName.home,
+  //   );
+  // }
 }
 
