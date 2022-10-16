@@ -6,7 +6,7 @@ import 'package:tmtt/data/model/hint.dart';
 import 'package:tmtt/data/model/hutils.dart';
 import 'package:tmtt/data/model/instagram.dart';
 import 'package:tmtt/src/constants/URLs.dart';
-import 'package:tmtt/src/constants/local_storage_keys.dart';
+import 'package:tmtt/src/constants/local_storage_key_store.dart';
 import 'package:tmtt/src/network/retrofit_manager.dart';
 import 'package:tmtt/src/util/local_storage.dart';
 import 'package:tmtt/src/util/my_logger.dart';
@@ -64,10 +64,10 @@ class InfoUtil {
 
 
   static Future<String> getUUid() async {
-    var uuid = await LocalStorage.get(Keys.uuid, "");
+    var uuid = await LocalStorage.get(KeyStore.uuid, "");
     if (uuid.isEmpty) {
       var newUuid = const Uuid().v4();
-      await LocalStorage.put(Keys.uuid, newUuid);
+      await LocalStorage.put(KeyStore.uuid, newUuid);
       uuid = newUuid;
     }
     return uuid;

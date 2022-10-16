@@ -139,7 +139,7 @@ class HomeController extends BaseGetController {
 
   void signOut() {
     firebase_user.FirebaseAuth.instance.signOut();
-    MyNav.pushNamed(
+    MyNav.pushReplacementNamed(
       pageName: PageName.register,
     );
   }

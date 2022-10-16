@@ -4,10 +4,12 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:tmtt/pages.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:tmtt/src/resources/languages/languages.dart';
 import 'package:tmtt/src/screens/index_screen.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 import 'firebase_options.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:tmtt/src/util/url_strategy_native.dart'
   if (dart.library.html) 'package:tmtt/src/util/url_strategy_web.dart';
@@ -15,7 +17,6 @@ import 'package:tmtt/src/util/url_strategy_native.dart'
 import 'package:tmtt/src/util/register_webview.dart'
   if (dart.library.html) 'package:tmtt/src/util/register_web_webview.dart';
 
-import '';
 
 void main() async {
 
@@ -29,6 +30,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  await dotenv.load(fileName: ".env");
 
   // urlConfig();
   registerWebViewWebImplementation();
@@ -54,6 +57,7 @@ class MyTmttApp extends StatelessWidget {
       title: 'TMTT',
       theme: theme,
       locale: Get.deviceLocale, // 언어 설정
+      translations: Languages(), // 로컬라이징 적용
       unknownRoute: setUnknownPage(), // 404 에러 처리
       initialRoute: setInitialRoute(),
       getPages: kGetPages,

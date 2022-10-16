@@ -8,7 +8,7 @@ class Strings {
   static String next = 'next';
 
   // register page
-  static String registerDesc1 = "registerDesc1";
+  static String registerDesc1 = 'registerDesc1';
 
   // desc == description
   static String permissionScreenDesc1 = 'permissionScreenDesc1';

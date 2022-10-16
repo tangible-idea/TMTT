@@ -51,6 +51,8 @@ dependencies:
   retrofit_generator: ^4.0.2
   webview_flutter: ^3.0.4
   webview_flutter_web: ^0.1.0+4
+  purchases_flutter: ^4.3.0
+  flutter_dotenv: ^5.0.2
   google_sign_in: ^5.4.2
 
 dev_dependencies:
@@ -72,6 +74,8 @@ flutter:
     - assets/fonts/
     - assets/images/
     - assets/www/
+    - assets/www/
+    - .env
 
   fonts:
     - family: Notosans
