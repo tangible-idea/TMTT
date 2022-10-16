@@ -16,7 +16,9 @@ import 'package:tmtt/src/screens/base/base_get_controller.dart';
 import 'package:tmtt/src/screens/home/home_fragment.dart';
 import 'package:tmtt/src/screens/home/inbox_fragment.dart';
 import 'package:tmtt/src/screens/home/setting_fragment.dart';
+import 'package:tmtt/src/util/credentials.dart';
 import 'package:tmtt/src/util/info_util.dart';
+import 'package:tmtt/src/util/local_storage.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 import 'package:tmtt/src/util/my_navigator.dart';
 import 'package:tmtt/src/util/my_snackbar.dart';
@@ -138,7 +140,7 @@ class HomeController extends BaseGetController {
   }
 
   void signOut() {
-    firebase_user.FirebaseAuth.instance.signOut();
+    Credentials.logout();
     MyNav.pushReplacementNamed(
       pageName: PageName.register,
     );

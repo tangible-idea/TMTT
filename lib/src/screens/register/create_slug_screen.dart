@@ -9,7 +9,7 @@ import 'package:tmtt/src/resources/styles/txt_style.dart';
 import 'package:tmtt/src/screens/base/base_app_bar.dart';
 import 'package:tmtt/src/screens/base/base_scaffold.dart';
 import 'package:tmtt/src/screens/register/register_controller.dart';
-import 'package:tmtt/src/util/app_space.dart';
+import 'package:tmtt/src/widgets/app_space.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 import 'package:tmtt/src/util/my_snackbar.dart';
 import 'package:tmtt/src/widgets/bottom_button.dart';

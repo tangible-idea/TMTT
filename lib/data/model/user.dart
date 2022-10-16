@@ -9,7 +9,7 @@ class User {
 
   String slugId = '';
   String profileImage = '';
-  int signature = 0;
+  int signature = 0; // unique number
   String userId = '';
   String bio = '';
   bool premiumUser = false;
