@@ -30,9 +30,12 @@ class RegisterController extends BaseGetController {
 
 
   late final slugInputController = TextEditingController();
-
+  var errorObs= Rx<String?>(null);
   @override
   void onInit() {
+    slugInputController.addListener(() {
+      errorObs.value= null; // 텍스트 수정 시: validation error 없애준다.
+    });
   }
 
   @override
@@ -45,11 +48,30 @@ class RegisterController extends BaseGetController {
   }
 
 
-  void createYourSlug(String slug) async {
-    if(slug.isEmpty) { // TODO: validation
-      MySnackBar.show(title: 'Error', message: 'Please input a valid slug.');
-      return;
+
+  // text error validation
+  String? get errorText {
+    // at any time, we can get the text from _controller.value.text
+    final text = slugInputController.text;
+    // Note: you can do your own custom validation here
+    // Move this logic this outside the widget for more testable code
+    if (text.isEmpty) {
+      return 'The slug can\'t be blank.';
     }
+    if (text.length < 4) {
+      return 'The slug should be longer than 4 letters.';
+    }
+    else if (text.length > 16) {
+      return 'Your slug is too long :\'(';
+    }
+    return null;
+  }
+
+  // slug 만들기
+  void createYourSlug(String slug) async {
+    errorObs.value= errorText; // run validation.
+    if(errorObs.value != null) return;
+
     bool isSuccess= await FireStore.updateUserValue("slug_id", slug);
     if(!isSuccess) {
       MySnackBar.show(title: 'Error', message: 'There is an error while creating your slug.');
@@ -61,6 +83,7 @@ class RegisterController extends BaseGetController {
     }
   }
 
+  // google API with Firebase
   void signInWithGoogle() async {
     try {
       UserCredential credential= await getCredentialFromGoogleFirebase();

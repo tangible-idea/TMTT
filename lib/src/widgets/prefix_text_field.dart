@@ -64,8 +64,11 @@ class PrefixInputField extends StatelessWidget {
           color: MyColor.typo01,
         ),
         counterText:'',
-        prefixText: prefixString ?? '',
-        prefixStyle: MyTextStyle.body,
+        prefixIcon: const Padding(
+          padding: EdgeInsets.fromLTRB(20,0,0,0),
+          child: Text('https://tmtt.link/'),
+        ),
+        prefixIconConstraints: const BoxConstraints(minWidth: 0, minHeight: 0),
         errorText: errorValidation,
         errorBorder: plainOutlineInputBorder(borderColor : MyColor.point02),
         focusedErrorBorder: plainOutlineInputBorder(borderColor : MyColor.point02),
