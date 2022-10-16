@@ -7,7 +7,7 @@ import 'package:tmtt/src/util/my_logger.dart';
 
 class Purchase {
 
-  static String entitlementId = 'link.tmtt.tmtt';
+  static const String _entitlementId = 'link.tmtt.tmtt';
 
   static Future<void> initPlatformState() async {
 
@@ -37,22 +37,22 @@ class Purchase {
     }
   }
 
-  // static Future<void> makePurchase() async {
-  //   try {
-  //     CustomerInfo purchaserInfo = await Purchases.purchasePackage(package);
-  //     if (purchaserInfo.entitlements.all["my_entitlement_identifier"]?.isActive == true) {
-  //       // Unlock that great "pro" content
-  //     }
-  //   } on PlatformException catch (e) {
-  //     var errorCode = PurchasesErrorHelper.getErrorCode(e);
-  //     if (errorCode != PurchasesErrorCode.purchaseCancelledError) {
-  //       Log.d(
-  //           'errorCode: $errorCode\n'
-  //           'message: ${e.message}'
-  //       );
-  //     }
-  //   }
-  // }
+  static Future<void> makePurchase(Package package) async {
+    try {
+      CustomerInfo purchaserInfo = await Purchases.purchasePackage(package);
+      if (purchaserInfo.entitlements.all[_entitlementId]?.isActive == true) {
+        // Unlock that great "pro" content
+      }
+    } on PlatformException catch (e) {
+      var errorCode = PurchasesErrorHelper.getErrorCode(e);
+      if (errorCode != PurchasesErrorCode.purchaseCancelledError) {
+        Log.d(
+            'errorCode: $errorCode\n'
+            'message: ${e.message}'
+        );
+      }
+    }
+  }
 
   static Future<void> login(String userId) async {
     await Purchases.logIn(userId);
@@ -79,7 +79,7 @@ class Purchase {
   }
 
   static Future<bool> isUserActiveSubscribe(CustomerInfo customerInfo) async {
-    return customerInfo.entitlements.all["my_entitlement_identifier"]?.isActive == true;
+    return customerInfo.entitlements.all[_entitlementId]?.isActive == true;
   }
 
 

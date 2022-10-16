@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart' as firebase_user;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:flutter_insta/flutter_insta.dart';
 import 'package:get/get.dart';
 
@@ -95,6 +95,7 @@ class HomeController extends BaseGetController {
     userNameObs.value = myInfo.slugId;
     myLinkObs.value = '${MyUrl.baseUrl}#/${myInfo.slugId}';
     myInfoObs.value = myInfo;
+
     Log.d('Purchase.getUserId: ${await Purchase.getUserId()}');
     var userInfo = await Purchase.getCustomerInfo();
     if (userInfo != null) {
@@ -102,7 +103,13 @@ class HomeController extends BaseGetController {
       Log.d('isSubscribe: $isSubscribe');
     }
 
-    await Purchase.displayProduct();
+    var offerings = await Purchase.displayProduct();
+    // var product = offerings?.current?.availablePackages[0];
+    var product = offerings?.current?.weekly;
+
+    // if (offerings != null && product != null) {
+    //   await Purchase.makePurchase(product);
+    // }
 
     checkPageFlow();
   }
