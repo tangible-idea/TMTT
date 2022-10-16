@@ -13,7 +13,7 @@ import 'package:tmtt/src/util/my_logger.dart';
 import 'fire_store_collections.dart';
 
 enum LoginUserType {
-  google, faceBook, apple
+  google, faceBook, apple, other
 }
 
 class FireStore {
