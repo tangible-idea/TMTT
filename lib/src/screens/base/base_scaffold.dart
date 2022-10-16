@@ -15,6 +15,7 @@ class BaseScaffold extends StatelessWidget {
   BottomNavigationBar? bottomNavigationBar;
   Color? backgroundColor;
   PaddingState? paddingState;
+  bool? useSafeAreaTop;
 
   BaseScaffold({
     Key? key,
@@ -25,6 +26,7 @@ class BaseScaffold extends StatelessWidget {
     this.bottomNavigationBar,
     this.backgroundColor,
     this.paddingState,
+    this.useSafeAreaTop,
   }): super(key: key);
 
   @override
@@ -41,7 +43,7 @@ class BaseScaffold extends StatelessWidget {
         resizeToAvoidBottomInset: resizeToAvoidBottomInset ?? true,
         bottomNavigationBar: bottomNavigationBar,
         body: SafeArea(
-          top: true,
+          top: useSafeAreaTop ?? true,
           bottom: true,
           right: true,
           left: true,

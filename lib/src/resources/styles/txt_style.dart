@@ -30,6 +30,12 @@ class MyTextStyle {
     fontFamily: 'Notosans',
   );
 
+  static const TextStyle h5 = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w700,
+    fontFamily: 'Notosans',
+  );
+
   static const TextStyle subTitle1 = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w400,

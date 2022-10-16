@@ -11,9 +11,8 @@ class HomeScreen extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() => BaseScaffold(
-        appBar: BaseAppBar(
-          title: controller.pageTitles[controller.currentPageIndexObs.value],
-        ),
+        paddingState: PaddingState.noPadding,
+        useSafeAreaTop: false,
         onPressedAosBackButton: () {
           Log.d('onPressedAosBackButton');
         },
