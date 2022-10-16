@@ -17,6 +17,7 @@ import 'package:tmtt/src/screens/home/home_fragment.dart';
 import 'package:tmtt/src/screens/home/inbox_fragment.dart';
 import 'package:tmtt/src/screens/home/setting_fragment.dart';
 import 'package:tmtt/src/util/credentials.dart';
+import 'package:tmtt/src/util/inapp_purchase_util.dart';
 import 'package:tmtt/src/util/info_util.dart';
 import 'package:tmtt/src/util/local_storage.dart';
 import 'package:tmtt/src/util/my_logger.dart';
@@ -94,6 +95,14 @@ class HomeController extends BaseGetController {
     userNameObs.value = myInfo.slugId;
     myLinkObs.value = '${MyUrl.baseUrl}#/${myInfo.slugId}';
     myInfoObs.value = myInfo;
+    Log.d('Purchase.getUserId: ${await Purchase.getUserId()}');
+    var userInfo = await Purchase.getCustomerInfo();
+    if (userInfo != null) {
+      var isSubscribe = await Purchase.isUserActiveSubscribe(userInfo);
+      Log.d('isSubscribe: $isSubscribe');
+    }
+
+    await Purchase.displayProduct();
 
     checkPageFlow();
   }
@@ -164,8 +173,8 @@ class HomeController extends BaseGetController {
     deviceInfoObs.value = await InfoUtil.getAllDeviceInfo();
   }
 
-  void signOut() {
-    Credentials.logout();
+  void signOut() async {
+    await Credentials.logout();
     MyNav.pushReplacementNamed(
       pageName: PageName.register,
     );

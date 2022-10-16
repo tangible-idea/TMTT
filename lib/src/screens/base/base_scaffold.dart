@@ -1,6 +1,11 @@
 
 import 'package:flutter/material.dart';
 
+enum PaddingState {
+  noPadding,
+  defaultPadding
+}
+
 class BaseScaffold extends StatelessWidget {
 
   Widget? appBar;
@@ -9,6 +14,7 @@ class BaseScaffold extends StatelessWidget {
   Function()? onPressedAosBackButton;
   BottomNavigationBar? bottomNavigationBar;
   Color? backgroundColor;
+  PaddingState? paddingState;
 
   BaseScaffold({
     Key? key,
@@ -17,7 +23,8 @@ class BaseScaffold extends StatelessWidget {
     this.resizeToAvoidBottomInset,
     this.onPressedAosBackButton,
     this.bottomNavigationBar,
-    this.backgroundColor
+    this.backgroundColor,
+    this.paddingState,
   }): super(key: key);
 
   @override
@@ -47,7 +54,7 @@ class BaseScaffold extends StatelessWidget {
                   if (appBar != null) appBar!,
                   Expanded(
                     child: Container(
-                        margin: const EdgeInsets.only(top: 4, left: 24, right: 24, bottom: 14),
+                        margin: setPaddingState(),
                         child: body
                     ),
                   ),
@@ -58,5 +65,13 @@ class BaseScaffold extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  EdgeInsets setPaddingState() {
+    if (paddingState == PaddingState.noPadding) {
+      return const EdgeInsets.only(top: 0, left: 0, right: 0, bottom: 0);
+    } else {
+      return const EdgeInsets.only(top: 4, left: 24, right: 24, bottom: 14);
+    }
   }
 }

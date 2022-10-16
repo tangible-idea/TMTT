@@ -8,6 +8,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:tmtt/firebase/fire_store.dart';
 import 'package:tmtt/pages.dart';
 import 'package:tmtt/src/constants/local_storage_key_store.dart';
+import 'package:tmtt/src/util/inapp_purchase_util.dart';
 import 'package:tmtt/src/util/local_storage.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 import 'package:tmtt/src/util/my_navigator.dart';
@@ -111,6 +112,7 @@ class RegisterController extends BaseGetController {
 
       await LocalStorage.put(KeyStore.userDocId, registerDocId);
       await LocalStorage.put(KeyStore.isLogin, true);
+      await Purchase.login(registerDocId);
 
       // check current users slug.
       var myInfo= await FireStore.getMyInfo();
