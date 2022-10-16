@@ -35,6 +35,7 @@ class HomeController extends BaseGetController {
 
   @override
   void onInit() {
+    //checkPageFlow();
     getMyInfo();
     getInsta();
   }
@@ -65,6 +66,7 @@ class HomeController extends BaseGetController {
   /// ========================================================
 
   var userNameObs = ''.obs;
+  var instaBioObs = ''.obs;
   var deviceInfoObs = ''.obs;
   var myInfoObs = User().obs;
   var myLinkObs = ''.obs;
@@ -74,7 +76,7 @@ class HomeController extends BaseGetController {
     String userName = inputController.text;
     FlutterInsta flutterInsta = FlutterInsta();
     await flutterInsta.getProfileData(userName); //instagram username
-    userNameObs.value = flutterInsta.bio;
+    instaBioObs.value = flutterInsta.bio;
     Log.d(
       flutterInsta.username + '\n' +
       flutterInsta.followers + '\n' +
@@ -89,9 +91,32 @@ class HomeController extends BaseGetController {
     var myInfo = await FireStore.getMyInfo();
     if (myInfo == null) { return; }
     messageInputController.text = myInfo.message;
-    userNameObs.value = myInfo.userId;
-    myLinkObs.value = '${MyUrl.baseUrl}#/${myInfo.userId}';
+    userNameObs.value = myInfo.slugId;
+    myLinkObs.value = '${MyUrl.baseUrl}#/${myInfo.slugId}';
     myInfoObs.value = myInfo;
+
+    checkPageFlow();
+  }
+
+  // check auth data and slug data.
+  void checkPageFlow() {
+    firebase_user.FirebaseAuth.instance
+        .authStateChanges()
+        .listen((user) {
+        if (user == null) {
+          print('User is currently signed out!');
+          MyNav.pushReplacementNamed(
+            pageName: PageName.register,
+          );
+        } else {
+          print('User is signed in!');
+          if(myInfoObs.value.slugId.isEmpty) { // 계정있는데 슬러그 없으면 : 슬러그 생성페이지.
+            MyNav.pushReplacementNamed(
+              pageName: PageName.createslug,
+            );
+          }
+        }
+    });
   }
 
   Future<void> copyMyLink() async {

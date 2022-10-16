@@ -21,15 +21,18 @@ class HomeFragment extends GetView<HomeController> {
             child: ListView(
               children: [
                 PlainTextField(
-                  hintText: '인스타 아이디 입력',
+                  hintText: '[test]Your instagram ID here.',
                   keyboardType: TextInputType.text,
                   controller: controller.inputController,
                 ),
                 PlainText(
                     text: controller.userNameObs.value
                 ),
+                PlainText(
+                    text: controller.instaBioObs.value
+                ),
                 PlainTextField(
-                  hintText: '상태 메시지',
+                  hintText: 'Ask question to your followers.',
                   keyboardType: TextInputType.text,
                   controller: controller.messageInputController,
                 ),

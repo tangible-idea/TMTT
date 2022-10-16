@@ -90,6 +90,7 @@ class FireStore {
     return user;
   }
 
+  /// slug_id -> User
   static Future<User?> searchUserSlug(String userSlug) async {
 
     var snapshot = await instance

@@ -67,7 +67,14 @@ class RegisterController extends BaseGetController {
   // slug 만들기
   void createYourSlug(String slug) async {
     errorObs.value= errorText; // run validation.
-    if(errorObs.value != null) return;
+    if(errorObs.value != null) return; // return on validation error.
+
+    // 유저 검색.
+    var userSlug= await FireStore.searchUserSlug(slug);
+    if(userSlug != null) {
+      errorObs.value= 'There is another user with the same slug.';
+      return;
+    }
 
     bool isSuccess= await FireStore.updateUserValue("slug_id", slug);
     if(!isSuccess) {
@@ -102,19 +109,17 @@ class RegisterController extends BaseGetController {
         registerDocId= currentUser.documentId;
       }
 
-      // await LocalStorage.put(KeyStore.userSlugId, userEmail);
       await LocalStorage.put(KeyStore.userDocId, registerDocId);
       await LocalStorage.put(KeyStore.isLogin, true);
 
-      // TODO: firestore -> slug값이 없으면
-      if(currentUser == null) {
+      // check current users slug.
+      var myInfo= await FireStore.getMyInfo();
+      //var slugId= await LocalStorage.get(KeyStore.userSlugId, '');
+      if(myInfo?.slugId != null && myInfo?.slugId.isNotEmpty == true) {
         // Go to home
-        MyNav.pushReplacementNamed(
-          pageName: PageName.createslug,
-        );
+        goToHome();
       }else{
-        // Go to home
-        //goToHome();
+        // Go to slug creation page.
         MyNav.pushReplacementNamed(
           pageName: PageName.createslug,
         );
