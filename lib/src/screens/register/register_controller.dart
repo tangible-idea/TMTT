@@ -75,6 +75,7 @@ class RegisterController extends BaseGetController {
       if(currentUser == null) {
         var user = userModel.User(
           googleUid: credential.user?.uid ?? '',
+          registerDate: DateTime.now().toString() ?? '',
         );
         registerDocId= await FireStore.register(user); // firestore signing up.
       }else{ // user does exist : get current doc-id.
