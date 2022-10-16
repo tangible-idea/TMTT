@@ -22,40 +22,20 @@ class Purchase {
     await Purchases.configure(configuration);
   }
 
-  static Future<Offerings?> displayProduct() async {
-    try {
-      Offerings offerings = await Purchases.getOfferings();
-      if (offerings.current != null && offerings.current?.availablePackages.isNotEmpty == true) {
-        // Display packages for sale
-        Log.d(offerings);
-      }
-      return offerings;
-    } on PlatformException catch (e) {
-      // optional error handling
-      Log.d('error: ${e.message}');
-      return null;
-    }
-  }
-
-  static Future<void> makePurchase(Package package) async {
-    try {
-      CustomerInfo purchaserInfo = await Purchases.purchasePackage(package);
-      if (purchaserInfo.entitlements.all[_entitlementId]?.isActive == true) {
-        // Unlock that great "pro" content
-      }
-    } on PlatformException catch (e) {
-      var errorCode = PurchasesErrorHelper.getErrorCode(e);
-      if (errorCode != PurchasesErrorCode.purchaseCancelledError) {
-        Log.d(
-            'errorCode: $errorCode\n'
-            'message: ${e.message}'
-        );
-      }
-    }
-  }
-
   static Future<void> login(String userId) async {
     await Purchases.logIn(userId);
+  }
+
+  static Future<void> setUserEmail(String email) async {
+    await Purchases.setEmail(email);
+  }
+
+  static Future<void> setUserName(String name) async {
+    await Purchases.setDisplayName(name);
+  }
+
+  static Future<void> setUserPushToken(String token) async {
+    await Purchases.setPushToken(token);
   }
 
   static Future<String> getUserId() async {
@@ -78,9 +58,42 @@ class Purchase {
     }
   }
 
+  static Future<Offerings?> displayProducts() async {
+    try {
+      Offerings offerings = await Purchases.getOfferings();
+      if (offerings.current != null && offerings.current?.availablePackages.isNotEmpty == true) {
+        // Display packages for sale
+        Log.d(offerings);
+      }
+      return offerings;
+    } on PlatformException catch (e) {
+      // optional error handling
+      Log.d('error: ${e.message}');
+      return null;
+    }
+  }
+
+  static Future<CustomerInfo?> makePurchase(Package package) async {
+    try {
+      CustomerInfo purchaserInfo = await Purchases.purchasePackage(package);
+      if (purchaserInfo.entitlements.all[_entitlementId]?.isActive == true) {
+        // Unlock that great "pro" content
+      }
+      return purchaserInfo;
+    } on PlatformException catch (e) {
+      var errorCode = PurchasesErrorHelper.getErrorCode(e);
+      if (errorCode != PurchasesErrorCode.purchaseCancelledError) {
+        Log.d(
+            'errorCode: $errorCode\n'
+                'message: ${e.message}'
+        );
+      }
+      return null;
+    }
+  }
+
   static Future<bool> isUserActiveSubscribe(CustomerInfo customerInfo) async {
     return customerInfo.entitlements.all[_entitlementId]?.isActive == true;
   }
-
 
 }
