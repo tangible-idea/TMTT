@@ -10,6 +10,7 @@ Map<String, String> translations_en = {
 
   Strings.registerDesc1: 'Get anonymous messages on any kind of \r\nsocial media apps such as Instagram!',
   Strings.registerDesc2: 'this web address is how people will find\r\nyour TMTT profile online.',
+  Strings.registerCreateYourOwnLInk: 'Create your own link',
 
   Strings.permissionScreenDesc1: '원활한 앱 사용을 위해\n다음의 앱 권한을 허용해주세요',
   Strings.permissionScreenDesc2: '카메라',

@@ -10,6 +10,8 @@ class Strings {
   // register page
   static String registerDesc1 = 'registerDesc1';
   static String registerDesc2 = 'registerDesc2';
+  static String registerCreateYourOwnLInk = 'registerCreateYourOwnLInk';
+
 
   // desc == description
   static String permissionScreenDesc1 = 'permissionScreenDesc1';

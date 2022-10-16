@@ -70,7 +70,7 @@ class CreateSlugScreen extends GetView<RegisterController> {
               AppSpaces.verticalSpace10,
 
               BottomPlainButton(
-                text: 'Check',
+                text: Strings.registerCreateYourOwnLInk.tr,
                 onPressed: () => controller.createYourSlug(controller.slugInputController.text),
                 enabledObs: RxBool(true),
               ),
