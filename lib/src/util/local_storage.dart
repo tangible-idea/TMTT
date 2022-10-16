@@ -6,7 +6,7 @@ class LocalStorage {
 
   static final FlutterSecureStorage _storage = FlutterSecureStorage();
 
-  static void deleteAll() async {
+  static Future<void> deleteAll() async {
     await _storage.deleteAll(
         iOptions: _getIOSOptions(),
         aOptions: _getAndroidOptions()

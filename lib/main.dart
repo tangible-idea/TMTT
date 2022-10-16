@@ -27,15 +27,13 @@ void main() async {
   // 앱 세로 고정
   if (GetPlatform.isMobile) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+    await dotenv.load(fileName: ".env");
+    await Purchase.initPlatformState();
   }
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
-  await dotenv.load(fileName: ".env");
-
-  await Purchase.initPlatformState();
 
   // urlConfig();
   registerWebViewWebImplementation();
