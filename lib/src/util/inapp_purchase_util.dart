@@ -17,4 +17,8 @@ class Purchase {
     }
     await Purchases.configure(configuration);
   }
+
+  static Future<void> loginPurchaseUserId(String userId) async {
+    await Purchases.appUserID;
+  }
 }
