@@ -14,6 +14,7 @@ import 'package:tmtt/src/widgets/plain_text_field.dart';
 import '../../../generated/assets.dart';
 import '../../resources/styles/txt_style.dart';
 import '../../widgets/multiline_text_field.dart';
+import '../../widgets/rounded_button.dart';
 
 class HomeFragment extends GetView<HomeController> {
 
@@ -73,6 +74,13 @@ class HomeFragment extends GetView<HomeController> {
                         style: MyTextStyle.h5,
                       ),
                       AppSpaces.verticalSpace10,
+
+                      BottomPlainButton(
+                        text: 'Copy link',
+                        icon: SvgPicture.asset(Assets.imagesIcoCopy),
+                        onPressed: () => controller.copyMyLink(),
+                        enabledObs: RxBool(true),
+                      ),
 
                       // Container(decoration: BoxDecoration(
                       //     image: DecorationImage(

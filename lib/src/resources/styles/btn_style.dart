@@ -3,30 +3,31 @@ import 'package:tmtt/src/resources/styles/my_color.dart';
 
 
 class BtnStyle {
+
   static ButtonStyle plain = ButtonStyle(
     backgroundColor: MaterialStateProperty.resolveWith((states) {
-      return MyColor.primary_04; // if (states.contains(MaterialState.pressed)) {}
+      return MyColor.kPrimary; // if (states.contains(MaterialState.pressed)) {}
     }),
     padding: MaterialStateProperty.all<EdgeInsets>(
         const EdgeInsets.all(14)
     ),
     shape: MaterialStateProperty.resolveWith<OutlinedBorder>((_) {
       return RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(6)
+          borderRadius: BorderRadius.circular(20)
       );
     }),
   );
 
   static ButtonStyle disabledPlain = ButtonStyle(
     backgroundColor: MaterialStateProperty.resolveWith((states) {
-      return MyColor.primary_01; // if (states.contains(MaterialState.pressed)) {}
+      return MyColor.kGrey2; // if (states.contains(MaterialState.pressed)) {}
     }),
     padding: MaterialStateProperty.all<EdgeInsets>(
         const EdgeInsets.all(14)
     ),
     shape: MaterialStateProperty.resolveWith<OutlinedBorder>((_) {
       return RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(6)
+          borderRadius: BorderRadius.circular(20)
       );
     }),
   );

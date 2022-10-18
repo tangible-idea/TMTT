@@ -64,6 +64,8 @@ class BottomPlainButton extends StatelessWidget {
 
   String? text;
   VoidCallback? onPressed;
+  double? fontSize;
+  Widget? icon;
 
   RxBool enabledObs = true.obs;
 
@@ -71,6 +73,8 @@ class BottomPlainButton extends StatelessWidget {
     Key? key,
     this.text,
     this.onPressed,
+    this.fontSize,
+    this.icon,
     required this.enabledObs,
   }) : super(key: key);
 
@@ -88,17 +92,38 @@ class BottomPlainButton extends StatelessWidget {
     );
   }
 
+  var normalButtonStyle= BtnStyle.plain.copyWith(
+    padding: MaterialStateProperty.all<EdgeInsets>(
+        const EdgeInsets.all(18)
+    ),
+  );
+
+  var disabledButtonStyle= BtnStyle.disabledPlain.copyWith(
+    padding: MaterialStateProperty.all<EdgeInsets>(
+        const EdgeInsets.all(18)
+    ),
+  );
+
   Widget setButtonState(bool isEnable) {
-    if (isEnable) {
-      return TextButton(
-        style: BtnStyle.plain.copyWith(
-          padding: MaterialStateProperty.all<EdgeInsets>(
-              const EdgeInsets.all(18)
-          ),
-        ),
+      return icon == null ? ElevatedButton(
+        style: isEnable ? normalButtonStyle : disabledButtonStyle,
         child: PlainText(
           text: text,
-          style: const TextStyle(
+          style: TextStyle(
+            fontSize: fontSize ?? 16,
+            color: MyColor.white,
+          ),
+        ),
+        onPressed: () {
+          onPressed?.call();
+        },
+      ) : ElevatedButton.icon(
+        icon: icon!,
+        style: isEnable ? normalButtonStyle : disabledButtonStyle,
+        label: PlainText(
+          text: text,
+          style: TextStyle(
+            fontSize: fontSize ?? 16,
             color: MyColor.white,
           ),
         ),
@@ -106,21 +131,5 @@ class BottomPlainButton extends StatelessWidget {
           onPressed?.call();
         },
       );
-    } else {
-      return TextButton(
-        style: BtnStyle.disabledPlain.copyWith(
-          padding: MaterialStateProperty.all<EdgeInsets>(
-              const EdgeInsets.all(18)
-          ),
-        ),
-        onPressed: null,
-        child: PlainText(
-          text: text,
-          style: const TextStyle(
-            color: MyColor.white,
-          ),
-        ),
-      );
-    }
   }
 }

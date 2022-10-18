@@ -16,7 +16,9 @@ class Assets {
   static const String imagesHello = 'assets/images/hello.png';
   static const String imagesIcBack = 'assets/images/ic_back.svg';
   static const String imagesIcCancel = 'assets/images/ic_cancel.svg';
+  static const String imagesIcoCopy = 'assets/images/ico_copy.svg';
   static const String imagesIcoRandom = 'assets/images/ico_random.svg';
+  static const String imagesIcoShare = 'assets/images/ico_share.svg';
   static const String imagesInviteDoodads = 'assets/images/invite_doodads.svg';
   static const String imagesInviteFriends = 'assets/images/invite_friends.svg';
   static const String imagesMytest = 'assets/images/mytest.png';
