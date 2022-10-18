@@ -9,7 +9,7 @@ class Credentials {
 
   static Future<void> logout() async {
     await firebaseUser.FirebaseAuth.instance.signOut();
-    LocalStorage.deleteAll();
+    await LocalStorage.deleteAll();
     await Purchase.logout();
   }
 }

@@ -95,6 +95,7 @@ class RegisterController extends BaseGetController {
       String uid = credential.user?.uid ?? '';
 
       String userEmail= credential.user?.email.toString() ?? "";
+      String userName= credential.user?.displayName.toString() ?? "";
       MySnackBar.show(title: 'Login', message: userEmail);
 
       var registerDocId = "";
@@ -112,7 +113,10 @@ class RegisterController extends BaseGetController {
 
       await LocalStorage.put(KeyStore.userDocId, registerDocId);
       await LocalStorage.put(KeyStore.isLogin, true);
+
       await Purchase.login(registerDocId);
+      await Purchase.setUserEmail(userEmail);
+      await Purchase.setUserName(userName);
 
       // check current users slug.
       var myInfo= await FireStore.getMyInfo();

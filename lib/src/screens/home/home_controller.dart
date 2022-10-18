@@ -103,7 +103,7 @@ class HomeController extends BaseGetController {
       Log.d('isSubscribe: $isSubscribe');
     }
 
-    var offerings = await Purchase.displayProduct();
+    var offerings = await Purchase.displayProducts();
     // var product = offerings?.current?.availablePackages[0];
     var product = offerings?.current?.weekly;
 
