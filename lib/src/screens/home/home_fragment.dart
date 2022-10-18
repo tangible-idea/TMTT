@@ -14,7 +14,6 @@ import 'package:tmtt/src/widgets/plain_text_field.dart';
 import '../../../generated/assets.dart';
 import '../../resources/styles/txt_style.dart';
 import '../../widgets/multiline_text_field.dart';
-import '../../widgets/rounded_button.dart';
 
 class HomeFragment extends GetView<HomeController> {
 
@@ -48,7 +47,6 @@ class HomeFragment extends GetView<HomeController> {
                           text: 'Ask question to your followers!',
                         style: MyTextStyle.h5,
                       ),
-                      AppSpaces.verticalSpace20,
 
                       // PlainTextField(
                       //   hintText: '[test]Your instagram ID here.',
@@ -56,9 +54,7 @@ class HomeFragment extends GetView<HomeController> {
                       //   controller: controller.inputController,
                       // ),
                       //AppSpaces.verticalSpace20,
-                      PlainText(
-                          text: controller.userNameObs.value
-                      ),
+
                       PlainText(
                           text: controller.instaBioObs.value
                       ),
@@ -75,39 +71,68 @@ class HomeFragment extends GetView<HomeController> {
                       ),
                       AppSpaces.verticalSpace10,
 
-                      BottomPlainButton(
-                        text: 'Copy link',
-                        icon: SvgPicture.asset(Assets.imagesIcoCopy),
-                        onPressed: () => controller.copyMyLink(),
-                        enabledObs: RxBool(true),
-                      ),
 
-                      // Container(decoration: BoxDecoration(
-                      //     image: DecorationImage(
-                      //         image: SvgPicture.asset(Assets.imagesInviteFriends)
-                      //     )
-                      //   ),
-                      // ),
-                      SvgPicture.asset(Assets.imagesInviteFriends),
+
+                      Stack(children: [
+                        SvgPicture.asset(Assets.imagesInviteFriends),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                          AppSpaces.verticalSpace100,
+                          AppSpaces.verticalSpace30,
+                          PlainText(
+                            text: 'Step1: Copy your link!',
+                            style: MyTextStyle.caption2Bold,
+                          ),
+
+                          AppSpaces.verticalSpace10,
+                          PlainText(
+                              text: 'https://tmtt.link/#/${controller.userNameObs.value}'
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(25, 0, 25, 10),
+                            child: BottomPlainButton(
+                              text: 'Copy link',
+                              icon: SvgPicture.asset(Assets.imagesIcoCopy),
+                              onPressed: () => controller.copyMyLink(),
+                              enabledObs: RxBool(true),
+                            ),
+                          ),
+
+                          AppSpaces.verticalSpace10,
+
+                          PlainText(
+                            marginLeft: 30,
+                            marginRight: 30,
+                            align: TextAlign.center,
+                            text: 'Step2: Share your link on your instagram Story.',
+                            style: MyTextStyle.caption2Bold,
+                          ),
+                          AppSpaces.verticalSpace10,
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(25, 0, 25, 10),
+                              child: BottomPlainButton(
+                                text: 'Share',
+                                icon: SvgPicture.asset(Assets.imagesIcoShare),
+                                onPressed: () => controller.shareOnInstagram(context),
+                                enabledObs: RxBool(true),
+                              ),
+                            ),
+                        ],)
+                      ],),
+
 
                       // PlainText(
                       //     text: 'my link: ${controller.myLinkObs.value}'
                       // ),
-                      BottomPlainButton(
-                        text: '링크 복사하기',
-                        onPressed: () => controller.copyMyLink(),
-                        enabledObs: RxBool(true),
-                      ),
+
                       BottomPlainButton(
                         text: '상태메시지 수정하기',
                         onPressed: () => controller.editMyStateMessage(),
                         enabledObs: RxBool(true),
                       ),
-                      BottomPlainButton(
-                        text: '인스타에 공유하기',
-                        onPressed: () => controller.shareOnInstagram(context),
-                        enabledObs: RxBool(true),
-                      ),
+
                       BottomPlainButton(
                         text: '인스타 아이디 검색',
                         onPressed: () => controller.searchInstaUser(),
@@ -115,10 +140,6 @@ class HomeFragment extends GetView<HomeController> {
                       ),
 
                       AppSpaces.verticalSpace20,
-                      PlainText(
-                        text: 'Copy your link and share!',
-                        style: MyTextStyle.h5,
-                      ),
                     ],
                   ),
                 ),

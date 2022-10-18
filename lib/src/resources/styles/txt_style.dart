@@ -91,13 +91,13 @@ class MyTextStyle {
   );
 
   static const TextStyle caption2 = TextStyle(
-    fontSize: 11,
+    fontSize: 16,
     fontWeight: FontWeight.w400,
     fontFamily: 'Notosans',
   );
 
   static const TextStyle caption2Bold = TextStyle(
-    fontSize: 11,
+    fontSize: 16,
     fontWeight: FontWeight.w700,
     fontFamily: 'Notosans',
   );
