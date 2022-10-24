@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -45,7 +47,7 @@ class MyTmttApp extends StatelessWidget {
   MyTmttApp({super.key});
 
   var theme = ThemeData(
-    fontFamily: 'Notosans',
+    fontFamily: window.locale.languageCode == "en" ? "Rubik" : "NanumSquareRound",
     primarySwatch: Colors.blue,
     scaffoldBackgroundColor: Colors.white,
   );

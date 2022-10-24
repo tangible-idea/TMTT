@@ -13,6 +13,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  animated_bottom_navigation_bar: ^1.1.0
+
   cupertino_icons: ^1.0.2
   google_fonts: ^2.1.0
   font_awesome_flutter:
@@ -78,13 +80,23 @@ flutter:
     - .env
 
   fonts:
-    - family: Notosans
+    - family: NanumSquareRound
       fonts:
-        - asset: assets/fonts/notosanscjkkr_l.otf
+        - asset: assets/fonts/NanumSquareRoundOTFL.otf
           weight: 300
-        - asset: assets/fonts/notosanscjkkr_r.otf
+        - asset: assets/fonts/NanumSquareRoundOTFR.otf
           weight: 400
-        - asset: assets/fonts/notosanscjkkr_m.otf
+        - asset: assets/fonts/NanumSquareRoundOTFB.otf
           weight: 500
-        - asset: assets/fonts/notosanscjkkr_b.otf
+        - asset: assets/fonts/NanumSquareRoundOTFEB.otf
+          weight: 700
+    - family: Rubik
+      fonts:
+        - asset: assets/fonts/rubik_l.ttf
+          weight: 300
+        - asset: assets/fonts/rubik_r.ttf
+          weight: 400
+        - asset: assets/fonts/rubik_m.ttf
+          weight: 500
+        - asset: assets/fonts/rubik_sb.ttf
           weight: 700
