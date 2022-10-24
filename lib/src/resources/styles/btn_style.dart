@@ -77,4 +77,13 @@ class BtnStyle {
       );
     }),
   );
+
+  static ButtonStyle whiteOutlineRadius = OutlinedButton.styleFrom(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(12), // <-- Radius
+    ),
+    side: const BorderSide(
+        width: 2.0,
+        color: MyColor.kGrey5),
+  );
 }

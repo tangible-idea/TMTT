@@ -13,6 +13,7 @@ import 'package:tmtt/src/widgets/plain_text_field.dart';
 
 import '../../../generated/assets.dart';
 import '../../resources/styles/txt_style.dart';
+import '../../widgets/button_white.dart';
 import '../../widgets/multiline_text_field.dart';
 
 class HomeFragment extends GetView<HomeController> {
@@ -64,7 +65,26 @@ class HomeFragment extends GetView<HomeController> {
                         hintText: 'Ask question to your followers.',
                         controller: controller.messageInputController,
                       ),
-                      AppSpaces.verticalSpace20,
+
+                      Row(
+                        children: [
+                          WhiteButton(
+                            icon: SvgPicture.asset(Assets.imagesIcoRandom, color: MyColor.kPrimary),
+                            text: 'Samples',
+                            onPressed: () => controller.editMyStateMessage(),
+                            enabledObs: RxBool(true),
+                          ),
+                          Spacer(),
+                          WhiteButton(
+                            icon: SvgPicture.asset(Assets.imagesIcoArrowdown, color: MyColor.kPrimary),
+                            text: 'Random',
+                            onPressed: () => controller.editMyStateMessage(),
+                            enabledObs: RxBool(true),
+                          ),
+                        ],
+                      ),
+
+                      AppSpaces.verticalSpace10,
                       PlainText(
                         text: 'Copy your link and share!',
                         style: MyTextStyle.h5,

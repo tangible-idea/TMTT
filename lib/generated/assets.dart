@@ -2,10 +2,18 @@
 class Assets {
   Assets._();
 
+  static const String fontsNanumSquareRoundOTFB = 'assets/fonts/NanumSquareRoundOTFB.otf';
+  static const String fontsNanumSquareRoundOTFEB = 'assets/fonts/NanumSquareRoundOTFEB.otf';
+  static const String fontsNanumSquareRoundOTFL = 'assets/fonts/NanumSquareRoundOTFL.otf';
+  static const String fontsNanumSquareRoundOTFR = 'assets/fonts/NanumSquareRoundOTFR.otf';
   static const String fontsNotosanscjkkrB = 'assets/fonts/notosanscjkkr_b.otf';
   static const String fontsNotosanscjkkrL = 'assets/fonts/notosanscjkkr_l.otf';
   static const String fontsNotosanscjkkrM = 'assets/fonts/notosanscjkkr_m.otf';
   static const String fontsNotosanscjkkrR = 'assets/fonts/notosanscjkkr_r.otf';
+  static const String fontsRubikL = 'assets/fonts/rubik_l.ttf';
+  static const String fontsRubikM = 'assets/fonts/rubik_m.ttf';
+  static const String fontsRubikR = 'assets/fonts/rubik_r.ttf';
+  static const String fontsRubikSb = 'assets/fonts/rubik_sb.ttf';
   static const String imagesBackground1 = 'assets/images/background1.png';
   static const String imagesBackground2 = 'assets/images/background2.png';
   static const String imagesBackground3 = 'assets/images/background3.png';
@@ -16,6 +24,7 @@ class Assets {
   static const String imagesHello = 'assets/images/hello.png';
   static const String imagesIcBack = 'assets/images/ic_back.svg';
   static const String imagesIcCancel = 'assets/images/ic_cancel.svg';
+  static const String imagesIcoArrowdown = 'assets/images/ico_arrowdown.svg';
   static const String imagesIcoCopy = 'assets/images/ico_copy.svg';
   static const String imagesIcoRandom = 'assets/images/ico_random.svg';
   static const String imagesIcoShare = 'assets/images/ico_share.svg';
