@@ -1,4 +1,6 @@
 
+import 'dart:math';
+
 import 'package:firebase_auth/firebase_auth.dart' as firebase_user;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +26,8 @@ import 'package:tmtt/src/util/my_logger.dart';
 import 'package:tmtt/src/util/my_navigator.dart';
 import 'package:tmtt/src/util/my_snackbar.dart';
 import 'package:tmtt/src/util/posting_helper.dart';
+
+import '../../constants/sample_questions.dart';
 
 class HomeBinding implements Bindings {
   @override
@@ -147,6 +151,14 @@ class HomeController extends BaseGetController {
     MySnackBar.show(title: 'edit success!');
     myInfoObs.value.message = text;
   }
+
+  // Put a random message on question text controller.
+  void putARandomMessage() {
+    var randomInt= Random().nextInt(Samples.questions_en_1.length);
+    String randomText= Samples.questions_en_1[randomInt];
+    messageInputController.text= randomText;
+  }
+
 
   bool isTextValid() {
     if(messageInputController.text.isEmpty) {

@@ -64,7 +64,7 @@ class HomeFragment extends GetView<HomeController> {
                           WhiteButton(
                             icon: SvgPicture.asset(Assets.imagesIcoRandom, color: MyColor.kPrimary),
                             text: 'Random',
-                            onPressed: () => controller.editMyStateMessage(),
+                            onPressed: () => controller.putARandomMessage(),
                             enabledObs: RxBool(true),
                           ),
                           const Spacer(),
