@@ -26,7 +26,6 @@ class WhiteButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 12),
       child: Row(
         children: [
           Obx(() => setButtonState(enabledObs.value)),
@@ -52,12 +51,12 @@ class WhiteButton extends StatelessWidget {
           onPressed?.call();
         },
       ) : OutlinedButton.icon(
-        icon: icon!,
+        icon: icon!.marginOnly(left: 12),
         style: isEnable ? normalButtonStyle : disabledButtonStyle,
         label: PlainText(
           text: text,
           style: TextStyle(
-            fontSize: fontSize ?? 12,
+            fontSize: fontSize ?? 13,
             color: MyColor.black,
           ),
         ),

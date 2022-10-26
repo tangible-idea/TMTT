@@ -49,13 +49,6 @@ class HomeFragment extends GetView<HomeController> {
                         style: MyTextStyle.h5,
                       ),
 
-                      // PlainTextField(
-                      //   hintText: '[test]Your instagram ID here.',
-                      //   keyboardType: TextInputType.text,
-                      //   controller: controller.inputController,
-                      // ),
-                      //AppSpaces.verticalSpace20,
-
                       PlainText(
                           text: controller.instaBioObs.value
                       ),
@@ -74,7 +67,7 @@ class HomeFragment extends GetView<HomeController> {
                             onPressed: () => controller.editMyStateMessage(),
                             enabledObs: RxBool(true),
                           ),
-                          Spacer(),
+                          const Spacer(),
                           WhiteButton(
                             icon: SvgPicture.asset(Assets.imagesIcoArrowdown, color: MyColor.kPrimary),
                             text: 'Random',
@@ -91,57 +84,78 @@ class HomeFragment extends GetView<HomeController> {
                       ),
                       AppSpaces.verticalSpace10,
 
-
-
-                      Stack(children: [
-                        SvgPicture.asset(Assets.imagesInviteFriends),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(30.0),
+                        child: Column(
                           children: [
-                          AppSpaces.verticalSpace100,
-                          AppSpaces.verticalSpace30,
-                          PlainText(
-                            text: 'Step1: Copy your link!',
-                            style: MyTextStyle.caption2Bold,
-                          ),
-
-                          AppSpaces.verticalSpace10,
-                          PlainText(
-                              text: 'https://tmtt.link/#/${controller.userNameObs.value}'
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(25, 0, 25, 10),
-                            child: BottomPlainButton(
-                              text: 'Copy link',
-                              icon: SvgPicture.asset(Assets.imagesIcoCopy),
-                              onPressed: () => controller.copyMyLink(),
-                              enabledObs: RxBool(true),
-                            ),
-                          ),
-
-                          AppSpaces.verticalSpace10,
-
-                          PlainText(
-                            marginLeft: 30,
-                            marginRight: 30,
-                            align: TextAlign.center,
-                            text: 'Step2: Share your link on your instagram Story.',
-                            style: MyTextStyle.caption2Bold,
-                          ),
-                          AppSpaces.verticalSpace10,
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(25, 0, 25, 10),
-                              child: BottomPlainButton(
-                                text: 'Share',
-                                icon: SvgPicture.asset(Assets.imagesIcoShare),
-                                onPressed: () => controller.shareOnInstagram(context),
-                                enabledObs: RxBool(true),
+                            Container(
+                              alignment: Alignment.center,
+                              constraints: const BoxConstraints(
+                                maxHeight: 100,
                               ),
+                              color: MyColor.kSecondary,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                SvgPicture.asset(Assets.imagesInviteYourprofile),
+                                SvgPicture.asset(Assets.imagesInviteArrows),
+                                SvgPicture.asset(Assets.imagesInvite3guys),
+                              ],),
                             ),
-                        ],)
-                      ],),
+                            Container(
+                              alignment: Alignment.center,
+                              constraints: const BoxConstraints(
+                                maxHeight: 340,
+                              ),
+                              color: MyColor.kLightBackground,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  AppSpaces.verticalSpace30,
+                                  PlainText(
+                                    text: 'Step1: Copy your link!',
+                                    style: MyTextStyle.caption2Bold,
+                                  ),
 
+                                  AppSpaces.verticalSpace10,
+                                  PlainText(
+                                      text: 'https://tmtt.link/#/${controller.userNameObs.value}'
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.fromLTRB(25, 0, 25, 10),
+                                    child: BottomPlainButton(
+                                      text: 'Copy link',
+                                      icon: SvgPicture.asset(Assets.imagesIcoCopy),
+                                      onPressed: () => controller.copyMyLink(),
+                                      enabledObs: RxBool(true),
+                                    ),
+                                  ),
+
+                                  AppSpaces.verticalSpace10,
+
+                                  PlainText(
+                                    marginLeft: 30,
+                                    marginRight: 30,
+                                    align: TextAlign.center,
+                                    text: 'Step2: Share your link on your instagram Story.',
+                                    style: MyTextStyle.caption2Bold,
+                                  ),
+                                  AppSpaces.verticalSpace10,
+                                  Padding(
+                                    padding: const EdgeInsets.fromLTRB(25, 0, 25, 10),
+                                    child: BottomPlainButton(
+                                      text: 'Share',
+                                      icon: SvgPicture.asset(Assets.imagesIcoShare),
+                                      onPressed: () => controller.shareOnInstagram(context),
+                                      enabledObs: RxBool(true),
+                                    ),
+                                  ),
+                                ],)
+                            ),
+                          ],
+                        ),
+                      ),
 
                       // PlainText(
                       //     text: 'my link: ${controller.myLinkObs.value}'

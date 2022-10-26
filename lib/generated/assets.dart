@@ -18,8 +18,13 @@ class Assets {
   static const String imagesBackground2 = 'assets/images/background2.png';
   static const String imagesBackground3 = 'assets/images/background3.png';
   static const String imagesBackground4 = 'assets/images/background4.png';
+  static const String imagesBackground5 = 'assets/images/background5.png';
+  static const String imagesBirdHello = 'assets/images/bird_hello.png';
+  static const String imagesBirdPresentation = 'assets/images/bird_presentation.png';
   static const String imagesBtnLoginFacebook = 'assets/images/btn_login_facebook.svg';
   static const String imagesBtnLoginGoogle = 'assets/images/btn_login_google.svg';
+  static const String imagesCatHello = 'assets/images/cat_hello.png';
+  static const String imagesCatPresentation = 'assets/images/cat_presentation.png';
   static const String imagesExplainationSocial = 'assets/images/explaination_social.svg';
   static const String imagesHello = 'assets/images/hello.png';
   static const String imagesIcBack = 'assets/images/ic_back.svg';
@@ -28,8 +33,12 @@ class Assets {
   static const String imagesIcoCopy = 'assets/images/ico_copy.svg';
   static const String imagesIcoRandom = 'assets/images/ico_random.svg';
   static const String imagesIcoShare = 'assets/images/ico_share.svg';
+  static const String imagesInvite3guys = 'assets/images/invite_3guys.svg';
+  static const String imagesInviteArrows = 'assets/images/invite_arrows.svg';
   static const String imagesInviteDoodads = 'assets/images/invite_doodads.svg';
+  static const String imagesInviteDoodads2 = 'assets/images/invite_doodads_2.svg';
   static const String imagesInviteFriends = 'assets/images/invite_friends.svg';
+  static const String imagesInviteYourprofile = 'assets/images/invite_yourprofile.svg';
   static const String imagesMytest = 'assets/images/mytest.png';
   static const String imagesSplashBackground = 'assets/images/splash_background.svg';
   static const String imagesSplashLogo = 'assets/images/splash_logo.png';

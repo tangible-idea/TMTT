@@ -79,6 +79,7 @@ class BtnStyle {
   );
 
   static ButtonStyle whiteOutlineRadius = OutlinedButton.styleFrom(
+    padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(12), // <-- Radius
     ),

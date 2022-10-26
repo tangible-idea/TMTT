@@ -2,24 +2,26 @@
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 
+import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class CustomTextPainter extends CustomPainter {
   final String _text;
   final double _size; //this is pixel unit.
-  final int color;
+  final Color? color;
 
   double get pictureW => _size * (_text.length);
 
   //this value can smaller.
   double get pictureH => _size * 2; //there is 2 times _size due to text will around word-spacing.
 
-  CustomTextPainter(this._text, this._size, {this.color = 0xff000000});
+  CustomTextPainter(this._text, this._size, {this.color});
 
   @override
   void paint(ui.Canvas canvas, ui.Size size) {
     final textStyle = ui.TextStyle(
-      color: Color(color),
+      color: color ?? Colors.black,
+      fontFamily: "NanumSquareRound",
       fontSize: _size,
     );
     final paragraphStyle = ui.ParagraphStyle(

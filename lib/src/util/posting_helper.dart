@@ -1,6 +1,7 @@
 
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image/image.dart';
 import 'package:image_picker/image_picker.dart';
@@ -27,23 +28,35 @@ class PostingHelper {
     // get path to save image.
     String dirToSave= await _localPath;
 
-    var backgroundImage= await ImageUtils.imageToFile(imageName: 'background3.png');
+    var backgroundImage= await ImageUtils.imageToFile(imageName: 'background5.png');
 
     final image = decodeImage(File(backgroundImage.path).readAsBytesSync())!;
 
     // Text를 이미지로 전환한다.
-    final painterDesc = CustomTextPainter(message, 60.0, color: 0xFF000000);
+    final painterDesc = CustomTextPainter(message, 48.0, color: Colors.black54);
     final imageDesc = await painterDesc.toImageData();
     //final imageOfFont= await painterDesc.toImage();
 
     List<int>? listFont= imageDesc?.buffer.asUint8List().toList(growable: false);
 
-    // 원본 이미지에 텍스트를 canvas로 그려서 입힌다. (가운데 좌표)
-    drawImage(image, decodePng(listFont!)!,
-        dstX: image.width~/2 - painterDesc.pictureW~/2 + 30,
-        dstY: image.height~/2 - painterDesc.pictureH~/2 - 125,
-        dstW: painterDesc.pictureW.toInt(),
-        dstH: painterDesc.pictureH.toInt());
+    const onCenter= false;
+    if(onCenter) {
+      // 원본 이미지에 텍스트를 canvas로 그려서 입힌다. (가운데 좌표)
+      drawImage(image, decodePng(listFont!)!,
+          dstX: image.width~/2 - painterDesc.pictureW~/2 + 30,
+          dstY: image.height~/2 - painterDesc.pictureH~/2 - 325,
+          dstW: painterDesc.pictureW.toInt(),
+          dstH: painterDesc.pictureH.toInt());
+    }else{
+      // 원본 이미지에 텍스트를 canvas로 그려서 입힌다. (가운데 좌표)
+      drawImage(image, decodePng(listFont!)!,
+          dstX: 150,
+          dstY: 350,
+          dstW: painterDesc.pictureW.toInt(),
+          dstH: painterDesc.pictureH.toInt());
+    }
+
+
 
     // var newFile= await ImageUtils.imageToFile(imageName: 'mytest.png');
     // var newImage = decodePng(newFile.readAsBytesSync());
