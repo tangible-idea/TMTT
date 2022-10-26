@@ -23,14 +23,15 @@ class Assets {
   static const String imagesBirdPresentation = 'assets/images/bird_presentation.png';
   static const String imagesBtnLoginFacebook = 'assets/images/btn_login_facebook.svg';
   static const String imagesBtnLoginGoogle = 'assets/images/btn_login_google.svg';
-  static const String imagesCatHello = 'assets/images/cat_hello.png';
-  static const String imagesCatPresentation = 'assets/images/cat_presentation.png';
+  static const String imagesCharacterCat1 = 'assets/images/character_cat_1.png';
+  static const String imagesCharacterCat2 = 'assets/images/character_cat_2.png';
   static const String imagesExplainationSocial = 'assets/images/explaination_social.svg';
   static const String imagesHello = 'assets/images/hello.png';
   static const String imagesIcBack = 'assets/images/ic_back.svg';
   static const String imagesIcCancel = 'assets/images/ic_cancel.svg';
   static const String imagesIcoArrowdown = 'assets/images/ico_arrowdown.svg';
   static const String imagesIcoCopy = 'assets/images/ico_copy.svg';
+  static const String imagesIcoPlus = 'assets/images/ico_plus.svg';
   static const String imagesIcoRandom = 'assets/images/ico_random.svg';
   static const String imagesIcoShare = 'assets/images/ico_share.svg';
   static const String imagesInvite3guys = 'assets/images/invite_3guys.svg';

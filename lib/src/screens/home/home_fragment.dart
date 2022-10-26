@@ -63,14 +63,14 @@ class HomeFragment extends GetView<HomeController> {
                         children: [
                           WhiteButton(
                             icon: SvgPicture.asset(Assets.imagesIcoRandom, color: MyColor.kPrimary),
-                            text: 'Samples',
+                            text: 'Random',
                             onPressed: () => controller.editMyStateMessage(),
                             enabledObs: RxBool(true),
                           ),
                           const Spacer(),
                           WhiteButton(
                             icon: SvgPicture.asset(Assets.imagesIcoArrowdown, color: MyColor.kPrimary),
-                            text: 'Random',
+                            text: 'Template',
                             onPressed: () => controller.editMyStateMessage(),
                             enabledObs: RxBool(true),
                           ),
@@ -97,7 +97,15 @@ class HomeFragment extends GetView<HomeController> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                SvgPicture.asset(Assets.imagesInviteYourprofile),
+                                Stack(
+                                  children: [
+                                    SvgPicture.asset(Assets.imagesInviteYourprofile),
+                                    Padding(
+                                      padding: const EdgeInsets.all(20.0),
+                                      child: SvgPicture.asset(Assets.imagesIcoPlus, color: MyColor.gray_03),
+                                    ),
+                                  ],
+                                ),
                                 SvgPicture.asset(Assets.imagesInviteArrows),
                                 SvgPicture.asset(Assets.imagesInvite3guys),
                               ],),
@@ -132,7 +140,7 @@ class HomeFragment extends GetView<HomeController> {
                                     ),
                                   ),
 
-                                  AppSpaces.verticalSpace10,
+                                  AppSpaces.verticalSpace20,
 
                                   PlainText(
                                     marginLeft: 30,
@@ -141,7 +149,7 @@ class HomeFragment extends GetView<HomeController> {
                                     text: 'Step2: Share your link on your instagram Story.',
                                     style: MyTextStyle.caption2Bold,
                                   ),
-                                  AppSpaces.verticalSpace10,
+                                  AppSpaces.verticalSpace5,
                                   Padding(
                                     padding: const EdgeInsets.fromLTRB(25, 0, 25, 10),
                                     child: BottomPlainButton(

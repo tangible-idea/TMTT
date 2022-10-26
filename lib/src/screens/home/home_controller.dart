@@ -148,8 +148,19 @@ class HomeController extends BaseGetController {
     myInfoObs.value.message = text;
   }
 
+  bool isTextValid() {
+    if(messageInputController.text.isEmpty) {
+      MySnackBar.show(title: 'Please write your message first.');
+      return false;
+    }
+    return true;
+  }
+
   // 인스타에 공유하기
   Future<void> shareOnInstagram(BuildContext context) async {
+
+    if(!isTextValid()) return; // validation check
+
     var message = messageInputController.text;
     var result = await PostingHelper.shareOnInstagram(message: message);
     MySnackBar.show(title: result);

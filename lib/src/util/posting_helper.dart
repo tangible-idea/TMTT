@@ -1,5 +1,6 @@
 
 import 'dart:io';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -33,8 +34,8 @@ class PostingHelper {
     // get path to save image.
     String dirToSave= await _localPath;
 
+    // Load story background image.
     var backgroundImage= await ImageUtils.imageToFile(imageName: 'background5.png');
-
     final image = decodeImage(File(backgroundImage.path).readAsBytesSync())!;
 
     // Text를 이미지로 전환한다.
@@ -61,7 +62,16 @@ class PostingHelper {
           dstH: painterDesc.pictureH.toInt());
     }
 
-    final characterImage = decodeImage(File(backgroundImage.path).readAsBytesSync())!;
+    // Load character image.
+    var randomInt= Random().nextInt(2)+1;
+    var characterFile= await ImageUtils.imageToFile(imageName: 'character_cat_$randomInt.png');
+    final characterImage = decodeImage(File(characterFile.path).readAsBytesSync())!;
+
+    drawImage(image, characterImage,
+        dstX: 0,
+        dstY: 700,
+        dstW: characterImage.width.toInt(),
+        dstH: characterImage.height.toInt());
 
     // Save the image to disk as a PNG
     String filePath= '$dirToSave/export.png';
