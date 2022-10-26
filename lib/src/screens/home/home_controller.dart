@@ -154,8 +154,8 @@ class HomeController extends BaseGetController {
 
   // Put a random message on question text controller.
   void putARandomMessage() {
-    var randomInt= Random().nextInt(Samples.questions_en_1.length);
-    String randomText= Samples.questions_en_1[randomInt];
+    var randomInt= Random().nextInt(Samples.questions_th_1.length);
+    String randomText= Samples.questions_th_1[randomInt];
     messageInputController.text= randomText;
   }
 
