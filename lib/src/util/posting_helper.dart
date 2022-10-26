@@ -10,6 +10,11 @@ import 'package:tmtt/src/util/file_manager.dart';
 import 'package:tmtt/src/util/image_util.dart';
 import 'package:tmtt/src/util/textpainter.dart';
 
+extension on String {
+  List<String> splitByLength(int length) =>
+      [substring(0, length), substring(length)];
+}
+
 class PostingHelper {
 
   static const _shareInstaChannel = MethodChannel("link.tmtt/shareinsta");
@@ -33,7 +38,7 @@ class PostingHelper {
     final image = decodeImage(File(backgroundImage.path).readAsBytesSync())!;
 
     // Text를 이미지로 전환한다.
-    final painterDesc = CustomTextPainter(message, 48.0, color: Colors.black54);
+    final painterDesc = CustomTextPainter(message, 43.0, color: Colors.black54);
     final imageDesc = await painterDesc.toImageData();
     //final imageOfFont= await painterDesc.toImage();
 
@@ -51,21 +56,12 @@ class PostingHelper {
       // 원본 이미지에 텍스트를 canvas로 그려서 입힌다. (가운데 좌표)
       drawImage(image, decodePng(listFont!)!,
           dstX: 150,
-          dstY: 350,
+          dstY: 400,
           dstW: painterDesc.pictureW.toInt(),
           dstH: painterDesc.pictureH.toInt());
     }
 
-
-
-    // var newFile= await ImageUtils.imageToFile(imageName: 'mytest.png');
-    // var newImage = decodePng(newFile.readAsBytesSync());
-    // drawImage(image,  newImage!,
-    //   dstX: image.width~/2 - newImage.width~/2 + 30,
-    //   dstY: image.height~/2 - newImage.height~/2 + 200,);
-
-    // drawString이 다국어 지원 불가. [deprecated]
-    //drawString(image, newFont, 0, 0, inputController.text);
+    final characterImage = decodeImage(File(backgroundImage.path).readAsBytesSync())!;
 
     // Save the image to disk as a PNG
     String filePath= '$dirToSave/export.png';

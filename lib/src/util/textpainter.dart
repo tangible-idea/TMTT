@@ -9,13 +9,14 @@ class CustomTextPainter extends CustomPainter {
   final String _text;
   final double _size; //this is pixel unit.
   final Color? color;
+  final double? maxWidth;
 
   double get pictureW => _size * (_text.length);
 
   //this value can smaller.
-  double get pictureH => _size * 2; //there is 2 times _size due to text will around word-spacing.
+  double get pictureH => _size * (_text.length / 15) + _size; //there is 2 times _size due to text will around word-spacing.
 
-  CustomTextPainter(this._text, this._size, {this.color});
+  CustomTextPainter(this._text, this._size, {this.color, this.maxWidth});
 
   @override
   void paint(ui.Canvas canvas, ui.Size size) {
@@ -30,7 +31,7 @@ class CustomTextPainter extends CustomPainter {
     final paragraphBuilder = ui.ParagraphBuilder(paragraphStyle)
       ..pushStyle(textStyle)
       ..addText(_text);
-    final constraints = ui.ParagraphConstraints(width: pictureW);
+    var constraints = ui.ParagraphConstraints(width: maxWidth ?? 600);
     final paragraph = paragraphBuilder.build();
     paragraph.layout(constraints);
     const offset = Offset(0, 0);
