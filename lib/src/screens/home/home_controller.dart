@@ -250,7 +250,10 @@ class HomeController extends BaseGetController {
     }
     MyNav.pushNamed(
       pageName: PageName.inbox,
-      arguments: { 'message': data },
+      arguments: {
+        'message': data,
+        'index': index
+      },
     );
   }
 

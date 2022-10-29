@@ -19,10 +19,16 @@ class InboxController extends BaseGetController {
 
   var messageObs = Message(hint: Hint()).obs;
 
+  var isReceiveImageObs = false.obs;
+
   @override
   void onInit() {
     var message = Get.arguments['message'] as Message;
     messageObs.value = message;
+  }
+
+  int getIndex() {
+    return Get.arguments['index'] as int;
   }
 
   @override

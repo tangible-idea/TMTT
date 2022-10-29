@@ -1,11 +1,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tmtt/src/resources/styles/my_color.dart';
 import 'package:tmtt/src/screens/base/base_app_bar.dart';
 import 'package:tmtt/src/screens/base/base_scaffold.dart';
+import 'package:tmtt/src/screens/base/base_widget.dart';
 import 'package:tmtt/src/screens/inbox/inbox_controller.dart';
 import 'package:tmtt/src/util/my_navigator.dart';
 import 'package:tmtt/src/widgets/bottom_button.dart';
+import 'package:tmtt/src/widgets/item_inbox_hero.dart';
 
 import '../../widgets/plain_text.dart';
 
@@ -23,6 +26,12 @@ class InboxScreen extends GetView<InboxController> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            InboxItem(
+              tag: 'TM${controller.getIndex()}',
+              isRead: true,
+              useMargin: false,
+              isPlay: true,
+            ),
             PlainText(
               text: 'question: ${controller.messageObs.value.question}\n'
                   'message: ${controller.messageObs.value.message}',
@@ -43,3 +52,4 @@ class InboxScreen extends GetView<InboxController> {
     );
   }
 }
+
