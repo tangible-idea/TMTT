@@ -3,10 +3,11 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:firebase_auth/firebase_auth.dart' as firebase_user;
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:flutter_insta/flutter_insta.dart';
@@ -46,6 +47,7 @@ class HomeController extends BaseGetController {
     //checkPageFlow();
     getMyInfo();
     getInsta();
+    loadProfilePicture();
   }
 
   void getInsta() async {
@@ -79,6 +81,8 @@ class HomeController extends BaseGetController {
   var myInfoObs = User().obs;
   var myLinkObs = ''.obs;
   var messagesObs = <Message>[].obs;
+
+  var profileURL= ''.obs;
 
   void searchInstaUser() async {
     String userName = inputController.text;
@@ -155,6 +159,27 @@ class HomeController extends BaseGetController {
     myInfoObs.value.message = text;
   }
 
+  // Get profile image's profile picture from Firebase Storage
+  Future<void> loadProfilePicture() async {
+    Reference ref = FirebaseStorage.instance.ref()
+        .child('profile')
+        .child('/image_${getMyUID()}');
+
+    profileURL.value= await ref.getDownloadURL();
+  }
+
+  // get login info.
+  String getMyUID() {
+    var currUser= firebase_user.FirebaseAuth.instance.currentUser;
+    if(currUser == null) {
+      MySnackBar.show(title: 'Error', message: 'Login required.');
+      MyNav.pushNamed(pageName: PageName.register);
+      return "";
+    }else{
+      return currUser.uid;
+    }
+  }
+
   void changeProfileImage() async {
     final ImagePicker picker = ImagePicker();
     final XFile? xfile = await picker.pickImage(source: ImageSource.gallery);
@@ -163,23 +188,30 @@ class HomeController extends BaseGetController {
     if (myInfo == null) { return; }
 
     // Create a Reference to the file
-    Reference ref = FirebaseStorage.instance
-        .ref()
+    Reference ref = FirebaseStorage.instance.ref()
         .child('profile')
-        .child('/image-${myInfo.slugId}');
-    File file = File(xfile!.path);
-    ref.putFile(file);
+        .child('/image_${getMyUID()}');
 
-    final metadata = SettableMetadata(
-      contentType: 'image/jpeg',
-      customMetadata: {'picked-file-path': xfile!.path},
-    );
+    try {
+      File file = File(xfile!.path);
+      await ref.putFile(file);
+    } on FirebaseException catch (e) {
+      MySnackBar.show(title: 'Error', message: 'Error on while uploading your picture.');
+    }
+
+    // final metadata = SettableMetadata(
+    //   contentType: 'image/jpeg',
+    //   customMetadata: {'picked-file-path': xfile!.path},
+    // );
+
+    loadProfilePicture();
   }
+
 
   // Put a random message on question text controller.
   void putARandomMessage() {
-    var randomInt= Random().nextInt(Samples.questions_th_1.length);
-    String randomText= Samples.questions_th_1[randomInt];
+    var randomInt= Random().nextInt(Samples.questions_kr_1.length);
+    String randomText= Samples.questions_kr_1[randomInt];
     messageInputController.text= randomText;
   }
 

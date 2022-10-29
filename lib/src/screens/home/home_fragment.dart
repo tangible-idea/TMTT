@@ -99,13 +99,24 @@ class HomeFragment extends GetView<HomeController> {
                                 children: [
                                 Stack(
                                   children: [
+                                    // Your profile picture here
                                     InkWell(
                                       onTap: () { controller.changeProfileImage(); },
-                                      child: SvgPicture.asset(Assets.imagesInviteYourprofile)),
+                                      child: controller.profileURL.value != ""
+                                          ? CircleAvatar(
+                                        
+                                            backgroundColor: Colors.white, radius: 37,
+                                            child: CircleAvatar(
+                                                backgroundImage: NetworkImage(controller.profileURL.value),
+                                                radius: 35),
+                                          )
+                                          : SvgPicture.asset(Assets.imagesInviteYourprofile)),
+
+                                    controller.profileURL.value == "" ?
                                     Padding(
                                       padding: const EdgeInsets.all(20.0),
                                       child: SvgPicture.asset(Assets.imagesIcoPlus, color: MyColor.gray_03),
-                                    ),
+                                    ) : const Spacer(),
                                   ],
                                 ),
                                 SvgPicture.asset(Assets.imagesInviteArrows),
