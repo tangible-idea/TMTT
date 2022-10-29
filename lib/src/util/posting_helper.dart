@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:image/image.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:tmtt/src/resources/styles/my_color.dart';
 import 'package:tmtt/src/util/file_manager.dart';
 import 'package:tmtt/src/util/image_util.dart';
 import 'package:tmtt/src/util/textpainter.dart';
@@ -39,7 +40,7 @@ class PostingHelper {
     final image = decodeImage(File(backgroundImage.path).readAsBytesSync())!;
 
     // Text를 이미지로 전환한다.
-    final painterDesc = CustomTextPainter(message, 43.0, color: Colors.black54);
+    final painterDesc = CustomTextPainter(message, 60.0, color: MyColor.kGrey1);
     final imageDesc = await painterDesc.toImageData();
     //final imageOfFont= await painterDesc.toImage();
 
