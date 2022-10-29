@@ -99,7 +99,9 @@ class HomeFragment extends GetView<HomeController> {
                                 children: [
                                 Stack(
                                   children: [
-                                    SvgPicture.asset(Assets.imagesInviteYourprofile),
+                                    InkWell(
+                                      onTap: () { controller.changeProfileImage(); },
+                                      child: SvgPicture.asset(Assets.imagesInviteYourprofile)),
                                     Padding(
                                       padding: const EdgeInsets.all(20.0),
                                       child: SvgPicture.asset(Assets.imagesIcoPlus, color: MyColor.gray_03),

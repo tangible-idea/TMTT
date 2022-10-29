@@ -1,10 +1,13 @@
 
+import 'dart:io';
 import 'dart:math';
 
 import 'package:firebase_auth/firebase_auth.dart' as firebase_user;
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:flutter_insta/flutter_insta.dart';
 import 'package:get/get.dart';
@@ -150,6 +153,27 @@ class HomeController extends BaseGetController {
     await FireStore.editMySateMessage(text);
     MySnackBar.show(title: 'edit success!');
     myInfoObs.value.message = text;
+  }
+
+  void changeProfileImage() async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? xfile = await picker.pickImage(source: ImageSource.gallery);
+    //file!.path
+    var myInfo= await FireStore.getMyInfo();
+    if (myInfo == null) { return; }
+
+    // Create a Reference to the file
+    Reference ref = FirebaseStorage.instance
+        .ref()
+        .child('profile')
+        .child('/image-${myInfo.slugId}');
+    File file = File(xfile!.path);
+    ref.putFile(file);
+
+    final metadata = SettableMetadata(
+      contentType: 'image/jpeg',
+      customMetadata: {'picked-file-path': xfile!.path},
+    );
   }
 
   // Put a random message on question text controller.
