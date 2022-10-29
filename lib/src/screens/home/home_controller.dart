@@ -259,6 +259,12 @@ class HomeController extends BaseGetController {
     deviceInfoObs.value = await InfoUtil.getAllDeviceInfo();
   }
 
+  void recreateYourSulg() {
+    MyNav.pushReplacementNamed(
+      pageName: PageName.createslug,
+    );
+  }
+
   void signOut() async {
     await Credentials.logout();
     MyNav.pushReplacementNamed(

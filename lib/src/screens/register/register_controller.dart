@@ -80,13 +80,28 @@ class RegisterController extends BaseGetController {
     bool isSuccess= await FireStore.updateUserValue("slug_id", slug);
     if(!isSuccess) {
       MySnackBar.show(title: 'Error', message: 'There is an error while creating your slug.');
-    } else {
+    } else { // success
+
+
       await LocalStorage.put(KeyStore.userSlugId, slug);
       MyNav.pushReplacementNamed(
         pageName: PageName.home,
       );
     }
   }
+
+  // find corresponding Instargram id.
+  void searchInstagramAccount(String userId) async {
+    FlutterInsta flutterInsta = FlutterInsta();
+    await flutterInsta.getProfileData(userId);
+    Log.d(
+        flutterInsta.username + '\n' +
+            flutterInsta.followers + '\n' +
+            flutterInsta.following + '\n' +
+            flutterInsta.imgurl
+    );
+  }
+
 
   // google API with Firebase
   void signInWithGoogle() async {
