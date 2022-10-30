@@ -1,5 +1,7 @@
 
 
+import 'dart:ffi';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_insta/flutter_insta.dart';
@@ -7,9 +9,11 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:tmtt/firebase/fire_store.dart';
 import 'package:tmtt/pages.dart';
+import 'package:tmtt/src/bottom_dialog/found_instagram_account_dialog.dart';
 import 'package:tmtt/src/constants/local_storage_key_store.dart';
 import 'package:tmtt/src/util/inapp_purchase_util.dart';
 import 'package:tmtt/src/util/local_storage.dart';
+import 'package:tmtt/src/util/my_dialog.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 import 'package:tmtt/src/util/my_navigator.dart';
 import 'package:tmtt/data/model/user.dart' as userModel;
@@ -29,6 +33,8 @@ class RegisterController extends BaseGetController {
 
   late final slugInputController = TextEditingController();
   var errorObs= Rx<String?>(null);
+  var instagramFoundObs= Rx<bool>(false);
+
   @override
   void onInit() {
     slugInputController.addListener(() {
@@ -70,38 +76,73 @@ class RegisterController extends BaseGetController {
     errorObs.value= errorText; // run validation.
     if(errorObs.value != null) return; // return on validation error.
 
+    var trimmedSlug= slug.trim();
+
     // 유저 검색.
-    var userSlug= await FireStore.searchUserSlug(slug);
+    var userSlug= await FireStore.searchUserSlug(trimmedSlug);
     if(userSlug != null) {
       errorObs.value= 'There is another user with the same slug.';
       return;
     }
 
-    bool isSuccess= await FireStore.updateUserValue("slug_id", slug);
+    bool isSuccess= await FireStore.updateUserValue("slug_id", trimmedSlug);
     if(!isSuccess) {
       MySnackBar.show(title: 'Error', message: 'There is an error while creating your slug.');
     } else { // success
 
-
-      await LocalStorage.put(KeyStore.userSlugId, slug);
-      MyNav.pushReplacementNamed(
-        pageName: PageName.home,
-      );
+      await LocalStorage.put(KeyStore.userSlugId, trimmedSlug);
+      searchInstagramAccount(trimmedSlug);
     }
   }
 
   // find corresponding Instargram id.
   void searchInstagramAccount(String userId) async {
     FlutterInsta flutterInsta = FlutterInsta();
-    await flutterInsta.getProfileData(userId);
-    Log.d(
-        flutterInsta.username + '\n' +
-            flutterInsta.followers + '\n' +
-            flutterInsta.following + '\n' +
-            flutterInsta.imgurl
+
+    try {
+      await flutterInsta.getProfileData(userId); // try getting instagram account.
+      Log.d("Found account: " +
+          flutterInsta.username + '\n' +
+          flutterInsta.followers.toString() + '\n' +
+          flutterInsta.following + '\n' +
+          flutterInsta.imgurl
+      );
+
+      if (flutterInsta.username.toString().isNotEmpty) {
+        showFoundInstagramAccountByBottomSheet(userId, flutterInsta);
+      } else {
+        goToHome();
+      }
+    }on Exception catch (_, ex) {
+      goToHome();
+    }
+  }
+
+  // Populate bottom sheet.
+  void showFoundInstagramAccountByBottomSheet(String slug, FlutterInsta foundInsta) {
+
+    var dialog= FoundInstagramAccountDialog(
+      follower: foundInsta.followers.toString(),
+      following: foundInsta.following.toString(),
+      instagramId: foundInsta.username.toString(),
+      instagramName: foundInsta.fullname.toString(),
+      instagramBio: foundInsta.bio.toString(),
+      instagramImageURL: foundInsta.imgurl.toString(),
+    );
+    MyDialog.showBottom(
+      widget: dialog,
+      isEnableDrag: true,
+      isFullScreen: false,
     );
   }
 
+
+  Future<void> saveIdAndGoToHome() async {
+
+    MyNav.pushReplacementNamed(
+      pageName: PageName.home,
+    );
+  }
 
   // google API with Firebase
   void signInWithGoogle() async {

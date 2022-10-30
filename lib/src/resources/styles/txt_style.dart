@@ -69,7 +69,6 @@ class MyTextStyle {
   static const TextStyle body2 = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w400,
-    
   );
 
   static const TextStyle body2Bold = TextStyle(
@@ -78,28 +77,19 @@ class MyTextStyle {
     
   );
 
-  static const TextStyle caption1 = TextStyle(
-    fontSize: 12,
-    fontWeight: FontWeight.w400,
-    
-  );
-
-  static const TextStyle caption1Bold = TextStyle(
-    fontSize: 12,
-    fontWeight: FontWeight.w700,
-    
-  );
-
-  static const TextStyle caption2 = TextStyle(
-    fontSize: 16,
-    fontWeight: FontWeight.w400,
-    
-  );
-
   static const TextStyle caption2Bold = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w700,
-    
+  );
+
+  static const TextStyle body16 = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  );
+
+  static const TextStyle body16bold = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
   );
 
   static const TextStyle btn1 = TextStyle(

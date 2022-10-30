@@ -21,7 +21,7 @@ class BottomDialogContainer extends StatelessWidget {
       child: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: Container(
-          margin: EdgeInsets.only(top: 14, left: 24, right: 24, bottom: 14),
+          margin: const EdgeInsets.only(top: 14, left: 24, right: 24, bottom: 14),
           child: child,
         ),
       ),
