@@ -112,6 +112,7 @@ class BottomPlainButton extends StatelessWidget {
         child: PlainText(
           text: text,
           style: TextStyle(
+            fontWeight: FontWeight.w700,
             fontSize: fontSize ?? 16,
             color: MyColor.white,
           ),
@@ -125,6 +126,7 @@ class BottomPlainButton extends StatelessWidget {
         label: PlainText(
           text: text,
           style: TextStyle(
+            fontWeight: FontWeight.w600,
             fontSize: fontSize ?? 16,
             color: MyColor.white,
           ),

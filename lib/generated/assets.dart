@@ -48,6 +48,7 @@ class Assets {
   static const String imagesInviteFriends = 'assets/images/invite_friends.svg';
   static const String imagesInviteYourprofile = 'assets/images/invite_yourprofile.svg';
   static const String imagesLocationIcon = 'assets/images/location_icon.svg';
+  static const String imagesLockIcon = 'assets/images/lock_icon.svg';
   static const String imagesMytest = 'assets/images/mytest.png';
   static const String imagesSettingIcon = 'assets/images/setting_icon.svg';
   static const String imagesSplashBackground = 'assets/images/splash_background.svg';
