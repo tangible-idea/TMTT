@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tmtt/src/resources/styles/btn_style.dart';
 import 'package:tmtt/src/resources/styles/my_color.dart';
 import 'package:tmtt/src/resources/styles/txt_style.dart';
 import 'package:tmtt/src/screens/base/base_app_bar.dart';
@@ -81,8 +82,14 @@ class InboxScreen extends GetView<InboxController> {
                   text: '누가 보냈어',
                   onPressed: () => controller.onClickHint(),
                   enabledObs: RxBool(true),
+                  style: BtnStyle.plain.copyWith(
+                    backgroundColor: MaterialStateProperty.resolveWith((states) {
+                      return MyColor.kPink; // if (states.contains(MaterialState.pressed)) {}
+                    }),
+                  ),
                 ),
-              ])),
+              ]
+      )),
     );
   }
 }
