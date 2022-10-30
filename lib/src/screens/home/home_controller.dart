@@ -63,10 +63,9 @@ class HomeController extends BaseGetController {
   }
 
   /// tab navigation
-
   var currentPageIndexObs = 0.obs;
   List<Widget> pages = [ HomeFragment(), InboxFragment(), SettingFragment() ];
-  List<String> pageTitles = [ 'tmtt', 'inbox', 'other', ];
+  List<String> pageTitles = [ 'TMTT', 'Messages', 'other', ];
 
   /// ========================================================
 
@@ -81,6 +80,7 @@ class HomeController extends BaseGetController {
   var myInfoObs = User().obs;
   var myLinkObs = ''.obs;
   var messagesObs = <Message>[].obs;
+  var useHeaderObs = false.obs;
 
   var profileURL= ''.obs;
 

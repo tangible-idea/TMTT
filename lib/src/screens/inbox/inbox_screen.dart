@@ -17,7 +17,7 @@ class InboxScreen extends GetView<InboxController> {
   Widget build(BuildContext context) {
     return BaseScaffold(
       appBar: BaseAppBar(
-        title: 'inbox screen',
+        title: 'Messages',
         useBackButton: true,
         onBackPressed: () => MyNav.pop(),
       ),

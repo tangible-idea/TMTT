@@ -11,8 +11,12 @@ class HomeScreen extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() => BaseScaffold(
+        appBar: controller.useHeaderObs.value ?
+        BaseAppBar(
+          title: controller.pageTitles[controller.currentPageIndexObs.value],
+        ): null,
         paddingState: PaddingState.noPadding,
-        useSafeAreaTop: false,
+        useSafeAreaTop: controller.useHeaderObs.value,
         onPressedAosBackButton: () {
           Log.d('onPressedAosBackButton');
         },
@@ -76,7 +80,10 @@ class HomeScreen extends GetView<HomeController> {
       currentIndex: controller.currentPageIndexObs.value,
       showSelectedLabels: true,
       selectedItemColor: MyColor.primary_05,
-      onTap: (index) { controller.currentPageIndexObs.value = index; },
+      onTap: (index) {
+        controller.currentPageIndexObs.value = index;
+        controller.useHeaderObs.value = index != 0;
+      },
       items: const [
         BottomNavigationBarItem(
             icon: Icon(
@@ -87,7 +94,7 @@ class HomeScreen extends GetView<HomeController> {
               Icons.home,
               color: MyColor.primary_05,
             ),
-            label: 'tmtt'
+            label: 'Share'
         ),
         BottomNavigationBarItem(
             icon: Icon(
@@ -98,7 +105,7 @@ class HomeScreen extends GetView<HomeController> {
               Icons.photo,
               color: MyColor.primary_05,
             ),
-            label: 'inbox'
+            label: 'Messages'
         ),
         BottomNavigationBarItem(
             icon: Icon(

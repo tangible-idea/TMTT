@@ -16,6 +16,7 @@ class Assets {
   static const String fontsRubikSb = 'assets/fonts/rubik_sb.ttf';
   static const String imagesAirplane = 'assets/images/airplane.svg';
   static const String imagesAirplaneLine = 'assets/images/airplane_line.svg';
+  static const String imagesBackArrow = 'assets/images/back_arrow.svg';
   static const String imagesBackground1 = 'assets/images/background1.png';
   static const String imagesBackground2 = 'assets/images/background2.png';
   static const String imagesBackground3 = 'assets/images/background3.png';
