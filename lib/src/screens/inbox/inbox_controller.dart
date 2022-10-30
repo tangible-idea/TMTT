@@ -50,6 +50,7 @@ class InboxController extends BaseGetController {
   void startHintDialog() {
     var dialog = HintDialog(
       email: 'email',
+      message: messageObs.value,
       onPayPressed: () {},
     );
     MyDialog.showBottom(

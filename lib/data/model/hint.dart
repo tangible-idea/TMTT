@@ -8,14 +8,18 @@ class Hint {
 
   String country = '';
   String city = ''; // 국가
-  String phone = '';
+  String device = '';
+  String uuid = '';
+  String os = '';
   String platform = '';  // IOS, Android, Window, Mac, Linux
   String carrierIsp = ''; // 통신사
 
   Hint({
     this.country = '',
     this.city = '',
-    this.phone = '',
+    this.device = '',
+    this.uuid = '',
+    this.os = '',
     this.platform = '',
     this.carrierIsp = '',
   });

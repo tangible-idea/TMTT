@@ -1,6 +1,5 @@
 
 
-import 'dart:ffi';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -164,7 +163,7 @@ class RegisterController extends BaseGetController {
       if(currentUser == null) {
         var user = userModel.User(
           googleUid: credential.user?.uid ?? '',
-          registerDate: DateTime.now().toString() ?? '',
+          registerDate: DateTime.now().toString(),
         );
         registerDocId= await FireStore.register(user); // firestore signing up.
       }else{ // user does exist : get current doc-id.
