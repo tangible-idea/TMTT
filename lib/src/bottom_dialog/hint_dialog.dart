@@ -6,12 +6,12 @@ import 'package:tmtt/src/screens/base/base_widget.dart';
 import 'package:tmtt/src/widgets/bottom_button.dart';
 
 
-class SendEmailAuthDialog extends BaseWidget {
+class HintDialog extends BaseWidget {
 
   late String email;
   late Function() onPayPressed;
 
-  SendEmailAuthDialog({
+  HintDialog({
     required this.email,
     required this.onPayPressed,
   });

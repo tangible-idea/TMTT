@@ -66,6 +66,7 @@ class BottomPlainButton extends StatelessWidget {
   VoidCallback? onPressed;
   double? fontSize;
   Widget? icon;
+  ButtonStyle? style;
 
   RxBool enabledObs = true.obs;
 
@@ -75,6 +76,7 @@ class BottomPlainButton extends StatelessWidget {
     this.onPressed,
     this.fontSize,
     this.icon,
+    this.style,
     required this.enabledObs,
   }) : super(key: key);
 
@@ -92,7 +94,7 @@ class BottomPlainButton extends StatelessWidget {
     );
   }
 
-  var normalButtonStyle= BtnStyle.plain.copyWith(
+  late var normalButtonStyle = (style != null) ? style : BtnStyle.plain.copyWith(
     padding: MaterialStateProperty.all<EdgeInsets>(
         const EdgeInsets.all(18)
     ),
