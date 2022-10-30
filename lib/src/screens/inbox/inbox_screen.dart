@@ -89,7 +89,8 @@ class InboxScreen extends GetView<InboxController> {
                   ),
                 ),
               ]
-      )),
+          )
+      ),
     );
   }
 }
