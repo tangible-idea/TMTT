@@ -1,16 +1,25 @@
 
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
 import 'package:tmtt/data/model/hint.dart';
 import 'package:tmtt/data/model/message.dart';
 import 'package:tmtt/data/model/user.dart';
+import 'package:tmtt/firebase/firebase_auth.dart';
 import 'package:tmtt/src/constants/local_storage_key_store.dart';
 import 'package:tmtt/src/util/info_util.dart';
 import 'package:tmtt/src/util/local_storage.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 
+import '../src/util/my_snackbar.dart';
 import 'fire_store_collections.dart';
+
+import 'package:http/http.dart' as http;
+
 
 enum LoginUserType {
   google, faceBook, apple, other
@@ -31,6 +40,46 @@ class FireStore {
         .add(user.toJson());
 
     return doc.id;
+  }
+
+  // instagram photo url -> Firebase Storage
+  static Future<void> linkMyPhotoFromInstagramAccountToStorage(String instagramImageURL) async {
+
+    var myUID= FireAuth.getMyUID();
+    if(myUID == "") { return; }
+
+    // Create a Reference to the file
+    Reference ref = FirebaseStorage.instance.ref()
+        .child('profile')
+        .child('/image_$myUID');
+
+    try {
+      http.get(Uri(path: instagramImageURL)).then((response) async {
+        Uint8List bodyBytes = response.bodyBytes;
+        var file= await File('my_instagram_image.jpg').writeAsBytes(bodyBytes);
+        await ref.putFile(file);
+      });
+    } on FirebaseException catch (e) {
+      MySnackBar.show(title: 'Error', message: 'Error on while uploading your picture.');
+    }
+  }
+
+  static Future<void> uploadMyPhotoToStorage(String filepath) async {
+
+    var myUID= FireAuth.getMyUID();
+    if(myUID == "") { return; }
+
+    // Create a Reference to the file
+    Reference ref = FirebaseStorage.instance.ref()
+        .child('profile')
+        .child('/image_$myUID');
+
+    try {
+      File file = File(filepath);
+      await ref.putFile(file);
+    } on FirebaseException catch (e) {
+      MySnackBar.show(title: 'Error', message: 'Error on while uploading your picture.');
+    }
   }
 
   static Future<User?> getMyInfo() async {

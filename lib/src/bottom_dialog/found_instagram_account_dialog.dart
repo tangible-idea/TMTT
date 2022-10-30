@@ -29,6 +29,8 @@ class FoundInstagramAccountDialog extends BaseWidget {
     required this.instagramName,
     required this.instagramBio,
     required this.instagramImageURL,
+    required this.onYesPressed,
+    required this.onNoPressed,
   });
 
   // @override
@@ -70,7 +72,7 @@ class FoundInstagramAccountDialog extends BaseWidget {
               PlainText(text: instagramName, style: MyTextStyle.body16.copyWith(
                   color: MyColor.kGrey2
               ),),
-              PlainText(text: 'Followers: ${follower} | Follwing: ${following}', style: MyTextStyle.body16.copyWith(
+              PlainText(text: 'Followers: ${follower} | Following: ${following}', style: MyTextStyle.body16.copyWith(
                   color: MyColor.kGrey2
               ),),
             ],),
@@ -81,7 +83,7 @@ class FoundInstagramAccountDialog extends BaseWidget {
 
           Spacer(),
           BottomPlainButton(
-            text: 'Yes!',
+            text: 'Yes! Link please.',
             enabledObs: RxBool(true),
             onPressed: () {
               Get.back();
@@ -89,7 +91,7 @@ class FoundInstagramAccountDialog extends BaseWidget {
             },
           ),
           BottomPlainButton(
-            text: 'No',
+            text: "Use without it.",
             enabledObs: RxBool(true),
             onPressed: () {
               Get.back();

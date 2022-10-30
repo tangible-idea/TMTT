@@ -89,8 +89,6 @@ class RegisterController extends BaseGetController {
     if(!isSuccess) {
       MySnackBar.show(title: 'Error', message: 'There is an error while creating your slug.');
     } else { // success
-
-      await LocalStorage.put(KeyStore.userSlugId, trimmedSlug);
       searchInstagramAccount(trimmedSlug);
     }
   }
@@ -101,19 +99,24 @@ class RegisterController extends BaseGetController {
 
     try {
       await flutterInsta.getProfileData(userId); // try getting instagram account.
-      Log.d("Found account: " +
-          flutterInsta.username + '\n' +
-          flutterInsta.followers.toString() + '\n' +
-          flutterInsta.following + '\n' +
-          flutterInsta.imgurl
-      );
+      // Log.d("Found account: " +
+      //     flutterInsta.username + '\n' +
+      //     flutterInsta.followers.toString() + '\n' +
+      //     flutterInsta.following + '\n' +
+      //     flutterInsta.imgurl
+      // );
 
       if (flutterInsta.username.toString().isNotEmpty) {
         showFoundInstagramAccountByBottomSheet(userId, flutterInsta);
       } else {
+        await LocalStorage.put(KeyStore.userSlugId, userId);
         goToHome();
       }
+    }on NoSuchMethodError catch (_, ex) {
+      await LocalStorage.put(KeyStore.userSlugId, userId);
+      goToHome();
     }on Exception catch (_, ex) {
+      await LocalStorage.put(KeyStore.userSlugId, userId);
       goToHome();
     }
   }
@@ -128,6 +131,12 @@ class RegisterController extends BaseGetController {
       instagramName: foundInsta.fullname.toString(),
       instagramBio: foundInsta.bio.toString(),
       instagramImageURL: foundInsta.imgurl.toString(),
+      onYesPressed: () {
+        FireStore.linkMyPhotoFromInstagramAccountToStorage(foundInsta.imgurl.toString());
+      },
+      onNoPressed: () {
+        goToHome();
+      },
     );
     MyDialog.showBottom(
       widget: dialog,

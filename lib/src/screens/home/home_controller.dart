@@ -187,17 +187,7 @@ class HomeController extends BaseGetController {
     var myInfo= await FireStore.getMyInfo();
     if (myInfo == null) { return; }
 
-    // Create a Reference to the file
-    Reference ref = FirebaseStorage.instance.ref()
-        .child('profile')
-        .child('/image_${getMyUID()}');
-
-    try {
-      File file = File(xfile!.path);
-      await ref.putFile(file);
-    } on FirebaseException catch (e) {
-      MySnackBar.show(title: 'Error', message: 'Error on while uploading your picture.');
-    }
+    FireStore.uploadMyPhotoToStorage(xfile!.path);
 
     // final metadata = SettableMetadata(
     //   contentType: 'image/jpeg',
