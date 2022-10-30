@@ -113,7 +113,11 @@ class RegisterController extends BaseGetController {
       } else {
         goToHome();
       }
-    }on Exception catch (_, ex) {
+    }on NoSuchMethodError catch (_, ex) {
+      Log.d("NoSuchMethodError: $ex");
+      goToHome();
+    } on Exception catch (_, ex) {
+      Log.d("Exception: $ex");
       goToHome();
     }
   }
