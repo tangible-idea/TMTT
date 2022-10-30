@@ -31,6 +31,7 @@ class InboxScreen extends GetView<InboxController> {
               isRead: true,
               useMargin: false,
               isPlay: true,
+              profileURL: controller.getProfile(),
             ),
             PlainText(
               text: 'question: ${controller.messageObs.value.question}\n'

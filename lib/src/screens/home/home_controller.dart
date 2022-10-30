@@ -252,7 +252,8 @@ class HomeController extends BaseGetController {
       pageName: PageName.inbox,
       arguments: {
         'message': data,
-        'index': index
+        'index': index,
+        'profileUrl': profileURL.value
       },
     );
   }

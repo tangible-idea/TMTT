@@ -19,12 +19,6 @@ class InboxFragment extends GetView<HomeController> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Obx(() => Expanded(
-            // child: GridView.count(
-            //   crossAxisCount: 2,
-            //   children: List.generate(controller.messagesObs.value.length, (index) {
-            //     return messageItem(index, controller.messagesObs.value[index]);
-            //   }),
-            // ),
             child: ListView.builder(
               scrollDirection: Axis.vertical,
               itemCount: controller.messagesObs.value.length,
@@ -44,29 +38,8 @@ class InboxFragment extends GetView<HomeController> {
       child: InboxItem(
         tag: 'TM$index',
         isRead: data.read,
+        profileURL: controller.profileURL.value,
       ),
-
-      // Hero(
-      //   tag: 'inbox_$index',
-      //   child: Material(
-      //     type: MaterialType.transparency,
-      //     child: Container(
-      //       padding: EdgeInsets.all(8),
-      //       margin: EdgeInsets.all(4),
-      //       decoration: BoxDecoration(
-      //         color: MyColor.bg04,
-      //         borderRadius: BorderRadius.circular(10),
-      //       ),
-      //       child: Center(
-      //         child: PlainText(
-      //           text: 'Item ${data.createDate}\n'
-      //               'msg: ${data.message}\n'
-      //               'read: ${data.read}',
-      //         ),
-      //       ),
-      //     ),
-      //   ),
-      // ),
     );
   }
 }

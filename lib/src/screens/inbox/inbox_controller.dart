@@ -27,9 +27,9 @@ class InboxController extends BaseGetController {
     messageObs.value = message;
   }
 
-  int getIndex() {
-    return Get.arguments['index'] as int;
-  }
+  int getIndex() => Get.arguments['index'] as int;
+  String getProfile() => Get.arguments['profileUrl'] as String;
+
 
   @override
   void onClose() { }
