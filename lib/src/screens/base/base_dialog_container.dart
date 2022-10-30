@@ -8,9 +8,11 @@ import '../../resources/styles/txt_style.dart';
 class BottomDialogContainer extends StatelessWidget {
 
   Widget child;
+  BoxDecoration? decoration;
 
   BottomDialogContainer({
     Key? key,
+    this.decoration,
     required this.child,
   }): super(key: key);
 
@@ -21,7 +23,8 @@ class BottomDialogContainer extends StatelessWidget {
       child: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: Container(
-          margin: const EdgeInsets.only(top: 14, left: 24, right: 24, bottom: 14),
+          decoration: (decoration != null) ? decoration : null,
+          margin: EdgeInsets.only(top: 14, left: 24, right: 24, bottom: 14),
           child: child,
         ),
       ),

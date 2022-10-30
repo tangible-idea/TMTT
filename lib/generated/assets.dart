@@ -26,8 +26,11 @@ class Assets {
   static const String imagesBirdPresentation = 'assets/images/bird_presentation.png';
   static const String imagesBtnLoginFacebook = 'assets/images/btn_login_facebook.svg';
   static const String imagesBtnLoginGoogle = 'assets/images/btn_login_google.svg';
+  static const String imagesCarrierIcon = 'assets/images/carrier_icon.svg';
   static const String imagesCharacterCat1 = 'assets/images/character_cat_1.png';
   static const String imagesCharacterCat2 = 'assets/images/character_cat_2.png';
+  static const String imagesCountryIcon = 'assets/images/country_icon.svg';
+  static const String imagesDeviceIcon = 'assets/images/device_icon.svg';
   static const String imagesExplainationSocial = 'assets/images/explaination_social.svg';
   static const String imagesHandHold = 'assets/images/hand_hold.png';
   static const String imagesHello = 'assets/images/hello.png';
@@ -44,10 +47,13 @@ class Assets {
   static const String imagesInviteDoodads2 = 'assets/images/invite_doodads_2.svg';
   static const String imagesInviteFriends = 'assets/images/invite_friends.svg';
   static const String imagesInviteYourprofile = 'assets/images/invite_yourprofile.svg';
+  static const String imagesLocationIcon = 'assets/images/location_icon.svg';
   static const String imagesMytest = 'assets/images/mytest.png';
+  static const String imagesSettingIcon = 'assets/images/setting_icon.svg';
   static const String imagesSplashBackground = 'assets/images/splash_background.svg';
   static const String imagesSplashLogo = 'assets/images/splash_logo.png';
   static const String imagesSplashRippes = 'assets/images/splash_rippes.svg';
+  static const String imagesTimeSentIcon = 'assets/images/time_sent_icon.svg';
   static const String imagesTmttLogoBlack36 = 'assets/images/tmtt_logo_black36.png';
   static const String imagesTmttLogoWhite36 = 'assets/images/tmtt_logo_white36.png';
   static const String imagesTmttTextStyle1png = 'assets/images/tmtt_text_style1png.png';
