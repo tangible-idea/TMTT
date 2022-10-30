@@ -1,7 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tmtt/src/resources/styles/my_color.dart';
+import 'package:tmtt/src/resources/styles/txt_style.dart';
 import 'package:tmtt/src/screens/base/base_app_bar.dart';
 import 'package:tmtt/src/screens/base/base_scaffold.dart';
 import 'package:tmtt/src/screens/base/base_widget.dart';
@@ -21,36 +21,68 @@ class InboxScreen extends GetView<InboxController> {
         useBackButton: true,
         onBackPressed: () => MyNav.pop(),
       ),
-      onPressedAosBackButton: () =>MyNav.pop(),
+      onPressedAosBackButton: () => MyNav.pop(),
       body: Obx(() => Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            InboxItem(
-              tag: 'TM${controller.getIndex()}',
-              isRead: true,
-              useMargin: false,
-              isPlay: true,
-              profileURL: controller.getProfile(),
-            ),
-            PlainText(
-              text: 'question: ${controller.messageObs.value.question}\n'
-                  'message: ${controller.messageObs.value.message}',
-            ),
-            const Spacer(),
-            BottomPlainButton(
-              text: '답장',
-              // onPressed: () => controller.goToHome(),
-              enabledObs: RxBool(true),
-            ),
-            BottomPlainButton(
-              text: '누가 보냈어',
-              onPressed: () => controller.onClickHint(),
-              enabledObs: RxBool(true),
-            ),
-          ]
-      )),
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                InboxItem(
+                  tag: 'TM${controller.getIndex()}',
+                  isRead: true,
+                  useMargin: false,
+                  isPlay: true,
+                  profileURL: controller.getProfile(),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 24),
+                  child: Center(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: MyColor.kLightBackground,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Column(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(24),
+                            decoration: BoxDecoration(
+                              color: MyColor.kPrimary,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: PlainText(
+                              text: controller.messageObs.value.question,
+                              style: MyTextStyle.body.copyWith(
+                                color: MyColor.white,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(24),
+                            child: PlainText(
+                              text: controller.messageObs.value.message,
+                              style: MyTextStyle.body.copyWith(
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                const Spacer(),
+                BottomPlainButton(
+                  text: '답장',
+                  // onPressed: () => controller.goToHome(),
+                  enabledObs: RxBool(true),
+                ),
+                BottomPlainButton(
+                  text: '누가 보냈어',
+                  onPressed: () => controller.onClickHint(),
+                  enabledObs: RxBool(true),
+                ),
+              ])),
     );
   }
 }
-
