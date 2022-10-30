@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:tmtt/data/model/hint.dart';
+import 'package:tmtt/data/model/message.dart';
 import 'package:tmtt/generated/assets.dart';
 import 'package:tmtt/src/resources/styles/my_color.dart';
 import 'package:tmtt/src/resources/styles/txt_style.dart';
@@ -14,10 +16,12 @@ import 'package:tmtt/src/widgets/plain_text.dart';
 class HintDialog extends BaseWidget {
 
   late String email;
+  late Message message;
   late Function() onPayPressed;
 
   HintDialog({
     required this.email,
+    required this.message,
     required this.onPayPressed,
   });
 
@@ -51,13 +55,13 @@ class HintDialog extends BaseWidget {
             child: Center(
               child: ListView(
                 children: [
-                  item(Assets.imagesLocationIcon, "City", "asdad"),
-                  item(Assets.imagesCountryIcon, "Country", "neer seonh nam sisis"),
-                  item(Assets.imagesTimeSentIcon, "Time Sent", "neer seonh nam sisis"),
-                  item(Assets.imagesCarrierIcon, "Carrier", "neer seonh  nam sisis "),
-                  item(Assets.imagesSettingIcon, "Platform", "neer seonh nam sisis "),
-                  item(Assets.imagesDeviceIcon, "Device", "neer seonh n nam sisis "),
-                  item(Assets.imagesSettingIcon, "OS", "neer seonh nam s sisis "),
+                  item(Assets.imagesLocationIcon, "City", message.hint.city),
+                  item(Assets.imagesCountryIcon, "Country", message.hint.country),
+                  item(Assets.imagesTimeSentIcon, "Time Sent", message.createDate),
+                  item(Assets.imagesCarrierIcon, "Carrier", message.hint.carrierIsp),
+                  item(Assets.imagesSettingIcon, "Platform", message.hint.platform),
+                  item(Assets.imagesDeviceIcon, "Device", message.hint.device),
+                  item(Assets.imagesSettingIcon, "Software", message.hint.os),
                 ],
               ),
             ),

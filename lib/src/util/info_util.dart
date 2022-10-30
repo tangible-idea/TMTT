@@ -25,13 +25,16 @@ class InfoUtil {
   static Future<Hint> getHint() async {
 
     var agent = await getDeviceModelInfo();
+    var locationInfo = await getLocationInfo();
 
     var hint = Hint(
-      country: '',
-      city: '',
-      phone: '',
+      country: locationInfo.country,
+      city: locationInfo.city,
+      device: agent.deviceName,
+      uuid: await getUUid(),
+      os: agent.os,
       platform: getPlatform(),
-      carrierIsp: await getCarrier(),
+      carrierIsp: locationInfo.isp,
     );
     return hint;
   }
