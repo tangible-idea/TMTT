@@ -1,8 +1,11 @@
 
+import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 
-import 'package:flutter/material.dart';
+import 'dart:ui' as ui;
+
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:image/image.dart';
 import 'package:image_picker/image_picker.dart';
@@ -11,6 +14,7 @@ import 'package:tmtt/src/resources/styles/my_color.dart';
 import 'package:tmtt/src/util/file_manager.dart';
 import 'package:tmtt/src/util/image_util.dart';
 import 'package:tmtt/src/util/textpainter.dart';
+import 'package:widgets_to_image/widgets_to_image.dart';
 
 extension on String {
   List<String> splitByLength(int length) =>
@@ -91,6 +95,44 @@ class PostingHelper {
     // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(result)));
 
     //Log.d(resultFromAndroid);
+    return resultFromAndroid;
+  }
+
+
+  // 인스타에 공유하기
+  static Future<String> shareOnInstagramReply(Uint8List imageBytes) async {
+
+    // get path to save image.
+    String dirToSave= await _localPath;
+
+    // Load story background image.
+    var backgroundImage= await ImageUtils.imageToFile(imageName: 'background7.png');
+    final decodedBackgroundImage = decodeImage(File(backgroundImage.path).readAsBytesSync())!;
+    final decodedAnswerImage= decodeImage(imageBytes)!;
+
+    const onCenter= true;
+    if(onCenter) {
+      double fScale= 3.0;
+      int targetW= decodedAnswerImage.width.toInt()~/fScale;
+      int targetH= decodedAnswerImage.height.toInt()~/fScale;
+
+      // 원본 이미지에 텍스트를 canvas로 그려서 입힌다. (가운데 좌표)
+      drawImage(decodedBackgroundImage, decodedAnswerImage,
+          dstX: decodedBackgroundImage.width ~/ 2 - targetW~/2,
+          dstY: decodedBackgroundImage.height ~/ 2 - targetH~/2,
+          dstW: targetW,
+          dstH: targetH);
+    }
+
+    // Save the image to disk as a PNG
+    String filePath= '$dirToSave/export.png';
+    File(filePath).writeAsBytesSync(encodePng(decodedBackgroundImage));
+
+    Map<String, dynamic> arguments = {
+      "imagePath": filePath
+    };
+    final String resultFromAndroid= await _shareInstaChannel.invokeMethod("shareInstagramImageStoryWithSticker", arguments);
+
     return resultFromAndroid;
   }
 

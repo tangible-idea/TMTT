@@ -67,7 +67,7 @@ class MainActivity: FlutterActivity() {
             //putExtra("interactive_asset_uri", uriSticker)
             putExtra("content_url", "something")
             putExtra("top_background_color", "#000000")
-            putExtra("bottom_background_color", "#FFFFFF")
+            putExtra("bottom_background_color", "#000000")
         }
 
         context.grantUriPermission(

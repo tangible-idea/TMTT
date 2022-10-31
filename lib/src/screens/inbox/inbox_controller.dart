@@ -1,4 +1,7 @@
 
+import 'dart:typed_data';
+
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:tmtt/data/model/hint.dart';
 import 'package:tmtt/data/model/message.dart';
@@ -7,7 +10,9 @@ import 'package:tmtt/src/bottom_dialog/hint_dialog.dart';
 import 'package:tmtt/src/util/inapp_purchase_util.dart';
 import 'package:tmtt/src/util/my_dialog.dart';
 import 'package:tmtt/src/util/my_logger.dart';
-
+import 'package:tmtt/src/util/posting_helper.dart';
+import 'package:tmtt/src/util/posting_helper.dart';
+import 'package:widgets_to_image/widgets_to_image.dart';
 import '../base/base_get_controller.dart';
 
 class InboxBinding implements Bindings {
@@ -20,8 +25,13 @@ class InboxBinding implements Bindings {
 class InboxController extends BaseGetController {
 
   var messageObs = Message(hint: Hint()).obs;
-
   var isReceiveImageObs = false.obs;
+
+  // WidgetsToImageController to access widget
+  WidgetsToImageController captureController = WidgetsToImageController();
+// to save image bytes of widget
+  Uint8List? bytes;
+
 
   @override
   void onInit() {
@@ -35,6 +45,16 @@ class InboxController extends BaseGetController {
 
   @override
   void onClose() { }
+
+  void onClickReply() async {
+    final bytes = await captureController.capture();
+    if(bytes != null) {
+      PostingHelper.shareOnInstagramReply(bytes);
+    }else{
+
+    }
+
+  }
 
   void onClickHint() async {
     var customerInfo = await Purchase.getCustomerInfo();

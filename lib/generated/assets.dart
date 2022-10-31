@@ -22,6 +22,8 @@ class Assets {
   static const String imagesBackground3 = 'assets/images/background3.png';
   static const String imagesBackground4 = 'assets/images/background4.png';
   static const String imagesBackground5 = 'assets/images/background5.png';
+  static const String imagesBackground7 = 'assets/images/background7.png';
+  static const String imagesBackground8 = 'assets/images/background8.png';
   static const String imagesBirdHello = 'assets/images/bird_hello.png';
   static const String imagesBirdPresentation = 'assets/images/bird_presentation.png';
   static const String imagesBtnLoginFacebook = 'assets/images/btn_login_facebook.svg';
