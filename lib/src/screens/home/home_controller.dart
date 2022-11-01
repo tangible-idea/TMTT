@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:firebase_auth/firebase_auth.dart' as firebase_user;
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -48,6 +49,7 @@ class HomeController extends BaseGetController {
     getMyInfo();
     getInsta();
     loadProfilePicture();
+    pushTokenListener();
   }
 
   void getInsta() async {
@@ -83,6 +85,20 @@ class HomeController extends BaseGetController {
   var useHeaderObs = false.obs;
 
   var profileURL= ''.obs;
+
+  void pushTokenListener() async {
+
+    FirebaseMessaging.instance.onTokenRefresh
+        .listen((fcmToken) {
+      // send token to application server.
+      // Note: This callback is fired at each app startup and whenever a new token is generated.
+      FireStore.updateUserValue("pushToken", fcmToken);
+    })
+        .onError((err) {
+        // Error getting token.
+        Log.e(err);
+    });
+  }
 
   void searchInstaUser() async {
     String userName = inputController.text;
@@ -121,6 +137,11 @@ class HomeController extends BaseGetController {
     // if (offerings != null && product != null) {
     //   await Purchase.makePurchase(product);
     // }
+
+    if(myInfoObs.value.pushToken.isEmpty) {
+        final fcmToken = await FirebaseMessaging.instance.getToken();
+        FireStore.updateUserValue("push_token", fcmToken.toString());
+    }
 
     checkPageFlow();
   }

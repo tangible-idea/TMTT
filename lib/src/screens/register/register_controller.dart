@@ -2,6 +2,7 @@
 
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_insta/flutter_insta.dart';
 import 'package:get/get.dart';
@@ -156,8 +157,9 @@ class RegisterController extends BaseGetController {
   void signInWithGoogle() async {
     try {
       UserCredential credential= await getCredentialFromGoogleFirebase();
-      String uid = credential.user?.uid ?? '';
 
+      // get uid, email, username
+      String uid = credential.user?.uid ?? '';
       String userEmail= credential.user?.email.toString() ?? "";
       String userName= credential.user?.displayName.toString() ?? "";
       MySnackBar.show(title: 'Login', message: userEmail);
@@ -166,18 +168,27 @@ class RegisterController extends BaseGetController {
 
       var currentUser= await FireStore.searchUserSocialType(LoginUserType.google, uid);
       if(currentUser == null) {
+
+        // get push token
+        final fcmToken = await FirebaseMessaging.instance.getToken();
+
+        // create a model and register with the data.
         var user = userModel.User(
           googleUid: credential.user?.uid ?? '',
           registerDate: DateTime.now().toString(),
+          pushToken: fcmToken.toString(),
         );
         registerDocId= await FireStore.register(user); // firestore signing up.
-      }else{ // user does exist : get current doc-id.
-        registerDocId= currentUser.documentId;
+      }else{
+        registerDocId= currentUser.documentId; // user does exist : get current doc-id.
       }
+
+
 
       await LocalStorage.put(KeyStore.userDocId, registerDocId);
       await LocalStorage.put(KeyStore.isLogin, true);
 
+      // set purchase data
       await Purchase.login(registerDocId);
       await Purchase.setUserEmail(userEmail);
       await Purchase.setUserName(userName);

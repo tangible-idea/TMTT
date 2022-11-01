@@ -4,10 +4,12 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'user.g.dart';
 
-class UserAccountStatus {
-  static const dropout = 0; // 탈퇴
-  static const active = 1 ; // 활성화
-  static const dormant = 2; // 휴면
+enum UserAccountStatus {
+  dropped(0),
+  activated(1),
+  inactivated(2);
+  final int value;
+  const UserAccountStatus(this.value);
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
@@ -20,7 +22,7 @@ class User {
   String bio = '';
   bool premiumUser = false;
   int credit = 0;
-  int status = UserAccountStatus.active;
+  int status = UserAccountStatus.activated.value;
   String registerDate = '';
   String pushToken = '';
   String message = '';
@@ -37,7 +39,7 @@ class User {
     this.bio = '',
     this.premiumUser = false,
     this.credit = 0,
-    this.status = UserAccountStatus.active,
+    this.status = 1,
     this.registerDate = '',
     this.pushToken = '',
     this.message = '',
