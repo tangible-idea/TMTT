@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'my_color.dart';
+
 
 
 class MyTextStyle {
@@ -90,6 +92,12 @@ class MyTextStyle {
   static const TextStyle body16bold = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w600,
+  );
+
+  static const TextStyle body14subtitle = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: MyColor.kGrey2
   );
 
   static const TextStyle btn1 = TextStyle(

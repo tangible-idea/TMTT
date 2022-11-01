@@ -1,4 +1,5 @@
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tmtt/generated/assets.dart';
@@ -76,7 +77,7 @@ class InboxItem extends StatelessWidget {
                       width: 60,
                       height: 60,
                       child: CircleAvatar(
-                          backgroundImage: NetworkImage(profileURL ?? ""),
+                          backgroundImage: CachedNetworkImageProvider(profileURL ?? ""),
                           radius: 35
                       ),
                     ),

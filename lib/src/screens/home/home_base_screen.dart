@@ -25,54 +25,6 @@ class HomeScreen extends GetView<HomeController> {
     ));
   }
 
-  BottomNavigationBar newBottomNavigationBar() {
-    return BottomNavigationBar(
-      backgroundColor: MyColor.bg04,
-      type: BottomNavigationBarType.fixed,
-      currentIndex: controller.currentPageIndexObs.value,
-      showSelectedLabels: true,
-      selectedItemColor: MyColor.primary_05,
-      onTap: (index) {
-        controller.currentPageIndexObs.value = index;
-      },
-      items: const [
-        BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: MyColor.gray_01,
-            ),
-            activeIcon: Icon(
-              Icons.home,
-              color: MyColor.primary_05,
-            ),
-            label: 'tmtt'
-        ),
-        BottomNavigationBarItem(
-            icon: Icon(
-              Icons.photo,
-              color: MyColor.gray_01,
-            ),
-            activeIcon: Icon(
-              Icons.photo,
-              color: MyColor.primary_05,
-            ),
-            label: 'inbox'
-        ),
-        BottomNavigationBarItem(
-            icon: Icon(
-              Icons.mail_outline,
-              color: MyColor.gray_01,
-            ),
-            activeIcon: Icon(
-              Icons.mail_outline,
-              color: MyColor.primary_05,
-            ),
-            label: 'others'
-        ),
-      ],
-    );
-  }
-
   BottomNavigationBar bottomNavigationBar() {
     return BottomNavigationBar(
       backgroundColor: MyColor.bg04,
@@ -109,14 +61,14 @@ class HomeScreen extends GetView<HomeController> {
         ),
         BottomNavigationBarItem(
             icon: Icon(
-              Icons.mail_outline,
+              Icons.settings_outlined,
               color: MyColor.gray_01,
             ),
             activeIcon: Icon(
-              Icons.mail_outline,
+              Icons.settings,
               color: MyColor.primary_05,
             ),
-            label: 'others'
+            label: 'settings'
         ),
       ],
     );

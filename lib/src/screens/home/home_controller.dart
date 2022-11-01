@@ -67,7 +67,7 @@ class HomeController extends BaseGetController {
   /// tab navigation
   var currentPageIndexObs = 0.obs;
   List<Widget> pages = [ HomeFragment(), InboxFragment(), SettingFragment() ];
-  List<String> pageTitles = [ 'TMTT', 'Messages', 'other', ];
+  List<String> pageTitles = [ 'TMTT', 'Messages', 'Settings', ];
 
   /// ========================================================
 

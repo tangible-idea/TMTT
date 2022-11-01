@@ -59,6 +59,7 @@ dependencies:
   purchases_flutter: ^4.3.0
   flutter_dotenv: ^5.0.2
   google_sign_in: ^5.4.2
+  cached_network_image: ^3.2.2
 
 dev_dependencies:
   flutter_test:

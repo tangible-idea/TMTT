@@ -1,4 +1,5 @@
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tmtt/src/resources/styles/my_color.dart';
@@ -62,7 +63,7 @@ class FoundInstagramAccountDialog extends BaseWidget {
           AppSpaces.verticalSpace20,
 
           Row(children: [
-            CircleAvatar(backgroundImage: NetworkImage(instagramImageURL), radius: 30),
+            CircleAvatar(backgroundImage: CachedNetworkImageProvider(instagramImageURL), radius: 30),
             AppSpaces.horizontalSpace10,
             AppSpaces.horizontalSpace5,
             Column(

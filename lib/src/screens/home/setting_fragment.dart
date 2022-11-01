@@ -7,6 +7,8 @@ import 'package:tmtt/src/screens/home/home_controller.dart';
 import 'package:tmtt/src/widgets/bottom_button.dart';
 import 'package:tmtt/src/widgets/plain_text.dart';
 
+import '../../widgets/setting_item.dart';
+
 class SettingFragment extends GetView<HomeController> {
 
   @override
@@ -17,12 +19,14 @@ class SettingFragment extends GetView<HomeController> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          PlainText(
-            text: 'SettingFragment',
-          ),
-          Obx(() => PlainText(
-            text: controller.deviceInfoObs.value,
-          )),
+          // Obx(() => PlainText(
+          //   text: controller.deviceInfoObs.value,
+          // )),
+
+          SettingItem(title: 'Feedback', subtitle: 'send your feedback',),
+          SettingItem(title: 'Deactivate your account', subtitle: 'send your feedback',),
+          SettingItem(title: 'Privacy policy', subtitle: 'send your feedback',),
+
           const Spacer(),
           BottomPlainButton(
             text: 'Change your slug',
