@@ -13,6 +13,18 @@ class Strings {
   static String registerDesc3 = 'registerDesc3';
   static String registerCreateYourOwnLInk = 'registerCreateYourOwnLInk';
 
+  // Home page
+  static String homeContent1 = 'homeContent1';
+  static String homeContent2 = 'homeContent2';
+  static String homeContent3 = 'homeContent3';
+  static String homeContent4 = 'homeContent4';
+  static String homeContent5 = 'homeContent5';
+  static String homeContent6 = 'homeContent6';
+  static String homeButtonRandom = 'homeButtonRandom';
+  static String homeButtonTemplate = 'homeButtonTemplate';
+  static String homeButtonCopyLink = 'homeButtonCopyLink';
+  static String homeButtonShare = 'homeButtonShare';
+
 
 
   // desc == description

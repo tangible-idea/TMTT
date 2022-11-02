@@ -13,6 +13,7 @@ import 'package:tmtt/src/widgets/plain_text.dart';
 import 'package:tmtt/src/widgets/plain_text_field.dart';
 
 import '../../../generated/assets.dart';
+import '../../resources/languages/strings.dart';
 import '../../resources/styles/txt_style.dart';
 import '../../widgets/button_white.dart';
 import '../../widgets/multiline_text_field.dart';
@@ -42,7 +43,7 @@ class HomeFragment extends GetView<HomeController> {
               child: ListView(
                 children: [
                   PlainText(
-                      text: 'Ask question to your followers!',
+                      text: Strings.homeContent1.tr,
                     style: MyTextStyle.h5,
                   ),
 
@@ -52,7 +53,7 @@ class HomeFragment extends GetView<HomeController> {
                   MultiLineTextField(
                     maxLength: 75,
                     maxLine: 3,
-                    hintText: 'Ask question to your followers.',
+                    hintText: Strings.homeContent5.tr,
                     controller: controller.messageInputController,
                   ),
 
@@ -60,14 +61,14 @@ class HomeFragment extends GetView<HomeController> {
                     children: [
                       WhiteButton(
                         icon: SvgPicture.asset(Assets.imagesIcoRandom, color: MyColor.kPrimary),
-                        text: 'Random',
+                        text: Strings.homeButtonRandom.tr,
                         onPressed: () => controller.putARandomMessage(),
                         enabledObs: RxBool(true),
                       ),
                       const Spacer(),
                       WhiteButton(
                         icon: SvgPicture.asset(Assets.imagesIcoArrowdown, color: MyColor.kPrimary),
-                        text: 'Template',
+                        text: Strings.homeButtonTemplate.tr,
                         onPressed: () => controller.editMyStateMessage(),
                         enabledObs: RxBool(true),
                       ),
@@ -76,7 +77,7 @@ class HomeFragment extends GetView<HomeController> {
 
                   AppSpaces.verticalSpace10,
                   PlainText(
-                    text: 'Copy your link and share!',
+                    text: Strings.homeContent2.tr,
                     style: MyTextStyle.h5,
                   ),
                   AppSpaces.verticalSpace10,
@@ -132,7 +133,7 @@ class HomeFragment extends GetView<HomeController> {
                             children: [
                               AppSpaces.verticalSpace30,
                               PlainText(
-                                text: 'Step1: Copy your link!',
+                                text: Strings.homeContent3.tr,
                                 style: MyTextStyle.caption2Bold,
                               ),
 
@@ -143,7 +144,7 @@ class HomeFragment extends GetView<HomeController> {
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(25, 0, 25, 10),
                                 child: BottomPlainButton(
-                                  text: 'Copy link',
+                                  text: Strings.homeButtonCopyLink.tr,
                                   icon: SvgPicture.asset(Assets.imagesIcoCopy),
                                   onPressed: () => controller.copyMyLink(),
                                   enabledObs: RxBool(true),
@@ -156,14 +157,14 @@ class HomeFragment extends GetView<HomeController> {
                                 marginLeft: 30,
                                 marginRight: 30,
                                 align: TextAlign.center,
-                                text: 'Step2: Share your link on your instagram Story.',
+                                text: Strings.homeContent4.tr,
                                 style: MyTextStyle.caption2Bold,
                               ),
                               AppSpaces.verticalSpace5,
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(25, 0, 25, 10),
                                 child: BottomPlainButton(
-                                  text: 'Share',
+                                  text: Strings.homeButtonShare.tr,
                                   icon: SvgPicture.asset(Assets.imagesIcoShare),
                                   onPressed: () => controller.shareOnInstagram(context),
                                   enabledObs: RxBool(true),

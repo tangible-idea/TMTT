@@ -13,6 +13,17 @@ Map<String, String> translations_kr = {
   Strings.registerDesc3: '(인스타그램 ID와 똑같이 입력하면 쓰기 편해요~)',
   Strings.registerCreateYourOwnLInk: '공유링크 생성하기',
 
+  //home
+  Strings.homeContent1: "친구나 팔로워들에게 질문을 보내보세요!",
+  Strings.homeContent2: "링크를 복사하고 공유하기만 하면되요. 쉽죠?",
+  Strings.homeContent3: "Step1: 링크 복사하기!",
+  Strings.homeContent4: "Step2: 내 인스타그램 계정으로 스토리를 공유해보세요.",
+  Strings.homeContent5: "그러면 팔로워 친구들이 익명 메시지를 던져줄거에요~",
+  Strings.homeButtonRandom: "랜덤",
+  Strings.homeButtonTemplate: "재밌는 템플릿",
+  Strings.homeButtonCopyLink: "링크 복사",
+  Strings.homeButtonShare: "공유",
+
   Strings.permissionScreenDesc1: '원활한 앱 사용을 위해\n다음의 앱 권한을 허용해주세요',
   Strings.permissionScreenDesc2: '카메라',
   Strings.permissionScreenDesc3: '송금 및 주소록 등록 시 주소 스캔 및 사진 업로드 용도로 사용됩니다.',

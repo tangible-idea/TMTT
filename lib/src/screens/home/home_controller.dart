@@ -1,6 +1,7 @@
 
 import 'dart:io';
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:firebase_auth/firebase_auth.dart' as firebase_user;
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -221,8 +222,16 @@ class HomeController extends BaseGetController {
 
   // Put a random message on question text controller.
   void putARandomMessage() {
-    var randomInt= Random().nextInt(Samples.questions_kr_1.length);
-    String randomText= Samples.questions_kr_1[randomInt];
+    final langCode= window.locale.languageCode;
+
+    Samples.questions.keys.contains(langCode);
+    final filteredList = {
+      for (final key in Samples.questions.keys)
+        if (key.startsWith(langCode)) key: Samples.questions[key]
+    }.values.toList();
+
+    var randomInt= Random().nextInt(filteredList.length);
+    String randomText= filteredList[randomInt].toString();
     messageInputController.text= randomText;
   }
 

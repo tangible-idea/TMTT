@@ -13,6 +13,18 @@ Map<String, String> translations_en = {
   Strings.registerDesc3: '(For example, your instagram ID.)',
   Strings.registerCreateYourOwnLInk: 'Create your own link',
 
+  //home
+  Strings.homeContent1: "Ask question to your followers!",
+  Strings.homeContent2: "Follow just easy 2 steps!",
+  Strings.homeContent3: "Step1: Copy your link",
+  Strings.homeContent4: "Step2: Share your link on your Instagram Story.",
+  Strings.homeContent5: "Then they'll answer back to you anonymously..",
+  Strings.homeButtonRandom: "Random",
+  Strings.homeButtonTemplate: "Template",
+  Strings.homeButtonCopyLink: "Copy link",
+  Strings.homeButtonShare: "Share",
+
+
   Strings.permissionScreenDesc1: '원활한 앱 사용을 위해\n다음의 앱 권한을 허용해주세요',
   Strings.permissionScreenDesc2: '카메라',
   Strings.permissionScreenDesc3: '송금 및 주소록 등록 시 주소 스캔 및 사진 업로드 용도로 사용됩니다.',
