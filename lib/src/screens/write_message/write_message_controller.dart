@@ -26,6 +26,8 @@ class WriteMessageController extends BaseGetController {
   late final inputController = TextEditingController();
 
   var userNameObs = ''.obs;
+  var userMessageObs = ''.obs;
+  var userImageObs = ''.obs;
   var currentUserId = '';
   var currentUser = User();
 
@@ -40,9 +42,9 @@ class WriteMessageController extends BaseGetController {
       return;
     }
     currentUser = user;
-    userNameObs.value = ""
-        "found user id: ${user.userId}\n"
-        "message: ${user.message}";
+    userNameObs.value = "@${user.userId}";
+    userMessageObs.value= user.message;
+    userImageObs.value= user.profileImage;
   }
 
   Future<void> writeMessage() async {

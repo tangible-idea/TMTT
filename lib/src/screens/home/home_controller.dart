@@ -92,7 +92,7 @@ class HomeController extends BaseGetController {
         .listen((fcmToken) {
       // send token to application server.
       // Note: This callback is fired at each app startup and whenever a new token is generated.
-      FireStore.updateUserValue("pushToken", fcmToken);
+      FireStore.updateUserValue("push_token", fcmToken);
     })
         .onError((err) {
         // Error getting token.
