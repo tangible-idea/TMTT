@@ -8,6 +8,7 @@ import 'package:tmtt/src/widgets/app_space.dart';
 import 'package:tmtt/src/widgets/bottom_button.dart';
 import 'package:tmtt/src/widgets/plain_text.dart';
 
+import '../../resources/styles/txt_style.dart';
 import '../../widgets/setting_item.dart';
 
 class SettingFragment extends GetView<HomeController> {
@@ -26,26 +27,36 @@ class SettingFragment extends GetView<HomeController> {
 
           AppSpaces.verticalSpace20,
 
-          SettingItem(title: 'Feedback', subtitle: 'send your feedback', icon: Icons.feedback,),
-          SettingItem(title: 'Deactivate your account', subtitle: 'send your feedback', icon: Icons.delete,),
-          SettingItem(title: 'Privacy policy', subtitle: 'send your feedback', icon: Icons.policy),
+          InkWell(
+              onTap: ()=> controller.openPrivacy(),
+              child: SettingItem(title: 'Feedback', subtitle: 'Report technical issues\nor suggest new features.', icon: Icons.feedback,)),
+
+          InkWell(
+            onTap: () => controller.openPrivacy(),
+            child: SettingItem(title: 'Invite your friends', subtitle: 'Invite your friends and get rewards.', icon: Icons.people,)),
+
+
+          InkWell(
+              onTap: () => controller.openPrivacy(),
+              child: SettingItem(title: 'Deactivate your account', subtitle: 'This cannot be undone.', icon: Icons.delete,)),
+
+          InkWell(
+            onTap: () => controller.openPrivacy(),
+              child: SettingItem(title: 'Privacy policy', subtitle: 'Read privacy policy of TMTT', icon: Icons.policy)),
+
 
           const Spacer(),
-          BottomPlainButton(
-            text: 'Change your slug',
-            onPressed: () => controller.recreateYourSulg(),
-            enabledObs: RxBool(true),
-          ),
-          BottomPlainButton(
-            text: 'Sign out',
-            onPressed: () => controller.signOut(),
-            enabledObs: RxBool(true),
-          ),
-          BottomPlainButton(
-            text: 'Privacy Policy',
-            onPressed: () => controller.openPrivacy(),
-            enabledObs: RxBool(true),
-          ),
+          Center(child: InkWell(
+            onTap: ()=> controller.signOut(),
+              child: PlainText(text: "Log out", style: MyTextStyle.body16bold.copyWith(color: Colors.redAccent)))),
+          AppSpaces.verticalSpace60,
+          // BottomPlainButton(
+          //   text: 'Change your slug',
+          //   onPressed: () => controller.recreateYourSulg(),
+          //   enabledObs: RxBool(true),
+          // ),
+
+
         ],
       ),
     );
