@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:tmtt/src/screens/base/base_fragment_container.dart';
 import 'package:tmtt/src/screens/home/home_controller.dart';
+import 'package:tmtt/src/widgets/app_space.dart';
 import 'package:tmtt/src/widgets/bottom_button.dart';
 import 'package:tmtt/src/widgets/plain_text.dart';
 
@@ -23,9 +24,11 @@ class SettingFragment extends GetView<HomeController> {
           //   text: controller.deviceInfoObs.value,
           // )),
 
-          SettingItem(title: 'Feedback', subtitle: 'send your feedback',),
-          SettingItem(title: 'Deactivate your account', subtitle: 'send your feedback',),
-          SettingItem(title: 'Privacy policy', subtitle: 'send your feedback',),
+          AppSpaces.verticalSpace20,
+
+          SettingItem(title: 'Feedback', subtitle: 'send your feedback', icon: Icons.feedback,),
+          SettingItem(title: 'Deactivate your account', subtitle: 'send your feedback', icon: Icons.delete,),
+          SettingItem(title: 'Privacy policy', subtitle: 'send your feedback', icon: Icons.policy),
 
           const Spacer(),
           BottomPlainButton(

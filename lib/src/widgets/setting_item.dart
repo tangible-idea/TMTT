@@ -14,7 +14,7 @@ class SettingItem extends StatelessWidget {
 
   final String? title;
   final String? subtitle;
-  final Icon? icon;
+  final IconData? icon;
 
   SettingItem({
     Key? key,
@@ -27,7 +27,7 @@ class SettingItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(12.0),
+      padding: const EdgeInsets.fromLTRB(12, 6, 12, 6),
       child: Container(
         height: 80,
         decoration: BoxDecoration(
@@ -36,9 +36,20 @@ class SettingItem extends StatelessWidget {
         ),
         child: Row(children: [
           AppSpaces.horizontalSpace20,
-          const CircleAvatar(radius: 22,
-              backgroundColor: MyColor.white,),
+            Container(
+              padding: const EdgeInsets.all(15),
+              decoration: const BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle
+              ),
+              child: Icon(
+                icon,
+                color: MyColor.kPrimary,
+              ),
+            ),
+
           AppSpaces.horizontalSpace10,
+          AppSpaces.horizontalSpace5,
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
