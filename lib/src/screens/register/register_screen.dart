@@ -36,48 +36,50 @@ class RegisterScreen extends GetView<RegisterController> {
       onPressedAosBackButton: () {
         Log.d('onPressedAosBackButton');
       },
-      body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            // logo here
-            Center(child: Image.asset(Assets.imagesTmttLogoWhite36)),
-            AppSpaces.verticalSpace90,
+      body: SingleChildScrollView(
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              // logo here
+              Center(child: Image.asset(Assets.imagesTmttLogoWhite36)),
+              AppSpaces.verticalSpace90,
 
-            // explanation image
-            SvgPicture.asset(Assets.imagesExplainationSocial),
-            AppSpaces.verticalSpace20,
+              // explanation image
+              SvgPicture.asset(Assets.imagesExplainationSocial),
+              AppSpaces.verticalSpace20,
 
-            PlainText(
-              text: Strings.registerDesc1.tr,
-              style: MyTextStyle.body.copyWith(
-                color: Colors.white,
+              PlainText(
+                text: Strings.registerDesc1.tr,
+                style: MyTextStyle.body.copyWith(
+                  color: Colors.white,
+                ),
+                align: TextAlign.center
               ),
-              align: TextAlign.center
-            ),
-            AppSpaces.verticalSpace40,
+              AppSpaces.verticalSpace40,
 
-            // social login buttons
-            InkWell(onTap: () async {
-                controller.signInWithGoogle();
-              },
-              child: SvgPicture.asset(Assets.imagesBtnLoginGoogle),
-            ),
+              // social login buttons
+              InkWell(onTap: () async {
+                  controller.signInWithGoogle();
+                },
+                child: SvgPicture.asset(Assets.imagesBtnLoginGoogle),
+              ),
 
-            AppSpaces.verticalSpace10,
-            SvgPicture.asset(Assets.imagesBtnLoginFacebook),
+              AppSpaces.verticalSpace10,
+              SvgPicture.asset(Assets.imagesBtnLoginFacebook),
 
-            // BottomPlainButton(
-            //   text: '확인',
-            //   onPressed: () => controller.register(),
-            //   enabledObs: RxBool(true),
-            // ),
-            // BottomPlainButton(
-            //   text: '홈으로 테스트',
-            //   onPressed: () => controller.goToHome(),
-            //   enabledObs: RxBool(true),
-            // ),
-          ]
+              // BottomPlainButton(
+              //   text: '확인',
+              //   onPressed: () => controller.register(),
+              //   enabledObs: RxBool(true),
+              // ),
+              // BottomPlainButton(
+              //   text: '홈으로 테스트',
+              //   onPressed: () => controller.goToHome(),
+              //   enabledObs: RxBool(true),
+              // ),
+            ]
+        ),
       ),
     );
   }

@@ -88,14 +88,14 @@ class PostingHelper {
     };
     //final String resultFromAndroid= await shareInstaChannel.invokeMethod("sharePhotoToInstagram", arguments);
 
-    final String resultFromAndroid= await _shareInstaChannel.invokeMethod("shareInstagramImageStoryWithSticker", arguments);
+    final String resultFromNative= await _shareInstaChannel.invokeMethod("shareInstagramImageStoryWithSticker", arguments);
 
     // var context = Get.context;
     // if (context == null) { return; }
     // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(result)));
 
     //Log.d(resultFromAndroid);
-    return resultFromAndroid;
+    return resultFromNative;
   }
 
 
