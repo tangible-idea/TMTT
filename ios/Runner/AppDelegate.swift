@@ -18,7 +18,7 @@ import Flutter
                   result(FlutterMethodNotImplemented)
                   return
                 }
-                self?.receiveBatteryLevel(result: result)
+              self?.shareOnInstagram(call: call, result: result)
               
               
           })
@@ -27,17 +27,28 @@ import Flutter
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
     
-    private func receiveBatteryLevel(result: FlutterResult) {
-      let device = UIDevice.current
-      device.isBatteryMonitoringEnabled = true
-      if device.batteryState == UIDevice.BatteryState.unknown {
-//        result(FlutterError(code: "UNAVAILABLE",
-//                            message: "Battery info unavailable",
-//                            details: nil))
-          result("No battery in this device.")
-      } else {
-        result(Int(device.batteryLevel * 100))
-      }
+    private func shareOnInstagram(call: FlutterMethodCall, result: FlutterResult) {
+//        //Sharing story on instagram
+//        let stickerImage:String! = call.arguments["stickerImage"]
+//        let backgroundTopColor:String! = call.arguments["backgroundTopColor"]
+//        let backgroundBottomColor:String! = call.arguments["backgroundBottomColor"]
+//        let attributionURL:String! = call.arguments["attributionURL"]
+//        let backgroundImage:String! = call.arguments["backgroundImage"]
+//        //getting image from file
+//        let fileManager:NSFileManager! = NSFileManager.defaultManager()
+//        let isFileExist:Bool = fileManager.fileExistsAtPath(stickerImage)
+//        var imgShare:UIImage!
+        
+        let device = UIDevice.current
+          device.isBatteryMonitoringEnabled = true
+          if device.batteryState == UIDevice.BatteryState.unknown {
+              result("TMTT methodchannel test from IOS native.")
+//            result(FlutterError(code: "UNAVAILABLE",
+//                                message: "Battery info unavailable",
+//                                details: nil))
+          } else {
+            result(Int(device.batteryLevel * 100))
+          }
     }
 
 }
