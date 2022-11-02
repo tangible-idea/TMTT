@@ -11,6 +11,7 @@ import 'package:tmtt/data/model/message.dart';
 import 'package:tmtt/data/model/user.dart';
 import 'package:tmtt/firebase/firebase_auth.dart';
 import 'package:tmtt/src/constants/local_storage_key_store.dart';
+import 'package:tmtt/src/util/image_processing_util.dart';
 import 'package:tmtt/src/util/info_util.dart';
 import 'package:tmtt/src/util/local_storage.dart';
 import 'package:tmtt/src/util/my_logger.dart';
@@ -75,8 +76,15 @@ class FireStore {
         .child('/image_$myUID');
 
     try {
+      // resize and upload to Stoarge
       File file = File(filepath);
-      await ref.putFile(file);
+      File resizedImage= await ImageProcessing.resizeSmallImage(file, 300);
+      await ref.putFile(resizedImage);
+
+      // update user database on Firestore
+      String profileURL= await ref.getDownloadURL();
+      FireStore.updateUserValue("profile_image", profileURL);
+
     } on FirebaseException catch (e) {
       MySnackBar.show(title: 'Error', message: 'Error on while uploading your picture.');
     }

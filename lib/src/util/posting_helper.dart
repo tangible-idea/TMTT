@@ -30,9 +30,6 @@ class PostingHelper {
     return directory.path;
   }
 
-  //static final ImagePicker _imagePicker = ImagePicker();
-  //static PickedFile? _imageToShare;
-
   // 인스타에 공유하기
   static Future<String> shareOnInstagram({String message = ''}) async {
 
