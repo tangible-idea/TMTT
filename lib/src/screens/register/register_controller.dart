@@ -79,6 +79,13 @@ class RegisterController extends BaseGetController {
 
     var trimmedSlug= slug.trim();
 
+    // 이미 내가 사용하고 있다면 그냥 넘어감. (일어날 확률이 드문 예외처리)
+    var myInfo= await FireStore.getMyInfo();
+    if(myInfo?.slugId == trimmedSlug) {
+      goToHome();
+      return;
+    }
+
     // 유저 검색.
     var userSlug= await FireStore.searchUserSlug(trimmedSlug);
     if(userSlug != null) {
@@ -132,11 +139,12 @@ class RegisterController extends BaseGetController {
       instagramName: foundInsta.fullname.toString(),
       instagramBio: foundInsta.bio.toString(),
       instagramImageURL: foundInsta.imgurl.toString(),
-      onYesPressed: () {
-        FireStore.linkMyPhotoFromInstagramAccountToStorage(foundInsta.imgurl.toString());
+      onYesPressed: () async {
+        var isSuccess= await FireStore.linkMyPhotoFromInstagramAccountToStorage(foundInsta.imgurl.toString());
+        goToHome();
       },
       onNoPressed: () {
-        goToHome();
+        //goToHome();
       },
     );
     MyDialog.showBottom(
@@ -184,10 +192,11 @@ class RegisterController extends BaseGetController {
         registerDocId= currentUser.documentId; // user does exist : get current doc-id.
       }
 
-
-
       await LocalStorage.put(KeyStore.userDocId, registerDocId);
       await LocalStorage.put(KeyStore.isLogin, true);
+
+      // Save your document id itself
+      await FireStore.updateUserValue('document_id', registerDocId);
 
       // set purchase data
       await Purchase.login(registerDocId);

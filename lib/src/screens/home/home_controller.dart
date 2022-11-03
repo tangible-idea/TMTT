@@ -86,6 +86,7 @@ class HomeController extends BaseGetController {
   var useHeaderObs = false.obs;
 
   var profileURL= ''.obs;
+  var isProfileLoading= false.obs; // 사진 로딩중 shimemring
 
   void pushTokenListener() async {
 
@@ -182,12 +183,22 @@ class HomeController extends BaseGetController {
   }
 
   // Get profile image's profile picture from Firebase Storage
-  Future<void> loadProfilePicture() async {
+  Future<void> loadProfilePictureFromStorage() async {
     Reference ref = FirebaseStorage.instance.ref()
         .child('profile')
         .child('/image_${getMyUID()}');
 
     profileURL.value= await ref.getDownloadURL();
+  }
+
+  // Get profile image's profile picture from Firebase Storage
+  Future<void> loadProfilePicture() async {
+    isProfileLoading.value= true;
+    var myinfo = await FireStore.getMyInfo();
+    if(myinfo != null) {
+      profileURL.value= myinfo.profileImage;
+    }
+    isProfileLoading.value= false;
   }
 
   // get login info.
@@ -203,13 +214,15 @@ class HomeController extends BaseGetController {
   }
 
   void changeProfileImage() async {
+    isProfileLoading.value= true;
+
     final ImagePicker picker = ImagePicker();
     final XFile? xfile = await picker.pickImage(source: ImageSource.gallery);
     //file!.path
     var myInfo= await FireStore.getMyInfo();
     if (myInfo == null) { return; }
 
-    FireStore.uploadMyPhotoToStorage(xfile!.path);
+    await FireStore.uploadMyPhotoToStorage(xfile!.path);
 
     // final metadata = SettableMetadata(
     //   contentType: 'image/jpeg',

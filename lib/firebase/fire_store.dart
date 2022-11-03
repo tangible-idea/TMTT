@@ -65,10 +65,10 @@ class FireStore {
     }
   }
 
-  static Future<void> uploadMyPhotoToStorage(String filepath) async {
+  static Future<bool> uploadMyPhotoToStorage(String filepath) async {
 
     var myUID= FireAuth.getMyUID();
-    if(myUID == "") { return; }
+    if(myUID == "") { return false; }
 
     // Create a Reference to the file
     Reference ref = FirebaseStorage.instance.ref()
@@ -83,10 +83,13 @@ class FireStore {
 
       // update user database on Firestore
       String profileURL= await ref.getDownloadURL();
-      FireStore.updateUserValue("profile_image", profileURL);
+      await FireStore.updateUserValue("profile_image", profileURL);
+
+      return true;
 
     } on FirebaseException catch (e) {
       MySnackBar.show(title: 'Error', message: 'Error on while uploading your picture.');
+      return false;
     }
   }
 
@@ -149,6 +152,9 @@ class FireStore {
 
   /// slug_id -> User
   static Future<User?> searchUserSlug(String userSlug) async {
+
+    var myUID= FireAuth.getMyUID();
+    if(myUID == "") { return null; }
 
     var snapshot = await instance
         .collection(Collections.users)
