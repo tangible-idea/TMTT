@@ -18,6 +18,7 @@ import 'package:tmtt/src/util/my_logger.dart';
 import 'package:tmtt/src/util/my_navigator.dart';
 import 'package:tmtt/data/model/user.dart' as userModel;
 
+import '../../resources/languages/strings.dart';
 import '../../util/my_snackbar.dart';
 import '../base/base_get_controller.dart';
 
@@ -81,7 +82,7 @@ class RegisterController extends BaseGetController {
     // 유저 검색.
     var userSlug= await FireStore.searchUserSlug(trimmedSlug);
     if(userSlug != null) {
-      errorObs.value= 'There is another user with the same slug.';
+      errorObs.value= Strings.slugCreateError1.tr;
       return;
     }
 

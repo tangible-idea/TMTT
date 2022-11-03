@@ -13,6 +13,16 @@ class Strings {
   static String registerDesc3 = 'registerDesc3';
   static String registerCreateYourOwnLInk = 'registerCreateYourOwnLInk';
 
+  // create your slug page
+  static String slugCreateError1 = 'slugCreateError1';
+  static String slugCreateError2 = 'slugCreateError2';
+  static String slugPopupContent1 = 'slugPopupContent1';
+  static String slugPopupContent2 = 'slugPopupContent2';
+  static String slugPopupButtonYes = 'slugPopupButtonYes';
+  static String slugPopupButtonNo = 'slugPopupButtonNo';
+  static String slugPopupFollowers = 'slugPopupFollowers';
+  static String slugPopupFollowing = 'slugPopupFollowing';
+
   // Home page
   static String homeContent1 = 'homeContent1';
   static String homeContent2 = 'homeContent2';

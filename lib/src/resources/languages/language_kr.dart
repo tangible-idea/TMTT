@@ -10,8 +10,10 @@ Map<String, String> translations_kr = {
 
   Strings.registerDesc1: '인스타그램 등 SNS에서 익명 메시지를 받을 수 있는\n계정을 만들어 드릴게요.',
   Strings.registerDesc2: '친구에게 익명 메시지를 받을 수 있는 URL을 만들어볼까요.',
-  Strings.registerDesc3: '(인스타그램 ID와 똑같이 입력하면 쓰기 편해요~)',
+  Strings.registerDesc3: '(친구가 알아볼 수 있는 인스타그램 ID를 입력해주세요~)',
   Strings.registerCreateYourOwnLInk: '공유링크 생성하기',
+  Strings.slugPopupFollowers : '팔로워',
+  Strings.slugPopupFollowing : '팔로잉',
 
   //home
   Strings.homeContent1: "친구나 팔로워들에게 질문을 보내보세요!",
@@ -23,6 +25,14 @@ Map<String, String> translations_kr = {
   Strings.homeButtonTemplate: "재밌는 템플릿",
   Strings.homeButtonCopyLink: "링크 복사",
   Strings.homeButtonShare: "공유",
+
+  // create your slug page
+  Strings.slugCreateError1 : '해당 URL을 이미 다른 사람이 사용하고 있어요.',
+  Strings.slugCreateError2 : '',
+  Strings.slugPopupContent1 : '인스타그램 계정 확인',
+  Strings.slugPopupContent2 : '해당 인스타그램이 맞나요?',
+  Strings.slugPopupButtonYes: '네! 이 계정을 사용합니다.',
+  Strings.slugPopupButtonNo : '아니오. 이건 누구죠?',
 
   // Message
   Strings.messageButtonReply : '답장하기',

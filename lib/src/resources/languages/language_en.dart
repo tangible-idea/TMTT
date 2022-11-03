@@ -10,7 +10,7 @@ Map<String, String> translations_en = {
 
   Strings.registerDesc1: 'Get anonymous messages on any kind of \r\nsocial media apps such as Instagram!',
   Strings.registerDesc2: 'this web address is how people will find\r\nyour TMTT profile online.',
-  Strings.registerDesc3: '(For example, your instagram ID.)',
+  Strings.registerDesc3: '(Your instagram ID to handle.)',
   Strings.registerCreateYourOwnLInk: 'Create your own link',
 
   //home
@@ -24,7 +24,18 @@ Map<String, String> translations_en = {
   Strings.homeButtonCopyLink: "Copy link",
   Strings.homeButtonShare: "Share",
 
-  // Message
+  // create your slug page
+  Strings.slugCreateError1 : 'There is another user with the same slug.',
+  Strings.slugCreateError2 : '',
+  Strings.slugPopupContent1 : 'CONFIRM YOUR INSTAGRAM ACCOUNT',
+  Strings.slugPopupContent2 : 'Is this your account?',
+  Strings.slugPopupButtonYes: 'Yes! This is mine.',
+  Strings.slugPopupButtonNo : 'No. Who is this?',
+  Strings.slugPopupFollowers : 'Followers',
+  Strings.slugPopupFollowing : 'Following',
+
+
+// Message
   Strings.messageButtonReply : 'Reply',
   Strings.messageButtonWhoSentThis : 'Who sent this?',
   Strings.messageHint1 : 'City',

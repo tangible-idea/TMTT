@@ -10,6 +10,8 @@ import 'package:tmtt/src/widgets/app_space.dart';
 import 'package:tmtt/src/widgets/bottom_button.dart';
 import 'package:tmtt/src/widgets/plain_text.dart';
 
+import '../resources/languages/strings.dart';
+
 
 class FoundInstagramAccountDialog extends BaseWidget {
 
@@ -50,11 +52,11 @@ class FoundInstagramAccountDialog extends BaseWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          PlainText(text: "LINK YOUR INSTAGRAM ACCOUNT", style: MyTextStyle.caption2Bold.copyWith(
+          PlainText(text: Strings.slugPopupContent1.tr, style: MyTextStyle.caption2Bold.copyWith(
             color: MyColor.kGrey2
           ),),
           AppSpaces.verticalSpace10,
-          PlainText(text: "Is this your account?", style: MyTextStyle.h3),
+          PlainText(text: Strings.slugPopupContent2.tr, style: MyTextStyle.h3),
           AppSpaces.verticalSpace20,
 
           // PlainText(text: "YOUR BIO", style: MyTextStyle.caption2Bold.copyWith(
@@ -73,7 +75,7 @@ class FoundInstagramAccountDialog extends BaseWidget {
               PlainText(text: instagramName, style: MyTextStyle.body16.copyWith(
                   color: MyColor.kGrey2
               ),),
-              PlainText(text: 'Followers: ${follower} | Following: ${following}', style: MyTextStyle.body16.copyWith(
+              PlainText(text: '${Strings.slugPopupFollowers.tr}: ${follower} | ${Strings.slugPopupFollowing.tr}: ${following}', style: MyTextStyle.body16.copyWith(
                   color: MyColor.kGrey2
               ),),
             ],),
@@ -84,7 +86,7 @@ class FoundInstagramAccountDialog extends BaseWidget {
 
           Spacer(),
           BottomPlainButton(
-            text: 'Yes! Link please.',
+            text: Strings.slugPopupButtonYes.tr,
             enabledObs: RxBool(true),
             onPressed: () {
               Get.back();
@@ -92,7 +94,7 @@ class FoundInstagramAccountDialog extends BaseWidget {
             },
           ),
           BottomPlainButton(
-            text: "Use without it.",
+            text: Strings.slugPopupButtonNo.tr,
             enabledObs: RxBool(true),
             onPressed: () {
               Get.back();
