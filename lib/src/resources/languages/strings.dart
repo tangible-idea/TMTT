@@ -25,7 +25,16 @@ class Strings {
   static String homeButtonCopyLink = 'homeButtonCopyLink';
   static String homeButtonShare = 'homeButtonShare';
 
-
+  // Message
+  static String messageButtonReply = 'messageButtonReply';
+  static String messageButtonWhoSentThis = 'messageButtonWhoSentThis';
+  static String messageHint1= 'messageHint1';
+  static String messageHint2 = 'messageHint2';
+  static String messageHint3 = 'messageHint3';
+  static String messageHint4 = 'messageHint4';
+  static String messageHint5 = 'messageHint5';
+  static String messageHint6 = 'messageHint6';
+  static String messageHint7 = 'messageHint7';
 
   // desc == description
   static String permissionScreenDesc1 = 'permissionScreenDesc1';

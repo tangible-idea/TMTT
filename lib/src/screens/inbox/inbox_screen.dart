@@ -12,6 +12,7 @@ import 'package:tmtt/src/widgets/bottom_button.dart';
 import 'package:tmtt/src/widgets/item_inbox_hero.dart';
 import 'package:widgets_to_image/widgets_to_image.dart';
 
+import '../../resources/languages/strings.dart';
 import '../../widgets/plain_text.dart';
 
 class InboxScreen extends GetView<InboxController> {
@@ -84,12 +85,12 @@ class InboxScreen extends GetView<InboxController> {
                   ),
                 ),
                 BottomPlainButton(
-                  text: '답장',
+                  text: Strings.messageButtonReply.tr,
                   onPressed: () => controller.onClickReply(),
                   enabledObs: RxBool(true),
                 ),
                 BottomPlainButton(
-                  text: '누가 보냈어',
+                  text: Strings.messageButtonWhoSentThis.tr,
                   onPressed: () => controller.onClickHint(),
                   enabledObs: RxBool(true),
                   style: BtnStyle.plain.copyWith(

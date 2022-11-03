@@ -1,4 +1,5 @@
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
@@ -50,11 +51,13 @@ class SettingFragment extends GetView<HomeController> {
             onTap: ()=> controller.signOut(),
               child: PlainText(text: "Log out", style: MyTextStyle.body16bold.copyWith(color: Colors.redAccent)))),
           AppSpaces.verticalSpace60,
-          // BottomPlainButton(
-          //   text: 'Change your slug',
-          //   onPressed: () => controller.recreateYourSulg(),
-          //   enabledObs: RxBool(true),
-          // ),
+
+          kDebugMode ?
+          BottomPlainButton(
+            text: 'Change your slug [debug mode]',
+            onPressed: () => controller.recreateYourSulg(),
+            enabledObs: RxBool(true),
+          ) : const SizedBox()
 
 
         ],

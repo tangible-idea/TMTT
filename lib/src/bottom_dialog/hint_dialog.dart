@@ -12,6 +12,8 @@ import 'package:tmtt/src/screens/base/base_widget.dart';
 import 'package:tmtt/src/widgets/bottom_button.dart';
 import 'package:tmtt/src/widgets/plain_text.dart';
 
+import '../resources/languages/strings.dart';
+
 
 class HintDialog extends BaseWidget {
 
@@ -44,7 +46,7 @@ class HintDialog extends BaseWidget {
             child: PlainText(
               marginTop: 32,
               marginBottom: 14,
-              text: "Who sent this",
+              text: Strings.messageButtonWhoSentThis.tr,
               style: MyTextStyle.body1Bold.copyWith(
                   color: MyColor.white,
                   fontSize: 20
@@ -55,13 +57,13 @@ class HintDialog extends BaseWidget {
             child: Center(
               child: ListView(
                 children: [
-                  item(Assets.imagesLocationIcon, "City", message.hint.city),
-                  item(Assets.imagesCountryIcon, "Country", message.hint.country),
-                  item(Assets.imagesTimeSentIcon, "Time Sent", message.createDate),
-                  item(Assets.imagesCarrierIcon, "Carrier", message.hint.carrierIsp),
-                  item(Assets.imagesSettingIcon, "Platform", message.hint.platform),
-                  item(Assets.imagesDeviceIcon, "Device", message.hint.device),
-                  item(Assets.imagesSettingIcon, "Software", message.hint.os),
+                  item(Assets.imagesLocationIcon, Strings.messageHint1.tr, message.hint.city),
+                  item(Assets.imagesCountryIcon, Strings.messageHint2.tr, message.hint.country),
+                  item(Assets.imagesTimeSentIcon,Strings.messageHint3.tr, message.createDate),
+                  item(Assets.imagesCarrierIcon, Strings.messageHint4.tr, message.hint.carrierIsp),
+                  item(Assets.imagesSettingIcon, Strings.messageHint5.tr, message.hint.platform),
+                  item(Assets.imagesDeviceIcon,  Strings.messageHint6.tr, message.hint.device),
+                  item(Assets.imagesSettingIcon, Strings.messageHint7.tr, message.hint.os),
                 ],
               ),
             ),

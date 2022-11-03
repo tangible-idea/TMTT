@@ -24,6 +24,16 @@ Map<String, String> translations_en = {
   Strings.homeButtonCopyLink: "Copy link",
   Strings.homeButtonShare: "Share",
 
+  // Message
+  Strings.messageButtonReply : 'Reply',
+  Strings.messageButtonWhoSentThis : 'Who sent this?',
+  Strings.messageHint1 : 'City',
+  Strings.messageHint2 : 'Country',
+  Strings.messageHint3 : 'Time Sent',
+  Strings.messageHint4 : 'Carrier',
+  Strings.messageHint5 : 'Platform',
+  Strings.messageHint6 : 'Device',
+  Strings.messageHint7 : 'Software',
 
   Strings.permissionScreenDesc1: '원활한 앱 사용을 위해\n다음의 앱 권한을 허용해주세요',
   Strings.permissionScreenDesc2: '카메라',

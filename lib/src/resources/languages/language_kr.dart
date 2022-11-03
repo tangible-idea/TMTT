@@ -19,10 +19,21 @@ Map<String, String> translations_kr = {
   Strings.homeContent3: "Step1: 링크 복사하기!",
   Strings.homeContent4: "Step2: 내 인스타그램 계정으로 스토리를 공유해보세요.",
   Strings.homeContent5: "그러면 팔로워 친구들이 익명 메시지를 던져줄거에요~",
-  Strings.homeButtonRandom: "랜덤",
+  Strings.homeButtonRandom: "랜덤 질문",
   Strings.homeButtonTemplate: "재밌는 템플릿",
   Strings.homeButtonCopyLink: "링크 복사",
   Strings.homeButtonShare: "공유",
+
+  // Message
+  Strings.messageButtonReply : '답장하기',
+  Strings.messageButtonWhoSentThis : '누가 보냈어?',
+  Strings.messageHint1 : '도시명',
+  Strings.messageHint2 : '국가명',
+  Strings.messageHint3 : '보낸 시각',
+  Strings.messageHint4 : '통신사',
+  Strings.messageHint5 : '플랫폼',
+  Strings.messageHint6 : '기기명',
+  Strings.messageHint7 : '소프트웨어',
 
   Strings.permissionScreenDesc1: '원활한 앱 사용을 위해\n다음의 앱 권한을 허용해주세요',
   Strings.permissionScreenDesc2: '카메라',
