@@ -174,10 +174,10 @@ class HomeController extends BaseGetController {
     MySnackBar.show(title: 'copy success!');
   }
 
-  Future<void> editMyStateMessage() async {
+  Future<void> saveMyLastMessage() async {
     var text = messageInputController.text;
     if(text.isEmpty) { return; }
-    await FireStore.editMySateMessage(text);
+    await FireStore.editMyLastMessage(text);
     MySnackBar.show(title: 'edit success!');
     myInfoObs.value.message = text;
   }

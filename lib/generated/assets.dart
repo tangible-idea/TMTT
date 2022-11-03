@@ -52,6 +52,7 @@ class Assets {
   static const String imagesInviteYourprofile = 'assets/images/invite_yourprofile.svg';
   static const String imagesLocationIcon = 'assets/images/location_icon.svg';
   static const String imagesLockIcon = 'assets/images/lock_icon.svg';
+  static const String imagesLogo = 'assets/images/logo.png';
   static const String imagesMytest = 'assets/images/mytest.png';
   static const String imagesSettingIcon = 'assets/images/setting_icon.svg';
   static const String imagesSplashBackground = 'assets/images/splash_background.svg';
@@ -61,6 +62,8 @@ class Assets {
   static const String imagesTmttLogoBlack36 = 'assets/images/tmtt_logo_black36.png';
   static const String imagesTmttLogoWhite36 = 'assets/images/tmtt_logo_white36.png';
   static const String imagesTmttTextStyle1png = 'assets/images/tmtt_text_style1png.png';
+  static const String lottieAirplane = 'assets/lottie/airplane.json';
+  static const String lottieEmptyMessage = 'assets/lottie/empty_message.json';
   static const String wwwPrivacypolicy = 'assets/www/privacypolicy.html';
 
 }

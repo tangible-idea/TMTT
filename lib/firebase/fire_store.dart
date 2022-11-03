@@ -118,7 +118,7 @@ class FireStore {
     return true;
   }
 
-  static Future<void> editMySateMessage(String message) async {
+  static Future<void> editMyLastMessage(String message) async {
     var docId = await LocalStorage.get(KeyStore.userDocId, '');
     if (docId.isEmpty) { return; }
     await instance

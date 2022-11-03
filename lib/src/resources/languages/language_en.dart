@@ -15,7 +15,7 @@ Map<String, String> translations_en = {
 
   //home
   Strings.homeContent1: "Ask question to your followers!",
-  Strings.homeContent2: "Follow just easy 2 steps!",
+  Strings.homeContent2: "Just follow easy 2 steps!",
   Strings.homeContent3: "Step1: Copy your link",
   Strings.homeContent4: "Step2: Share your link on your Instagram Story.",
   Strings.homeContent5: "Then they'll answer back to you anonymously..",

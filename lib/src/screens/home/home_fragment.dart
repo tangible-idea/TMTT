@@ -87,17 +87,17 @@ class HomeFragment extends GetView<HomeController> {
                     WhiteButton(
                       icon: SvgPicture.asset(Assets.imagesIcoArrowdown, color: MyColor.kPrimary),
                       text: Strings.homeButtonTemplate.tr,
-                      onPressed: () => controller.editMyStateMessage(),
+                      onPressed: () => controller.saveMyLastMessage(),
                       enabledObs: RxBool(true),
                     ),
                   ],
                 ),
 
                 AppSpaces.verticalSpace10,
-                PlainText(
-                  text: Strings.homeContent2.tr,
-                  style: MyTextStyle.h5,
-                ),
+                // PlainText(
+                //   text: Strings.homeContent2.tr,
+                //   style: MyTextStyle.h5,
+                // ),
                 AppSpaces.verticalSpace10,
 
                 ClipRRect(
@@ -177,7 +177,10 @@ class HomeFragment extends GetView<HomeController> {
                               child: BottomPlainButton(
                                 text: Strings.homeButtonShare.tr,
                                 icon: SvgPicture.asset(Assets.imagesIcoShare),
-                                onPressed: () => controller.shareOnInstagram(context),
+                                onPressed: () {
+                                  controller.saveMyLastMessage();
+                                  controller.shareOnInstagram(context);
+                                },
                                 enabledObs: RxBool(true),
                               ),
                             ),

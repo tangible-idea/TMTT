@@ -66,6 +66,7 @@ dependencies:
   google_sign_in: ^5.4.2
   cached_network_image: ^3.2.2
   icons_launcher: ^2.0.5
+  lottie: ^1.4.3
 
 dev_dependencies:
   flutter_test:
@@ -83,10 +84,12 @@ flutter:
 
   assets:
     - assets/
+    - assets/www/
     - assets/fonts/
     - assets/images/
-    - assets/www/
-    - assets/www/
+    - assets/images/2.0x/
+    - assets/images/3.0x/
+    - assets/lottie/
     - .env
 
   fonts:
