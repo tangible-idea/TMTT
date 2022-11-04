@@ -296,6 +296,14 @@ class HomeController extends BaseGetController {
     deviceInfoObs.value = await InfoUtil.getAllDeviceInfo();
   }
 
+  void downloadInstagramProfile() async {
+    FlutterInsta flutterInsta = FlutterInsta();
+    await flutterInsta.getProfileData("tangibleidea");
+
+    Log.d(flutterInsta.imgurl);
+    FireStore.linkMyPhotoFromInstagramAccountToStorage(flutterInsta.imgurl);
+  }
+
   void recreateYourSulg() {
     MyNav.pushReplacementNamed(
       pageName: PageName.createslug,

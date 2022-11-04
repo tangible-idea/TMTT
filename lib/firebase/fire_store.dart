@@ -2,10 +2,12 @@
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:tmtt/data/model/hint.dart';
 import 'package:tmtt/data/model/message.dart';
 import 'package:tmtt/data/model/user.dart';
@@ -50,18 +52,31 @@ class FireStore {
     if(myUID == "") { return; }
 
     // Create a Reference to the file
-    Reference ref = FirebaseStorage.instance.ref()
-        .child('profile')
-        .child('/image_$myUID');
+    // Reference ref = FirebaseStorage.instance.ref()
+    //     .child('profile')
+    //     .child('/image_$myUID');
+
+    instagramImageURL= instagramImageURL.replaceFirst("https%3A//", "https://");
 
     try {
-      http.get(Uri(path: instagramImageURL)).then((response) async {
+      final response = await http.get(Uri.parse(instagramImageURL));
+      if (response.statusCode == 200) {
+        // If the server did return a 200 OK response,
+        // then parse the JSON.
         Uint8List bodyBytes = response.bodyBytes;
-        var file= await File('my_instagram_image.jpg').writeAsBytes(bodyBytes);
-        await ref.putFile(file);
-      });
+        String tempPath = (await getTemporaryDirectory()).path;
+        File file = await File('$tempPath/my_instagram_image.png').writeAsBytes(bodyBytes);
+        //await ref.putFile(file);
+        uploadMyPhotoToStorage(file.path);
+      } else {
+        // If the server did not return a 200 OK response,
+        // then throw an exception.
+        throw Exception('Failed to load image from instagram.');
+      }
     } on FirebaseException catch (e) {
       MySnackBar.show(title: 'Error', message: 'Error on while uploading your picture.');
+    } on Exception catch (ex) {
+      MySnackBar.show(title: 'Error', message: ex.toString());
     }
   }
 
@@ -84,7 +99,7 @@ class FireStore {
       // update user database on Firestore
       String profileURL= await ref.getDownloadURL();
       await FireStore.updateUserValue("profile_image", profileURL);
-
+      CachedNetworkImage.evictFromCache(profileURL);
       return true;
 
     } on FirebaseException catch (e) {

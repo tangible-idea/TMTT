@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:tmtt/firebase/fire_store.dart';
 import 'package:tmtt/src/screens/base/base_fragment_container.dart';
 import 'package:tmtt/src/screens/home/home_controller.dart';
 import 'package:tmtt/src/widgets/app_space.dart';
@@ -53,10 +54,19 @@ class SettingFragment extends GetView<HomeController> {
           AppSpaces.verticalSpace60,
 
           kDebugMode ?
-          BottomPlainButton(
-            text: 'Change your slug [debug mode]',
-            onPressed: () => controller.recreateYourSulg(),
-            enabledObs: RxBool(true),
+          Column(
+            children: [
+              BottomPlainButton(
+                text: 'Change your slug [debug mode]',
+                onPressed: () => controller.recreateYourSulg(),
+                enabledObs: RxBool(true),
+              ),
+              BottomPlainButton(
+                text: 'Download insta photo [debug mode]',
+                onPressed: () => controller.downloadInstagramProfile(),
+                enabledObs: RxBool(true),
+              ),
+            ],
           ) : const SizedBox()
 
 

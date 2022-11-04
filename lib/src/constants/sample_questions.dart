@@ -13,6 +13,7 @@ class Samples {
     "en1_6" : "Tell me your crush, anonymously.",
     "en1_7" : "Tell me your favorite fruit 😋, I'll guess who you are.",
     "en1_8" : "Tell me your favorite dish 😋, I'll guess who you are.",
+    "en1_9" : "Send me anonymous complements.",
 
     "ko1_1" : "아무거나 질문해주세요~ (익명!)",
     "ko1_2" : "가장 임팩트 있는 우리의 추억 말해주면 누군지 맞혀봄! 😎",
@@ -23,6 +24,7 @@ class Samples {
     "ko1_7" : "가장 좋아하는 과일 말해주면 누군지 맞춰볼게요 😋",
     "ko1_8" : "가장 좋아하는 음식 말해주면 누군지 맞춰볼게요 😋",
     "ko1_9" : "올해 나한테 상을 준다면 상이름은? 🏆",
+    "en1_10" : "아무거나 칭찬해주세요~ (익명!)",
 
     "th1_1" : "ผมคิดถึงคุณมาก!",
     "th1_2" : "มีอะไรใหม่บ้าง 😎",
