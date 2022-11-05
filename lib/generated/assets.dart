@@ -34,6 +34,8 @@ class Assets {
   static const String imagesCountryIcon = 'assets/images/country_icon.svg';
   static const String imagesDeviceIcon = 'assets/images/device_icon.svg';
   static const String imagesExplainationSocial = 'assets/images/explaination_social.svg';
+  static const String imagesGreetingGirl = 'assets/images/greeting_girl.svg';
+  static const String imagesGreetingMan = 'assets/images/greeting_man.svg';
   static const String imagesHandHold = 'assets/images/hand_hold.png';
   static const String imagesHello = 'assets/images/hello.png';
   static const String imagesIcBack = 'assets/images/ic_back.svg';
@@ -63,6 +65,8 @@ class Assets {
   static const String imagesTmttLogoWhite36 = 'assets/images/tmtt_logo_white36.png';
   static const String imagesTmttTextStyle1png = 'assets/images/tmtt_text_style1png.png';
   static const String lottieAirplane = 'assets/lottie/airplane.json';
+  static const String lottieAirplane2 = 'assets/lottie/airplane2.json';
+  static const String lottieCheck = 'assets/lottie/check.json';
   static const String lottieEmptyMessage = 'assets/lottie/empty_message.json';
   static const String wwwPrivacypolicy = 'assets/www/privacypolicy.html';
 

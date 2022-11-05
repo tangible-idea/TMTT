@@ -17,7 +17,6 @@ class SettingFragment extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    controller.getDeviceInfoTest();
     return FragmentContainer(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -51,7 +50,7 @@ class SettingFragment extends GetView<HomeController> {
           Center(child: InkWell(
             onTap: ()=> controller.signOut(),
               child: PlainText(text: "Log out", style: MyTextStyle.body16bold.copyWith(color: Colors.redAccent)))),
-          AppSpaces.verticalSpace60,
+          const Spacer(),
 
           kDebugMode ?
           Column(
@@ -64,6 +63,11 @@ class SettingFragment extends GetView<HomeController> {
               BottomPlainButton(
                 text: 'Download insta photo [debug mode]',
                 onPressed: () => controller.downloadInstagramProfile(),
+                enabledObs: RxBool(true),
+              ),
+              BottomPlainButton(
+                text: 'write message [debug mode]',
+                onPressed: () => controller.startWhiteMessageTest(),
                 enabledObs: RxBool(true),
               ),
             ],

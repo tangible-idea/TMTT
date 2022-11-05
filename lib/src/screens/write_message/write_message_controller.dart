@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tmtt/data/model/user.dart';
 import 'package:tmtt/firebase/fire_store.dart';
+import 'package:tmtt/src/constants/URLs.dart';
+import 'package:tmtt/src/network/retrofit_custom_manager.dart';
 import 'package:tmtt/src/screens/base/base_get_controller.dart';
+import 'package:tmtt/src/screens/write_message/message_input_fragment.dart';
 import 'package:tmtt/src/util/info_util.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 import 'package:tmtt/src/util/my_snackbar.dart';
@@ -20,7 +23,7 @@ class WriteMessageController extends BaseGetController {
   @override
   void onInit() {
     Log.d('onInit WriteMessageController');
-    // getUserId();
+    getUserId();
   }
 
   late final inputController = TextEditingController();
@@ -31,8 +34,17 @@ class WriteMessageController extends BaseGetController {
   var currentUserId = '';
   var currentUser = User();
 
+  final writeMessagePage = 0;
+  final loadingPage = 1;
+  final sendSuccessPage = 2;
+
+  var currentPageIndexObs = 0.obs;
+  List<Widget> pages = [
+    const MessageInputFragment(),
+    const MessageSendLoadingFragment()
+  ];
+
   Future<void> getUserId() async {
-    InfoUtil.getAllDeviceInfo();
 
     String userName = Get.parameters['uid'] ?? '';
     currentUserId = userName;
@@ -42,7 +54,7 @@ class WriteMessageController extends BaseGetController {
       return;
     }
     currentUser = user;
-    userNameObs.value = "@${user.userId}";
+    userNameObs.value = "@${user.slugId}";
     userMessageObs.value= user.message;
     userImageObs.value= user.profileImage;
   }
@@ -50,14 +62,27 @@ class WriteMessageController extends BaseGetController {
   Future<void> writeMessage() async {
     String message = inputController.text;
     if(message.isEmpty) { return; }
+    currentPageIndexObs.value = 1;
 
-    FireStore.writeMessage(
+    await FireStore.writeMessage(
         user: currentUser,
         message: message,
         emojiCode: 0
     );
 
-    MySnackBar.show(title: 'send success!');
+    var service = RetrofitCustomManager(
+        baseURL: MyUrl.firebaseFunctionsUrl,
+    ).retrofitService;
+    Log.d('currentUser.documentId: ${currentUser.documentId}');
+
+    await service.sendPush({
+      'senderUid': '',
+      'targetUid': currentUser.documentId,
+      'title': 'new message!',
+      'message': '확인해보셈'
+    });
+
+    // MySnackBar.show(title: 'send success!');
   }
 
   @override

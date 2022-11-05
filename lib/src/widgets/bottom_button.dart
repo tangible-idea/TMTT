@@ -63,6 +63,7 @@ class BottomGrayButton extends StatelessWidget {
 class BottomPlainButton extends StatelessWidget {
 
   String? text;
+  TextStyle? textStyle;
   VoidCallback? onPressed;
   double? fontSize;
   Widget? icon;
@@ -73,6 +74,7 @@ class BottomPlainButton extends StatelessWidget {
   BottomPlainButton({
     Key? key,
     this.text,
+    this.textStyle,
     this.onPressed,
     this.fontSize,
     this.icon,
@@ -111,7 +113,7 @@ class BottomPlainButton extends StatelessWidget {
         style: isEnable ? normalButtonStyle : disabledButtonStyle,
         child: PlainText(
           text: text,
-          style: TextStyle(
+          style: textStyle ?? TextStyle(
             fontWeight: FontWeight.w700,
             fontSize: fontSize ?? 16,
             color: MyColor.white,
@@ -125,7 +127,7 @@ class BottomPlainButton extends StatelessWidget {
         style: isEnable ? normalButtonStyle : disabledButtonStyle,
         label: PlainText(
           text: text,
-          style: TextStyle(
+          style: textStyle ?? TextStyle(
             fontWeight: FontWeight.w600,
             fontSize: fontSize ?? 16,
             color: MyColor.white,

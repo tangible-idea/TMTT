@@ -291,17 +291,23 @@ class HomeController extends BaseGetController {
     );
   }
 
-
   void getDeviceInfoTest() async {
     deviceInfoObs.value = await InfoUtil.getAllDeviceInfo();
   }
 
   void downloadInstagramProfile() async {
     FlutterInsta flutterInsta = FlutterInsta();
-    await flutterInsta.getProfileData("tangibleidea");
+    await flutterInsta.getProfileData("sam_winter_h");
 
     Log.d(flutterInsta.imgurl);
     FireStore.linkMyPhotoFromInstagramAccountToStorage(flutterInsta.imgurl);
+  }
+
+  void startWhiteMessageTest() async {
+    MyNav.pushNamed(
+      // pageName: "/sam_winter_h"
+      pageName: "/marks.photo"
+    );
   }
 
   void recreateYourSulg() {
