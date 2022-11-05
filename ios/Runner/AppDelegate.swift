@@ -73,10 +73,11 @@ import Firebase
         // Assign background image asset and attribution link URL to pasteboard
         let pasteboardItems = [
             [
-                "com.instagram.sharedSticker.stickerImage": imgShare,
+//                 "com.instagram.sharedSticker.stickerImage": imgShare,
                 "com.instagram.sharedSticker.backgroundTopColor": backgroundTopColor,
                 "com.instagram.sharedSticker.backgroundBottomColor": backgroundBottomColor,
-                "com.instagram.sharedSticker.contentURL": attributionURL
+                "com.instagram.sharedSticker.contentURL": attributionURL,
+                "com.instagram.sharedSticker.backgroundImage": imgShare
             ]
         ]
 
