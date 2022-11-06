@@ -39,6 +39,7 @@ class InboxScreen extends GetView<InboxController> {
                         useMargin: false,
                         isPlay: true,
                         profileURL: controller.getProfile(),
+                        data: controller.messageObs.value.docId.substring(0, 3).toUpperCase(),
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 24),

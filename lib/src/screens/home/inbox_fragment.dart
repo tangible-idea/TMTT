@@ -57,8 +57,8 @@ class InboxFragment extends GetView<HomeController> {
     return InkWell(
       onTap: () => controller.onClickMessage(index, data),
       child: InboxItem(
-        tag: 'TM$index',
-        date: data.createDate,
+        tag: "TM$index",
+        data: data.docId.substring(0, 3).toUpperCase(),
         isRead: data.read,
         profileURL: controller.profileURL.value,
       ),

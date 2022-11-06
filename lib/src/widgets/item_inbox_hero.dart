@@ -10,7 +10,7 @@ import 'package:tmtt/src/widgets/plain_text.dart';
 class InboxItem extends StatelessWidget {
 
   String tag = '';
-  String date = '';
+  String data = '';
   bool isRead = false;
   bool useMargin = false;
   bool isPlay = false;
@@ -19,7 +19,7 @@ class InboxItem extends StatelessWidget {
   InboxItem({
     super.key,
     this.tag = '',
-    this.date = '',
+    this.data = '',
     this.isRead = false,
     this.useMargin = true,
     this.isPlay = false,
@@ -40,76 +40,68 @@ class InboxItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
           ),
           child: Center(
-            child: Column(
+            child: Row(
               children: [
-                PlainText(
-                  text: date,
-                  style: MyTextStyle.body,
+                Container(
+                  width: 54,
+                  height: 54,
+                  child: CircleAvatar(
+                    radius: 60,
+                    backgroundColor: MyColor.white,
+                    child: SizedBox(
+                      width: 60,
+                      height: 60,
+                      child: ClipOval(
+                        child: Image.asset(Assets.imagesHandHold),
+                      ),
+                    ),
+                  ),
                 ),
-                Row(
-                  children: [
-                    Container(
-                      width: 54,
-                      height: 54,
+                Expanded(
+                  child: Container(
+                    padding: const EdgeInsets.only(left: 4, right: 4),
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        SvgPicture.asset(Assets.imagesAirplaneLine, fit: BoxFit.cover),
+                        isPlay ? airplaneAnim() : airplaneStatic(),
+                      ],
+                    ),
+                  ),
+                ),
+                profileURL != "" ? Container(
+                  width: 54,
+                  height: 54,
+                  child: CircleAvatar(
+                    radius: 60,
+                    backgroundColor: MyColor.white,
+                    child: SizedBox(
+                      width: 60,
+                      height: 60,
                       child: CircleAvatar(
-                        radius: 60,
-                        backgroundColor: MyColor.white,
-                        child: SizedBox(
-                          width: 60,
-                          height: 60,
-                          child: ClipOval(
-                            child: Image.asset(Assets.imagesHandHold),
-                          ),
+                          backgroundImage: CachedNetworkImageProvider(profileURL ?? ""),
+                          radius: 35
+                      ),
+                    ),
+                  ),
+                ): Container(
+                  width: 54,
+                  height: 54,
+                  child: CircleAvatar(
+                    radius: 60,
+                    backgroundColor: MyColor.white,
+                    child: SizedBox(
+                      width: 60,
+                      height: 60,
+                      child: SizedBox(
+                        width: 60,
+                        height: 60,
+                        child: ClipOval(
+                          child: Image.asset(Assets.imagesHandHold),
                         ),
                       ),
                     ),
-                    Expanded(
-                      child: Container(
-                        padding: const EdgeInsets.only(left: 4, right: 4),
-                        child: Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            SvgPicture.asset(Assets.imagesAirplaneLine, fit: BoxFit.cover),
-                            isPlay ? airplaneAnim() : airplaneStatic(),
-                          ],
-                        ),
-                      ),
-                    ),
-                    profileURL != "" ? Container(
-                      width: 54,
-                      height: 54,
-                      child: CircleAvatar(
-                        radius: 60,
-                        backgroundColor: MyColor.white,
-                        child: SizedBox(
-                          width: 60,
-                          height: 60,
-                          child: CircleAvatar(
-                              backgroundImage: CachedNetworkImageProvider(profileURL ?? ""),
-                              radius: 35
-                          ),
-                        ),
-                      ),
-                    ): Container(
-                      width: 54,
-                      height: 54,
-                      child: CircleAvatar(
-                        radius: 60,
-                        backgroundColor: MyColor.white,
-                        child: SizedBox(
-                          width: 60,
-                          height: 60,
-                          child: SizedBox(
-                            width: 60,
-                            height: 60,
-                            child: ClipOval(
-                              child: Image.asset(Assets.imagesHandHold),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ],
             ),
@@ -129,7 +121,7 @@ class InboxItem extends StatelessWidget {
             Positioned(
               top: 16,
               child: PlainText(
-                text: tag,
+                text: data,
                 style: MyTextStyle.body1Bold.copyWith(
                   fontSize: 10,
                   color: MyColor.kPrimary,
@@ -149,7 +141,7 @@ class InboxItem extends StatelessWidget {
           Positioned(
             top: 16,
             child: PlainText(
-              text: tag,
+              text: data,
               style: MyTextStyle.body1Bold.copyWith(
                 fontSize: 10,
                 color: MyColor.kPrimary,
