@@ -52,6 +52,7 @@ class HomeController extends BaseGetController {
     getInsta();
     loadProfilePicture();
     pushTokenListener();
+    inboxScrollListener();
   }
 
   void getInsta() async {
@@ -251,7 +252,6 @@ class HomeController extends BaseGetController {
     messageInputController.text= randomText;
   }
 
-
   bool isTextValid() {
     if(messageInputController.text.isEmpty) {
       MySnackBar.show(title: 'Please write your message first.');
@@ -279,10 +279,46 @@ class HomeController extends BaseGetController {
 
   /// inbox page
 
+  ScrollController inboxScrollController = ScrollController();
+  int currentInboxPage = 0;
+
+  void onRefreshMyMessage() {
+    FireStore.lastVisibleInbox = null;
+    getMyMessages();
+  }
+
   void getMyMessages() async {
-    var message = await FireStore.getMyMessages();
-    messagesObs.value = message;
-    Log.d(message);
+
+    if(FireStore.lastVisibleInbox == null) {
+      var message = await FireStore.getMyMessagesFirst();
+      messagesObs.value.clear();
+      messagesObs.value.addAll(message);
+      messagesObs.refresh();
+      Log.d('call first page');
+    } else {
+      var message = await FireStore.getMyMessagesNext();
+      if(message == null) { return; }
+      messagesObs.value.addAll(message);
+      messagesObs.refresh();
+      Log.d('call next page');
+    }
+
+    // if(currentInboxPage == 0) {
+    //   currentInboxPage+=1;
+    //   var message = await FireStore.getMyMessagesFirst();
+    //   messagesObs.value.addAll(message);
+    //   messagesObs.refresh();
+    //   Log.d(message);
+    // }
+  }
+
+  void inboxScrollListener() {
+    inboxScrollController.addListener(() {
+      if (inboxScrollController.position.pixels == inboxScrollController.position.maxScrollExtent) {
+        Log.d("detect bottom!");
+        getMyMessages();
+      }
+    });
   }
 
   void onClickMessage(int index, Message data) async {
@@ -315,8 +351,8 @@ class HomeController extends BaseGetController {
 
   void startWhiteMessageTest() async {
     MyNav.pushNamed(
-      // pageName: "/sam_winter_h"
-      pageName: "/marks.photo"
+      pageName: "/sam_winter_h"
+      // pageName: "/marks.photo"
     );
   }
 

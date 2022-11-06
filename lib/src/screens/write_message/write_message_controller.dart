@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tmtt/data/model/hint.dart';
 import 'package:tmtt/data/model/user.dart';
 import 'package:tmtt/firebase/fire_store.dart';
 import 'package:tmtt/src/constants/URLs.dart';
@@ -9,6 +10,7 @@ import 'package:tmtt/src/screens/base/base_get_controller.dart';
 import 'package:tmtt/src/screens/write_message/message_input_fragment.dart';
 import 'package:tmtt/src/screens/write_message/not_found_fragment.dart';
 import 'package:tmtt/src/screens/write_message/send_success_fragment.dart';
+import 'package:tmtt/src/util/info_util.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 
 class WriteMessageBinding implements Bindings {
@@ -24,9 +26,12 @@ class WriteMessageController extends BaseGetController {
   void onInit() {
     Log.d('onInit WriteMessageController');
     getUserId();
+    setHint();
   }
 
   late final inputController = TextEditingController();
+
+  Hint? hint;
 
   var userNameObs = ''.obs;
   var userMessageObs = ''.obs;
@@ -63,14 +68,20 @@ class WriteMessageController extends BaseGetController {
     }
   }
 
+  void setHint() async {
+    hint = await InfoUtil.getHint();
+  }
+
   Future<void> writeMessage() async {
     String message = inputController.text;
     if(message.isEmpty) { return; }
+    if(hint == null) { return; }
     currentPageIndexObs.value = successPage;
 
     await FireStore.writeMessage(
         user: currentUser,
         message: message,
+        hint: hint!,
         emojiCode: 0
     );
 

@@ -190,6 +190,7 @@ class FireStore {
   static Future<void> writeMessage({
     required User user,
     required String message,
+    required Hint hint,
     int emojiCode = 0
   }) async {
 
@@ -200,7 +201,7 @@ class FireStore {
       message: message,
       emojiCode: emojiCode,
       createDate: DateTime.now().toString(),
-      hint: await InfoUtil.getHint(),
+      hint: hint,
     );
 
     await instance
@@ -208,13 +209,40 @@ class FireStore {
         .add(data.toJson());
   }
 
-  static Future<List<Message>> getMyMessages() async {
+  static QueryDocumentSnapshot<Map<String, dynamic>>? lastVisibleInbox;
+  static Future<List<Message>> getMyMessagesFirst() async {
+    lastVisibleInbox = null;
     var docId = await LocalStorage.get(KeyStore.userDocId, '');
     var snapshot = await instance
         .collection(Collections.message)
         .where('receive_user_id', isEqualTo: docId)
         .orderBy('create_date', descending: true)
+        .limit(6)
         .get();
+    lastVisibleInbox = snapshot.docs.last;
+    var messages = <Message>[];
+    for (var doc in snapshot.docs) {
+      var data = Message.fromJson(doc.data());
+      data.docId = doc.id;
+      messages.add(data);
+    }
+    return messages;
+  }
+
+  static Future<List<Message>?> getMyMessagesNext() async {
+    if(lastVisibleInbox == null) {
+      return null;
+    }
+    var docId = await LocalStorage.get(KeyStore.userDocId, '');
+    var snapshot = await instance
+        .collection(Collections.message)
+        .where('receive_user_id', isEqualTo: docId)
+        .orderBy('create_date', descending: true)
+        .startAfterDocument(lastVisibleInbox!)
+        .limit(6)
+        .get();
+
+    lastVisibleInbox = snapshot.docs.last;
     var messages = <Message>[];
     for (var doc in snapshot.docs) {
       var data = Message.fromJson(doc.data());
@@ -224,6 +252,7 @@ class FireStore {
     // messages.sort((a, b) => b.createDate.compareTo(a.createDate));
     return messages;
   }
+
 
   static Future<void> updateReadState(String docId) async {
     await instance
