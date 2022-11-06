@@ -15,13 +15,14 @@ class MessageSendSuccessFragment extends GetView<WriteMessageController> {
     return Center(
       child: Column(
         children: [
-          Container(
-            margin: const EdgeInsets.all(20),
-            child: Lottie.asset(
-              Assets.lottieCheck,
-              repeat: false,
-              width: 210,
-              height: 210,
+          Expanded(
+            child: Container(
+              child: Lottie.asset(
+                Assets.lottieCheck,
+                repeat: false,
+                width: 210,
+                height: 210,
+              ),
             ),
           ),
           PlainText(
