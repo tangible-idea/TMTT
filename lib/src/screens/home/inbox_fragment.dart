@@ -40,13 +40,16 @@ class InboxFragment extends GetView<HomeController> {
                     ],
                   ),
                 )
-                : ListView.builder(
+                : Container(
+                  margin: const EdgeInsets.only(top: 25),
+                  child: ListView.builder(
               scrollDirection: Axis.vertical,
               itemCount: controller.messagesObs.value.length,
               itemBuilder: (BuildContext buildContext, int index) {
-                return messageItem(index, controller.messagesObs.value[index]);
+                  return messageItem(index, controller.messagesObs.value[index]);
               },
             ),
+                ),
           )),
         ],
       ),

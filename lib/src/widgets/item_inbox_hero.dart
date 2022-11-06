@@ -34,8 +34,8 @@ class InboxItem extends StatelessWidget {
       child: Material(
         type: MaterialType.transparency,
         child: Container(
-          padding: const EdgeInsets.only(left: 18, right: 18, top: 30, bottom: 30),
-          margin: useMargin ? const EdgeInsets.only(left: 24, right: 24, top: 6, bottom: 6) : null,
+          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 20),
+          margin: useMargin ? const EdgeInsets.symmetric(horizontal: 18, vertical: 3) : null,
           decoration: BoxDecoration(
             color: MyColor.kSecondary,
             borderRadius: BorderRadius.circular(20),
@@ -77,7 +77,7 @@ class InboxItem extends StatelessWidget {
                   Positioned(
                     left: 40,
                     top: -10,
-                    child: SvgPicture.asset(Assets.imagesCheckbox)) : SizedBox()
+                    child: SvgPicture.asset(Assets.imagesCheckbox)) : const SizedBox()
                 ],),
 
               ],
