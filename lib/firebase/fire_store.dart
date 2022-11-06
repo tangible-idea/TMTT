@@ -217,7 +217,7 @@ class FireStore {
         .collection(Collections.message)
         .where('receive_user_id', isEqualTo: docId)
         .orderBy('create_date', descending: true)
-        .limit(6)
+        .limit(10)
         .get();
     lastVisibleInbox = snapshot.docs.last;
     var messages = <Message>[];
@@ -239,7 +239,7 @@ class FireStore {
         .where('receive_user_id', isEqualTo: docId)
         .orderBy('create_date', descending: true)
         .startAfterDocument(lastVisibleInbox!)
-        .limit(6)
+        .limit(10)
         .get();
 
     lastVisibleInbox = snapshot.docs.last;
