@@ -15,16 +15,15 @@ class NotFoundUserFragment extends GetView<WriteMessageController> {
     return Center(
       child: Column(
         children: [
-          Container(
-            margin: const EdgeInsets.all(20),
-            child: Lottie.asset(
-              Assets.lottieEmptyMessage,
-              // repeat: false,
-              width: 300,
-              height: 300,
+          Expanded(
+            child: Container(
+              child: Lottie.asset(
+                Assets.lottieEmptyMessage,
+              ),
             ),
           ),
           PlainText(
+            marginTop: 10,
             text: "user not found!",
             align: TextAlign.center,
           )
