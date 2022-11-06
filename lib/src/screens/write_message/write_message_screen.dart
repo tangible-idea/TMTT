@@ -31,10 +31,10 @@ class WriteMessageScreen extends GetView<WriteMessageController> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  controller.pages[controller.currentPageIndexObs.value],
-                  const Spacer(),
+                  Expanded(
+                    child: controller.pages[controller.currentPageIndexObs.value],
+                  ),
                   DownLoadAdvertiseItem(),
-                  const Spacer(),
                 ],
               ),
             ),

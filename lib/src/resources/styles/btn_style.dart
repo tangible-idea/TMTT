@@ -91,7 +91,7 @@ class BtnStyle {
   static ButtonStyle whiteOutlineRadius2 = OutlinedButton.styleFrom(
       backgroundColor: MyColor.white,
       side: const BorderSide(color: MyColor.kPrimary, width: 0.8),
-      padding: const EdgeInsets.all(15),
+      padding: const EdgeInsets.all(24),
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(18))
       )

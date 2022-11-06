@@ -7,9 +7,9 @@ import 'package:tmtt/src/constants/URLs.dart';
 import 'package:tmtt/src/network/retrofit_custom_manager.dart';
 import 'package:tmtt/src/screens/base/base_get_controller.dart';
 import 'package:tmtt/src/screens/write_message/message_input_fragment.dart';
-import 'package:tmtt/src/util/info_util.dart';
+import 'package:tmtt/src/screens/write_message/not_found_fragment.dart';
+import 'package:tmtt/src/screens/write_message/send_success_fragment.dart';
 import 'package:tmtt/src/util/my_logger.dart';
-import 'package:tmtt/src/util/my_snackbar.dart';
 
 class WriteMessageBinding implements Bindings {
   @override
@@ -34,14 +34,15 @@ class WriteMessageController extends BaseGetController {
   var currentUserId = '';
   var currentUser = User();
 
-  final writeMessagePage = 0;
-  final loadingPage = 1;
+  final writePage = 0;
+  final successPage = 1;
   final sendSuccessPage = 2;
 
   var currentPageIndexObs = 0.obs;
   List<Widget> pages = [
     const MessageInputFragment(),
-    const MessageSendLoadingFragment()
+    const MessageSendSuccessFragment(),
+    const NotFoundUserFragment()
   ];
 
   Future<void> getUserId() async {
@@ -50,7 +51,8 @@ class WriteMessageController extends BaseGetController {
     currentUserId = userName;
     var user = await FireStore.searchUserSlug(userName);
     if (user == null) {
-      userNameObs.value = 'not found user id';
+      // userNameObs.value = 'not found user id';
+      currentPageIndexObs.value = sendSuccessPage;
       return;
     }
     currentUser = user;
@@ -64,7 +66,7 @@ class WriteMessageController extends BaseGetController {
   Future<void> writeMessage() async {
     String message = inputController.text;
     if(message.isEmpty) { return; }
-    currentPageIndexObs.value = 1;
+    currentPageIndexObs.value = successPage;
 
     await FireStore.writeMessage(
         user: currentUser,
@@ -84,7 +86,6 @@ class WriteMessageController extends BaseGetController {
       'message': '확인해보셈'
     });
 
-    // MySnackBar.show(title: 'send success!');
   }
 
   @override

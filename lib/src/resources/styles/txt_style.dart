@@ -76,7 +76,6 @@ class MyTextStyle {
   static const TextStyle body2Bold = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w700,
-    
   );
 
   static const TextStyle caption2Bold = TextStyle(

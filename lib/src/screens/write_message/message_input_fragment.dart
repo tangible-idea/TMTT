@@ -13,34 +13,6 @@ import 'package:tmtt/src/widgets/plain_text.dart';
 
 import 'write_message_controller.dart';
 
-class MessageSendLoadingFragment extends GetView<WriteMessageController> {
-
-  const MessageSendLoadingFragment({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          Container(
-            width: 210,
-            height: 210,
-            margin: const EdgeInsets.all(20),
-            child: Lottie.asset(
-              Assets.lottieCheck,
-              repeat: false,
-            ),
-          ),
-          PlainText(
-            text: "Your message has been sent\nanonymously!",
-            align: TextAlign.center,
-          )
-        ],
-      ),
-    );
-  }
-}
-
 class MessageInputFragment extends GetView<WriteMessageController> {
 
   const MessageInputFragment({super.key});
