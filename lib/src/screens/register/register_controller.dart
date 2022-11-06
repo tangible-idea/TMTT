@@ -71,11 +71,20 @@ class RegisterController extends BaseGetController {
     }
     return null;
   }
+  List<String> blockList = [
+    "splash",
+    "register",
+    "createslug",
+    "home",
+    "inbox",
+    "privacy"
+  ];
 
   // slug 만들기
   void createYourSlug(String slug) async {
     errorObs.value= errorText; // run validation.
     if(errorObs.value != null) return; // return on validation error.
+    if(blockList.contains(slug)) return; // (주의) 슬러그가 페이지명과 겹치면 안된다.
 
     var trimmedSlug= slug.trim();
 
