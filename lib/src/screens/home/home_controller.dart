@@ -6,6 +6,7 @@ import 'dart:ui';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_user;
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -35,6 +36,8 @@ import 'package:tmtt/src/util/posting_helper.dart';
 import 'package:widgets_to_image/widgets_to_image.dart';
 
 import '../../constants/sample_questions.dart';
+import '../../resources/styles/my_color.dart';
+import '../../util/my_dialog.dart';
 
 class HomeBinding implements Bindings {
   @override
@@ -181,7 +184,7 @@ class HomeController extends BaseGetController {
     var text = messageInputController.text;
     if(text.isEmpty) { return; }
     await FireStore.editMyLastMessage(text);
-    MySnackBar.show(title: 'edit success!');
+    Log.d('edit successful!');
     myInfoObs.value.message = text;
   }
 
@@ -274,7 +277,8 @@ class HomeController extends BaseGetController {
     }else{
       result = await PostingHelper.shareOnInstagram(message: message);
     }
-    MySnackBar.show(title: result);
+    //MySnackBar.show(title: result);
+    Log.d(result);
   }
 
   /// inbox page
@@ -331,6 +335,23 @@ class HomeController extends BaseGetController {
     MyNav.pushReplacementNamed(
       pageName: PageName.register,
     );
+  }
+
+  void sendFeedback() {
+
+  }
+
+  void deactiveYourAccount() {
+
+  }
+
+  void showLanguageList(BuildContext context) async {
+
+  }
+
+
+  void changeAppLanguage(String lang) {
+    //Get.updateLocale()
   }
 
   void openPrivacy() {
