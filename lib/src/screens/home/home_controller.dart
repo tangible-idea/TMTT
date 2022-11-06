@@ -21,6 +21,7 @@ import 'package:tmtt/data/model/user.dart';
 import 'package:tmtt/firebase/fire_store.dart';
 import 'package:tmtt/pages.dart';
 import 'package:tmtt/src/constants/URLs.dart';
+import 'package:tmtt/src/resources/languages/languages.dart';
 import 'package:tmtt/src/screens/base/base_get_controller.dart';
 import 'package:tmtt/src/screens/home/home_fragment.dart';
 import 'package:tmtt/src/screens/home/inbox_fragment.dart';
@@ -92,6 +93,9 @@ class HomeController extends BaseGetController {
 
   var profileURL= ''.obs;
   var isProfileLoading= false.obs; // 사진 로딩중 shimemring
+
+  var focusedLang= ''.obs; // 설정에서 사용
+  var selectedLang= ''.obs; // 설정에서 사용
 
   WidgetsToImageController captureController = WidgetsToImageController(); // in order to capture rounded profile.
 
@@ -373,6 +377,7 @@ class HomeController extends BaseGetController {
     );
   }
 
+
   void sendFeedback() {
 
   }
@@ -386,7 +391,12 @@ class HomeController extends BaseGetController {
   }
 
 
-  void changeAppLanguage(String lang) {
+  void changeAppLanguage() {
+    switch(focusedLang.value) {
+      case "Korean": Get.updateLocale(LocaleKey.koKR); break;
+      case "English": Get.updateLocale(LocaleKey.enUS); break;
+      case "Thai": Get.updateLocale(LocaleKey.thTH); break;
+    }
     //Get.updateLocale()
   }
 

@@ -10,7 +10,7 @@ class MyDialog {
 
 
   // This shows a CupertinoModalPopup with a reasonable fixed height which hosts CupertinoPicker.
-  static void showCupertinoDialog(BuildContext context, Widget child) {
+  static void showCupertinoDialog(BuildContext context, Widget child, Color? background) {
     showCupertinoModalPopup<void>(
         context: context,
         builder: (BuildContext context) => Container(
@@ -21,7 +21,7 @@ class MyDialog {
             bottom: MediaQuery.of(context).viewInsets.bottom,
           ),
           // Provide a background color for the popup.
-          color: CupertinoColors.systemBackground.resolveFrom(context),
+          color: background ?? CupertinoColors.systemBackground.resolveFrom(context),
           // Use a SafeArea widget to avoid system overlaps.
           child: SafeArea(
             top: false,

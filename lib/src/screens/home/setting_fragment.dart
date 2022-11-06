@@ -1,4 +1,6 @@
 
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -24,11 +26,17 @@ class SettingFragment extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
 
-    const double _kItemExtent = 32.0;
-    const List<String> _languages = <String>[
+
+    const double kItemExtent = 32.0;
+    const List<String> languages = <String>[
       'Korean',
       'English',
       'Thai',
+    ];
+    const List<String> languageCodes = <String>[
+      'ko',
+      'en',
+      'th',
     ];
 
     return FragmentContainer(
@@ -36,9 +44,6 @@ class SettingFragment extends GetView<HomeController> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Obx(() => PlainText(
-          //   text: controller.deviceInfoObs.value,
-          // )),
 
           AppSpaces.verticalSpace20,
 
@@ -48,25 +53,48 @@ class SettingFragment extends GetView<HomeController> {
 
           InkWell(
               onTap: () => MyDialog.showCupertinoDialog(context,
-                CupertinoPicker(
-                magnification: 1.22,
-                squeeze: 1.2,
-                useMagnifier: true,
-                itemExtent: _kItemExtent,
-                // This is called when selected item is changed.
-                onSelectedItemChanged: (int selectedItem) {
-                  controller.changeAppLanguage(_languages[selectedItem].toString());
-                },
-                children:
-                List<Widget>.generate(_languages.length, (int index) {
-                  return Center(
-                    child: Text(
-                      _languages[index],
-                    ),
-                  );
-                }),
-              ),),
-              child: SettingItem(title: 'Language', subtitle: 'Change your app language.', icon: Icons.language,)),
+                Obx(()=> Column(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              color: MyColor.kLightBackground),
+                          child: CupertinoPicker(
+                          magnification: 1.22,
+                          squeeze: 1.2,
+                          useMagnifier: true,
+                          itemExtent: kItemExtent,
+                          scrollController: FixedExtentScrollController(
+                              initialItem: languageCodes.indexOf(Get.locale!.languageCode)
+                          ),
+                          // This is called when selected item is changed.
+                          onSelectedItemChanged: (int selectedItem) {
+                            //int indexOfLocale= languageCodes.indexOf(window.locale.languageCode);
+
+                            //controller.changeAppLanguage(_languages[selectedItem].toString());
+                            controller.focusedLang.value= languages[selectedItem].toString();
+                          },
+                          children: [
+                              ...languages.map((e) => Text(e,
+                                style: MyTextStyle.body16.copyWith(color: MyColor.kPrimary, fontSize: 28),
+                              ))
+                            ]
+                          ),
+                        ),
+                      ),
+                      BottomPlainButton(
+                          text: "Select ${controller.focusedLang.value}",
+                          enabledObs: RxBool(true),
+                          onPressed: () {
+                              controller.changeAppLanguage();
+                              Get.back();
+                            },)
+                    ],
+                  ),
+                ), MyColor.kLightBackground),
+              child: SettingItem(title: 'Language', subtitle: 'Change your app language.', icon: Icons.language,)
+          ),
 
 
           // InkWell(
