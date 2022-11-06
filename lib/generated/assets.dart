@@ -16,12 +16,10 @@ class Assets {
   static const String fontsRubikSb = 'assets/fonts/rubik_sb.ttf';
   static const String imagesAirplane = 'assets/images/airplane.svg';
   static const String imagesAirplaneLine = 'assets/images/airplane_line.svg';
+  static const String imagesAnonymous = 'assets/images/anonymous.svg';
   static const String imagesBackArrow = 'assets/images/back_arrow.svg';
-  static const String imagesBackground1 = 'assets/images/background1.png';
-  static const String imagesBackground2 = 'assets/images/background2.png';
-  static const String imagesBackground3 = 'assets/images/background3.png';
-  static const String imagesBackground4 = 'assets/images/background4.png';
-  static const String imagesBackground5 = 'assets/images/background5.png';
+  static const String imagesBackground51 = 'assets/images/background5_1.png';
+  static const String imagesBackground52 = 'assets/images/background5_2.png';
   static const String imagesBackground7 = 'assets/images/background7.png';
   static const String imagesBackground8 = 'assets/images/background8.png';
   static const String imagesBirdHello = 'assets/images/bird_hello.png';

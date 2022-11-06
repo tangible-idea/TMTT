@@ -10,6 +10,7 @@ import 'package:tmtt/src/bottom_dialog/hint_dialog.dart';
 import 'package:tmtt/src/util/inapp_purchase_util.dart';
 import 'package:tmtt/src/util/my_dialog.dart';
 import 'package:tmtt/src/util/my_logger.dart';
+import 'package:tmtt/src/util/my_snackbar.dart';
 import 'package:tmtt/src/util/posting_helper.dart';
 import 'package:tmtt/src/util/posting_helper.dart';
 import 'package:widgets_to_image/widgets_to_image.dart';
@@ -51,7 +52,7 @@ class InboxController extends BaseGetController {
     if(bytes != null) {
       PostingHelper.shareOnInstagramReply(bytes);
     }else{
-
+      MySnackBar.show(title: "Error", message: "There's an error while replying.");
     }
 
   }

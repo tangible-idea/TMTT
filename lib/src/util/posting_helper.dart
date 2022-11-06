@@ -5,16 +5,22 @@ import 'dart:math';
 
 import 'dart:ui' as ui;
 
+import 'package:firebase_core_platform_interface/firebase_core_platform_interface.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:image/image.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:tmtt/firebase/fire_store.dart';
 import 'package:tmtt/src/resources/styles/my_color.dart';
 import 'package:tmtt/src/util/file_manager.dart';
 import 'package:tmtt/src/util/image_util.dart';
 import 'package:tmtt/src/util/textpainter.dart';
 import 'package:widgets_to_image/widgets_to_image.dart';
+
+import 'package:http/http.dart' as http;
+
+import 'my_snackbar.dart';
 
 extension on String {
   List<String> splitByLength(int length) =>
@@ -31,14 +37,14 @@ class PostingHelper {
   }
 
   // 인스타에 공유하기
-  static Future<String> shareOnInstagram({String message = ''}) async {
+  static Future<String> shareOnInstagram({String message = '', Uint8List? profileImageBytes}) async {
 
     // get path to save image.
     String dirToSave= await _localPath;
 
     // Load story background image.
-    var backgroundImage= await ImageUtils.imageToFile(imageName: 'background5.png');
-    final image = decodeImage(File(backgroundImage.path).readAsBytesSync())!;
+    File backgroundImage= await ImageUtils.imageToFile(imageName: 'background5_2.png');
+    final image = decodeImage(backgroundImage.readAsBytesSync())!;
 
     // Text를 이미지로 전환한다.
     final painterDesc = CustomTextPainter(message, 60.0, color: MyColor.kGrey1);
@@ -59,21 +65,34 @@ class PostingHelper {
       // 원본 이미지에 텍스트를 canvas로 그려서 입힌다. (가운데 좌표)
       drawImage(image, decodePng(listFont!)!,
           dstX: 150,
-          dstY: 400,
+          dstY: 510,
           dstW: painterDesc.pictureW.toInt(),
           dstH: painterDesc.pictureH.toInt());
     }
 
     // Load character image.
     var randomInt= Random().nextInt(2)+1;
-    var characterFile= await ImageUtils.imageToFile(imageName: 'character_cat_$randomInt.png');
-    final characterImage = decodeImage(File(characterFile.path).readAsBytesSync())!;
+    File characterFile= await ImageUtils.imageToFile(imageName: 'character_cat_$randomInt.png');
+    final characterImage = decodeImage(characterFile.readAsBytesSync())!;
 
     drawImage(image, characterImage,
         dstX: 0,
-        dstY: 700,
+        dstY: 800,
         dstW: characterImage.width.toInt(),
         dstH: characterImage.height.toInt());
+
+    // Load profile image. if it exists.
+    if(profileImageBytes != null) {
+      final profileImage = decodeImage(profileImageBytes)!;
+      drawImage(image, profileImage,
+          dstX: 630,
+          dstY: 325,
+          dstW: profileImage.width.toInt() ~/ 3,
+          dstH: profileImage.height.toInt() ~/ 3);
+    }
+
+    var myInfo= await FireStore.getMyInfo();
+    drawString(image, arial_24, 630, 300, "@${myInfo?.slugId}");
 
     // Save the image to disk as a PNG
     String filePath= '$dirToSave/export.png';
@@ -128,9 +147,9 @@ class PostingHelper {
     Map<String, dynamic> arguments = {
       "imagePath": filePath
     };
-    final String resultFromAndroid= await _shareInstaChannel.invokeMethod("shareInstagramImageStoryWithSticker", arguments);
+    final String resultFromNative= await _shareInstaChannel.invokeMethod("shareInstagramImageStoryWithSticker", arguments);
 
-    return resultFromAndroid;
+    return resultFromNative;
   }
 
 
