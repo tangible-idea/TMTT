@@ -12,6 +12,7 @@ import 'package:tmtt/src/widgets/bottom_button.dart';
 import 'package:tmtt/src/widgets/common/custom_widget.dart';
 import 'package:tmtt/src/widgets/plain_text.dart';
 import 'package:tmtt/src/widgets/plain_text_field.dart';
+import 'package:widgets_to_image/widgets_to_image.dart';
 
 import '../../../generated/assets.dart';
 import '../../resources/languages/strings.dart';
@@ -27,12 +28,15 @@ class HomeFragment extends GetView<HomeController> {
       return const CustomWidget.circular(width: 70, height: 70);
     }else{
       if(controller.profileURL.value != "") {
-        return CircleAvatar(
-            backgroundColor: Colors.white, radius: 37,
-            child: CircleAvatar(
-              backgroundImage: CachedNetworkImageProvider(controller.profileURL.value),
-              radius: 35),
-          );
+        return WidgetsToImage(
+          controller: controller.captureController,
+          child: CircleAvatar(
+              backgroundColor: Colors.white, radius: 37,
+              child: CircleAvatar(
+                backgroundImage: CachedNetworkImageProvider(controller.profileURL.value),
+                radius: 35),
+            ),
+        );
       }else{
         return SvgPicture.asset(Assets.imagesInviteYourprofile);
       }

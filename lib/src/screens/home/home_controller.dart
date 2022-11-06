@@ -32,6 +32,7 @@ import 'package:tmtt/src/util/my_logger.dart';
 import 'package:tmtt/src/util/my_navigator.dart';
 import 'package:tmtt/src/util/my_snackbar.dart';
 import 'package:tmtt/src/util/posting_helper.dart';
+import 'package:widgets_to_image/widgets_to_image.dart';
 
 import '../../constants/sample_questions.dart';
 
@@ -87,6 +88,8 @@ class HomeController extends BaseGetController {
 
   var profileURL= ''.obs;
   var isProfileLoading= false.obs; // 사진 로딩중 shimemring
+
+  WidgetsToImageController captureController = WidgetsToImageController(); // in order to capture rounded profile.
 
   void pushTokenListener() async {
 
@@ -263,7 +266,14 @@ class HomeController extends BaseGetController {
     if(!isTextValid()) return; // validation check
 
     var message = messageInputController.text;
-    var result = await PostingHelper.shareOnInstagram(message: message);
+    String result= '';
+
+    final bytes = await captureController.capture();
+    if(bytes != null) {
+      result = await PostingHelper.shareOnInstagram(message: message, profileImageBytes: bytes);
+    }else{
+      result = await PostingHelper.shareOnInstagram(message: message);
+    }
     MySnackBar.show(title: result);
   }
 
