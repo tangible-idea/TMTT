@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tmtt/generated/assets.dart';
 import 'package:tmtt/src/resources/styles/my_color.dart';
 import 'package:tmtt/src/resources/styles/txt_style.dart';
+import 'package:tmtt/src/widgets/app_space.dart';
 import 'package:tmtt/src/widgets/plain_text.dart';
 
 class InboxItem extends StatelessWidget {
@@ -42,24 +43,16 @@ class InboxItem extends StatelessWidget {
           child: Center(
             child: Row(
               children: [
-                Container(
-                  width: 54,
-                  height: 54,
-                  child: CircleAvatar(
-                    radius: 60,
-                    backgroundColor: MyColor.white,
-                    child: SizedBox(
-                      width: 60,
-                      height: 60,
-                      child: ClipOval(
-                        child: Image.asset(Assets.imagesHandHold),
-                      ),
-                    ),
+                SizedBox(
+                  width: 60,
+                  height: 60,
+                  child: ClipOval(
+                    child: Image.asset(Assets.imagesAnonymous),
                   ),
                 ),
                 Expanded(
                   child: Container(
-                    padding: const EdgeInsets.only(left: 4, right: 4),
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
                     child: Stack(
                       alignment: Alignment.center,
                       children: [
@@ -69,40 +62,24 @@ class InboxItem extends StatelessWidget {
                     ),
                   ),
                 ),
-                profileURL != "" ? Container(
-                  width: 54,
-                  height: 54,
-                  child: CircleAvatar(
-                    radius: 60,
-                    backgroundColor: MyColor.white,
-                    child: SizedBox(
-                      width: 60,
-                      height: 60,
+
+                Stack(children: [
+                  profileURL != "" ? SizedBox(width: 60, height: 60,
                       child: CircleAvatar(
-                          backgroundImage: CachedNetworkImageProvider(profileURL ?? ""),
-                          radius: 35
-                      ),
+                        backgroundImage: CachedNetworkImageProvider(profileURL ?? ""),
+                        radius: 35
                     ),
+                  ): ClipOval(
+                    child: Image.asset(Assets.imagesHandHold),
                   ),
-                ): Container(
-                  width: 54,
-                  height: 54,
-                  child: CircleAvatar(
-                    radius: 60,
-                    backgroundColor: MyColor.white,
-                    child: SizedBox(
-                      width: 60,
-                      height: 60,
-                      child: SizedBox(
-                        width: 60,
-                        height: 60,
-                        child: ClipOval(
-                          child: Image.asset(Assets.imagesHandHold),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+
+                  isRead ?
+                  Positioned(
+                    left: 40,
+                    top: -10,
+                    child: SvgPicture.asset(Assets.imagesCheckbox)) : SizedBox()
+                ],),
+
               ],
             ),
           ),

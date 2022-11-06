@@ -16,7 +16,7 @@ class Assets {
   static const String fontsRubikSb = 'assets/fonts/rubik_sb.ttf';
   static const String imagesAirplane = 'assets/images/airplane.svg';
   static const String imagesAirplaneLine = 'assets/images/airplane_line.svg';
-  static const String imagesAnonymous = 'assets/images/anonymous.svg';
+  static const String imagesAnonymous = 'assets/images/anonymous.png';
   static const String imagesBackArrow = 'assets/images/back_arrow.svg';
   static const String imagesBackground51 = 'assets/images/background5_1.png';
   static const String imagesBackground52 = 'assets/images/background5_2.png';
@@ -29,6 +29,7 @@ class Assets {
   static const String imagesCarrierIcon = 'assets/images/carrier_icon.svg';
   static const String imagesCharacterCat1 = 'assets/images/character_cat_1.png';
   static const String imagesCharacterCat2 = 'assets/images/character_cat_2.png';
+  static const String imagesCheckbox = 'assets/images/checkbox.svg';
   static const String imagesCountryIcon = 'assets/images/country_icon.svg';
   static const String imagesDeviceIcon = 'assets/images/device_icon.svg';
   static const String imagesExplainationSocial = 'assets/images/explaination_social.svg';
