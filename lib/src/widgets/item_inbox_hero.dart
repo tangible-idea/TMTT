@@ -10,6 +10,7 @@ import 'package:tmtt/src/widgets/plain_text.dart';
 class InboxItem extends StatelessWidget {
 
   String tag = '';
+  String date = '';
   bool isRead = false;
   bool useMargin = false;
   bool isPlay = false;
@@ -18,6 +19,7 @@ class InboxItem extends StatelessWidget {
   InboxItem({
     super.key,
     this.tag = '',
+    this.date = '',
     this.isRead = false,
     this.useMargin = true,
     this.isPlay = false,
@@ -38,68 +40,76 @@ class InboxItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
           ),
           child: Center(
-            child: Row(
+            child: Column(
               children: [
-                Container(
-                  width: 54,
-                  height: 54,
-                  child: CircleAvatar(
-                    radius: 60,
-                    backgroundColor: MyColor.white,
-                    child: SizedBox(
-                      width: 60,
-                      height: 60,
-                      child: ClipOval(
-                        child: Image.asset(Assets.imagesHandHold),
-                      ),
-                    ),
-                  ),
+                PlainText(
+                  text: date,
+                  style: MyTextStyle.body,
                 ),
-                Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.only(left: 4, right: 4),
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        SvgPicture.asset(Assets.imagesAirplaneLine, fit: BoxFit.cover),
-                        isPlay ? airplaneAnim() : airplaneStatic(),
-                      ],
-                    ),
-                  ),
-                ),
-                profileURL != "" ? Container(
-                  width: 54,
-                  height: 54,
-                  child: CircleAvatar(
-                    radius: 60,
-                    backgroundColor: MyColor.white,
-                    child: SizedBox(
-                      width: 60,
-                      height: 60,
+                Row(
+                  children: [
+                    Container(
+                      width: 54,
+                      height: 54,
                       child: CircleAvatar(
-                          backgroundImage: CachedNetworkImageProvider(profileURL ?? ""),
-                          radius: 35
-                      ),
-                    ),
-                  ),
-                ): Container(
-                  width: 54,
-                  height: 54,
-                  child: CircleAvatar(
-                    radius: 60,
-                    backgroundColor: MyColor.white,
-                    child: SizedBox(
-                      width: 60,
-                      height: 60,
-                      child: SizedBox(
-                        width: 60,
-                        height: 60,
-                        child: ClipOval(
-                          child: Image.asset(Assets.imagesHandHold),
+                        radius: 60,
+                        backgroundColor: MyColor.white,
+                        child: SizedBox(
+                          width: 60,
+                          height: 60,
+                          child: ClipOval(
+                            child: Image.asset(Assets.imagesHandHold),
+                          ),
                         ),
                       ),
                     ),
-                  ),
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.only(left: 4, right: 4),
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            SvgPicture.asset(Assets.imagesAirplaneLine, fit: BoxFit.cover),
+                            isPlay ? airplaneAnim() : airplaneStatic(),
+                          ],
+                        ),
+                      ),
+                    ),
+                    profileURL != "" ? Container(
+                      width: 54,
+                      height: 54,
+                      child: CircleAvatar(
+                        radius: 60,
+                        backgroundColor: MyColor.white,
+                        child: SizedBox(
+                          width: 60,
+                          height: 60,
+                          child: CircleAvatar(
+                              backgroundImage: CachedNetworkImageProvider(profileURL ?? ""),
+                              radius: 35
+                          ),
+                        ),
+                      ),
+                    ): Container(
+                      width: 54,
+                      height: 54,
+                      child: CircleAvatar(
+                        radius: 60,
+                        backgroundColor: MyColor.white,
+                        child: SizedBox(
+                          width: 60,
+                          height: 60,
+                          child: SizedBox(
+                            width: 60,
+                            height: 60,
+                            child: ClipOval(
+                              child: Image.asset(Assets.imagesHandHold),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

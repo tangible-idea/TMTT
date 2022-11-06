@@ -45,7 +45,8 @@ class WriteMessageScreen extends GetView<WriteMessageController> {
                 child: CircleAvatar(
                     radius: 50,
                     backgroundColor: MyColor.kLightBackground,
-                    foregroundImage: CachedNetworkImageProvider(controller.userImageObs.value)),
+                    foregroundImage: NetworkImage(controller.userImageObs.value),
+                ),
               ),
             ),
           ],

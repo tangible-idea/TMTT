@@ -58,6 +58,7 @@ class InboxFragment extends GetView<HomeController> {
       onTap: () => controller.onClickMessage(index, data),
       child: InboxItem(
         tag: 'TM$index',
+        date: data.createDate,
         isRead: data.read,
         profileURL: controller.profileURL.value,
       ),

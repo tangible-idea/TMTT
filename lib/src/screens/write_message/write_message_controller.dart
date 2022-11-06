@@ -56,7 +56,9 @@ class WriteMessageController extends BaseGetController {
     currentUser = user;
     userNameObs.value = "@${user.slugId}";
     userMessageObs.value= user.message;
-    userImageObs.value= user.profileImage;
+    if(user.profileImage.isNotEmpty) {
+      userImageObs.value= user.profileImage;
+    }
   }
 
   Future<void> writeMessage() async {

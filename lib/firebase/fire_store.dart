@@ -168,8 +168,8 @@ class FireStore {
   /// slug_id -> User
   static Future<User?> searchUserSlug(String userSlug) async {
 
-    var myUID= FireAuth.getMyUID();
-    if(myUID == "") { return null; }
+    // var myUID= FireAuth.getMyUID();
+    // if(myUID == "") { return null; }
 
     var snapshot = await instance
         .collection(Collections.users)
@@ -213,6 +213,7 @@ class FireStore {
     var snapshot = await instance
         .collection(Collections.message)
         .where('receive_user_id', isEqualTo: docId)
+        .orderBy('create_date', descending: true)
         .get();
     var messages = <Message>[];
     for (var doc in snapshot.docs) {
@@ -220,7 +221,7 @@ class FireStore {
       data.docId = doc.id;
       messages.add(data);
     }
-    messages.sort((a, b) => b.createDate.compareTo(a.createDate));
+    // messages.sort((a, b) => b.createDate.compareTo(a.createDate));
     return messages;
   }
 
