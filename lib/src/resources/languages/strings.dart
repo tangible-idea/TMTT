@@ -46,18 +46,14 @@ class Strings {
   static String messageHint6 = 'messageHint6';
   static String messageHint7 = 'messageHint7';
 
-  // desc == description
-  static String permissionScreenDesc1 = 'permissionScreenDesc1';
-  static String permissionScreenDesc2 = 'permissionScreenDesc2';
-  static String permissionScreenDesc3 = 'permissionScreenDesc3';
-  static String permissionScreenDesc4 = 'permissionScreenDesc4';
-  static String permissionScreenDesc5 = 'permissionScreenDesc5';
-  static String permissionScreenDesc6 = 'permissionScreenDesc6';
-
-  static String danalLoginDesc1 = 'danalLoginDesc1';
-  static String danalLoginDesc2 = 'danalLoginDesc2';
-  static String danalLoginDesc3 = 'danalLoginDesc3';
-  static String danalLoginDesc4 = 'danalLoginDesc4';
+  static String settingFeedback1 = 'settingFeedback1';
+  static String settingFeedback2 = 'settingFeedback2';
+  static String settingLanguage1 = 'settingLanguage1';
+  static String settingLanguage2 = 'settingLanguage2';
+  static String settingDeactivate1 = 'settingDeactivate1';
+  static String settingDeactivate2 = 'settingDeactivate2';
+  static String settingPrivacypolicy1 = 'settingPrivacypolicy1';
+  static String settingPrivacypolicy2 = 'settingPrivacypolicy2';
 
   static String termsDesc1 = 'termsDesc1';
   static String termsDesc2 = 'termsDesc2';

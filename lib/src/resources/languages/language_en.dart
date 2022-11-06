@@ -24,6 +24,16 @@ Map<String, String> translations_en = {
   Strings.homeButtonCopyLink: "Copy link",
   Strings.homeButtonShare: "Share",
 
+  // Settings
+  Strings.settingFeedback1 : 'Feedback',
+  Strings.settingFeedback2 : 'Report technical issues\nor suggest new features.',
+  Strings.settingLanguage1 : 'Language',
+  Strings.settingLanguage2 : 'Change your app language.',
+  Strings.settingDeactivate1 : 'Deactivate Account',
+  Strings.settingDeactivate2 : 'This cannot be undone.',
+  Strings.settingPrivacypolicy1 : 'Privacy policy',
+  Strings.settingPrivacypolicy2 : 'Read privacy policy of TMTT',
+
   // create your slug page
   Strings.slugCreateError1 : 'There is another user with the same slug.',
   Strings.slugCreateError2 : '',

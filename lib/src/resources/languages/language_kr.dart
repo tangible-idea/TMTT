@@ -45,6 +45,15 @@ Map<String, String> translations_kr = {
   Strings.messageHint6 : '기기명',
   Strings.messageHint7 : '소프트웨어',
 
+  Strings.settingFeedback1 : '피드백',
+  Strings.settingFeedback2 : '기술적인 문제 또는 제안사항.',
+  Strings.settingLanguage1 : '언어',
+  Strings.settingLanguage2 : '언어 변경',
+  Strings.settingDeactivate1 : '계정 비활성화',
+  Strings.settingDeactivate2 : '비활성화시 되돌릴 수 없습니다.',
+  Strings.settingPrivacypolicy1 : '개인정보 처리방침',
+  Strings.settingPrivacypolicy2 : '고객님의 정보를 소중하게 여겨요.',
+
   Strings.emailLoginDesc1: '이메일 로그인',
   Strings.emailLoginDesc2: '이메일 계정',
   Strings.emailLoginDesc3: '비밀번호 입력',

@@ -14,6 +14,7 @@ import 'package:tmtt/src/widgets/app_space.dart';
 import 'package:tmtt/src/widgets/bottom_button.dart';
 import 'package:tmtt/src/widgets/plain_text.dart';
 
+import '../../resources/languages/strings.dart';
 import '../../resources/styles/btn_style.dart';
 import '../../resources/styles/my_color.dart';
 import '../../resources/styles/txt_style.dart';
@@ -49,7 +50,7 @@ class SettingFragment extends GetView<HomeController> {
 
           InkWell(
               onTap: ()=> controller.openPrivacy(),
-              child: SettingItem(title: 'Feedback', subtitle: 'Report technical issues\nor suggest new features.', icon: Icons.feedback,)),
+              child: SettingItem(title: Strings.settingFeedback1.tr, subtitle: Strings.settingFeedback2.tr, icon: Icons.feedback,)),
 
           InkWell(
               onTap: () => MyDialog.showCupertinoDialog(context,
@@ -93,7 +94,7 @@ class SettingFragment extends GetView<HomeController> {
                     ],
                   ),
                 ), MyColor.kLightBackground),
-              child: SettingItem(title: 'Language', subtitle: 'Change your app language.', icon: Icons.language,)
+              child: SettingItem(title: Strings.settingLanguage1.tr, subtitle: Strings.settingLanguage2.tr, icon: Icons.language,)
           ),
 
 
@@ -103,11 +104,11 @@ class SettingFragment extends GetView<HomeController> {
 
           InkWell(
               onTap: () => controller.deactiveYourAccount(),
-              child: SettingItem(title: 'Deactivate your account', subtitle: 'This cannot be undone.', icon: Icons.delete,)),
+              child: SettingItem(title: Strings.settingDeactivate1.tr, subtitle: Strings.settingDeactivate2.tr, icon: Icons.delete,)),
 
           InkWell(
             onTap: () => controller.openPrivacy(),
-              child: SettingItem(title: 'Privacy policy', subtitle: 'Read privacy policy of TMTT', icon: Icons.policy)),
+              child: SettingItem(title: Strings.settingPrivacypolicy1.tr, subtitle: Strings.settingPrivacypolicy2.tr, icon: Icons.policy)),
 
 
           const Spacer(),
