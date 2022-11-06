@@ -61,12 +61,21 @@ class MyTmttApp extends StatelessWidget {
       title: 'TMTT',
       theme: theme,
       locale: Get.deviceLocale, // 언어 설정
+      fallbackLocale: const Locale('en', 'US'), // 잘못된 지역이 선택된 경우 복구될 지역을 지정
+      // supportedLocales: supportedLocale,
       translations: Languages(), // 로컬라이징 적용
       unknownRoute: setUnknownPage(), // 404 에러 처리
       initialRoute: setInitialRoute(),
       getPages: kGetPages,
     );
   }
+
+  // supported locale 태국어, 베트남어, 인니어, 말레이어, 일본어, 중국어, 영어, 한국어
+  List<Locale> supportedLocale = const [
+    Locale('ko', 'KR'),
+    Locale('en', 'US'),
+    Locale('th', 'TH'), // 태국어
+  ];
 
   String setInitialRoute() {
     if(GetPlatform.isWeb) {

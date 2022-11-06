@@ -7,9 +7,12 @@ import 'package:tmtt/src/resources/styles/my_color.dart';
 import 'package:tmtt/src/resources/styles/txt_style.dart';
 import 'package:tmtt/src/screens/base/base_fragment_container.dart';
 import 'package:tmtt/src/screens/home/home_controller.dart';
+import 'package:tmtt/src/util/my_logger.dart';
 import 'package:tmtt/src/widgets/app_space.dart';
 import 'package:tmtt/src/widgets/item_inbox_hero.dart';
 import 'package:tmtt/src/widgets/plain_text.dart';
+import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
+
 
 import '../../../generated/assets.dart';
 
@@ -39,17 +42,27 @@ class InboxFragment extends GetView<HomeController> {
                       AppSpaces.verticalSpace40
                     ],
                   ),
-                )
-                : Container(
-                  margin: const EdgeInsets.only(top: 25),
-                  child: ListView.builder(
-              scrollDirection: Axis.vertical,
-              itemCount: controller.messagesObs.value.length,
-              itemBuilder: (BuildContext buildContext, int index) {
-                  return messageItem(index, controller.messagesObs.value[index]);
+                ) :
+            CustomRefreshIndicator(
+
+              onRefresh: () async {
+                Log.d('refresh!');
+                controller.onRefreshMyMessage();
               },
+              builder: MaterialIndicatorDelegate(
+                builder: (context, controller) {
+                  return Image.asset(Assets.imagesSplashLogo);
+                },
+              ),
+              child: ListView.builder(
+                controller: controller.inboxScrollController,
+                scrollDirection: Axis.vertical,
+                itemCount: controller.messagesObs.value.length,
+                itemBuilder: (BuildContext buildContext, int index) {
+                  return messageItem(index, controller.messagesObs.value[index]);
+                },
+              ),
             ),
-                ),
           )),
         ],
       ),

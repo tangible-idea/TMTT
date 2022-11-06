@@ -67,6 +67,8 @@ dependencies:
   cached_network_image: ^3.2.2
   icons_launcher: ^2.0.5
   lottie: ^1.4.3
+  custom_refresh_indicator: ^2.0.1
+
 
 dev_dependencies:
   flutter_test:
