@@ -86,3 +86,22 @@ class DialogContainer extends StatelessWidget {
     );
   }
 }
+
+
+
+// class BaseDialog extends StatelessWidget {
+//
+//   Widget child;
+//   TextAlign? align;
+//
+//   BaseDialog({
+//     Key? key,
+//     this.align,
+//     required this.child,
+//   }): super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Get.dia
+//   }
+// }

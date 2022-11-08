@@ -88,6 +88,11 @@ class MyTextStyle {
     fontWeight: FontWeight.w400,
   );
 
+  static const TextStyle body16L = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w200,
+  );
+
   static const TextStyle body16bold = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w600,

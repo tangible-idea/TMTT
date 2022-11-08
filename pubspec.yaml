@@ -51,7 +51,6 @@ dependencies:
   logger: ^1.1.0
   url_strategy: ^0.2.0
   image_picker: ^0.8.5+3
-  loopi_share: ^0.0.4
   uuid: ^3.0.6
   carrier_info: ^2.0.5
   device_info_plus: ^4.1.2
@@ -68,6 +67,8 @@ dependencies:
   icons_launcher: ^2.0.5
   lottie: ^1.4.3
   custom_refresh_indicator: ^2.0.1
+  smooth_page_indicator: ^1.0.0+2
+  carousel_slider: ^4.1.1
 
 
 dev_dependencies:

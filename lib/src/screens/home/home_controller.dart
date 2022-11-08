@@ -189,9 +189,10 @@ class HomeController extends BaseGetController {
     var text = messageInputController.text;
     if(text.isEmpty) { return; }
     await FireStore.editMyLastMessage(text);
-    Log.d('edit successful!');
+    Log.d('Your message has edited!');
     myInfoObs.value.message = text;
   }
+
 
   // Get profile image's profile picture from Firebase Storage
   Future<void> loadProfilePictureFromStorage() async {

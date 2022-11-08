@@ -37,7 +37,7 @@ class InboxItem extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 20),
           margin: useMargin ? const EdgeInsets.symmetric(horizontal: 18, vertical: 3) : null,
           decoration: BoxDecoration(
-            color: MyColor.kSecondary,
+            color: isRead ? MyColor.kAccent2 : MyColor.kSecondary,
             borderRadius: BorderRadius.circular(20),
           ),
           child: Center(

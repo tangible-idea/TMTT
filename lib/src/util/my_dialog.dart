@@ -2,12 +2,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:tmtt/generated/assets.dart';
+import 'package:tmtt/src/resources/styles/my_color.dart';
+import 'package:tmtt/src/resources/styles/txt_style.dart';
 import 'package:tmtt/src/screens/dialog/plain_dialog.dart';
 
 import '../resources/languages/strings.dart';
+import '../screens/base/base_dialog_container.dart';
 
 class MyDialog {
 
+  static void showDialog(Widget content) {
+    Get.dialog(
+      content,
+      transitionDuration: const Duration(milliseconds: 200),
+    );
+  }
 
   // This shows a CupertinoModalPopup with a reasonable fixed height which hosts CupertinoPicker.
   static void showCupertinoDialog(BuildContext context, Widget child, Color? background) {

@@ -37,6 +37,10 @@ class Assets {
   static const String imagesGreetingMan = 'assets/images/greeting_man.svg';
   static const String imagesHandHold = 'assets/images/hand_hold.png';
   static const String imagesHello = 'assets/images/hello.png';
+  static const String imagesHelp1 = 'assets/images/help1.gif';
+  static const String imagesHelp2 = 'assets/images/help2.gif';
+  static const String imagesHelp3 = 'assets/images/help3.gif';
+  static const String imagesHelp4 = 'assets/images/help4.gif';
   static const String imagesIcBack = 'assets/images/ic_back.svg';
   static const String imagesIcCancel = 'assets/images/ic_cancel.svg';
   static const String imagesIcoArrowRight = 'assets/images/ico_arrow_right.svg';

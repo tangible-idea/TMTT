@@ -1,5 +1,6 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/svg.dart';
@@ -17,13 +18,15 @@ import 'package:widgets_to_image/widgets_to_image.dart';
 import '../../../generated/assets.dart';
 import '../../resources/languages/strings.dart';
 import '../../resources/styles/txt_style.dart';
+import '../../util/my_dialog.dart';
 import '../../widgets/button_white.dart';
 import '../../widgets/multiline_text_field.dart';
 
 class HomeFragment extends GetView<HomeController> {
 
-  Widget checkProfileLoading() {
 
+
+  Widget checkProfileLoading() {
     if(controller.isProfileLoading.value) {
       return const CustomWidget.circular(width: 70, height: 70);
     }else{
@@ -41,6 +44,68 @@ class HomeFragment extends GetView<HomeController> {
         return SvgPicture.asset(Assets.imagesInviteYourprofile);
       }
     }
+  }
+
+  void showHelpDialog() {
+
+    final pages = List.generate(4,
+            (index) => Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            color: Colors.grey.shade300,
+          ),
+          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+          child: SizedBox(
+            height: 280,
+            child: Center(
+                child: Text(
+                  "Page $index",
+                  style: const TextStyle(color: MyColor.kPrimary),
+                )),
+          ),
+        ));
+
+    var dialogBase= AlertDialog(
+      titlePadding: EdgeInsets.zero,
+      title: Stack(
+        children: [
+          Positioned(
+              left: 210,
+              child: Image.asset(Assets.imagesHello)),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              children: [
+                Text('How to share?', style: MyTextStyle.h3.copyWith(color: Colors.white)),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, top: 20),
+                  child: Text('Please report any\nor suggest new features.', style: MyTextStyle.body16L.copyWith(color: Colors.white)),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+      content: Column(
+        children: [
+          Image.asset(Assets.imagesHelp4),
+          // CarouselSlider(
+          //   options: CarouselOptions(
+          //     autoPlay: true, //자동재생 여부
+          //   ),
+          // items: [Text('data')],
+    // pages.map((e) { return Builder(builder: (BuildContext context) {
+    //         return Container();
+    //       })
+
+        //),
+          BottomPlainButton(enabledObs: RxBool(true), text: "Got it, Thanks!",)
+      ],),
+      backgroundColor: MyColor.kSecondary,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(30.0)),
+      ),);
+    MyDialog.showDialog(dialogBase);
   }
 
   @override
@@ -182,8 +247,9 @@ class HomeFragment extends GetView<HomeController> {
                                 text: Strings.homeButtonShare.tr,
                                 icon: SvgPicture.asset(Assets.imagesIcoShare),
                                 onPressed: () {
-                                  controller.saveMyLastMessage();
-                                  controller.shareOnInstagram(context);
+                                  // controller.saveMyLastMessage();
+                                  // controller.shareOnInstagram(context);
+                                  showHelpDialog();
                                 },
                                 enabledObs: RxBool(true),
                               ),
