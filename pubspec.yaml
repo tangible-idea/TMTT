@@ -31,6 +31,7 @@ dependencies:
   #image
   widgets_to_image: any
   flutter_native_image: ^0.0.6+1
+  loopi_share: ^0.0.4
 
   # Firebase
   firebase_core_platform_interface: 4.5.2

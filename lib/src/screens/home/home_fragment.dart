@@ -46,7 +46,7 @@ class HomeFragment extends GetView<HomeController> {
     }
   }
 
-  void showHelpDialog() {
+  void showHelpDialog(BuildContext context) {
 
     final pages = List.generate(4,
             (index) => Container(
@@ -86,21 +86,25 @@ class HomeFragment extends GetView<HomeController> {
           ),
         ],
       ),
-      content: Column(
-        children: [
-          Image.asset(Assets.imagesHelp4),
-          // CarouselSlider(
-          //   options: CarouselOptions(
-          //     autoPlay: true, //자동재생 여부
-          //   ),
-          // items: [Text('data')],
-    // pages.map((e) { return Builder(builder: (BuildContext context) {
-    //         return Container();
-    //       })
-
-        //),
-          BottomPlainButton(enabledObs: RxBool(true), text: "Got it, Thanks!",)
-      ],),
+      content: Obx(()=> Column(
+          children: [
+            Image.asset("assets/images/help${controller.helpPosition.value}.gif"),
+            // CarouselSlider(
+            //   options: CarouselOptions(
+            //     autoPlay: true, //자동재생 여부
+            //   ),
+            // items: const [Text('data')],
+            // // pages.map((e) { return Builder(builder: (BuildContext context) {
+            // //   return Container();
+            // // })),
+            BottomPlainButton(
+              enabledObs: RxBool(true),
+              onPressed: () {
+                controller.showNextHelpOr(context);
+              },
+              text: controller.helpPosition.value == 4 ? "Got it, Thanks!" : "Next")
+        ],),
+      ),
       backgroundColor: MyColor.kSecondary,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(30.0)),
@@ -247,9 +251,9 @@ class HomeFragment extends GetView<HomeController> {
                                 text: Strings.homeButtonShare.tr,
                                 icon: SvgPicture.asset(Assets.imagesIcoShare),
                                 onPressed: () {
-                                  // controller.saveMyLastMessage();
-                                  // controller.shareOnInstagram(context);
-                                  showHelpDialog();
+                                  //controller.saveMyLastMessage();
+                                  //controller.shareOnInstagram(context);
+                                  showHelpDialog(context);
                                 },
                                 enabledObs: RxBool(true),
                               ),

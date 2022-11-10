@@ -97,6 +97,17 @@ class HomeController extends BaseGetController {
   var focusedLang= ''.obs; // 설정에서 사용
   var selectedLang= ''.obs; // 설정에서 사용
 
+  var helpPosition= 1.obs; // 도움말 페이지 인디케이터
+  showNextHelpOr(BuildContext context) {
+    if(helpPosition.value < 4) {
+      helpPosition.value = helpPosition.value +1;
+    }else{
+      Get.back();
+      saveMyLastMessage();
+      shareOnInstagram(context);
+    }
+  }
+
   WidgetsToImageController captureController = WidgetsToImageController(); // in order to capture rounded profile.
 
   void pushTokenListener() async {
