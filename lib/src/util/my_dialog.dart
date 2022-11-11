@@ -20,6 +20,10 @@ class MyDialog {
     );
   }
 
+  static void showCupertinoInputDialog() {
+
+  }
+
   // This shows a CupertinoModalPopup with a reasonable fixed height which hosts CupertinoPicker.
   static void showCupertinoDialog(BuildContext context, Widget child, Color? background) {
     showCupertinoModalPopup<void>(

@@ -54,7 +54,7 @@ class SettingFragment extends GetView<HomeController> {
 
           InkWell(
               onTap: () => MyDialog.showCupertinoDialog(context,
-                Obx(()=> Column(
+                Column(
                     children: [
                       Expanded(
                         child: Container(
@@ -85,14 +85,13 @@ class SettingFragment extends GetView<HomeController> {
                         ),
                       ),
                       BottomPlainButton(
-                          text: "Select ${controller.focusedLang.value}",
+                          text: "Select",
                           enabledObs: RxBool(true),
                           onPressed: () {
                               controller.changeAppLanguage();
                               Get.back();
                             },)
                     ],
-                  ),
                 ), MyColor.kLightBackground),
               child: SettingItem(title: Strings.settingLanguage1.tr, subtitle: Strings.settingLanguage2.tr, icon: Icons.language,)
           ),

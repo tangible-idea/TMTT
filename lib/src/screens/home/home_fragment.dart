@@ -48,24 +48,8 @@ class HomeFragment extends GetView<HomeController> {
 
   void showHelpDialog(BuildContext context) {
 
-    final pages = List.generate(4,
-            (index) => Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            color: Colors.grey.shade300,
-          ),
-          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-          child: SizedBox(
-            height: 280,
-            child: Center(
-                child: Text(
-                  "Page $index",
-                  style: const TextStyle(color: MyColor.kPrimary),
-                )),
-          ),
-        ));
-
     var dialogBase= AlertDialog(
+      insetPadding: const EdgeInsets.fromLTRB(40, 150, 40, 150),
       titlePadding: EdgeInsets.zero,
       title: Stack(
         children: [
@@ -88,22 +72,18 @@ class HomeFragment extends GetView<HomeController> {
       ),
       content: Obx(()=> Column(
           children: [
-            Image.asset("assets/images/help${controller.helpPosition.value}.gif"),
-            // CarouselSlider(
-            //   options: CarouselOptions(
-            //     autoPlay: true, //자동재생 여부
-            //   ),
-            // items: const [Text('data')],
-            // // pages.map((e) { return Builder(builder: (BuildContext context) {
-            // //   return Container();
-            // // })),
+            SizedBox(
+              width: 310,
+              height: 220,
+                child: Image.asset("assets/images/help${controller.helpPosition.value}.gif")),
             BottomPlainButton(
               enabledObs: RxBool(true),
               onPressed: () {
                 controller.showNextHelpOr(context);
               },
               text: controller.helpPosition.value == 4 ? "Got it, Thanks!" : "Next")
-        ],),
+        ],
+      ),
       ),
       backgroundColor: MyColor.kSecondary,
       shape: const RoundedRectangleBorder(
@@ -148,25 +128,24 @@ class HomeFragment extends GetView<HomeController> {
                   controller: controller.messageInputController,
                 ),
 
-                Row(
-                  children: [
+                // Row(
+                //   children: [
                     WhiteButton(
                       icon: SvgPicture.asset(Assets.imagesIcoRandom, color: MyColor.kPrimary),
                       text: Strings.homeButtonRandom.tr,
                       onPressed: () => controller.putARandomMessage(),
                       enabledObs: RxBool(true),
                     ),
-                    const Spacer(),
-                    WhiteButton(
-                      icon: SvgPicture.asset(Assets.imagesIcoArrowdown, color: MyColor.kPrimary),
-                      text: Strings.homeButtonTemplate.tr,
-                      onPressed: () => controller.saveMyLastMessage(),
-                      enabledObs: RxBool(true),
-                    ),
-                  ],
-                ),
+                //      const Spacer(),
+                //     WhiteButton(
+                //       icon: SvgPicture.asset(Assets.imagesIcoArrowdown, color: MyColor.kPrimary),
+                //       text: Strings.homeButtonTemplate.tr,
+                //       onPressed: () => controller.saveMyLastMessage(),
+                //       enabledObs: RxBool(true),
+                //     ),
+                //   ],
+                // ),
 
-                AppSpaces.verticalSpace10,
                 // PlainText(
                 //   text: Strings.homeContent2.tr,
                 //   style: MyTextStyle.h5,
@@ -253,6 +232,7 @@ class HomeFragment extends GetView<HomeController> {
                                 onPressed: () {
                                   //controller.saveMyLastMessage();
                                   //controller.shareOnInstagram(context);
+                                  controller.helpPosition.value= 1;
                                   showHelpDialog(context);
                                 },
                                 enabledObs: RxBool(true),
