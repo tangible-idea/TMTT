@@ -17,7 +17,7 @@ class Purchase {
     if (GetPlatform.isAndroid) {
       configuration = PurchasesConfiguration(DotEnvStore.revenueCatGoogleSdkKey);
     } else {
-      configuration = PurchasesConfiguration("public_ios_sdk_key");
+      configuration = PurchasesConfiguration(DotEnvStore.revenueCatAppleSdkKey);
     }
     await Purchases.configure(configuration);
   }
