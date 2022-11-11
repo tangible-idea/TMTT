@@ -5,9 +5,9 @@ import 'package:json_annotation/json_annotation.dart';
 part 'user.g.dart';
 
 enum UserAccountStatus {
-  dropped(0),
-  activated(1),
-  inactivated(2);
+  dropped(0), // 탈퇴
+  activated(1), // 활성화 됨
+  inactivated(2); // 휴면
   final int value;
   const UserAccountStatus(this.value);
 }
