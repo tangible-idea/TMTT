@@ -84,7 +84,7 @@ class FoundInstagramAccountDialog extends BaseWidget {
           PlainText(text: instagramBio,  style: MyTextStyle.body16),
 
 
-          Spacer(),
+          const Spacer(),
           BottomPlainButton(
             text: Strings.slugPopupButtonYes.tr,
             enabledObs: RxBool(true),

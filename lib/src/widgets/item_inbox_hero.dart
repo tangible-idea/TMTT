@@ -37,7 +37,7 @@ class InboxItem extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 20),
           margin: useMargin ? const EdgeInsets.symmetric(horizontal: 18, vertical: 3) : null,
           decoration: BoxDecoration(
-            color: isRead ? MyColor.kAccent2 : MyColor.kSecondary,
+            color: isRead ? MyColor.kGrayedPrimary  : MyColor.kPrimary,
             borderRadius: BorderRadius.circular(20),
           ),
           child: Center(
@@ -73,11 +73,12 @@ class InboxItem extends StatelessWidget {
                     child: Image.asset(Assets.imagesHandHold),
                   ),
 
-                  isRead ?
-                  Positioned(
-                    left: 40,
-                    top: -10,
-                    child: SvgPicture.asset(Assets.imagesCheckbox)) : const SizedBox()
+                  // TODO : 나중에 시간되면 추가.
+                  // isRead ?
+                  // Positioned(
+                  //   left: 40,
+                  //   top: -10,
+                  //   child: SvgPicture.asset(Assets.imagesCheckbox)) : const SizedBox()
                 ],),
 
               ],
