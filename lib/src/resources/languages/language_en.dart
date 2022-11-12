@@ -22,6 +22,7 @@ Map<String, String> translations_en = {
   Strings.homeButtonRandom: "Random",
   Strings.homeButtonTemplate: "Template",
   Strings.homeButtonCopyLink: "Copy link",
+  Strings.homeButtonCopyLinkAction: "Link copied!",
   Strings.homeButtonShare: "Share",
 
   // Settings

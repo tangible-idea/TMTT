@@ -24,6 +24,7 @@ Map<String, String> translations_kr = {
   Strings.homeButtonRandom: "랜덤 질문",
   Strings.homeButtonTemplate: "재밌는 템플릿",
   Strings.homeButtonCopyLink: "링크 복사",
+  Strings.homeButtonCopyLinkAction: "링크가 복사되었어요!",
   Strings.homeButtonShare: "공유",
 
   // create your slug page

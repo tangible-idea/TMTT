@@ -33,6 +33,7 @@ class Strings {
   static String homeButtonRandom = 'homeButtonRandom';
   static String homeButtonTemplate = 'homeButtonTemplate';
   static String homeButtonCopyLink = 'homeButtonCopyLink';
+  static String homeButtonCopyLinkAction = 'homeButtonCopyLinkAction';
   static String homeButtonShare = 'homeButtonShare';
 
   // Message

@@ -195,7 +195,7 @@ class HomeController extends BaseGetController {
 
   Future<void> copyMyLink() async {
     Clipboard.setData(ClipboardData(text: myLinkObs.value));
-    MySnackBar.show(title: 'copy success!');
+    MySnackBar.show(title: Strings.homeButtonCopyLinkAction.tr);
   }
 
   Future<void> saveMyLastMessage() async {
