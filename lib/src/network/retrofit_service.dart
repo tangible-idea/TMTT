@@ -18,7 +18,7 @@ abstract class RetrofitService {
   @GET("?__a=1&__d=dis")
   Future<Instagram> getInstagramInfo();
 
-  @GET("sendPush")
+  @GET("sendpush")
   Future<String> sendPush(@Body() Map<String, dynamic> body);
 
 }

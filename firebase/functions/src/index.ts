@@ -1,4 +1,4 @@
-import * as functions from 'firebase-functions';
+import { https } from 'firebase-functions/v2';
 import * as admin from 'firebase-admin';
 //import { user } from 'firebase-functions/v1/auth';
 // import * as firebase from 'firebase';
@@ -18,37 +18,20 @@ const db = admin.firestore();
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
 // a simple sample
-export const helloWorld1= functions.https.onRequest((request, response) => {
+export const helloworld1= https.onRequest((request, response) => {
     console.log("received data: "+ request.query.name);
     response.send("{'result':'Hello "+ request.query.name +" from Firebase!'}" );
 });
 
-// for sending email
-//const nodemailer = require('nodemailer');
-const cors = require('cors')({origin: true});
-
-
-// function sendPushMultiFromAdmin(
-//     listUsers : String[],
-//     title: String,
-//     message: String) {
-//         if(!(message && title)) {
-//             console.log(`there is no content of title or message, ${title}, ${message}`);
-//             return"{'result':'there is no content of title or message.'}"
-//         }
-//     return"{}";
-// }
-
 function sendPushNonEx(
-    senderUid:any,
-    targetUid:any,
-    title   : any,
-    message   : any) {
-        console.log("sendPush v1.18.2");
+    targetUid : String,
+    title     : String,
+    message   : String) {
+        console.log("sendPush v1.19.2");
 
         if(!(message && title)) {
-            console.log(`there is no content of title or message, ${title}, ${message}`);
-            return"{'result':'there is no content of title or message.'}"
+            console.log(`there is no content or title or message, ${title}, ${message}`);
+            return "{'result':'there is no content or title or message.'}";
         }
 
         // console.log(`received uid: ${uuid}`);
@@ -98,21 +81,22 @@ function sendPushNonEx(
  * @param {uid} : 
  * @param {message} : 
  */
-export const sendPush= functions.https.onRequest((req, res) => {
-    cors(req, res, () => {
-        
-        const targetUid = req.query.targetUid;
-        const senderUid = req.query.senderUid;
-        const title = req.query.title;
-        const message = req.query.message;
-        
-        const resultToSend= sendPushNonEx(senderUid, targetUid, title, message);
-        res.send(resultToSend);
-    });
+export const sendpush= https.onRequest({ cors: true }, async (req, res) => {
+
+    console.log(`sendPush::title: ${req.query.title}`);
+    console.log(`sendPush::message: ${req.query.message}`);
+
+    const targetUid = req.query.targetUid.toString();
+    //const senderUid = req.query.senderUid.toString();
+    const title = req.query.title.toString();
+    const message = req.query.message.toString();
+    
+    const resultToSend= sendPushNonEx(targetUid, title, message);
+    res.send(resultToSend);
 });
 
 // 인증이메일 전송 후 인증과정
-export const authEmail = functions.https.onRequest((req, res) => {
+export const authemail = https.onRequest((req, res) => {
     // getting dest email by query string
     const user = req.query.user;
     const code = req.query.code;

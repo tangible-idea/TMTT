@@ -164,10 +164,10 @@ class HomeController extends BaseGetController {
     //   await Purchase.makePurchase(product);
     // }
 
-    if(myInfoObs.value.pushToken.isEmpty) {
+    //if(myInfoObs.value.pushToken.isEmpty) {
         final fcmToken = await FirebaseMessaging.instance.getToken();
         FireStore.updateUserValue("push_token", fcmToken.toString());
-    }
+    //}
 
     checkPageFlow();
   }
