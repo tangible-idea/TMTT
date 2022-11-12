@@ -68,8 +68,7 @@ dependencies:
   icons_launcher: ^2.0.5
   lottie: ^1.4.3
   custom_refresh_indicator: ^2.0.1
-  smooth_page_indicator: ^1.0.0+2
-  carousel_slider: ^4.1.1
+  flutter_email_sender: ^5.1.0
 
 
 dev_dependencies:

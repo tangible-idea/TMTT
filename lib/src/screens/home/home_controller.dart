@@ -10,6 +10,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
@@ -390,12 +391,29 @@ class HomeController extends BaseGetController {
   }
 
 
-  void sendFeedback() {
+  // send feedback
+  void sendFeedback() async {
+    final Email email = Email(
+      body: "Tell us about your problem or feature you'd like to have but did not find.",
+      subject: 'TMTT Feedback',
+      recipients: ['help@tmtt.link'],
+      cc: ['tmtt.link@gmail.com'],
+      isHTML: false,
+    );
 
+    await FlutterEmailSender.send(email);
   }
 
-  void deactiveYourAccount() {
+  void deactivateYourAccount() async {
+    final Email email = Email(
+      body: 'Tell',
+      subject: 'TMTT Feedback',
+      recipients: ['help@tmtt.link'],
+      cc: ['tmtt.link@gmail.com'],
+      isHTML: false,
+    );
 
+    await FlutterEmailSender.send(email);
   }
 
   void showLanguageList(BuildContext context) async {

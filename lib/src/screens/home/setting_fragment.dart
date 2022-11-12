@@ -49,8 +49,11 @@ class SettingFragment extends GetView<HomeController> {
           AppSpaces.verticalSpace20,
 
           InkWell(
-              onTap: ()=> controller.openPrivacy(),
-              child: SettingItem(title: Strings.settingFeedback1.tr, subtitle: Strings.settingFeedback2.tr, icon: Icons.feedback,)),
+              onTap: ()=> controller.sendFeedback(),
+              child: SettingItem(
+                title: Strings.settingFeedback1.tr,
+                subtitle: Strings.settingFeedback2.tr,
+                icon: Icons.feedback,)),
 
           InkWell(
               onTap: () => MyDialog.showCupertinoDialog(context,
@@ -93,7 +96,10 @@ class SettingFragment extends GetView<HomeController> {
                             },)
                     ],
                 ), MyColor.kLightBackground),
-              child: SettingItem(title: Strings.settingLanguage1.tr, subtitle: Strings.settingLanguage2.tr, icon: Icons.language,)
+              child: SettingItem(
+                title: Strings.settingLanguage1.tr,
+                subtitle: Strings.settingLanguage2.tr,
+                icon: Icons.language,)
           ),
 
 
@@ -102,12 +108,18 @@ class SettingFragment extends GetView<HomeController> {
           //   child: SettingItem(title: 'Invite your friends', subtitle: 'Invite your friends and get rewards.', icon: Icons.people,)),
 
           InkWell(
-              onTap: () => controller.deactiveYourAccount(),
-              child: SettingItem(title: Strings.settingDeactivate1.tr, subtitle: Strings.settingDeactivate2.tr, icon: Icons.delete,)),
+              onTap: () => controller.deactivateYourAccount(),
+              child: SettingItem(
+                title: Strings.settingDeactivate1.tr,
+                subtitle: Strings.settingDeactivate2.tr,
+                icon: Icons.delete,)),
 
           InkWell(
             onTap: () => controller.openPrivacy(),
-              child: SettingItem(title: Strings.settingPrivacypolicy1.tr, subtitle: Strings.settingPrivacypolicy2.tr, icon: Icons.policy)),
+              child: SettingItem(
+                  title: Strings.settingPrivacypolicy1.tr,
+                  subtitle: Strings.settingPrivacypolicy2.tr,
+                  icon: Icons.policy)),
 
 
           const Spacer(),
