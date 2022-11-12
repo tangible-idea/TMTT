@@ -38,6 +38,7 @@ import 'package:tmtt/src/util/posting_helper.dart';
 import 'package:widgets_to_image/widgets_to_image.dart';
 
 import '../../constants/sample_questions.dart';
+import '../../resources/languages/strings.dart';
 import '../../resources/styles/my_color.dart';
 import '../../util/my_dialog.dart';
 
@@ -259,7 +260,7 @@ class HomeController extends BaseGetController {
 
   // Put a random message on question text controller.
   void putARandomMessage() {
-    final langCode= window.locale.languageCode;
+    final langCode= Get.locale!.languageCode.toString();
 
     Samples.questions.keys.contains(langCode);
     final filteredList = {
@@ -391,29 +392,37 @@ class HomeController extends BaseGetController {
   }
 
 
+  void sendEmailWithHandlingResponse(Email email) async {
+    try {
+      await FlutterEmailSender.send(email);
+    } catch (error) {
+      MySnackBar.show(title: "There's no email app installed.", message: "Please setup your email account on your phone.");
+    }
+  }
+
   // send feedback
   void sendFeedback() async {
     final Email email = Email(
-      body: "Tell us about your problem or feature you'd like to have but did not find.",
-      subject: 'TMTT Feedback',
+      body: Strings.settingFeedbackEmailBody.tr,
+      subject: Strings.settingFeedbackEmailSubject.tr,
       recipients: ['help@tmtt.link'],
       cc: ['tmtt.link@gmail.com'],
       isHTML: false,
     );
 
-    await FlutterEmailSender.send(email);
+    sendEmailWithHandlingResponse(email);
   }
 
   void deactivateYourAccount() async {
     final Email email = Email(
-      body: 'Tell',
-      subject: 'TMTT Feedback',
+      body: "Are you sure you're gonna delete your account?",
+      subject: 'TMTT deactivation.',
       recipients: ['help@tmtt.link'],
       cc: ['tmtt.link@gmail.com'],
       isHTML: false,
     );
 
-    await FlutterEmailSender.send(email);
+    sendEmailWithHandlingResponse(email);
   }
 
   void showLanguageList(BuildContext context) async {

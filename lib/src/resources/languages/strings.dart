@@ -48,6 +48,8 @@ class Strings {
 
   static String settingFeedback1 = 'settingFeedback1';
   static String settingFeedback2 = 'settingFeedback2';
+  static String settingFeedbackEmailSubject = 'settingFeedbackEmailSubject';
+  static String settingFeedbackEmailBody = 'settingFeedbackEmailBody';
   static String settingLanguage1 = 'settingLanguage1';
   static String settingLanguage2 = 'settingLanguage2';
   static String settingDeactivate1 = 'settingDeactivate1';

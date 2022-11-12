@@ -27,6 +27,8 @@ Map<String, String> translations_en = {
   // Settings
   Strings.settingFeedback1 : 'Feedback',
   Strings.settingFeedback2 : 'Report technical issues\nor suggest new features.',
+  Strings.settingFeedbackEmailSubject: "TMTT Feedback",
+  Strings.settingFeedbackEmailBody : "Tell us about your problem or feature you'd like to have but did not find.",
   Strings.settingLanguage1 : 'Language',
   Strings.settingLanguage2 : 'Change your app language.',
   Strings.settingDeactivate1 : 'Deactivate Account',
