@@ -80,6 +80,16 @@ class RegisterController extends BaseGetController {
     "privacy"
   ];
 
+  bool instagramIDMatchRegex(String value) {
+    String pattern = r'(^[\w](?!.*?\.{2})[\w.]{1,28}[\w]$)';
+    RegExp regExp = RegExp(pattern);
+    if (!regExp.hasMatch(value)) {
+      return false;
+    }
+    return true;
+
+  }
+
   // slug 만들기
   void createYourSlug(String slug) async {
     errorObs.value= errorText; // run validation.
@@ -99,6 +109,13 @@ class RegisterController extends BaseGetController {
     var userSlug= await FireStore.searchUserSlug(trimmedSlug);
     if(userSlug != null) {
       errorObs.value= Strings.slugCreateError1.tr;
+      return;
+    }
+
+    // instagram ID 형식과 똑같이 검사한다.
+    var isFormatValidForSlug= instagramIDMatchRegex(trimmedSlug);
+    if(!isFormatValidForSlug) {
+      errorObs.value= Strings.slugCreateError2.tr;
       return;
     }
 

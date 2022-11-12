@@ -33,7 +33,7 @@ Map<String, String> translations_kr = {
 
   // create your slug page
   Strings.slugCreateError1 : '해당 URL을 이미 다른 사람이 사용하고 있어요.',
-  Strings.slugCreateError2 : '',
+  Strings.slugCreateError2 : 'URL은 영문자와 _과 .만 사용가능해요.',
   Strings.slugPopupContent1 : '인스타그램 계정 확인',
   Strings.slugPopupContent2 : '해당 인스타그램이 맞나요?',
   Strings.slugPopupButtonYes: '네! 이 계정을 사용합니다.',

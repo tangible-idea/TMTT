@@ -28,10 +28,10 @@ void main() async {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
   // 앱 세로 고정
-  if (!GetPlatform.isWeb && GetPlatform.isAndroid || GetPlatform.isIOS) {
-    await dotenv.load(fileName: ".env");
-    await Purchase.initPlatformState();
-  }
+  // if (!GetPlatform.isWeb && GetPlatform.isAndroid || GetPlatform.isIOS) {
+  //   await dotenv.load(fileName: ".env");
+  //   await Purchase.initPlatformState();
+  // }
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,

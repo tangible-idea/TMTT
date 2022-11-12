@@ -9,7 +9,7 @@ Map<String, String> translations_en = {
   Strings.next   : 'Next',
 
   // push
-  Strings.pushNewMessageTitle : "New message!",
+  Strings.pushNewMessageTitle : "You have a new message!",
   Strings.pushNewMessageContent : "Tap to open 😀",
 
   Strings.registerDesc1: 'Get anonymous messages on any kind of \r\nsocial media apps such as Instagram!',
@@ -43,7 +43,7 @@ Map<String, String> translations_en = {
 
   // create your slug page
   Strings.slugCreateError1 : 'There is another user with the same slug.',
-  Strings.slugCreateError2 : '',
+  Strings.slugCreateError2 : 'Slug can only use letters, numbers _ and .',
   Strings.slugPopupContent1 : 'CONFIRM YOUR INSTAGRAM ACCOUNT',
   Strings.slugPopupContent2 : 'Is this your account?',
   Strings.slugPopupButtonYes: 'Yes! This is mine.',
