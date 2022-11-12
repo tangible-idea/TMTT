@@ -11,8 +11,12 @@ class HomeScreen extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() => BaseScaffold(
+        appBar: controller.useHeaderObs.value ?
+        BaseAppBar(
+          title: controller.pageTitles[controller.currentPageIndexObs.value],
+        ): null,
         paddingState: PaddingState.noPadding,
-        useSafeAreaTop: false,
+        useSafeAreaTop: controller.useHeaderObs.value,
         onPressedAosBackButton: () {
           Log.d('onPressedAosBackButton');
         },
@@ -21,7 +25,7 @@ class HomeScreen extends GetView<HomeController> {
     ));
   }
 
-  BottomNavigationBar newBottomNavigationBar() {
+  BottomNavigationBar bottomNavigationBar() {
     return BottomNavigationBar(
       backgroundColor: MyColor.bg04,
       type: BottomNavigationBarType.fixed,
@@ -30,6 +34,7 @@ class HomeScreen extends GetView<HomeController> {
       selectedItemColor: MyColor.primary_05,
       onTap: (index) {
         controller.currentPageIndexObs.value = index;
+        controller.useHeaderObs.value = index != 0;
       },
       items: const [
         BottomNavigationBarItem(
@@ -41,7 +46,7 @@ class HomeScreen extends GetView<HomeController> {
               Icons.home,
               color: MyColor.primary_05,
             ),
-            label: 'tmtt'
+            label: 'Share'
         ),
         BottomNavigationBarItem(
             icon: Icon(
@@ -52,64 +57,18 @@ class HomeScreen extends GetView<HomeController> {
               Icons.photo,
               color: MyColor.primary_05,
             ),
-            label: 'inbox'
+            label: 'Messages'
         ),
         BottomNavigationBarItem(
             icon: Icon(
-              Icons.mail_outline,
+              Icons.settings_outlined,
               color: MyColor.gray_01,
             ),
             activeIcon: Icon(
-              Icons.mail_outline,
+              Icons.settings,
               color: MyColor.primary_05,
             ),
-            label: 'others'
-        ),
-      ],
-    );
-  }
-
-  BottomNavigationBar bottomNavigationBar() {
-    return BottomNavigationBar(
-      backgroundColor: MyColor.bg04,
-      type: BottomNavigationBarType.fixed,
-      currentIndex: controller.currentPageIndexObs.value,
-      showSelectedLabels: true,
-      selectedItemColor: MyColor.primary_05,
-      onTap: (index) { controller.currentPageIndexObs.value = index; },
-      items: const [
-        BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: MyColor.gray_01,
-            ),
-            activeIcon: Icon(
-              Icons.home,
-              color: MyColor.primary_05,
-            ),
-            label: 'tmtt'
-        ),
-        BottomNavigationBarItem(
-            icon: Icon(
-              Icons.photo,
-              color: MyColor.gray_01,
-            ),
-            activeIcon: Icon(
-              Icons.photo,
-              color: MyColor.primary_05,
-            ),
-            label: 'inbox'
-        ),
-        BottomNavigationBarItem(
-            icon: Icon(
-              Icons.mail_outline,
-              color: MyColor.gray_01,
-            ),
-            activeIcon: Icon(
-              Icons.mail_outline,
-              color: MyColor.primary_05,
-            ),
-            label: 'others'
+            label: 'settings'
         ),
       ],
     );

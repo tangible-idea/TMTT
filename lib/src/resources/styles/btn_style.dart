@@ -87,4 +87,13 @@ class BtnStyle {
         width: 2.0,
         color: MyColor.kGrey5),
   );
+
+  static ButtonStyle whiteOutlineRadius2 = OutlinedButton.styleFrom(
+      backgroundColor: MyColor.white,
+      side: const BorderSide(color: MyColor.kPrimary, width: 0.8),
+      padding: const EdgeInsets.all(24),
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(18))
+      )
+  );
 }

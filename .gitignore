@@ -131,3 +131,5 @@ app.*.symbols
 
 *.g.dart
 *.env
+firebase/functions/node_modules
+firebase/functions/lib

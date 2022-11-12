@@ -1,16 +1,28 @@
 
+import 'dart:io';
+import 'dart:typed_data';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:tmtt/data/model/hint.dart';
 import 'package:tmtt/data/model/message.dart';
 import 'package:tmtt/data/model/user.dart';
+import 'package:tmtt/firebase/firebase_auth.dart';
 import 'package:tmtt/src/constants/local_storage_key_store.dart';
+import 'package:tmtt/src/util/image_processing_util.dart';
 import 'package:tmtt/src/util/info_util.dart';
 import 'package:tmtt/src/util/local_storage.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 
+import '../src/util/my_snackbar.dart';
 import 'fire_store_collections.dart';
+
+import 'package:http/http.dart' as http;
+
 
 enum LoginUserType {
   google, faceBook, apple, other
@@ -31,6 +43,69 @@ class FireStore {
         .add(user.toJson());
 
     return doc.id;
+  }
+
+  // instagram photo url -> Firebase Storage
+  static Future<void> linkMyPhotoFromInstagramAccountToStorage(String instagramImageURL) async {
+
+    var myUID= FireAuth.getMyUID();
+    if(myUID == "") { return; }
+
+    // Create a Reference to the file
+    // Reference ref = FirebaseStorage.instance.ref()
+    //     .child('profile')
+    //     .child('/image_$myUID');
+
+    instagramImageURL= instagramImageURL.replaceFirst("https%3A//", "https://");
+
+    try {
+      final response = await http.get(Uri.parse(instagramImageURL));
+      if (response.statusCode == 200) {
+        // If the server did return a 200 OK response,
+        // then parse the JSON.
+        Uint8List bodyBytes = response.bodyBytes;
+        String tempPath = (await getTemporaryDirectory()).path;
+        File file = await File('$tempPath/my_instagram_image.png').writeAsBytes(bodyBytes);
+        //await ref.putFile(file);
+        uploadMyPhotoToStorage(file.path);
+      } else {
+        // If the server did not return a 200 OK response,
+        // then throw an exception.
+        throw Exception('Failed to load image from instagram.');
+      }
+    } on FirebaseException catch (e) {
+      MySnackBar.show(title: 'Error', message: 'Error on while uploading your picture.');
+    } on Exception catch (ex) {
+      MySnackBar.show(title: 'Error', message: ex.toString());
+    }
+  }
+
+  static Future<bool> uploadMyPhotoToStorage(String filepath) async {
+
+    var myUID= FireAuth.getMyUID();
+    if(myUID == "") { return false; }
+
+    // Create a Reference to the file
+    Reference ref = FirebaseStorage.instance.ref()
+        .child('profile')
+        .child('/image_$myUID');
+
+    try {
+      // resize and upload to Stoarge
+      File file = File(filepath);
+      File resizedImage= await ImageProcessing.resizeSmallImage(file, 300);
+      await ref.putFile(resizedImage);
+
+      // update user database on Firestore
+      String profileURL= await ref.getDownloadURL();
+      await FireStore.updateUserValue("profile_image", profileURL);
+      CachedNetworkImage.evictFromCache(profileURL);
+      return true;
+
+    } on FirebaseException catch (e) {
+      MySnackBar.show(title: 'Error', message: 'Error on while uploading your picture.');
+      return false;
+    }
   }
 
   static Future<User?> getMyInfo() async {
@@ -58,7 +133,7 @@ class FireStore {
     return true;
   }
 
-  static Future<void> editMySateMessage(String message) async {
+  static Future<void> editMyLastMessage(String message) async {
     var docId = await LocalStorage.get(KeyStore.userDocId, '');
     if (docId.isEmpty) { return; }
     await instance
@@ -93,6 +168,9 @@ class FireStore {
   /// slug_id -> User
   static Future<User?> searchUserSlug(String userSlug) async {
 
+    // var myUID= FireAuth.getMyUID();
+    // if(myUID == "") { return null; }
+
     var snapshot = await instance
         .collection(Collections.users)
         .where('slug_id', isEqualTo: userSlug)
@@ -112,6 +190,7 @@ class FireStore {
   static Future<void> writeMessage({
     required User user,
     required String message,
+    required Hint hint,
     int emojiCode = 0
   }) async {
 
@@ -122,7 +201,7 @@ class FireStore {
       message: message,
       emojiCode: emojiCode,
       createDate: DateTime.now().toString(),
-      hint: await InfoUtil.getHint(),
+      hint: hint,
     );
 
     await instance
@@ -130,21 +209,50 @@ class FireStore {
         .add(data.toJson());
   }
 
-  static Future<List<Message>> getMyMessages() async {
+  static QueryDocumentSnapshot<Map<String, dynamic>>? lastVisibleInbox;
+  static Future<List<Message>> getMyMessagesFirst() async {
+    lastVisibleInbox = null;
     var docId = await LocalStorage.get(KeyStore.userDocId, '');
     var snapshot = await instance
         .collection(Collections.message)
         .where('receive_user_id', isEqualTo: docId)
+        .orderBy('create_date', descending: true)
+        .limit(10)
         .get();
+    lastVisibleInbox = snapshot.docs.last;
     var messages = <Message>[];
     for (var doc in snapshot.docs) {
       var data = Message.fromJson(doc.data());
       data.docId = doc.id;
       messages.add(data);
     }
-    messages.sort((a, b) => b.createDate.compareTo(a.createDate));
     return messages;
   }
+
+  static Future<List<Message>?> getMyMessagesNext() async {
+    if(lastVisibleInbox == null) {
+      return null;
+    }
+    var docId = await LocalStorage.get(KeyStore.userDocId, '');
+    var snapshot = await instance
+        .collection(Collections.message)
+        .where('receive_user_id', isEqualTo: docId)
+        .orderBy('create_date', descending: true)
+        .startAfterDocument(lastVisibleInbox!)
+        .limit(10)
+        .get();
+
+    lastVisibleInbox = snapshot.docs.last;
+    var messages = <Message>[];
+    for (var doc in snapshot.docs) {
+      var data = Message.fromJson(doc.data());
+      data.docId = doc.id;
+      messages.add(data);
+    }
+    // messages.sort((a, b) => b.createDate.compareTo(a.createDate));
+    return messages;
+  }
+
 
   static Future<void> updateReadState(String docId) async {
     await instance

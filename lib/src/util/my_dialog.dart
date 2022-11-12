@@ -1,11 +1,48 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tmtt/generated/assets.dart';
+import 'package:tmtt/src/resources/styles/my_color.dart';
+import 'package:tmtt/src/resources/styles/txt_style.dart';
 import 'package:tmtt/src/screens/dialog/plain_dialog.dart';
 
 import '../resources/languages/strings.dart';
+import '../screens/base/base_dialog_container.dart';
 
 class MyDialog {
+
+  static void showDialog(Widget content) {
+    Get.dialog(
+      content,
+      transitionDuration: const Duration(milliseconds: 200),
+    );
+  }
+
+  static void showCupertinoInputDialog() {
+
+  }
+
+  // This shows a CupertinoModalPopup with a reasonable fixed height which hosts CupertinoPicker.
+  static void showCupertinoDialog(BuildContext context, Widget child, Color? background) {
+    showCupertinoModalPopup<void>(
+        context: context,
+        builder: (BuildContext context) => Container(
+          height: 216,
+          padding: const EdgeInsets.only(top: 6.0),
+          // The Bottom margin is provided to align the popup above the system navigation bar.
+          margin: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
+          // Provide a background color for the popup.
+          color: background ?? CupertinoColors.systemBackground.resolveFrom(context),
+          // Use a SafeArea widget to avoid system overlaps.
+          child: SafeArea(
+            top: false,
+            child: child,
+          ),
+        ));
+  }
 
   static void showBottom({
         required Widget widget,

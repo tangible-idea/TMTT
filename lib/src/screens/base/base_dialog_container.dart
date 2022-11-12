@@ -1,4 +1,5 @@
 
+
 import 'package:flutter/material.dart';
 import 'package:tmtt/src/resources/styles/my_color.dart';
 import 'package:tmtt/src/widgets/plain_text.dart';
@@ -8,9 +9,13 @@ import '../../resources/styles/txt_style.dart';
 class BottomDialogContainer extends StatelessWidget {
 
   Widget child;
+  double height;
+  BoxDecoration? decoration;
 
   BottomDialogContainer({
     Key? key,
+    this.decoration,
+    this.height = 500,
     required this.child,
   }): super(key: key);
 
@@ -21,6 +26,8 @@ class BottomDialogContainer extends StatelessWidget {
       child: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: Container(
+          height: height,
+          decoration: (decoration != null) ? decoration : null,
           margin: EdgeInsets.only(top: 14, left: 24, right: 24, bottom: 14),
           child: child,
         ),
@@ -79,3 +86,22 @@ class DialogContainer extends StatelessWidget {
     );
   }
 }
+
+
+
+// class BaseDialog extends StatelessWidget {
+//
+//   Widget child;
+//   TextAlign? align;
+//
+//   BaseDialog({
+//     Key? key,
+//     this.align,
+//     required this.child,
+//   }): super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Get.dia
+//   }
+// }

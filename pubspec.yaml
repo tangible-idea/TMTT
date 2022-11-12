@@ -28,22 +28,30 @@ dependencies:
   #intent
   android_intent_plus: ^3.1.1+1
 
+  #image
+  widgets_to_image: any
+  flutter_native_image: ^0.0.6+1
+  loopi_share: ^0.0.4
+
   # Firebase
-  firebase_core: ^1.10.0
-  firebase_auth: ^3.2.0
-  cloud_firestore: ^3.1.0
-  firebase_storage: ^10.1.0
+  firebase_core_platform_interface: 4.5.2
+  firebase_core: ^2.1.1
+  firebase_auth: ^4.1.0
+  cloud_firestore: ^4.0.3
+  firebase_storage: ^11.0.3
+  firebase_messaging: ^14.0.3
+  firebase_analytics: ^10.0.3
+  firebase_app_check: ^0.1.1+2
+
+  #UI common
+  shimmer: ^2.0.0
 
   http: ^0.13.3
-  shimmer: ^2.0.0
   flutter_svg: ^1.1.1+1
   flutter_secure_storage: ^5.0.2
   logger: ^1.1.0
-  firebase_analytics: ^9.3.5
-  firebase_app_check: ^0.0.7+1
   url_strategy: ^0.2.0
   image_picker: ^0.8.5+3
-  loopi_share: ^0.0.4
   uuid: ^3.0.6
   carrier_info: ^2.0.5
   device_info_plus: ^4.1.2
@@ -56,6 +64,12 @@ dependencies:
   purchases_flutter: ^4.3.0
   flutter_dotenv: ^5.0.2
   google_sign_in: ^5.4.2
+  cached_network_image: ^3.2.2
+  icons_launcher: ^2.0.5
+  lottie: ^1.4.3
+  custom_refresh_indicator: ^2.0.1
+  flutter_email_sender: ^5.1.0
+
 
 dev_dependencies:
   flutter_test:
@@ -73,10 +87,12 @@ flutter:
 
   assets:
     - assets/
+    - assets/www/
     - assets/fonts/
     - assets/images/
-    - assets/www/
-    - assets/www/
+    - assets/images/2.0x/
+    - assets/images/3.0x/
+    - assets/lottie/
     - .env
 
   fonts:

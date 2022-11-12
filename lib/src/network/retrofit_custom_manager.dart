@@ -1,14 +1,10 @@
 
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:logger/logger.dart';
 import 'package:dio/dio.dart';
-import 'package:dio/src/response.dart';
 import 'package:tmtt/src/network/retrofit_manager.dart';
 import 'package:tmtt/src/network/retrofit_service.dart';
-
-import '../constants/urls.dart';
 
 class RetrofitCustomManager {
 

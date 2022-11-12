@@ -19,4 +19,8 @@ class Log {
     // _logger.e('Error! Something bad happened', 'Test Error');
     // _logger.v({'key': 5, 'value': 'something'});
   }
+
+  static void e(dynamic message) {
+    _logger.e(message);
+  }
 }

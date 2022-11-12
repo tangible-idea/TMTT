@@ -1,37 +1,57 @@
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:tmtt/src/screens/base/base_scaffold.dart';
+import 'package:tmtt/src/screens/write_message/message_input_fragment.dart';
 import 'package:tmtt/src/screens/write_message/write_message_controller.dart';
-import 'package:tmtt/src/widgets/bottom_button.dart';
-import 'package:tmtt/src/widgets/plain_text.dart';
-import 'package:tmtt/src/widgets/plain_text_field.dart';
+import 'package:tmtt/src/util/my_navigator.dart';
+import 'package:tmtt/src/widgets/download_advertise_item.dart';
+
+import '../../resources/styles/my_color.dart';
 
 class WriteMessageScreen extends GetView<WriteMessageController> {
   @override
   Widget build(BuildContext context) {
-    controller.getUserId();
     return Obx(() => BaseScaffold(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
+      resizeToAvoidBottomInset: false,
+      onPressedAosBackButton: () => MyNav.pop(),
+      backgroundColor: MyColor.kPrimary,
+        body: Stack(
           children: [
-            PlainText(
-              text: controller.userNameObs.value,
+            Container(
+              margin: const EdgeInsets.only(top: 80),
+              padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
+              decoration: BoxDecoration(
+                color: MyColor.white,
+                borderRadius: BorderRadius.circular(24),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: controller.pages[controller.currentPageIndexObs.value],
+                  ),
+                  DownLoadAdvertiseItem(),
+                ],
+              ),
             ),
-            PlainTextField(
-              hintText: '메시지 입력하기',
-              keyboardType: TextInputType.text,
-              controller: controller.inputController,
+            Align(
+              alignment: Alignment.topCenter,
+              child: Container(
+                margin: const EdgeInsets.only(top: 10),
+                child: CircleAvatar(
+                    radius: 50,
+                    backgroundColor: MyColor.kLightBackground,
+                    foregroundImage: NetworkImage(controller.userImageObs.value),
+                ),
+              ),
             ),
-            BottomPlainButton(
-              text: '메시지 전송하기',
-              onPressed: () => controller.writeMessage(),
-              enabledObs: RxBool(true),
-            )
           ],
         )
     ));
   }
 }
+

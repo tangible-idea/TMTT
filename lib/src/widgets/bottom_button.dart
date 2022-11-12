@@ -63,18 +63,22 @@ class BottomGrayButton extends StatelessWidget {
 class BottomPlainButton extends StatelessWidget {
 
   String? text;
+  TextStyle? textStyle;
   VoidCallback? onPressed;
   double? fontSize;
   Widget? icon;
+  ButtonStyle? style;
 
   RxBool enabledObs = true.obs;
 
   BottomPlainButton({
     Key? key,
     this.text,
+    this.textStyle,
     this.onPressed,
     this.fontSize,
     this.icon,
+    this.style,
     required this.enabledObs,
   }) : super(key: key);
 
@@ -92,7 +96,7 @@ class BottomPlainButton extends StatelessWidget {
     );
   }
 
-  var normalButtonStyle= BtnStyle.plain.copyWith(
+  late var normalButtonStyle = (style != null) ? style : BtnStyle.plain.copyWith(
     padding: MaterialStateProperty.all<EdgeInsets>(
         const EdgeInsets.all(18)
     ),
@@ -109,7 +113,8 @@ class BottomPlainButton extends StatelessWidget {
         style: isEnable ? normalButtonStyle : disabledButtonStyle,
         child: PlainText(
           text: text,
-          style: TextStyle(
+          style: textStyle ?? TextStyle(
+            fontWeight: FontWeight.w700,
             fontSize: fontSize ?? 16,
             color: MyColor.white,
           ),
@@ -122,7 +127,8 @@ class BottomPlainButton extends StatelessWidget {
         style: isEnable ? normalButtonStyle : disabledButtonStyle,
         label: PlainText(
           text: text,
-          style: TextStyle(
+          style: textStyle ?? TextStyle(
+            fontWeight: FontWeight.w600,
             fontSize: fontSize ?? 16,
             color: MyColor.white,
           ),

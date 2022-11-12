@@ -12,6 +12,7 @@ class AppSpaces {
   static const verticalSpace80 = SizedBox(height: 80);
   static const verticalSpace90 = SizedBox(height: 90);
   static const verticalSpace100 = SizedBox(height: 100);
+  static const horizontalSpace5 = SizedBox(width: 5);
   static const horizontalSpace10 = SizedBox(width: 10);
   static const horizontalSpace20 = SizedBox(width: 20);
   static const horizontalSpace40 = SizedBox(width: 40);

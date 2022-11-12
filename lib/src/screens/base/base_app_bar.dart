@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:tmtt/generated/assets.dart';
 import 'package:tmtt/src/resources/my_images.dart';
 
 import '../../resources/styles/my_color.dart';
@@ -43,7 +44,7 @@ class BaseAppBar extends StatelessWidget {
           const Spacer(),
           Text(
             title ?? "",
-            style: MyTextStyle.subTitle1.copyWith(
+            style: MyTextStyle.h4.copyWith(
                 color: titleColor ?? MyColor.primary_05
             ),
           ),
@@ -70,7 +71,7 @@ class BaseAppBar extends StatelessWidget {
             onBackPressed?.call();
           },
           padding: const EdgeInsets.all(0),
-          icon: SvgPicture.asset(MyImages.backIcon)
+          icon: SvgPicture.asset(Assets.imagesBackArrow)
       ),
     );
   }

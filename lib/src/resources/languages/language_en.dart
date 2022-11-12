@@ -2,32 +2,64 @@
 import 'package:tmtt/src/resources/languages/strings.dart';
 
 Map<String, String> translations_en = {
-  Strings.confirm  : '확인',
-  Strings.skip     : '다음에',
-  Strings.doSetting: '설정하기',
-  Strings.cancel   : '닫기',
-  Strings.next   : '다음',
+  Strings.confirm  : 'Confirm',
+  Strings.skip     : 'Skip',
+  Strings.doSetting: 'Setting',
+  Strings.cancel   : 'Cancel',
+  Strings.next   : 'Next',
+
+  // push
+  Strings.pushNewMessageTitle : "You have a new message!",
+  Strings.pushNewMessageContent : "Tap to open 😀",
 
   Strings.registerDesc1: 'Get anonymous messages on any kind of \r\nsocial media apps such as Instagram!',
   Strings.registerDesc2: 'this web address is how people will find\r\nyour TMTT profile online.',
+  Strings.registerDesc3: '(Your instagram ID to handle.)',
   Strings.registerCreateYourOwnLInk: 'Create your own link',
 
-  Strings.permissionScreenDesc1: '원활한 앱 사용을 위해\n다음의 앱 권한을 허용해주세요',
-  Strings.permissionScreenDesc2: '카메라',
-  Strings.permissionScreenDesc3: '송금 및 주소록 등록 시 주소 스캔 및 사진 업로드 용도로 사용됩니다.',
-  Strings.permissionScreenDesc4: '연락처',
-  Strings.permissionScreenDesc5: '연락처 송금 시 받는 분 확인 용도로 사용됩니다.',
-  Strings.permissionScreenDesc6: '허용하지 않으셔도 서비스 이용 가능하며\n사용 중 동의가 필요한 부분에서 알려드립니다.',
+  //home
+  Strings.homeContent1: "Ask question to your followers!",
+  Strings.homeContent2: "Just follow easy 2 steps!",
+  Strings.homeContent3: "Step1: Copy your link",
+  Strings.homeContent4: "Step2: Share your link on your Instagram Story.",
+  Strings.homeContent5: "Then they'll answer back to you anonymously..",
+  Strings.homeButtonRandom: "Random",
+  Strings.homeButtonTemplate: "Template",
+  Strings.homeButtonCopyLink: "Copy link",
+  Strings.homeButtonCopyLinkAction: "Link copied!",
+  Strings.homeButtonShare: "Share",
 
-  Strings.danalLoginDesc1: '반갑습니다\n토큰뱅크 입니다!',
-  Strings.danalLoginDesc2: '신규 회원 또는 이메일 계정이 없을 경우 본인인증 버튼을 눌러 진행해 주세요.',
-  Strings.danalLoginDesc3: '이메일 로그인',
-  Strings.danalLoginDesc4: '휴대폰 본인인증',
+  // Settings
+  Strings.settingFeedback1 : 'Feedback',
+  Strings.settingFeedback2 : 'Report technical issues\nor suggest new features.',
+  Strings.settingFeedbackEmailSubject: "TMTT Feedback",
+  Strings.settingFeedbackEmailBody : "Tell us about your problem or feature you'd like to have but did not find.",
+  Strings.settingLanguage1 : 'Language',
+  Strings.settingLanguage2 : 'Change your app language.',
+  Strings.settingDeactivate1 : 'Deactivate Account',
+  Strings.settingDeactivate2 : 'This cannot be undone.',
+  Strings.settingPrivacypolicy1 : 'Privacy policy',
+  Strings.settingPrivacypolicy2 : 'Read privacy policy of TMTT',
 
-  Strings.termsDesc1: '이용 약관에 동의해주세요',
-  Strings.termsDesc2: '토큰뱅크 이용 약관 전체 동의',
-  Strings.termsDesc3: '서비스 이용 약관',
-  Strings.termsDesc4: '개인정보 수집 및 이용 동의',
-  Strings.termsDesc5: '고유식별정보 수집 및 이용 동의',
-  Strings.termsDesc6: '보기',
+  // create your slug page
+  Strings.slugCreateError1 : 'There is another user with the same slug.',
+  Strings.slugCreateError2 : 'Slug can only use letters, numbers _ and .',
+  Strings.slugPopupContent1 : 'CONFIRM YOUR INSTAGRAM ACCOUNT',
+  Strings.slugPopupContent2 : 'Is this your account?',
+  Strings.slugPopupButtonYes: 'Yes! This is mine.',
+  Strings.slugPopupButtonNo : 'No. Who is this?',
+  Strings.slugPopupFollowers : 'Followers',
+  Strings.slugPopupFollowing : 'Following',
+
+
+// Message
+  Strings.messageButtonReply : 'Reply',
+  Strings.messageButtonWhoSentThis : 'Who sent this?',
+  Strings.messageHint1 : 'City',
+  Strings.messageHint2 : 'Country',
+  Strings.messageHint3 : 'Time Sent',
+  Strings.messageHint4 : 'Carrier',
+  Strings.messageHint5 : 'Platform',
+  Strings.messageHint6 : 'Device',
+  Strings.messageHint7 : 'Software',
 };

@@ -1,19 +1,24 @@
 
 
+
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_insta/flutter_insta.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:tmtt/firebase/fire_store.dart';
 import 'package:tmtt/pages.dart';
+import 'package:tmtt/src/bottom_dialog/found_instagram_account_dialog.dart';
 import 'package:tmtt/src/constants/local_storage_key_store.dart';
 import 'package:tmtt/src/util/inapp_purchase_util.dart';
 import 'package:tmtt/src/util/local_storage.dart';
+import 'package:tmtt/src/util/my_dialog.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 import 'package:tmtt/src/util/my_navigator.dart';
 import 'package:tmtt/data/model/user.dart' as userModel;
 
+import '../../resources/languages/strings.dart';
 import '../../util/my_snackbar.dart';
 import '../base/base_get_controller.dart';
 
@@ -29,6 +34,8 @@ class RegisterController extends BaseGetController {
 
   late final slugInputController = TextEditingController();
   var errorObs= Rx<String?>(null);
+  var instagramFoundObs= Rx<bool>(false);
+
   @override
   void onInit() {
     slugInputController.addListener(() {
@@ -64,36 +71,130 @@ class RegisterController extends BaseGetController {
     }
     return null;
   }
+  List<String> blockList = [
+    "splash",
+    "register",
+    "createslug",
+    "home",
+    "inbox",
+    "privacy"
+  ];
+
+  bool instagramIDMatchRegex(String value) {
+    String pattern = r'(^[\w](?!.*?\.{2})[\w.]{1,28}[\w]$)';
+    RegExp regExp = RegExp(pattern);
+    if (!regExp.hasMatch(value)) {
+      return false;
+    }
+    return true;
+
+  }
 
   // slug 만들기
   void createYourSlug(String slug) async {
     errorObs.value= errorText; // run validation.
     if(errorObs.value != null) return; // return on validation error.
+    if(blockList.contains(slug)) return; // (주의) 슬러그가 페이지명과 겹치면 안된다.
 
-    // 유저 검색.
-    var userSlug= await FireStore.searchUserSlug(slug);
-    if(userSlug != null) {
-      errorObs.value= 'There is another user with the same slug.';
+    var trimmedSlug= slug.trim();
+
+    // 이미 내가 사용하고 있다면 그냥 넘어감. (일어날 확률이 드문 예외처리)
+    var myInfo= await FireStore.getMyInfo();
+    if(myInfo?.slugId == trimmedSlug) {
+      goToHome();
       return;
     }
 
-    bool isSuccess= await FireStore.updateUserValue("slug_id", slug);
+    // 유저 검색.
+    var userSlug= await FireStore.searchUserSlug(trimmedSlug);
+    if(userSlug != null) {
+      errorObs.value= Strings.slugCreateError1.tr;
+      return;
+    }
+
+    // instagram ID 형식과 똑같이 검사한다.
+    var isFormatValidForSlug= instagramIDMatchRegex(trimmedSlug);
+    if(!isFormatValidForSlug) {
+      errorObs.value= Strings.slugCreateError2.tr;
+      return;
+    }
+
+    bool isSuccess= await FireStore.updateUserValue("slug_id", trimmedSlug);
     if(!isSuccess) {
       MySnackBar.show(title: 'Error', message: 'There is an error while creating your slug.');
-    } else {
-      await LocalStorage.put(KeyStore.userSlugId, slug);
-      MyNav.pushReplacementNamed(
-        pageName: PageName.home,
-      );
+    } else { // success
+      searchInstagramAccount(trimmedSlug);
     }
+  }
+
+  // find corresponding Instargram id.
+  void searchInstagramAccount(String userId) async {
+    FlutterInsta flutterInsta = FlutterInsta();
+
+    try {
+      await flutterInsta.getProfileData(userId); // try getting instagram account.
+      // Log.d("Found account: " +
+      //     flutterInsta.username + '\n' +
+      //     flutterInsta.followers.toString() + '\n' +
+      //     flutterInsta.following + '\n' +
+      //     flutterInsta.imgurl
+      // );
+
+      if (flutterInsta.username.toString().isNotEmpty) {
+        showFoundInstagramAccountByBottomSheet(userId, flutterInsta);
+      } else {
+        await LocalStorage.put(KeyStore.userSlugId, userId);
+        goToHome();
+      }
+    }on NoSuchMethodError catch (_, ex) {
+      await LocalStorage.put(KeyStore.userSlugId, userId);
+      goToHome();
+    }on Exception catch (_, ex) {
+      await LocalStorage.put(KeyStore.userSlugId, userId);
+      goToHome();
+    }
+  }
+
+  // Populate bottom sheet.
+  void showFoundInstagramAccountByBottomSheet(String slug, FlutterInsta foundInsta) {
+
+    var dialog= FoundInstagramAccountDialog(
+      follower: foundInsta.followers.toString(),
+      following: foundInsta.following.toString(),
+      instagramId: foundInsta.username.toString(),
+      instagramName: foundInsta.fullname.toString(),
+      instagramBio: foundInsta.bio.toString(),
+      instagramImageURL: foundInsta.imgurl.toString(),
+      onYesPressed: () async {
+        var isSuccess= await FireStore.linkMyPhotoFromInstagramAccountToStorage(foundInsta.imgurl.toString());
+        goToHome();
+      },
+      onNoPressed: () {
+        //goToHome();
+      },
+    );
+    MyDialog.showBottom(
+      widget: dialog,
+      isEnableDrag: true,
+      isFullScreen: false,
+    );
+  }
+
+
+  Future<void> saveIdAndGoToHome() async {
+
+    MyNav.pushReplacementNamed(
+      pageName: PageName.home,
+    );
   }
 
   // google API with Firebase
   void signInWithGoogle() async {
     try {
       UserCredential credential= await getCredentialFromGoogleFirebase();
-      String uid = credential.user?.uid ?? '';
 
+      // get uid, email, username
+      String uid = credential.user?.uid ?? '';
       String userEmail= credential.user?.email.toString() ?? "";
       String userName= credential.user?.displayName.toString() ?? "";
       MySnackBar.show(title: 'Login', message: userEmail);
@@ -102,18 +203,28 @@ class RegisterController extends BaseGetController {
 
       var currentUser= await FireStore.searchUserSocialType(LoginUserType.google, uid);
       if(currentUser == null) {
+
+        // get push token
+        final fcmToken = await FirebaseMessaging.instance.getToken();
+
+        // create a model and register with the data.
         var user = userModel.User(
           googleUid: credential.user?.uid ?? '',
-          registerDate: DateTime.now().toString() ?? '',
+          registerDate: DateTime.now().toString(),
+          pushToken: fcmToken.toString(),
         );
         registerDocId= await FireStore.register(user); // firestore signing up.
-      }else{ // user does exist : get current doc-id.
-        registerDocId= currentUser.documentId;
+      }else{
+        registerDocId= currentUser.documentId; // user does exist : get current doc-id.
       }
 
       await LocalStorage.put(KeyStore.userDocId, registerDocId);
       await LocalStorage.put(KeyStore.isLogin, true);
 
+      // Save your document id itself
+      await FireStore.updateUserValue('document_id', registerDocId);
+
+      // set purchase data
       await Purchase.login(registerDocId);
       await Purchase.setUserEmail(userEmail);
       await Purchase.setUserName(userName);

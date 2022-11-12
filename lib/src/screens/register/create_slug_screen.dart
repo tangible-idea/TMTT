@@ -51,7 +51,7 @@ class CreateSlugScreen extends GetView<RegisterController> {
                   style: MyTextStyle.body,
                   textAlign: TextAlign.center),
               AppSpaces.verticalSpace10,
-              Text("(For example, your instagram ID.)",
+              Text(Strings.registerDesc3.tr,
                   style: MyTextStyle.body.copyWith(color: Colors.black38),
                   textAlign: TextAlign.center),
               AppSpaces.verticalSpace30,
