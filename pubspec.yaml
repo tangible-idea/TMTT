@@ -62,7 +62,6 @@ dependencies:
   webview_flutter: ^3.0.4
   webview_flutter_web: ^0.1.0+4
   purchases_flutter: ^4.3.0
-  flutter_dotenv: ^5.0.2
   google_sign_in: ^5.4.2
   cached_network_image: ^3.2.2
   icons_launcher: ^2.0.5
