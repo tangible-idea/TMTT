@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
@@ -12,7 +13,7 @@ class Purchase {
 
   static Future<void> initPlatformState() async {
 
-    await Purchases.setDebugLogsEnabled(true);
+    await Purchases.setDebugLogsEnabled(kDebugMode);
 
     PurchasesConfiguration configuration;
     if (GetPlatform.isAndroid) {

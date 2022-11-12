@@ -55,16 +55,28 @@ class HomeController extends BaseGetController {
   void onInit() {
     //checkPageFlow();
     getMyInfo();
-    getInsta();
     loadProfilePicture();
     pushTokenListener();
     inboxScrollListener();
+    purchaseTest();
   }
 
-  void getInsta() async {
-    // var instaInfo = await InfoUtil.getInstagramInfo('hunkim_food');
-    // Log.d(instaInfo);
+  void purchaseTest() async {
+    Log.d('Purchase.getUserId: ${await Purchase.getUserId()}');
+    var userInfo = await Purchase.getCustomerInfo();
+    if (userInfo != null) {
+      var isSubscribe = await Purchase.isUserActiveSubscribe(userInfo);
+      Log.d('isSubscribe: $isSubscribe');
+    }
 
+    var offerings = await Purchase.displayProducts();
+    Log.d('offerings: $offerings');
+    // var product = offerings?.current?.availablePackages[0];
+    // var product = offerings?.current?.weekly;
+
+    // if (offerings != null && product != null) {
+    //   await Purchase.makePurchase(product);
+    // }
   }
 
   @override
@@ -149,25 +161,10 @@ class HomeController extends BaseGetController {
     myLinkObs.value = '${MyUrl.baseUrl}#/${myInfo.slugId}';
     myInfoObs.value = myInfo;
 
-    Log.d('Purchase.getUserId: ${await Purchase.getUserId()}');
-    var userInfo = await Purchase.getCustomerInfo();
-    if (userInfo != null) {
-      var isSubscribe = await Purchase.isUserActiveSubscribe(userInfo);
-      Log.d('isSubscribe: $isSubscribe');
-    }
-
-    var offerings = await Purchase.displayProducts();
-    // var product = offerings?.current?.availablePackages[0];
-    var product = offerings?.current?.weekly;
-
-    // if (offerings != null && product != null) {
-    //   await Purchase.makePurchase(product);
-    // }
-
-    //if(myInfoObs.value.pushToken.isEmpty) {
+    if(myInfoObs.value.pushToken.isEmpty) {
         final fcmToken = await FirebaseMessaging.instance.getToken();
         FireStore.updateUserValue("push_token", fcmToken.toString());
-    //}
+    }
 
     checkPageFlow();
   }
