@@ -13,6 +13,8 @@ import 'package:tmtt/src/screens/write_message/send_success_fragment.dart';
 import 'package:tmtt/src/util/info_util.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 
+import '../../resources/languages/strings.dart';
+
 class WriteMessageBinding implements Bindings {
   @override
   void dependencies() {
@@ -91,10 +93,9 @@ class WriteMessageController extends BaseGetController {
     Log.d('currentUser.documentId: ${currentUser.documentId}');
 
     await service.sendPush({
-      'senderUid': '',
       'targetUid': currentUser.documentId,
-      'title': 'new message!',
-      'message': '확인해보셈'
+      'title': Strings.pushNewMessageTitle.tr,
+      'message': Strings.pushNewMessageContent.tr
     });
 
   }

@@ -7,6 +7,10 @@ class Strings {
   static String cancel = 'cancel';
   static String next = 'next';
 
+  // push
+  static String pushNewMessageTitle= 'pushNewMessageTitle';
+  static String pushNewMessageContent= 'pushNewMessageContent';
+
   // register page
   static String registerDesc1 = 'registerDesc1';
   static String registerDesc2 = 'registerDesc2';

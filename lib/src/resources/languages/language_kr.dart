@@ -8,6 +8,10 @@ Map<String, String> translations_kr = {
   Strings.cancel   : '닫기',
   Strings.next   : '다음',
 
+  // push message
+  Strings.pushNewMessageTitle : "새 메시지가 왔어요!",
+  Strings.pushNewMessageContent : "어서 확인해보세요~ 😀",
+
   Strings.registerDesc1: '인스타그램 등 SNS에서 익명 메시지를 받을 수 있는\n계정을 만들어 드릴게요.',
   Strings.registerDesc2: '친구에게 익명 메시지를 받을 수 있는 URL을 만들어볼까요.',
   Strings.registerDesc3: '(친구가 알아볼 수 있는 인스타그램 ID를 입력해주세요~)',
