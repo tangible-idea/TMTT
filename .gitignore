@@ -133,3 +133,5 @@ app.*.symbols
 *.env
 firebase/functions/node_modules
 firebase/functions/lib
+
+app_secret.*

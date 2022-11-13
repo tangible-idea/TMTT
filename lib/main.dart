@@ -14,7 +14,6 @@ import 'package:tmtt/src/util/local_storage.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 import 'firebase_options.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:tmtt/src/util/url_strategy_native.dart'
   if (dart.library.html) 'package:tmtt/src/util/url_strategy_web.dart';
@@ -31,10 +30,9 @@ void main() async {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
   // 앱 세로 고정
-  // if (!GetPlatform.isWeb && GetPlatform.isAndroid || GetPlatform.isIOS) {
-  //   await dotenv.load(fileName: ".env");
-  //   await Purchase.initPlatformState();
-  // }
+  if (!GetPlatform.isWeb && GetPlatform.isAndroid || GetPlatform.isIOS) {
+    await Purchase.initPlatformState();
+  }
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
