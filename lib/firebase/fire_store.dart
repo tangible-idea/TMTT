@@ -18,6 +18,7 @@ import 'package:tmtt/src/util/info_util.dart';
 import 'package:tmtt/src/util/local_storage.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 
+import '../src/constants/firestore_key.dart';
 import '../src/util/my_snackbar.dart';
 import 'fire_store_collections.dart';
 
@@ -51,11 +52,6 @@ class FireStore {
     var myUID= FireAuth.getMyUID();
     if(myUID == "") { return; }
 
-    // Create a Reference to the file
-    // Reference ref = FirebaseStorage.instance.ref()
-    //     .child('profile')
-    //     .child('/image_$myUID');
-
     instagramImageURL= instagramImageURL.replaceFirst("https%3A//", "https://");
 
     try {
@@ -88,7 +84,8 @@ class FireStore {
     // Create a Reference to the file
     Reference ref = FirebaseStorage.instance.ref()
         .child('profile')
-        .child('/image_$myUID');
+        .child(myUID)
+        .child('/image_${DateTime.now().millisecondsSinceEpoch}');
 
     try {
       // resize and upload to Stoarge
@@ -98,8 +95,8 @@ class FireStore {
 
       // update user database on Firestore
       String profileURL= await ref.getDownloadURL();
-      await FireStore.updateUserValue("profile_image", profileURL);
-      CachedNetworkImage.evictFromCache(profileURL);
+      await FireStore.updateUserValue(FireStoreKey.profile_image, profileURL);
+      await CachedNetworkImage.evictFromCache(profileURL);
       return true;
 
     } on FirebaseException catch (e) {

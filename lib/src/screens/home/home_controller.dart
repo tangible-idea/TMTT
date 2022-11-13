@@ -38,6 +38,7 @@ import 'package:tmtt/src/util/my_snackbar.dart';
 import 'package:tmtt/src/util/posting_helper.dart';
 import 'package:widgets_to_image/widgets_to_image.dart';
 
+import '../../constants/firestore_key.dart';
 import '../../constants/local_storage_key_store.dart';
 import '../../constants/sample_questions.dart';
 import '../../resources/languages/strings.dart';
@@ -133,7 +134,7 @@ class HomeController extends BaseGetController {
         .listen((fcmToken) {
       // send token to application server.
       // Note: This callback is fired at each app startup and whenever a new token is generated.
-      FireStore.updateUserValue("push_token", fcmToken);
+      FireStore.updateUserValue(FireStoreKey.push_token, fcmToken);
     })
         .onError((err) {
         // Error getting token.
@@ -166,7 +167,7 @@ class HomeController extends BaseGetController {
 
     if(myInfoObs.value.pushToken.isEmpty) {
         final fcmToken = await FirebaseMessaging.instance.getToken();
-        FireStore.updateUserValue("push_token", fcmToken.toString());
+        FireStore.updateUserValue(FireStoreKey.push_token, fcmToken.toString());
     }
 
     checkPageFlow();
@@ -245,9 +246,14 @@ class HomeController extends BaseGetController {
     final XFile? xfile = await picker.pickImage(source: ImageSource.gallery);
     //file!.path
     var myInfo= await FireStore.getMyInfo();
-    if (myInfo == null) { return; }
+    if (myInfo == null) {
+      loadProfilePicture();
+      return;
+    }
 
-    await FireStore.uploadMyPhotoToStorage(xfile!.path);
+    if(xfile != null) {
+      await FireStore.uploadMyPhotoToStorage(xfile.path);
+    }
 
     // final metadata = SettableMetadata(
     //   contentType: 'image/jpeg',

@@ -14,7 +14,7 @@ Map<String, String> translations_kr = {
 
   Strings.registerDesc1: '인스타그램 등 SNS에서 익명 메시지를 받을 수 있는\n계정을 만들어 드릴게요.',
   Strings.registerDesc2: '친구에게 익명 메시지를 받을 수 있는 URL을 만들어볼까요.',
-  Strings.registerDesc3: '(친구가 알아볼 수 있는 인스타그램 ID를 입력해주세요~)',
+  Strings.registerDesc3: '(인스타그램 ID를 입력하면 자동으로 사진을 가져와요~)',
   Strings.registerCreateYourOwnLInk: '공유링크 생성하기',
   Strings.slugPopupFollowers : '팔로워',
   Strings.slugPopupFollowing : '팔로잉',
