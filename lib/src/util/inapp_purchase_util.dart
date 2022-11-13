@@ -10,6 +10,7 @@ import 'package:tmtt/src/util/my_logger.dart';
 class Purchase {
 
   static const String _entitlementId = 'link.tmtt.tmtt';
+  static const String _entitlementTestId = 'link.tmtt.tmtt.testflight';
 
   static Future<void> initPlatformState() async {
 
@@ -17,9 +18,9 @@ class Purchase {
 
     PurchasesConfiguration configuration;
     if (GetPlatform.isAndroid) {
-      configuration = PurchasesConfiguration(DotEnvStore.revenueCatGoogleSdkKey);
+      configuration = PurchasesConfiguration(APIKey.revenueCatGoogleSdkKey);
     } else {
-      configuration = PurchasesConfiguration(DotEnvStore.revenueCatAppleSdkKey);
+      configuration = PurchasesConfiguration(APIKey.revenueCatAppleSdkKey);
     }
     await Purchases.configure(configuration);
   }
@@ -63,10 +64,10 @@ class Purchase {
   static Future<Offerings?> displayProducts() async {
     try {
       Offerings offerings = await Purchases.getOfferings();
-      if (offerings.current != null && offerings.current?.availablePackages.isNotEmpty == true) {
-        // Display packages for sale
-        Log.d(offerings);
-      }
+      // if (offerings.current != null && offerings.current?.availablePackages.isNotEmpty == true) {
+      //   // Display packages for sale
+      //   Log.d(offerings);
+      // }
       return offerings;
     } on PlatformException catch (e) {
       // optional error handling

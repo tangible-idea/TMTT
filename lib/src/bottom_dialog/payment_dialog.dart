@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:purchases_flutter/models/package_wrapper.dart';
 import 'package:tmtt/generated/assets.dart';
 import 'package:tmtt/src/resources/styles/btn_style.dart';
 import 'package:tmtt/src/resources/styles/my_color.dart';
@@ -96,7 +97,14 @@ class PaymentDialog extends BaseWidget {
 
   void payment() async {
     var offerings = await Purchase.displayProducts();
-    var product = offerings?.current?.weekly;
+
+    Package? product;
+    if(GetPlatform.isAndroid) {
+      product = offerings?.current?.weekly;
+    } else if(GetPlatform.isIOS) {
+      product = offerings?.all["weekly_payment"]?.weekly;
+    }
+
     if (offerings != null && product != null) {
       var paymentResult = await Purchase.makePurchase(product);
       if(paymentResult == null) return;

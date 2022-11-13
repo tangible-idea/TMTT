@@ -134,4 +134,4 @@ app.*.symbols
 firebase/functions/node_modules
 firebase/functions/lib
 
-lib/src/constants/app_secret.dart
+app_secret.*
