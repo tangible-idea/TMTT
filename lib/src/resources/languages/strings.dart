@@ -43,6 +43,8 @@ class Strings {
   // Message
   static String messageButtonReply = 'messageButtonReply';
   static String messageButtonWhoSentThis = 'messageButtonWhoSentThis';
+  static String messageEmptyState = 'messageEmptyState';
+  static String messageEmptyStateBody = 'messageEmptyStateBody';
   static String messageHint1= 'messageHint1';
   static String messageHint2 = 'messageHint2';
   static String messageHint3 = 'messageHint3';

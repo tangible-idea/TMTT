@@ -15,6 +15,7 @@ import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
 
 
 import '../../../generated/assets.dart';
+import '../../resources/languages/strings.dart';
 
 class InboxFragment extends GetView<HomeController> {
 
@@ -34,9 +35,9 @@ class InboxFragment extends GetView<HomeController> {
                     children: [
                       Lottie.asset(Assets.lottieEmptyMessage),
                       AppSpaces.verticalSpace20,
-                      Center(child: PlainText(text: "It's empty here", style: MyTextStyle.h2,)),
+                      Center(child: PlainText(text: Strings.messageEmptyState.tr, style: MyTextStyle.h2,)),
                       AppSpaces.verticalSpace10,
-                      Center(child: PlainText(text: "Did you share your message\nto your followers?",
+                      Center(child: PlainText(text: Strings.messageEmptyStateBody.tr,
                           style: MyTextStyle.body16.copyWith(color: MyColor.kGrey2),
                           align: TextAlign.center)),
                       AppSpaces.verticalSpace40

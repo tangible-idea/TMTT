@@ -55,6 +55,8 @@ Map<String, String> translations_en = {
 // Message
   Strings.messageButtonReply : 'Reply',
   Strings.messageButtonWhoSentThis : 'Who sent this?',
+  Strings.messageEmptyState : "It's empty here",
+  Strings.messageEmptyStateBody : "Did you share your message\nto your followers?",
   Strings.messageHint1 : 'City',
   Strings.messageHint2 : 'Country',
   Strings.messageHint3 : 'Time Sent',

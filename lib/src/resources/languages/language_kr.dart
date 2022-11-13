@@ -42,6 +42,8 @@ Map<String, String> translations_kr = {
   // Message
   Strings.messageButtonReply : '답장하기',
   Strings.messageButtonWhoSentThis : '누가 보냈어?',
+  Strings.messageEmptyState : "메세지가 없어요 :'(",
+  Strings.messageEmptyStateBody : "친구들에게 먼저 메시지를 보내보세요!",
   Strings.messageHint1 : '도시명',
   Strings.messageHint2 : '국가명',
   Strings.messageHint3 : '보낸 시각',
