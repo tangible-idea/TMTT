@@ -6,8 +6,11 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:tmtt/pages.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:tmtt/src/constants/local_storage_key_store.dart';
 import 'package:tmtt/src/resources/languages/languages.dart';
 import 'package:tmtt/src/screens/index_screen.dart';
+import 'package:tmtt/src/util/language_util.dart';
+import 'package:tmtt/src/util/local_storage.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 import 'firebase_options.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
@@ -39,43 +42,67 @@ void main() async {
 
   // urlConfig();
   registerWebViewWebImplementation();
-  runApp(MyTmttApp());
+  var myapp= MyTmttApp();
+  MyTmttApp.loadMyLanguage();
+  runApp(myapp);
 }
 
 class MyTmttApp extends StatelessWidget {
 
   MyTmttApp({super.key});
 
-  var theme = ThemeData(
-    fontFamily: window.locale.languageCode == "en" ? "Rubik" : "NanumSquareRound",
+  var themeEN = ThemeData(
+    fontFamily: "Rubik",
     primarySwatch: Colors.blue,
     scaffoldBackgroundColor: Colors.white,
   );
+
+  var themeMulti = ThemeData(
+    fontFamily: "NanumSquareRound",
+    primarySwatch: Colors.blue,
+    scaffoldBackgroundColor: Colors.white,
+  );
+
+  //var currLang = Get.locale!.languageCode.obs;
+  static final _currLang = "English".obs;
+
+  static Future<void> loadMyLanguage() async {
+    final String language = await LocalStorage.get(KeyStore.language, '');
+    if(language.isNotEmpty) {
+      _currLang.value= language;
+      LanguageUtil().updateAppLanguage(language);
+    } else {  // 유저가 수동으로 세팅한 언어설정이 없으면 -> 기기 설정으로 세팅.
+      _currLang.value= Get.locale!.languageCode.toString();
+      LanguageUtil().updateAppLanguage(_currLang.value);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
 
     // initFirebase();
 
-    return GetMaterialApp(
-      title: 'TMTT',
-      theme: theme,
-      locale: Get.deviceLocale, // 언어 설정
-      fallbackLocale: const Locale('en', 'US'), // 잘못된 지역이 선택된 경우 복구될 지역을 지정
-      // supportedLocales: supportedLocale,
-      translations: Languages(), // 로컬라이징 적용
-      unknownRoute: setUnknownPage(), // 404 에러 처리
-      initialRoute: setInitialRoute(),
-      getPages: kGetPages,
+    return Obx(()=>
+      GetMaterialApp(
+        title: 'TMTT',
+        theme: _currLang.value == "Korean" ? themeMulti : themeEN,
+        locale: Get.deviceLocale, // 언어 설정
+        fallbackLocale: const Locale('en', 'US'), // 잘못된 지역이 선택된 경우 복구될 지역을 지정
+        // supportedLocales: supportedLocale,
+        translations: Languages(), // 로컬라이징 적용
+        unknownRoute: setUnknownPage(), // 404 에러 처리
+        initialRoute: setInitialRoute(),
+        getPages: kGetPages,
+      ),
     );
   }
 
   // supported locale 태국어, 베트남어, 인니어, 말레이어, 일본어, 중국어, 영어, 한국어
-  List<Locale> supportedLocale = const [
-    Locale('ko', 'KR'),
-    Locale('en', 'US'),
-    Locale('th', 'TH'), // 태국어
-  ];
+  // List<Locale> supportedLocale = const [
+  //   Locale('ko', 'KR'),
+  //   Locale('en', 'US'),
+  //   Locale('th', 'TH'), // 태국어
+  // ];
 
   String setInitialRoute() {
     if(GetPlatform.isWeb) {

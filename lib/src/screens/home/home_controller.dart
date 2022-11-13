@@ -20,6 +20,7 @@ import 'package:get/get.dart';
 import 'package:tmtt/data/model/message.dart';
 import 'package:tmtt/data/model/user.dart';
 import 'package:tmtt/firebase/fire_store.dart';
+import 'package:tmtt/main.dart';
 import 'package:tmtt/pages.dart';
 import 'package:tmtt/src/constants/URLs.dart';
 import 'package:tmtt/src/resources/languages/languages.dart';
@@ -37,9 +38,11 @@ import 'package:tmtt/src/util/my_snackbar.dart';
 import 'package:tmtt/src/util/posting_helper.dart';
 import 'package:widgets_to_image/widgets_to_image.dart';
 
+import '../../constants/local_storage_key_store.dart';
 import '../../constants/sample_questions.dart';
 import '../../resources/languages/strings.dart';
 import '../../resources/styles/my_color.dart';
+import '../../util/language_util.dart';
 import '../../util/my_dialog.dart';
 
 class HomeBinding implements Bindings {
@@ -430,13 +433,9 @@ class HomeController extends BaseGetController {
   }
 
 
-  void changeAppLanguage() {
-    switch(focusedLang.value) {
-      case "Korean": Get.updateLocale(LocaleKey.koKR); break;
-      case "English": Get.updateLocale(LocaleKey.enUS); break;
-      case "Thai": Get.updateLocale(LocaleKey.thTH); break;
-    }
-    //Get.updateLocale()
+  void changeAppLanguage() async {
+    LocalStorage.put(KeyStore.language, focusedLang.value);
+    await MyTmttApp.loadMyLanguage();
   }
 
   void openPrivacy() {

@@ -7,5 +7,6 @@ class KeyStore {
   static const String isSetPermission = 'isSetPermission'; // bool
   static const String isLogin = 'isLogin'; // bool
   static const String uuid = 'uuid'; // bool
+  static const String language = 'language'; // String
 }
 
