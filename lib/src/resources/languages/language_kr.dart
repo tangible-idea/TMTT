@@ -31,6 +31,10 @@ Map<String, String> translations_kr = {
   Strings.homeButtonCopyLinkAction: "링크가 복사되었어요!",
   Strings.homeButtonShare: "공유",
 
+  // home -> help dialog
+  Strings.helpTitle: "공유하는 방법!",
+  Strings.helpSubtitle: "팔로워 친구들에게\n익명 메시지 10초만에 주고받기!",
+
   // create your slug page
   Strings.slugCreateError1 : '해당 URL을 이미 다른 사람이 사용하고 있어요.',
   Strings.slugCreateError2 : 'URL은 영문자와 _과 .만 사용가능해요.',

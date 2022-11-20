@@ -8,5 +8,6 @@ class KeyStore {
   static const String isLogin = 'isLogin'; // bool
   static const String uuid = 'uuid'; // bool
   static const String language = 'language'; // String
+  static const String alreadySeenHelpDialog = 'alreadySeenHelpDialog'; // String
 }
 

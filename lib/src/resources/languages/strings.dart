@@ -40,6 +40,10 @@ class Strings {
   static String homeButtonCopyLinkAction = 'homeButtonCopyLinkAction';
   static String homeButtonShare = 'homeButtonShare';
 
+  // home -> help dialog
+  static String helpTitle= 'helpTitle';
+  static String helpSubtitle= 'helpSubtitle';
+
   // Message
   static String messageButtonReply = 'messageButtonReply';
   static String messageButtonWhoSentThis = 'messageButtonWhoSentThis';

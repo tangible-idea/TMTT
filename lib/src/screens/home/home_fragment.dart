@@ -15,8 +15,10 @@ import 'package:tmtt/src/widgets/plain_text_field.dart';
 import 'package:widgets_to_image/widgets_to_image.dart';
 
 import '../../../generated/assets.dart';
+import '../../constants/local_storage_key_store.dart';
 import '../../resources/languages/strings.dart';
 import '../../resources/styles/txt_style.dart';
+import '../../util/local_storage.dart';
 import '../../util/my_dialog.dart';
 import '../../widgets/button_white.dart';
 import '../../widgets/multiline_text_field.dart';
@@ -45,7 +47,14 @@ class HomeFragment extends GetView<HomeController> {
     }
   }
 
-  void showHelpDialog(BuildContext context) {
+  void showHelpDialog(BuildContext context) async {
+
+    var alreadySeenHelpDialog= await LocalStorage.get(KeyStore.alreadySeenHelpDialog, false);
+    if(alreadySeenHelpDialog) {
+      await controller.saveMyLastMessage();
+      await controller.shareOnInstagram(context);
+      return; // 이미 봤으면 패스
+    }
 
     var dialogBase= AlertDialog(
       insetPadding: const EdgeInsets.fromLTRB(40, 150, 40, 150),
@@ -59,10 +68,10 @@ class HomeFragment extends GetView<HomeController> {
             padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
-                Text('How to share?', style: MyTextStyle.h3.copyWith(color: Colors.white)),
+                Text(Strings.helpTitle.tr, style: MyTextStyle.h3.copyWith(color: Colors.white)),
                 Padding(
                   padding: const EdgeInsets.only(left: 20, top: 20),
-                  child: Text('Please report any\nor suggest new features.', style: MyTextStyle.body16L.copyWith(color: Colors.white)),
+                  child: Text(Strings.helpSubtitle.tr, style: MyTextStyle.body16L.copyWith(color: Colors.white)),
                 ),
               ],
             ),
@@ -89,6 +98,8 @@ class HomeFragment extends GetView<HomeController> {
         borderRadius: BorderRadius.all(Radius.circular(30.0)),
       ),);
     MyDialog.showDialog(dialogBase);
+
+    LocalStorage.put(KeyStore.alreadySeenHelpDialog, true); // 헬프 한번 본것으로 처리.
   }
 
   @override

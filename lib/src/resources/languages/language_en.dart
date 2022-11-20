@@ -29,6 +29,10 @@ Map<String, String> translations_en = {
   Strings.homeButtonCopyLinkAction: "Link copied!",
   Strings.homeButtonShare: "Share",
 
+  // home -> help dialog
+  Strings.helpTitle: "How to share?",
+  Strings.helpSubtitle: "Get many anonymous\ncompliments from your followers.",
+
   // Settings
   Strings.settingFeedback1 : 'Feedback',
   Strings.settingFeedback2 : 'Report technical issues\nor suggest new features.',
