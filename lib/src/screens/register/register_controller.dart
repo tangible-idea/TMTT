@@ -10,6 +10,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:tmtt/firebase/fire_store.dart';
 import 'package:tmtt/pages.dart';
 import 'package:tmtt/src/bottom_dialog/found_instagram_account_dialog.dart';
+import 'package:tmtt/src/constants/firestore_key.dart';
 import 'package:tmtt/src/constants/local_storage_key_store.dart';
 import 'package:tmtt/src/util/inapp_purchase_util.dart';
 import 'package:tmtt/src/util/local_storage.dart';
@@ -119,9 +120,10 @@ class RegisterController extends BaseGetController {
       return;
     }
 
-    bool isSuccess= await FireStore.updateUserValue("slug_id", trimmedSlug);
+    bool isSuccess= await FireStore.updateUserValue(FireStoreKey.slug_id, trimmedSlug);
     if(!isSuccess) {
       MySnackBar.show(title: 'Error', message: 'There is an error while creating your slug.');
+      Log.e('There is an error while creating your slug.');
     } else { // success
       searchInstagramAccount(trimmedSlug);
     }
@@ -141,7 +143,7 @@ class RegisterController extends BaseGetController {
       // );
 
       if (flutterInsta.username.toString().isNotEmpty) {
-        showFoundInstagramAccountByBottomSheet(userId, flutterInsta);
+        showFoundInstagramAccountByBottomSheet(userId, flutterInsta); // TODO: 이 시점부터 수락하기전에 먼저 이미지 다운로드?
       } else {
         await LocalStorage.put(KeyStore.userSlugId, userId);
         goToHome();

@@ -47,10 +47,10 @@ class FireStore {
   }
 
   // instagram photo url -> Firebase Storage
-  static Future<void> linkMyPhotoFromInstagramAccountToStorage(String instagramImageURL) async {
+  static Future<bool> linkMyPhotoFromInstagramAccountToStorage(String instagramImageURL) async {
 
     var myUID= FireAuth.getMyUID();
-    if(myUID == "") { return; }
+    if(myUID == "") { return false; }
 
     instagramImageURL= instagramImageURL.replaceFirst("https%3A//", "https://");
 
@@ -62,8 +62,9 @@ class FireStore {
         Uint8List bodyBytes = response.bodyBytes;
         String tempPath = (await getTemporaryDirectory()).path;
         File file = await File('$tempPath/my_instagram_image.png').writeAsBytes(bodyBytes);
-        //await ref.putFile(file);
-        uploadMyPhotoToStorage(file.path);
+
+        var isSuccess= await uploadMyPhotoToStorage(file.path);
+        return isSuccess;
       } else {
         // If the server did not return a 200 OK response,
         // then throw an exception.
@@ -71,11 +72,14 @@ class FireStore {
       }
     } on FirebaseException catch (e) {
       MySnackBar.show(title: 'Error', message: 'Error on while uploading your picture.');
+      return false;
     } on Exception catch (ex) {
       MySnackBar.show(title: 'Error', message: ex.toString());
+      return false;
     }
   }
 
+  // My instagram photo to Firebase storage.
   static Future<bool> uploadMyPhotoToStorage(String filepath) async {
 
     var myUID= FireAuth.getMyUID();
@@ -170,10 +174,11 @@ class FireStore {
 
     var snapshot = await instance
         .collection(Collections.users)
-        .where('slug_id', isEqualTo: userSlug)
+        .where(FireStoreKey.slug_id, isEqualTo: userSlug)
         .get();
 
     if(snapshot.docs.isEmpty) {
+      Log.e("There's no document with corresponding slug_id.");
       return null;
     }
 
