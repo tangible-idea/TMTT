@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_insta/flutter_insta.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:tmtt/firebase/fcm_service.dart';
 import 'package:tmtt/firebase/fire_store.dart';
 import 'package:tmtt/pages.dart';
 import 'package:tmtt/src/bottom_dialog/found_instagram_account_dialog.dart';
@@ -205,7 +206,7 @@ class RegisterController extends BaseGetController {
 
       var currentUser= await FireStore.searchUserSocialType(LoginUserType.google, uid);
       // get push token
-      final fcmToken = await FirebaseMessaging.instance.getToken();
+      final fcmToken = await FcmService.token;
 
       if(currentUser == null) {
 

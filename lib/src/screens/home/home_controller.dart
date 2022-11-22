@@ -4,10 +4,8 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:firebase_auth/firebase_auth.dart' as firebase_user;
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
@@ -19,6 +17,7 @@ import 'package:get/get.dart';
 
 import 'package:tmtt/data/model/message.dart';
 import 'package:tmtt/data/model/user.dart';
+import 'package:tmtt/firebase/fcm_service.dart';
 import 'package:tmtt/firebase/fire_store.dart';
 import 'package:tmtt/main.dart';
 import 'package:tmtt/pages.dart';
@@ -60,7 +59,8 @@ class HomeController extends BaseGetController {
     //checkPageFlow();
     getMyInfo();
     loadProfilePicture();
-    pushTokenListener();
+    FcmService.setPushTokenListener();
+    FcmService.setPushMessageListener();
     inboxScrollListener();
     purchaseTest();
   }
