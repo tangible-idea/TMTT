@@ -128,20 +128,6 @@ class HomeController extends BaseGetController {
 
   WidgetsToImageController captureController = WidgetsToImageController(); // in order to capture rounded profile.
 
-  void pushTokenListener() async {
-
-    FirebaseMessaging.instance.onTokenRefresh
-        .listen((fcmToken) {
-      // send token to application server.
-      // Note: This callback is fired at each app startup and whenever a new token is generated.
-      FireStore.updateUserValue(FireStoreKey.push_token, fcmToken);
-    })
-        .onError((err) {
-        // Error getting token.
-        Log.e(err);
-    });
-  }
-
   void searchInstaUser() async {
     String userName = inputController.text;
     FlutterInsta flutterInsta = FlutterInsta();
@@ -166,7 +152,7 @@ class HomeController extends BaseGetController {
     myInfoObs.value = myInfo;
 
     if(myInfoObs.value.pushToken.isEmpty) {
-        final fcmToken = await FirebaseMessaging.instance.getToken();
+        final fcmToken = await FcmService.token;
         FireStore.updateUserValue(FireStoreKey.push_token, fcmToken.toString());
     }
 
