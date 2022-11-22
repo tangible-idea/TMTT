@@ -32,6 +32,9 @@ Map<String, String> translations_en = {
   // home -> help dialog
   Strings.helpTitle: "How to share?",
   Strings.helpSubtitle: "Get many anonymous\ncompliments from your followers.",
+  Strings.helpButtonDontShowAnymore: "Don't show this anymore.",
+  Strings.helpButtonConfirm: "Got it, Thanks!",
+  Strings.helpButtonNext: "Next",
 
   // Settings
   Strings.settingFeedback1 : 'Feedback',

@@ -116,6 +116,8 @@ class HomeController extends BaseGetController {
   var selectedLang= ''.obs; // 설정에서 사용
 
   var helpPosition= 1.obs; // 도움말 페이지 인디케이터
+  var helpDontShow= false.obs; // 도움말 보지않기 스위치.
+
   showNextHelpOr(BuildContext context) {
     if(helpPosition.value < 4) {
       helpPosition.value = helpPosition.value +1;

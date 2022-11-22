@@ -43,6 +43,9 @@ class Strings {
   // home -> help dialog
   static String helpTitle= 'helpTitle';
   static String helpSubtitle= 'helpSubtitle';
+  static String helpButtonDontShowAnymore= 'helpButtonDontShowAnymore';
+  static String helpButtonConfirm= 'helpButtonConfirm';
+  static String helpButtonNext= 'helpButtonNext';
 
   // Message
   static String messageButtonReply = 'messageButtonReply';

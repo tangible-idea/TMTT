@@ -34,6 +34,9 @@ Map<String, String> translations_kr = {
   // home -> help dialog
   Strings.helpTitle: "공유하는 방법!",
   Strings.helpSubtitle: "팔로워 친구들에게\n익명 메시지 10초만에 주고받기!",
+  Strings.helpButtonDontShowAnymore: "더 이상 보지않기",
+  Strings.helpButtonConfirm: "확인완료, 공유!",
+  Strings.helpButtonNext: "다음",
 
   // create your slug page
   Strings.slugCreateError1 : '해당 URL을 이미 다른 사람이 사용하고 있어요.',

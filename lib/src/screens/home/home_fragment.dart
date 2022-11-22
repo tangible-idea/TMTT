@@ -49,6 +49,7 @@ class HomeFragment extends GetView<HomeController> {
 
   void showHelpDialog(BuildContext context) async {
 
+    // check whether you already have seen it.
     var alreadySeenHelpDialog= await LocalStorage.get(KeyStore.alreadySeenHelpDialog, false);
     if(alreadySeenHelpDialog) {
       await controller.saveMyLastMessage();
@@ -56,8 +57,9 @@ class HomeFragment extends GetView<HomeController> {
       return; // 이미 봤으면 패스
     }
 
+    controller.helpPosition.value= 1;
     var dialogBase= AlertDialog(
-      insetPadding: const EdgeInsets.fromLTRB(40, 150, 40, 150),
+      insetPadding: const EdgeInsets.fromLTRB(40, 150, 40, 130),
       titlePadding: EdgeInsets.zero,
       title: Stack(
         children: [
@@ -82,14 +84,39 @@ class HomeFragment extends GetView<HomeController> {
           children: [
             SizedBox(
               width: 310,
-              height: 220,
+              height: 210,
                 child: Image.asset("assets/images/help${controller.helpPosition.value}.gif")),
+            Row(
+              children: [
+                Switch(
+                  trackColor: MaterialStateProperty.resolveWith((states) {
+                  // If the button is pressed, return green, otherwise blue
+                  if (states.contains(MaterialState.selected)) {
+                      return MyColor.kPrimary;
+                    }
+                      return MyColor.kGrey5;
+                  }),
+                  thumbColor: MaterialStateProperty.resolveWith((states) {
+                  // If the button is pressed, return green, otherwise blue
+                  if (states.contains(MaterialState.selected)) {
+                    return MyColor.white;
+                  }
+                    return MyColor.white;
+                  }),
+                    value: controller.helpDontShow.value,
+                    onChanged: (value) {
+                      controller.helpDontShow.value= value;
+                      LocalStorage.get(KeyStore.alreadySeenHelpDialog, value);
+                    }),
+                PlainText(text: Strings.helpButtonDontShowAnymore.tr, style: MyTextStyle.subTitle1.copyWith(color: MyColor.white),)
+              ],
+            ),
             BottomPlainButton(
               enabledObs: RxBool(true),
               onPressed: () {
                 controller.showNextHelpOr(context);
               },
-              text: controller.helpPosition.value == 4 ? "Got it, Thanks!" : "Next")
+              text: controller.helpPosition.value == 4 ? Strings.helpButtonConfirm.tr : Strings.helpButtonNext.tr)
         ],
       ),
       ),
@@ -99,7 +126,7 @@ class HomeFragment extends GetView<HomeController> {
       ),);
     MyDialog.showDialog(dialogBase);
 
-    LocalStorage.put(KeyStore.alreadySeenHelpDialog, true); // 헬프 한번 본것으로 처리.
+    //LocalStorage.put(KeyStore.alreadySeenHelpDialog, true); // 헬프 한번 본것으로 처리.
   }
 
   @override
@@ -242,7 +269,7 @@ class HomeFragment extends GetView<HomeController> {
                                 onPressed: () {
                                   //controller.saveMyLastMessage();
                                   //controller.shareOnInstagram(context);
-                                  controller.helpPosition.value= 1;
+                                  //controller.helpPosition.value= 1;
                                   showHelpDialog(context);
                                 },
                                 enabledObs: RxBool(true),
