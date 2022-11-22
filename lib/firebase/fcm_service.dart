@@ -3,6 +3,7 @@
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:tmtt/firebase/fire_store.dart';
+import 'package:tmtt/src/constants/firestore_key.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 
 class FcmService {
@@ -42,7 +43,7 @@ class FcmService {
     // send token to application server.
     // Note: This callback is fired at each app startup and whenever a new token is generated.
     FirebaseMessaging.instance.onTokenRefresh.listen((fcmToken) async {
-      await FireStore.updateUserValue("push_token", fcmToken);
+      await FireStore.updateUserValue(FireStoreKey.push_token, fcmToken);
       Log.d("newPushToken: $fcmToken");
     }).onError((err) {
       Log.e(err); // Error getting token.
