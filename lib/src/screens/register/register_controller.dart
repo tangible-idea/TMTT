@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_insta/flutter_insta.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:tmtt/firebase/fcm_service.dart';
 import 'package:tmtt/firebase/fire_store.dart';
 import 'package:tmtt/pages.dart';
 import 'package:tmtt/src/bottom_dialog/found_instagram_account_dialog.dart';
@@ -204,10 +205,10 @@ class RegisterController extends BaseGetController {
       var registerDocId = "";
 
       var currentUser= await FireStore.searchUserSocialType(LoginUserType.google, uid);
-      if(currentUser == null) {
+      // get push token
+      final fcmToken = await FcmService.token;
 
-        // get push token
-        final fcmToken = await FirebaseMessaging.instance.getToken();
+      if(currentUser == null) {
 
         // create a model and register with the data.
         var user = userModel.User(
@@ -225,6 +226,7 @@ class RegisterController extends BaseGetController {
 
       // Save your document id itself
       await FireStore.updateUserValue('document_id', registerDocId);
+      await FireStore.updateUserValue("push_token", fcmToken.toString());
 
       // set purchase data
       await Purchase.login(registerDocId);

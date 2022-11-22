@@ -4,10 +4,8 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:firebase_auth/firebase_auth.dart' as firebase_user;
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
@@ -19,6 +17,7 @@ import 'package:get/get.dart';
 
 import 'package:tmtt/data/model/message.dart';
 import 'package:tmtt/data/model/user.dart';
+import 'package:tmtt/firebase/fcm_service.dart';
 import 'package:tmtt/firebase/fire_store.dart';
 import 'package:tmtt/main.dart';
 import 'package:tmtt/pages.dart';
@@ -60,7 +59,8 @@ class HomeController extends BaseGetController {
     //checkPageFlow();
     getMyInfo();
     loadProfilePicture();
-    pushTokenListener();
+    FcmService.setPushTokenListener();
+    FcmService.setPushMessageListener();
     inboxScrollListener();
     purchaseTest();
   }
@@ -130,20 +130,6 @@ class HomeController extends BaseGetController {
 
   WidgetsToImageController captureController = WidgetsToImageController(); // in order to capture rounded profile.
 
-  void pushTokenListener() async {
-
-    FirebaseMessaging.instance.onTokenRefresh
-        .listen((fcmToken) {
-      // send token to application server.
-      // Note: This callback is fired at each app startup and whenever a new token is generated.
-      FireStore.updateUserValue(FireStoreKey.push_token, fcmToken);
-    })
-        .onError((err) {
-        // Error getting token.
-        Log.e(err);
-    });
-  }
-
   void searchInstaUser() async {
     String userName = inputController.text;
     FlutterInsta flutterInsta = FlutterInsta();
@@ -168,7 +154,7 @@ class HomeController extends BaseGetController {
     myInfoObs.value = myInfo;
 
     if(myInfoObs.value.pushToken.isEmpty) {
-        final fcmToken = await FirebaseMessaging.instance.getToken();
+        final fcmToken = await FcmService.token;
         FireStore.updateUserValue(FireStoreKey.push_token, fcmToken.toString());
     }
 

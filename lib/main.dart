@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:tmtt/firebase/fcm_service.dart';
 import 'package:tmtt/pages.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:tmtt/src/constants/local_storage_key_store.dart';
@@ -79,6 +80,7 @@ class MyTmttApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     // initFirebase();
+    FcmService.init();
 
     return Obx(()=>
       GetMaterialApp(
