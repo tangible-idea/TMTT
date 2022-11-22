@@ -27,7 +27,7 @@ function sendPushNonEx(
     targetUid : String,
     title     : String,
     message   : String) {
-        console.log("sendPush v1.19.2");
+        console.log("sendPush v1.19.3");
 
         if(!(message && title)) {
             console.log(`there is no content or title or message, ${title}, ${message}`);
@@ -50,6 +50,7 @@ function sendPushNonEx(
             const mymessage = {
               notification: { title: `${title}`, body: `${message}` },
               token: userData.push_token,
+              priority: "high",
             };
 
             //var saved_token= `${userData.push_token}`;
@@ -83,8 +84,8 @@ function sendPushNonEx(
  */
 export const sendpush= https.onRequest({ cors: true }, async (req, res) => {
 
-    console.log(`sendPush::title: ${req.query.title}`);
-    console.log(`sendPush::message: ${req.query.message}`);
+    console.log(`sendpush::title: ${req.query.title}`);
+    console.log(`sendpush::message: ${req.query.message}`);
 
     const targetUid = req.query.targetUid.toString();
     //const senderUid = req.query.senderUid.toString();
