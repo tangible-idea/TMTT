@@ -153,10 +153,10 @@ class HomeController extends BaseGetController {
     myLinkObs.value = '${MyUrl.baseUrl}#/${myInfo.slugId}';
     myInfoObs.value = myInfo;
 
-    if(myInfoObs.value.pushToken.isEmpty) {
-        final fcmToken = await FcmService.token;
-        FireStore.updateUserValue(FireStoreKey.push_token, fcmToken.toString());
-    }
+    //if(myInfoObs.value.pushToken.isEmpty) {
+      final fcmToken = await FcmService.token;
+      FireStore.updateUserValue(FireStoreKey.push_token, fcmToken.toString());
+    //}
 
     checkPageFlow();
   }
