@@ -204,10 +204,10 @@ class RegisterController extends BaseGetController {
       var registerDocId = "";
 
       var currentUser= await FireStore.searchUserSocialType(LoginUserType.google, uid);
-      if(currentUser == null) {
+      // get push token
+      final fcmToken = await FirebaseMessaging.instance.getToken();
 
-        // get push token
-        final fcmToken = await FirebaseMessaging.instance.getToken();
+      if(currentUser == null) {
 
         // create a model and register with the data.
         var user = userModel.User(
@@ -225,6 +225,7 @@ class RegisterController extends BaseGetController {
 
       // Save your document id itself
       await FireStore.updateUserValue('document_id', registerDocId);
+      await FireStore.updateUserValue("push_token", fcmToken.toString());
 
       // set purchase data
       await Purchase.login(registerDocId);
