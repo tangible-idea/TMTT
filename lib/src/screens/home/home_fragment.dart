@@ -106,7 +106,7 @@ class HomeFragment extends GetView<HomeController> {
                     value: controller.helpDontShow.value,
                     onChanged: (value) {
                       controller.helpDontShow.value= value;
-                      LocalStorage.get(KeyStore.alreadySeenHelpDialog, value);
+                      LocalStorage.put(KeyStore.alreadySeenHelpDialog, value);
                     }),
                 PlainText(text: Strings.helpButtonDontShowAnymore.tr, style: MyTextStyle.subTitle1.copyWith(color: MyColor.white),)
               ],
