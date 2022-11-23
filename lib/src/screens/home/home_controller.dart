@@ -5,6 +5,7 @@ import 'dart:ui';
 
 import 'package:firebase_auth/firebase_auth.dart' as firebase_user;
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flarelane_flutter/flarelane_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -153,10 +154,11 @@ class HomeController extends BaseGetController {
     myLinkObs.value = '${MyUrl.baseUrl}#/${myInfo.slugId}';
     myInfoObs.value = myInfo;
 
-    //if(myInfoObs.value.pushToken.isEmpty) {
-      final fcmToken = await FcmService.token;
-      FireStore.updateUserValue(FireStoreKey.push_token, fcmToken.toString());
-    //}
+    FlareLane.shared.setUserId(myInfo.userId); // set email as user id.
+
+    // update push token. it isn't related to FlareLane.
+    final fcmToken = await FcmService.token;
+    FireStore.updateUserValue(FireStoreKey.push_token, fcmToken.toString());
 
     checkPageFlow();
   }
@@ -183,8 +185,10 @@ class HomeController extends BaseGetController {
   }
 
   Future<void> copyMyLink() async {
-    Clipboard.setData(ClipboardData(text: myLinkObs.value));
-    MySnackBar.show(title: Strings.homeButtonCopyLinkAction.tr);
+    Clipboard.setData(ClipboardData(text: myLinkObs.value)).then((value) => {
+      MySnackBar.show(title: Strings.homeButtonCopyLinkAction.tr)
+    });
+
   }
 
   Future<void> saveMyLastMessage() async {

@@ -3,14 +3,17 @@ import 'dart:io';
 
 import 'package:logger/logger.dart';
 import 'package:dio/dio.dart';
+import 'package:tmtt/src/constants/app_secret.dart';
 import 'package:tmtt/src/network/retrofit_manager.dart';
 import 'package:tmtt/src/network/retrofit_service.dart';
 
 class RetrofitCustomManager {
 
   String baseURL = '';
+  String authKey = '';
   RetrofitCustomManager({
-    this.baseURL = ''
+    this.baseURL = '',
+    this.authKey = AppSecret.FLARELANE_API_KEY
   });
 
   final logger = Logger();
@@ -25,6 +28,7 @@ class RetrofitCustomManager {
     dio.options.headers = {
       HttpHeaders.acceptHeader: "application/json",
       HttpHeaders.contentTypeHeader: "application/json",
+      HttpHeaders.authorizationHeader: authKey
     };
     dio.options.connectTimeout = timeout;
     dio.options.receiveTimeout = timeout;

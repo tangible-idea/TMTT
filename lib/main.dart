@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:tmtt/firebase/fcm_service.dart';
 import 'package:tmtt/pages.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:tmtt/src/constants/app_secret.dart';
 import 'package:tmtt/src/constants/local_storage_key_store.dart';
 import 'package:tmtt/src/resources/languages/languages.dart';
 import 'package:tmtt/src/screens/index_screen.dart';
@@ -46,7 +47,8 @@ void main() async {
   // ensureInitialized() 이후 초기화 코드가 실행되도록 합니다
   WidgetsFlutterBinding.ensureInitialized();
   // 다음 초기화 코드 입력 with FlareLane project ID.
-  FlareLane.shared.initialize("dcaba228-239d-4f7a-8645-7be5df738982");
+  FlareLane.shared.initialize(AppSecret.FLARELANE_PROEJCT_ID);
+  FlareLane.shared.setLogLevel(LogLevel.verbose);
 
   var myapp= MyTmttApp();
   MyTmttApp.loadMyLanguage();

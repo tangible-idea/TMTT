@@ -21,5 +21,8 @@ abstract class RetrofitService {
   @GET("sendpush")
   Future<String> sendPush(@Body() Map<String, dynamic> body);
 
+  @POST("notifications")
+  Future<String> notifications(@Body() Map<String, dynamic> body);
+
 }
 

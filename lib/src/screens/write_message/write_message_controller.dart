@@ -87,15 +87,17 @@ class WriteMessageController extends BaseGetController {
         emojiCode: 0
     );
 
-    var service = RetrofitCustomManager(
-        baseURL: MyUrl.firebaseFunctionsUrl,
-    ).retrofitService;
-    Log.d('currentUser.documentId: ${currentUser.documentId}');
 
-    await service.sendPush({
-      'targetUid': currentUser.documentId,
+    var service = RetrofitCustomManager(
+        baseURL: MyUrl.flareLanePushUrl,
+    ).retrofitService;
+    //Log.d('currentUser.documentId: ${currentUser.documentId}');
+
+    await service.notifications({
+      'targetType': "userId",
+      'targetIds': [currentUser.userId],
       'title': Strings.pushNewMessageTitle.tr,
-      'message': Strings.pushNewMessageContent.tr
+      'body': Strings.pushNewMessageContent.tr
     });
 
   }
