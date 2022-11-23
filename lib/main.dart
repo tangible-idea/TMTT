@@ -29,12 +29,11 @@ import 'src/util/inapp_purchase_util.dart';
 void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
   // 앱 세로 고정
-  if (!GetPlatform.isWeb && GetPlatform.isAndroid || GetPlatform.isIOS) {
-    await Purchase.initPlatformState();
-  }
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
+  await Purchase.initPlatformState();
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,

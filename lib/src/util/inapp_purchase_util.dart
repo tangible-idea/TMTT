@@ -14,6 +14,8 @@ class Purchase {
 
   static Future<void> initPlatformState() async {
 
+    if(GetPlatform.isWeb) { return; }
+
     await Purchases.setDebugLogsEnabled(kDebugMode);
 
     PurchasesConfiguration configuration;
