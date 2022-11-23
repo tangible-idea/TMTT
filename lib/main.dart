@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flarelane_flutter/flarelane_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -41,6 +42,12 @@ void main() async {
 
   // urlConfig();
   registerWebViewWebImplementation();
+
+  // ensureInitialized() 이후 초기화 코드가 실행되도록 합니다
+  WidgetsFlutterBinding.ensureInitialized();
+  // 다음 초기화 코드 입력 with FlareLane project ID.
+  FlareLane.shared.initialize("dcaba228-239d-4f7a-8645-7be5df738982");
+
   var myapp= MyTmttApp();
   MyTmttApp.loadMyLanguage();
   runApp(myapp);
