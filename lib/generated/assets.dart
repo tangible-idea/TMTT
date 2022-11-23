@@ -26,12 +26,15 @@ class Assets {
   static const String imagesBirdPresentation = 'assets/images/bird_presentation.png';
   static const String imagesBtnLoginFacebook = 'assets/images/btn_login_facebook.svg';
   static const String imagesBtnLoginGoogle = 'assets/images/btn_login_google.svg';
+  static const String imagesButtonDone = 'assets/images/button_done.png';
   static const String imagesCarrierIcon = 'assets/images/carrier_icon.svg';
   static const String imagesCharacterCat1 = 'assets/images/character_cat_1.png';
   static const String imagesCharacterCat2 = 'assets/images/character_cat_2.png';
   static const String imagesCheckbox = 'assets/images/checkbox.svg';
   static const String imagesCountryIcon = 'assets/images/country_icon.svg';
   static const String imagesDeviceIcon = 'assets/images/device_icon.svg';
+  static const String imagesEmojiSunglasses = 'assets/images/emoji_sunglasses.svg';
+  static const String imagesEmojiSunglassesPng = 'assets/images/emoji_sunglasses_png.png';
   static const String imagesExplainationSocial = 'assets/images/explaination_social.svg';
   static const String imagesGreetingGirl = 'assets/images/greeting_girl.svg';
   static const String imagesGreetingMan = 'assets/images/greeting_man.svg';
