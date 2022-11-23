@@ -36,6 +36,7 @@ class InboxController extends BaseGetController {
 
   @override
   void onInit() {
+    // TODO: Get.arguments 에서 message 항목없을 경우 -> 메시지 항목 다시 얻어와야함?
     var message = Get.arguments['message'] as Message;
     messageObs.value = message;
   }
