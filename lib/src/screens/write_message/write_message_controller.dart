@@ -5,6 +5,7 @@ import 'package:tmtt/data/model/hint.dart';
 import 'package:tmtt/data/model/user.dart';
 import 'package:tmtt/firebase/fire_store.dart';
 import 'package:tmtt/src/constants/URLs.dart';
+import 'package:tmtt/src/constants/app_secret.dart';
 import 'package:tmtt/src/network/retrofit_custom_manager.dart';
 import 'package:tmtt/src/screens/base/base_get_controller.dart';
 import 'package:tmtt/src/screens/write_message/message_input_fragment.dart';
@@ -93,12 +94,17 @@ class WriteMessageController extends BaseGetController {
     ).retrofitService;
     //Log.d('currentUser.documentId: ${currentUser.documentId}');
 
-    await service.notifications({
+    var header = "Bearer ${AppSecret.FLARELANE_API_KEY}";
+
+    var body = {
       'targetType': "userId",
-      'targetIds': [currentUser.userId],
+      'targetIds': <String>[currentUser.documentId],
       'title': Strings.pushNewMessageTitle.tr,
       'body': Strings.pushNewMessageContent.tr
-    });
+    };
+
+    var result = await service.notifications(header, body);
+    Log.d("result: $result");
 
   }
 

@@ -59,6 +59,7 @@ class JsonPlaceHolderInterceptor extends Interceptor {
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) {
     print('JsonPlaceHolderInterceptor: ERROR[${err.response?.statusCode}] MESSAGE: ${err.message} $err => PATH: ${err.requestOptions.path}');
+    print('JsonPlaceHolderInterceptor: ERROR[${err.response?.statusCode}] MESSAGE: ${err.response} $err => PATH: ${err.requestOptions.path}');
     super.onError(err, handler);
   }
 }

@@ -154,7 +154,7 @@ class HomeController extends BaseGetController {
     myLinkObs.value = '${MyUrl.baseUrl}#/${myInfo.slugId}';
     myInfoObs.value = myInfo;
 
-    FlareLane.shared.setUserId(myInfo.userId); // set email as user id.
+    FlareLane.shared.setUserId(myInfo.documentId); // set email as user id.
 
     // update push token. it isn't related to FlareLane.
     final fcmToken = await FcmService.token;

@@ -22,7 +22,10 @@ abstract class RetrofitService {
   Future<String> sendPush(@Body() Map<String, dynamic> body);
 
   @POST("notifications")
-  Future<String> notifications(@Body() Map<String, dynamic> body);
+  Future<String> notifications(
+    @Header("Authorization") header,
+    @Body() Map<String, dynamic> body
+  );
 
 }
 
