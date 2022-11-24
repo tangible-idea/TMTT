@@ -52,6 +52,7 @@ class RegisterController extends BaseGetController {
   void onClose() { }
 
   void goToHome() {
+    EasyLoading.dismiss();
     MyNav.pushReplacementNamed(
       pageName: PageName.home,
     );
@@ -101,12 +102,15 @@ class RegisterController extends BaseGetController {
     if(errorObs.value != null) return; // return on validation error.
     if(blockList.contains(slug)) return; // (주의) 슬러그가 페이지명과 겹치면 안된다.
 
+    EasyLoading.show(status: 'Loading...');
+
     var trimmedSlug= slug.trim();
 
     // 이미 내가 사용하고 있다면 그냥 넘어감. (일어날 확률이 드문 예외처리)
     var myInfo= await FireStore.getMyInfo();
     if(myInfo?.slugId == trimmedSlug) {
       goToHome();
+      EasyLoading.dismiss();
       return;
     }
 
@@ -114,6 +118,7 @@ class RegisterController extends BaseGetController {
     var userSlug= await FireStore.searchUserSlug(trimmedSlug);
     if(userSlug != null) {
       errorObs.value= Strings.slugCreateError1.tr;
+      EasyLoading.dismiss();
       return;
     }
 
@@ -121,6 +126,7 @@ class RegisterController extends BaseGetController {
     var isFormatValidForSlug= instagramIDMatchRegex(trimmedSlug);
     if(!isFormatValidForSlug) {
       errorObs.value= Strings.slugCreateError2.tr;
+      EasyLoading.dismiss();
       return;
     }
 
@@ -164,6 +170,7 @@ class RegisterController extends BaseGetController {
   // Populate bottom sheet.
   void showFoundInstagramAccountByBottomSheet(String slug, FlutterInsta foundInsta) {
 
+    EasyLoading.dismiss();
     var dialog= FoundInstagramAccountDialog(
       follower: foundInsta.followers.toString(),
       following: foundInsta.following.toString(),
@@ -172,6 +179,7 @@ class RegisterController extends BaseGetController {
       instagramBio: foundInsta.bio.toString(),
       instagramImageURL: foundInsta.imgurl.toString(),
       onYesPressed: () async {
+        EasyLoading.show(status: 'Loading...');
         var isSuccess= await FireStore.linkMyPhotoFromInstagramAccountToStorage(foundInsta.imgurl.toString());
         goToHome();
       },

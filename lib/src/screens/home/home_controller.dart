@@ -9,6 +9,7 @@ import 'package:flarelane_flutter/flarelane_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
@@ -119,13 +120,15 @@ class HomeController extends BaseGetController {
   var helpPosition= 1.obs; // 도움말 페이지 인디케이터
   var helpDontShow= false.obs; // 도움말 보지않기 스위치.
 
-  showNextHelpOr(BuildContext context) {
+  showNextHelpOr(BuildContext context) async {
     if(helpPosition.value < 4) {
       helpPosition.value = helpPosition.value +1;
     }else{
       Get.back();
-      saveMyLastMessage();
-      shareOnInstagram(context);
+      EasyLoading.show(status: 'Loading...');
+      await saveMyLastMessage();
+      await shareOnInstagram(context);
+      EasyLoading.dismiss();
     }
   }
 

@@ -2,6 +2,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:tmtt/src/resources/styles/my_color.dart';
@@ -49,11 +50,16 @@ class HomeFragment extends GetView<HomeController> {
 
   void showHelpDialog(BuildContext context) async {
 
+
     // check whether you already have seen it.
     var alreadySeenHelpDialog= await LocalStorage.get(KeyStore.alreadySeenHelpDialog, false);
     if(alreadySeenHelpDialog) {
+      EasyLoading.show(status: 'Loading...');
+
       await controller.saveMyLastMessage();
       await controller.shareOnInstagram(context);
+
+      EasyLoading.dismiss();
       return; // 이미 봤으면 패스
     }
 
@@ -267,9 +273,6 @@ class HomeFragment extends GetView<HomeController> {
                                 text: Strings.homeButtonShare.tr,
                                 icon: SvgPicture.asset(Assets.imagesIcoShare),
                                 onPressed: () {
-                                  //controller.saveMyLastMessage();
-                                  //controller.shareOnInstagram(context);
-                                  //controller.helpPosition.value= 1;
                                   showHelpDialog(context);
                                 },
                                 enabledObs: RxBool(true),
