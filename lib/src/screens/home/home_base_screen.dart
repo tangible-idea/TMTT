@@ -11,7 +11,7 @@ import 'package:tmtt/src/util/my_logger.dart';
 class HomeScreen extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
-    
+
     FlareLane.shared.setNotificationConvertedHandler((notification) {
       controller.currentPageIndexObs.value= 1; // to message tab.
     });
