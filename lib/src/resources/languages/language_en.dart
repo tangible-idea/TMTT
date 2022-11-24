@@ -25,6 +25,7 @@ Map<String, String> translations_en = {
   Strings.homeContent5: "Then they'll answer back to you anonymously..",
   Strings.homeButtonRandom: "Random",
   Strings.homeButtonTemplate: "Template",
+  Strings.homeButtonHelp: "Help",
   Strings.homeButtonCopyLink: "Copy link",
   Strings.homeButtonCopyLinkAction: "Link copied!",
   Strings.homeButtonShare: "Share",

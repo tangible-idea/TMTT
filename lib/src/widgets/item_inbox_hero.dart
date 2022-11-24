@@ -47,7 +47,7 @@ class InboxItem extends StatelessWidget {
                   width: 60,
                   height: 60,
                   child: ClipOval(
-                    child: Image.asset(Assets.imagesAnonymous),
+                    child: isRead ?  Image.asset(Assets.imagesArrived) : Image.asset(Assets.imagesAnonymous),
                   ),
                 ),
                 Expanded(

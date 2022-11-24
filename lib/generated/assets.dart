@@ -17,6 +17,7 @@ class Assets {
   static const String imagesAirplane = 'assets/images/airplane.svg';
   static const String imagesAirplaneLine = 'assets/images/airplane_line.svg';
   static const String imagesAnonymous = 'assets/images/anonymous.png';
+  static const String imagesArrived = 'assets/images/arrived.png';
   static const String imagesBackArrow = 'assets/images/back_arrow.svg';
   static const String imagesBackground51 = 'assets/images/background5_1.png';
   static const String imagesBackground52 = 'assets/images/background5_2.png';
@@ -51,6 +52,7 @@ class Assets {
   static const String imagesIcoArrowdown = 'assets/images/ico_arrowdown.svg';
   static const String imagesIcoCopy = 'assets/images/ico_copy.svg';
   static const String imagesIcoPlus = 'assets/images/ico_plus.svg';
+  static const String imagesIcoQuestionMark = 'assets/images/ico_question_mark.svg';
   static const String imagesIcoRandom = 'assets/images/ico_random.svg';
   static const String imagesIcoShare = 'assets/images/ico_share.svg';
   static const String imagesInvite3guys = 'assets/images/invite_3guys.svg';

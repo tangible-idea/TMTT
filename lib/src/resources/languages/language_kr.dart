@@ -27,6 +27,7 @@ Map<String, String> translations_kr = {
   Strings.homeContent5: "그러면 팔로워 친구들이 익명 메시지를 던져줄거에요~",
   Strings.homeButtonRandom: "랜덤 질문",
   Strings.homeButtonTemplate: "재밌는 템플릿",
+  Strings.homeButtonHelp: "도움말",
   Strings.homeButtonCopyLink: "링크 복사",
   Strings.homeButtonCopyLinkAction: "링크가 복사되었어요!",
   Strings.homeButtonShare: "공유",

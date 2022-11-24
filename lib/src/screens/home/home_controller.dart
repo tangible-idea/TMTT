@@ -120,15 +120,18 @@ class HomeController extends BaseGetController {
   var helpPosition= 1.obs; // 도움말 페이지 인디케이터
   var helpDontShow= false.obs; // 도움말 보지않기 스위치.
 
-  showNextHelpOr(BuildContext context) async {
+  showNextHelpOr(BuildContext context, bool alsoShare) async {
     if(helpPosition.value < 4) {
       helpPosition.value = helpPosition.value +1;
     }else{
       Get.back();
-      EasyLoading.show(status: 'Loading...');
-      await saveMyLastMessage();
-      await shareOnInstagram(context);
-      EasyLoading.dismiss();
+
+      if(alsoShare) {
+        EasyLoading.show(status: 'Loading...');
+        await saveMyLastMessage();
+        await shareOnInstagram(context);
+        EasyLoading.dismiss();
+      }
     }
   }
 

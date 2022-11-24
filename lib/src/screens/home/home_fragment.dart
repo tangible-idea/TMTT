@@ -48,12 +48,11 @@ class HomeFragment extends GetView<HomeController> {
     }
   }
 
-  void showHelpDialog(BuildContext context) async {
-
+  void showHelpDialog(BuildContext context, {bool forceShow=false}) async {
 
     // check whether you already have seen it.
     var alreadySeenHelpDialog= await LocalStorage.get(KeyStore.alreadySeenHelpDialog, false);
-    if(alreadySeenHelpDialog) {
+    if(alreadySeenHelpDialog && !forceShow) {
       EasyLoading.show(status: 'Loading...');
 
       await controller.saveMyLastMessage();
@@ -120,7 +119,7 @@ class HomeFragment extends GetView<HomeController> {
             BottomPlainButton(
               enabledObs: RxBool(true),
               onPressed: () {
-                controller.showNextHelpOr(context);
+                controller.showNextHelpOr(context, !forceShow);
               },
               text: controller.helpPosition.value == 4 ? Strings.helpButtonConfirm.tr : Strings.helpButtonNext.tr)
         ],
@@ -171,23 +170,23 @@ class HomeFragment extends GetView<HomeController> {
                   controller: controller.messageInputController,
                 ),
 
-                // Row(
-                //   children: [
+                Row(
+                  children: [
                     WhiteButton(
                       icon: SvgPicture.asset(Assets.imagesIcoRandom, color: MyColor.kPrimary),
                       text: Strings.homeButtonRandom.tr,
                       onPressed: () => controller.putARandomMessage(),
                       enabledObs: RxBool(true),
                     ),
-                //      const Spacer(),
-                //     WhiteButton(
-                //       icon: SvgPicture.asset(Assets.imagesIcoArrowdown, color: MyColor.kPrimary),
-                //       text: Strings.homeButtonTemplate.tr,
-                //       onPressed: () => controller.saveMyLastMessage(),
-                //       enabledObs: RxBool(true),
-                //     ),
-                //   ],
-                // ),
+                   const Spacer(),
+                    WhiteButton(
+                      icon: SvgPicture.asset(Assets.imagesIcoQuestionMark, color: MyColor.kPrimary, height: 18, width: 18,),
+                      text: Strings.homeButtonHelp.tr,
+                      onPressed: () => showHelpDialog(context, forceShow: true),
+                      enabledObs: RxBool(true),
+                    ),
+                  ],
+                ),
 
                 // PlainText(
                 //   text: Strings.homeContent2.tr,
