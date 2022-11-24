@@ -147,8 +147,8 @@ class FireStore {
   static Future<User?> searchUserSocialType(LoginUserType type, String userId) async {
 
     var idKey = 'user_id';
-    if(type == LoginUserType.google) {
-      idKey = 'google_uid';
+    if(type != LoginUserType.other) {
+      idKey = "${type.name.toString()}_uid";
     }
 
     var snapshot = await instance
@@ -156,14 +156,14 @@ class FireStore {
         .where(idKey, isEqualTo: userId)
         .get();
 
-    if(snapshot.docs.isEmpty) {
+    if(snapshot.docs.isEmpty) { // There's no existing user.
       return null;
     }
 
     var map = snapshot.docs.first.data();
     var user = User.fromJson(map);
     user.documentId = snapshot.docs.first.id;
-    return user;
+    return user; // Found a existing user.
   }
 
   /// slug_id -> User

@@ -4,6 +4,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_insta/flutter_insta.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -20,6 +21,7 @@ import 'package:tmtt/src/util/my_logger.dart';
 import 'package:tmtt/src/util/my_navigator.dart';
 import 'package:tmtt/data/model/user.dart' as userModel;
 
+import '../../../firebase/firebase_auth.dart';
 import '../../resources/languages/strings.dart';
 import '../../util/my_snackbar.dart';
 import '../base/base_get_controller.dart';
@@ -37,6 +39,7 @@ class RegisterController extends BaseGetController {
   late final slugInputController = TextEditingController();
   var errorObs= Rx<String?>(null);
   var instagramFoundObs= Rx<bool>(false);
+  var isLoading= Rx<bool>(false);
 
   @override
   void onInit() {
@@ -191,64 +194,84 @@ class RegisterController extends BaseGetController {
     );
   }
 
+  void signInWithApple() async {
+    EasyLoading.show(status: 'Signing in...');
+    try {
+      UserCredential? credential= await FireAuth().signInWithApple();
+      if(credential == null) {
+        return;
+      }
+      await signInLogic(credential, LoginUserType.apple);
+    }catch(e) {
+      MySnackBar.show(title: 'Exception while Apple login', message: e.toString());
+    }finally {
+      EasyLoading.dismiss();
+    }
+
+  }
+
   // google API with Firebase
   void signInWithGoogle() async {
+    EasyLoading.show(status: 'Signing in...');
     try {
       UserCredential credential= await getCredentialFromGoogleFirebase();
-
-      // get uid, email, username
-      String uid = credential.user?.uid ?? '';
-      String userEmail= credential.user?.email.toString() ?? "";
-      String userName= credential.user?.displayName.toString() ?? "";
-      MySnackBar.show(title: 'Login', message: userEmail);
-
-      var registerDocId = "";
-
-      var currentUser= await FireStore.searchUserSocialType(LoginUserType.google, uid);
-      // get push token
-      final fcmToken = await FcmService.token;
-
-      if(currentUser == null) {
-
-        // create a model and register with the data.
-        var user = userModel.User(
-          googleUid: credential.user?.uid ?? '',
-          registerDate: DateTime.now().toString(),
-          pushToken: fcmToken.toString(),
-        );
-        registerDocId= await FireStore.register(user); // firestore signing up.
-      }else{
-        registerDocId= currentUser.documentId; // user does exist : get current doc-id.
-      }
-
-      await LocalStorage.put(KeyStore.userDocId, registerDocId);
-      await LocalStorage.put(KeyStore.isLogin, true);
-
-      // Save your document id itself
-      await FireStore.updateUserValue('document_id', registerDocId);
-      await FireStore.updateUserValue("push_token", fcmToken.toString());
-
-      // set purchase data
-      await Purchase.login(registerDocId);
-      await Purchase.setUserEmail(userEmail);
-      await Purchase.setUserName(userName);
-
-      // check current users slug.
-      var myInfo= await FireStore.getMyInfo();
-      //var slugId= await LocalStorage.get(KeyStore.userSlugId, '');
-      if(myInfo?.slugId != null && myInfo?.slugId.isNotEmpty == true) {
-        // Go to home
-        goToHome();
-      }else{
-        // Go to slug creation page.
-        MyNav.pushReplacementNamed(
-          pageName: PageName.createslug,
-        );
-      }
-
+      await signInLogic(credential, LoginUserType.google);
     }catch(e) {
-      MySnackBar.show(title: 'Exception', message: e.toString());
+      MySnackBar.show(title: 'Exception while Google login', message: e.toString());
+    }finally {
+      EasyLoading.dismiss();
+    }
+  }
 
+  Future<void> signInLogic(UserCredential credential, LoginUserType loginType) async {
+    // get uid, email, username
+    String uid = credential.user?.uid ?? '';
+    String userEmail= credential.user?.email.toString() ?? "";
+    String userName= credential.user?.displayName.toString() ?? "";
+    MySnackBar.show(title: 'Login', message: userEmail);
+
+    var registerDocId = "";
+    var currentUser= await FireStore.searchUserSocialType(loginType, uid);
+    // get push token
+    final fcmToken = await FcmService.token;
+
+    // 이미 유저가 있으면 해당 docID로 가입 프로그레스 진행. 없으면 새로가입.
+    if(currentUser == null) {
+      // create a model and register with the data.
+      var user = userModel.User(
+        googleUid: loginType.name=='google' ? credential.user?.uid ?? '' : '',
+        appleUid: loginType.name=='apple' ? credential.user?.uid ?? '' : '',
+        registerDate: DateTime.now().toString(),
+        pushToken: fcmToken.toString(),
+      );
+      registerDocId= await FireStore.register(user); // firestore signing up.
+    }else{
+      registerDocId= currentUser.documentId; // user does exist : get current doc-id.
+    }
+
+    await LocalStorage.put(KeyStore.userDocId, registerDocId);
+    await LocalStorage.put(KeyStore.isLogin, true);
+
+    // Save your document id itself
+    await FireStore.updateUserValue('document_id', registerDocId);
+    await FireStore.updateUserValue("push_token", fcmToken.toString());
+
+    // set purchase data
+    await Purchase.login(registerDocId);
+    await Purchase.setUserEmail(userEmail);
+    await Purchase.setUserName(userName);
+
+    // check current users slug.
+    var myInfo= await FireStore.getMyInfo();
+    //var slugId= await LocalStorage.get(KeyStore.userSlugId, '');
+    if(myInfo?.slugId != null && myInfo?.slugId.isNotEmpty == true) {
+      // Go to home
+      goToHome();
+    }else{
+      // Go to slug creation page.
+      MyNav.pushReplacementNamed(
+        pageName: PageName.createslug,
+      );
     }
   }
 

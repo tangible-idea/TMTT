@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flarelane_flutter/flarelane_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:tmtt/firebase/fcm_service.dart';
 import 'package:tmtt/pages.dart';
@@ -101,6 +102,7 @@ class MyTmttApp extends StatelessWidget {
         unknownRoute: setUnknownPage(), // 404 에러 처리
         initialRoute: setInitialRoute(),
         getPages: kGetPages,
+        builder: EasyLoading.init(),
       ),
     );
   }

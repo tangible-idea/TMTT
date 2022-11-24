@@ -24,6 +24,7 @@ class Assets {
   static const String imagesBackground8 = 'assets/images/background8.png';
   static const String imagesBirdHello = 'assets/images/bird_hello.png';
   static const String imagesBirdPresentation = 'assets/images/bird_presentation.png';
+  static const String imagesBtnLoginApple = 'assets/images/btn_login_apple.svg';
   static const String imagesBtnLoginFacebook = 'assets/images/btn_login_facebook.svg';
   static const String imagesBtnLoginGoogle = 'assets/images/btn_login_google.svg';
   static const String imagesButtonDone = 'assets/images/button_done.png';

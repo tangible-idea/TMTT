@@ -66,7 +66,11 @@ class RegisterScreen extends GetView<RegisterController> {
               ),
 
               AppSpaces.verticalSpace10,
-              SvgPicture.asset(Assets.imagesBtnLoginFacebook),
+              GetPlatform.isIOS ? InkWell(onTap: () async {
+                controller.signInWithApple();
+              },
+                child: SvgPicture.asset(Assets.imagesBtnLoginApple),
+              ): const SizedBox(),
 
               // BottomPlainButton(
               //   text: '확인',

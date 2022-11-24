@@ -69,6 +69,8 @@ dependencies:
   custom_refresh_indicator: ^2.0.1
   flutter_email_sender: ^5.1.0
   flarelane_flutter: ^1.1.0
+  sign_in_with_apple: ^4.2.0
+  flutter_easyloading: ^3.0.5
 
 
 dev_dependencies:
