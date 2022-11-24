@@ -55,6 +55,7 @@ void main() async {
   runApp(myapp);
 }
 
+
 class MyTmttApp extends StatelessWidget {
 
   MyTmttApp({super.key});
@@ -88,7 +89,6 @@ class MyTmttApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    // initFirebase();
     FcmService.init();
 
     return Obx(()=>

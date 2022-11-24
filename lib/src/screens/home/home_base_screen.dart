@@ -1,4 +1,5 @@
 
+import 'package:flarelane_flutter/flarelane_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tmtt/src/resources/styles/my_color.dart';
@@ -10,6 +11,11 @@ import 'package:tmtt/src/util/my_logger.dart';
 class HomeScreen extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
+    
+    FlareLane.shared.setNotificationConvertedHandler((notification) {
+      controller.currentPageIndexObs.value= 1; // to message tab.
+    });
+
     return Obx(() => BaseScaffold(
         appBar: controller.useHeaderObs.value ?
         BaseAppBar(
