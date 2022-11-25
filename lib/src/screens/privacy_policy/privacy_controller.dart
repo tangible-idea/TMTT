@@ -37,7 +37,7 @@ class PrivacyController extends BaseGetController {
       initialUrl: 'about:blank',
       onWebViewCreated: (WebViewController webViewController) {
         this.webViewController = webViewController;
-        _loadHtmlFromAssets();
+        _loadHtmlFromURL();
       },
     );
   }
@@ -49,6 +49,10 @@ class PrivacyController extends BaseGetController {
         mimeType: 'text/html',
         encoding: Encoding.getByName('utf-8')
     ).toString());
+  }
+
+  _loadHtmlFromURL() async {
+    webViewController.loadUrl("https://tmtt.link/privacypolicy.html");
   }
 
 }
