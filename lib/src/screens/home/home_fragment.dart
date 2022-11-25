@@ -204,7 +204,8 @@ class HomeFragment extends GetView<HomeController> {
                           maxHeight: 100,
                         ),
                         color: MyColor.kSecondary,
-                        child: Row(
+                        child: //SizedBox()
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                           Stack(
@@ -218,8 +219,7 @@ class HomeFragment extends GetView<HomeController> {
                               Padding(
                                 padding: const EdgeInsets.all(20.0),
                                 child: SvgPicture.asset(Assets.imagesIcoPlus, color: MyColor.gray_03),
-                              ) : const Spacer(),
-
+                              ) : const SizedBox(),
                             ],
                           ),
                           SvgPicture.asset(Assets.imagesInviteArrows),
