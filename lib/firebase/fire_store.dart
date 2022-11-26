@@ -121,6 +121,17 @@ class FireStore {
     return User.fromJson(data);
   }
 
+  static Future<User?> getSomeonesInfo(String docId) async {
+    if (docId.isEmpty) { return null; }
+    var snapshot = await instance
+        .collection(Collections.users)
+        .doc(docId)
+        .get();
+    var data = snapshot.data();
+    if (data == null) { return null; }
+    return User.fromJson(data);
+  }
+
   /// update user's field
   static Future<bool> updateUserValue(String key, String value) async {
     var docId = await LocalStorage.get(KeyStore.userDocId, '');
@@ -164,6 +175,22 @@ class FireStore {
     var user = User.fromJson(map);
     user.documentId = snapshot.docs.first.id;
     return user; // Found a existing user.
+  }
+
+  // 해당 숫자만큼 포인트 증가
+  static Future<void> increasePointOf(String userSlug, int amount) async {
+    var snapshot = await instance
+        .collection(Collections.users)
+        .where(FireStoreKey.slug_id, isEqualTo: userSlug)
+        .get();
+
+    if(snapshot.docs.isEmpty) {
+      Log.e("There's no document with corresponding slug_id.");
+      return;
+    }
+    snapshot.docs.first.reference.update({"point": FieldValue.increment(amount)}).then((value) => {
+      Log.d("Point increased by $amount Successfully!");
+    });
   }
 
   /// slug_id -> User

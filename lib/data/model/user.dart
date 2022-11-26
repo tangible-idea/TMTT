@@ -30,6 +30,7 @@ class User {
   String googleUid = '';
   String facebookUid = '';
   String appleUid = '';
+  int point= 0;
 
   User({
     this.slugId = '',
@@ -47,6 +48,7 @@ class User {
     this.googleUid = '',
     this.facebookUid = '',
     this.appleUid = '',
+    this.point= 0,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
