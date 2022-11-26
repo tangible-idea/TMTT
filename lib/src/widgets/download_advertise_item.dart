@@ -10,7 +10,10 @@ import 'package:tmtt/src/widgets/bottom_button.dart';
 import 'package:tmtt/src/widgets/plain_text.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class DownLoadAdvertiseItem extends StatelessWidget {
+import '../screens/write_message/write_message_controller.dart';
+
+class DownloadAdvertiseItem extends GetView<WriteMessageController> {
+  const DownloadAdvertiseItem({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +49,7 @@ class DownLoadAdvertiseItem extends StatelessWidget {
             BottomPlainButton(
               text: 'Get my own message!',
               textStyle: MyTextStyle.body2Bold.copyWith(color: MyColor.kPrimary,),
-              onPressed: () => onClickDownloadButton(),
+              onPressed: () => controller.onClickDownloadButton(),
               enabledObs: RxBool(true),
               style: BtnStyle.whiteOutlineRadius2,
             ),
@@ -56,13 +59,4 @@ class DownLoadAdvertiseItem extends StatelessWidget {
     );
   }
 
-  void onClickDownloadButton() async {
-      var url = Uri.parse("https://tmtt.link/invitation/appdownload");
-      if (await canLaunchUrl(url)) {
-        await launchUrl(url);
-      } else {
-        print("Could not launch $url");
-      }
-
-  }
 }

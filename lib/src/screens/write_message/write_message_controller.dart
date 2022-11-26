@@ -13,6 +13,7 @@ import 'package:tmtt/src/screens/write_message/not_found_fragment.dart';
 import 'package:tmtt/src/screens/write_message/send_success_fragment.dart';
 import 'package:tmtt/src/util/info_util.dart';
 import 'package:tmtt/src/util/my_logger.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../resources/languages/strings.dart';
 
@@ -69,10 +70,24 @@ class WriteMessageController extends BaseGetController {
     if(user.profileImage.isNotEmpty) {
       userImageObs.value= user.profileImage;
     }
+
+    // Viewed by others: increase point by 1
+    FireStore.increasePointOf(user.slugId, 1);
   }
 
   void setHint() async {
     hint = await InfoUtil.getHint();
+  }
+
+  // app download dynamiclink
+  void onClickDownloadButton() async {
+    var url = Uri.parse("https://tmtt.link/invitation/appdownload");
+    if (await canLaunchUrl(url)) {
+      FireStore.increasePointOf(currentUser.slugId, 2);
+      await launchUrl(url);
+    } else {
+      print("Could not launch $url");
+    }
   }
 
   Future<void> writeMessage() async {

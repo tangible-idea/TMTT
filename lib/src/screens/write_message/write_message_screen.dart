@@ -12,6 +12,8 @@ import 'package:tmtt/src/widgets/download_advertise_item.dart';
 import '../../resources/styles/my_color.dart';
 
 class WriteMessageScreen extends GetView<WriteMessageController> {
+  const WriteMessageScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Obx(() => BaseScaffold(
@@ -34,7 +36,7 @@ class WriteMessageScreen extends GetView<WriteMessageController> {
                   Expanded(
                     child: controller.pages[controller.currentPageIndexObs.value],
                   ),
-                  DownLoadAdvertiseItem(),
+                  const DownloadAdvertiseItem(),
                 ],
               ),
             ),
