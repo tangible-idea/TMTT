@@ -20,6 +20,7 @@ import 'package:widgets_to_image/widgets_to_image.dart';
 
 import 'package:http/http.dart' as http;
 
+import '../../data/model/user.dart';
 import 'my_snackbar.dart';
 
 extension on String {
@@ -37,7 +38,7 @@ class PostingHelper {
   }
 
   // 인스타에 공유하기
-  static Future<String> shareOnInstagram({String message = '', Uint8List? profileImageBytes}) async {
+  static Future<String> shareOnInstagram({String message = '', required User myinfo, Uint8List? profileImageBytes}) async {
 
     // get path to save image.
     String dirToSave= await _localPath;
@@ -91,8 +92,12 @@ class PostingHelper {
           dstH: profileImage.height.toInt() ~/ 3);
     }
 
-    var myInfo= await FireStore.getMyInfo();
-    drawString(image, arial_24, 630, 300, "@${myInfo?.slugId}");
+    if(profileImageBytes != null) {
+      drawString(image, arial_24, 630, 300, "@${myinfo.slugId}");
+    }
+    else { // without profile photo
+      drawString(image, arial_24, 630, 400, "@${myinfo.slugId}");
+    }
 
     // Save the image to disk as a PNG
     String filePath= '$dirToSave/export.png';

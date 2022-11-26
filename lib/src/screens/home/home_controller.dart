@@ -293,11 +293,14 @@ class HomeController extends BaseGetController {
     var message = messageInputController.text;
     String result= '';
 
-    final bytes = await captureController.capture();
-    if(bytes != null) {
-      result = await PostingHelper.shareOnInstagram(message: message, profileImageBytes: bytes);
-    }else{
-      result = await PostingHelper.shareOnInstagram(message: message);
+    var myInfo = await FireStore.getMyInfo();
+    if (myInfo == null) { return; }
+
+    if(myInfo.profileImage.isNotEmpty) { // With profile image
+      final bytes = await captureController.capture();
+      result = await PostingHelper.shareOnInstagram(myinfo: myInfo, message: message, profileImageBytes: bytes);
+    }else{ // Without profile image.
+      result = await PostingHelper.shareOnInstagram(myinfo: myInfo, message: message);
     }
     //MySnackBar.show(title: result);
     Log.d(result);
