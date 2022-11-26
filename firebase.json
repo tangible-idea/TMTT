@@ -10,10 +10,6 @@
       {
         "source": "/invitation/**",
         "dynamicLinks": true
-      },
-      {
-        "source": "!/invitation/**",
-        "destination": "/index.html"
       }
     ]
   },

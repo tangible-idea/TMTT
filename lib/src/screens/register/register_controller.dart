@@ -247,6 +247,7 @@ class RegisterController extends BaseGetController {
     if(currentUser == null) {
       // create a model and register with the data.
       var user = userModel.User(
+        userId: userEmail,
         googleUid: loginType.name=='google' ? credential.user?.uid ?? '' : '',
         appleUid: loginType.name=='apple' ? credential.user?.uid ?? '' : '',
         registerDate: DateTime.now().toString(),

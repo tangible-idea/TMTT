@@ -71,6 +71,8 @@ dependencies:
   flarelane_flutter: ^1.1.0
   sign_in_with_apple: ^4.2.0
   flutter_easyloading: ^3.0.5
+  animated_text_kit: ^4.2.2
+  url_launcher: ^6.1.7
 
 
 dev_dependencies:

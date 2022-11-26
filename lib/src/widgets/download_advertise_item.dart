@@ -8,6 +8,7 @@ import 'package:tmtt/src/resources/styles/my_color.dart';
 import 'package:tmtt/src/resources/styles/txt_style.dart';
 import 'package:tmtt/src/widgets/bottom_button.dart';
 import 'package:tmtt/src/widgets/plain_text.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DownLoadAdvertiseItem extends StatelessWidget {
 
@@ -55,7 +56,13 @@ class DownLoadAdvertiseItem extends StatelessWidget {
     );
   }
 
-  void onClickDownloadButton() {
+  void onClickDownloadButton() async {
+      var url = Uri.parse("https://tmtt.link/invitation/appdownload");
+      if (await canLaunchUrl(url)) {
+        await launchUrl(url);
+      } else {
+        print("Could not launch $url");
+      }
 
   }
 }
