@@ -189,7 +189,7 @@ class FireStore {
       return;
     }
     snapshot.docs.first.reference.update({"point": FieldValue.increment(amount)}).then((value) => {
-      Log.d("Point increased by $amount Successfully!");
+      Log.d("Point increased by $amount Successfully!")
     });
   }
 
