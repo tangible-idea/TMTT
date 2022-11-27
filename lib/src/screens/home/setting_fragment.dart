@@ -87,13 +87,16 @@ class SettingFragment extends GetView<HomeController> {
                           ),
                         ),
                       ),
-                      BottomPlainButton(
-                          text: "Select",
-                          enabledObs: RxBool(true),
-                          onPressed: () {
-                              controller.changeAppLanguage();
-                              Get.back();
-                            },)
+                      Container(
+                        margin: const EdgeInsets.only(bottom: 14, left: 14, right: 14),
+                        child: BottomPlainButton(
+                            text: "Select",
+                            enabledObs: RxBool(true),
+                            onPressed: () {
+                                controller.changeAppLanguage();
+                                Get.back();
+                              },),
+                      )
                     ],
                 ), MyColor.kLightBackground),
               child: SettingItem(
