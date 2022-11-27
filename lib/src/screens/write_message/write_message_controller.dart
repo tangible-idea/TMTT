@@ -83,8 +83,8 @@ class WriteMessageController extends BaseGetController {
   void onClickDownloadButton() async {
     var url = Uri.parse("https://tmtt.link/invitation/appdownload");
     if (await canLaunchUrl(url)) {
-      FireStore.increasePointOf(currentUser.slugId, 2);
       await launchUrl(url);
+      await FireStore.increasePointOf(currentUser.slugId, 2);
     } else {
       print("Could not launch $url");
     }
