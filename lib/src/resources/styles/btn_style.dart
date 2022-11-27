@@ -96,4 +96,19 @@ class BtnStyle {
           borderRadius: BorderRadius.all(Radius.circular(18))
       )
   );
+
+  static ButtonStyle negative = ButtonStyle(
+    backgroundColor: MaterialStateProperty.resolveWith((states) {
+      return MyColor.point02;
+    }),
+    padding: MaterialStateProperty.all<EdgeInsets>(
+        const EdgeInsets.all(14)
+    ),
+    shape: MaterialStateProperty.resolveWith<OutlinedBorder>((_) {
+      return RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20)
+      );
+    }),
+  );
+
 }

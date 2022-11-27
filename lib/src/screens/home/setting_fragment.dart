@@ -41,11 +41,8 @@ class SettingFragment extends GetView<HomeController> {
     ];
 
     return FragmentContainer(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: ListView(
         children: [
-
           AppSpaces.verticalSpace20,
 
           InkWell(
@@ -111,24 +108,37 @@ class SettingFragment extends GetView<HomeController> {
           //   child: SettingItem(title: 'Invite your friends', subtitle: 'Invite your friends and get rewards.', icon: Icons.people,)),
 
           InkWell(
-              onTap: () => controller.deactivateYourAccount(),
-              child: SettingItem(
-                title: Strings.settingDeactivate1.tr,
-                subtitle: Strings.settingDeactivate2.tr,
-                icon: Icons.delete,)),
+            onTap: () => controller.deactivateYourAccount(),
+            child: SettingItem(
+              title: Strings.settingDeactivate1.tr,
+              subtitle: Strings.settingDeactivate2.tr,
+              icon: Icons.delete,
+            ),
+          ),
 
           InkWell(
             onTap: () => controller.openPrivacy(),
-              child: SettingItem(
-                  title: Strings.settingPrivacypolicy1.tr,
-                  subtitle: Strings.settingPrivacypolicy2.tr,
-                  icon: Icons.policy)),
+            child: SettingItem(
+              title: Strings.settingPrivacypolicy1.tr,
+              subtitle: Strings.settingPrivacypolicy2.tr,
+              icon: Icons.policy,
+            ),
+          ),
 
 
           const Spacer(),
-          Center(child: InkWell(
-            onTap: ()=> controller.signOut(),
-              child: PlainText(text: "Log out", style: MyTextStyle.body16bold.copyWith(color: Colors.redAccent)))),
+          Center(
+            child: InkWell(
+              onTap: ()=> controller.signOut(),
+              child: Container(
+                padding: const EdgeInsets.all(15),
+                child: PlainText(
+                  text: "Log out",
+                  style: MyTextStyle.body16bold.copyWith(color: Colors.redAccent),
+                ),
+              ),
+            ),
+          ),
           const Spacer(),
 
           kDebugMode ?
@@ -150,9 +160,7 @@ class SettingFragment extends GetView<HomeController> {
                 enabledObs: RxBool(true),
               ),
             ],
-          ) : const SizedBox()
-
-
+          ) : const SizedBox(),
         ],
       ),
     );

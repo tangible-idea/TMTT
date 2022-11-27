@@ -8,12 +8,14 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_insta/flutter_insta.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:tmtt/data/model/user.dart';
 import 'package:tmtt/firebase/fcm_service.dart';
 import 'package:tmtt/firebase/fire_store.dart';
 import 'package:tmtt/pages.dart';
 import 'package:tmtt/src/bottom_dialog/found_instagram_account_dialog.dart';
 import 'package:tmtt/src/constants/firestore_key.dart';
 import 'package:tmtt/src/constants/local_storage_key_store.dart';
+import 'package:tmtt/src/screens/dialog/dropout_user_dialog.dart';
 import 'package:tmtt/src/util/inapp_purchase_util.dart';
 import 'package:tmtt/src/util/local_storage.dart';
 import 'package:tmtt/src/util/my_dialog.dart';
@@ -240,6 +242,12 @@ class RegisterController extends BaseGetController {
 
     var registerDocId = "";
     var currentUser= await FireStore.searchUserSocialType(loginType, uid);
+
+    if(currentUser?.status == UserAccountStatus.dropped.value) {
+      MyDialog.show(DropoutUserDialog());
+      return;
+    }
+
     // get push token
     final fcmToken = await FcmService.token;
 

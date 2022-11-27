@@ -26,6 +26,7 @@ import 'package:tmtt/pages.dart';
 import 'package:tmtt/src/constants/URLs.dart';
 import 'package:tmtt/src/resources/languages/languages.dart';
 import 'package:tmtt/src/screens/base/base_get_controller.dart';
+import 'package:tmtt/src/screens/dialog/dropout_dialog.dart';
 import 'package:tmtt/src/screens/home/home_fragment.dart';
 import 'package:tmtt/src/screens/home/inbox_fragment.dart';
 import 'package:tmtt/src/screens/home/setting_fragment.dart';
@@ -421,21 +422,26 @@ class HomeController extends BaseGetController {
   }
 
   void deactivateYourAccount() async {
-    final Email email = Email(
-      body: "Are you sure you're gonna delete your account?",
-      subject: 'TMTT deactivation.',
-      recipients: ['help@tmtt.link'],
-      cc: ['tmtt.link@gmail.com'],
-      isHTML: false,
+    var dialog = DropoutDialog(
+      onConfirm: () {
+        MyNav.pop();
+        onDropout();
+      },
     );
+    MyDialog.show(dialog);
+  }
 
-    sendEmailWithHandlingResponse(email);
+  void onDropout() async {
+    await FireStore.updateUserValue('status', UserAccountStatus.dropped.value);
+    Credentials.logout();
+    MyNav.pushReplacementNamed(
+      pageName: PageName.register,
+    );
   }
 
   void showLanguageList(BuildContext context) async {
 
   }
-
 
   void changeAppLanguage() async {
     LocalStorage.put(KeyStore.language, focusedLang.value);

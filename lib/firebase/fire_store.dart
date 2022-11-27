@@ -133,7 +133,7 @@ class FireStore {
   }
 
   /// update user's field
-  static Future<bool> updateUserValue(String key, String value) async {
+  static Future<bool> updateUserValue(String key, dynamic value) async {
     var docId = await LocalStorage.get(KeyStore.userDocId, '');
     if (docId.isEmpty) { return false; }
     await instance
