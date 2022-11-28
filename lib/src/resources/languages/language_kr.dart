@@ -66,8 +66,8 @@ Map<String, String> translations_kr = {
   Strings.settingFeedbackEmailBody  : "건의사항 내용이나 어떤 문제가 있었는지 알려주세요~",
   Strings.settingLanguage1          : '언어',
   Strings.settingLanguage2          : '언어 변경',
-  Strings.settingDeactivate1        : '계정 비활성화',
-  Strings.settingDeactivate2        : '비활성화시 되돌릴 수 없습니다.',
+  Strings.settingDeactivate1        : '회원 탈퇴',
+  Strings.settingDeactivate2        : '개인정보가 삭제됩니다.',
   Strings.settingPrivacypolicy1     : '개인정보 처리방침',
   Strings.settingPrivacypolicy2     : '고객님의 정보를 소중하게 여겨요.',
 
