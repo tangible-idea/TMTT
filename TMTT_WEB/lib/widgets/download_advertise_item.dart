@@ -28,7 +28,7 @@ class DownloadAdvertiseItem extends GetView<WriteMessageController> {
             const Spacer(),
             Align(
               alignment: Alignment.centerLeft,
-              child: SvgPicture.asset(Assets.imagesGreetingMan),
+              child: SvgPicture.asset('assets/images/greeting_man.svg'),
             ),
             const Spacer(),
             PlainText(
@@ -41,7 +41,7 @@ class DownloadAdvertiseItem extends GetView<WriteMessageController> {
             const Spacer(),
             Align(
               alignment: Alignment.centerRight,
-              child: SvgPicture.asset(Assets.imagesGreetingGirl),
+              child: SvgPicture.asset('assets/images/greeting_girl.svg'),
             ),
             const Spacer(),
             BottomPlainButton(

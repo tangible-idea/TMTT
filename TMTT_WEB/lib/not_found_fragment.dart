@@ -1,10 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
-import 'package:tmtt/generated/assets.dart';
-import 'package:tmtt/src/screens/write_message/write_message_controller.dart';
-import 'package:tmtt/src/widgets/plain_text.dart';
+import 'package:tmtt_web/widgets/plain_text.dart';
+import 'package:tmtt_web/write_message_controller.dart';
 
 class NotFoundUserFragment extends GetView<WriteMessageController> {
 
@@ -15,13 +13,6 @@ class NotFoundUserFragment extends GetView<WriteMessageController> {
     return Center(
       child: Column(
         children: [
-          Expanded(
-            child: Container(
-              child: Lottie.asset(
-                Assets.lottieEmptyMessage,
-              ),
-            ),
-          ),
           PlainText(
             marginTop: 10,
             text: "user not found!",

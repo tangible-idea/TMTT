@@ -19,6 +19,7 @@ dependencies:
   firebase_core_platform_interface: 4.5.2
   firebase_core: ^2.1.1
   cloud_firestore: ^4.0.3
+  firebase_auth: ^4.1.0
 
   #getX
   get: ^4.6.5
@@ -32,6 +33,7 @@ dependencies:
   flutter_svg: ^1.1.1+1
   flutter_secure_storage: ^5.0.2
   logger: ^1.1.0
+  url_launcher: ^6.1.7
 
 dev_dependencies:
   json_serializable: ^6.3.1

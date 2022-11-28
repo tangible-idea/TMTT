@@ -1,25 +1,20 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tmtt/data/model/hint.dart';
-import 'package:tmtt/data/model/user.dart';
-import 'package:tmtt/firebase/fire_store.dart';
-import 'package:tmtt/src/constants/URLs.dart';
-import 'package:tmtt/src/constants/app_secret.dart';
-import 'package:tmtt/src/network/retrofit_custom_manager.dart';
-import 'package:tmtt/src/screens/base/base_get_controller.dart';
-import 'package:tmtt/src/screens/write_message/message_input_fragment.dart';
-import 'package:tmtt/src/screens/write_message/not_found_fragment.dart';
-import 'package:tmtt/src/screens/write_message/send_success_fragment.dart';
-import 'package:tmtt/src/util/info_util.dart';
-import 'package:tmtt/src/util/my_logger.dart';
+import 'package:tmtt_web/send_success_fragment.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../../resources/languages/strings.dart';
 import 'base_get_controller.dart';
+import 'constants/URLs.dart';
+import 'constants/app_secret.dart';
+import 'constants/strings.dart';
 import 'data/hint.dart';
 import 'data/user.dart';
+import 'fire_store.dart';
+import 'info_util.dart';
+import 'message_input_fragment.dart';
 import 'my_logger.dart';
+import 'network/retrofit_custom_manager.dart';
+import 'not_found_fragment.dart';
 
 class WriteMessageBinding implements Bindings {
   @override

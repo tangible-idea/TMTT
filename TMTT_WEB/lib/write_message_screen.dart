@@ -1,18 +1,13 @@
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
-import 'package:tmtt/src/screens/base/base_scaffold.dart';
-import 'package:tmtt/src/screens/write_message/message_input_fragment.dart';
-import 'package:tmtt/src/screens/write_message/write_message_controller.dart';
-import 'package:tmtt/src/util/my_navigator.dart';
-import 'package:tmtt/src/widgets/download_advertise_item.dart';
+import 'package:tmtt_web/widgets/download_advertise_item.dart';
 import 'package:tmtt_web/write_message_controller.dart';
 
-import '../../resources/styles/my_color.dart';
 import 'base_scaffold.dart';
 import 'constants/my_color.dart';
+import 'my_navigator.dart';
 
 class WriteMessageScreen extends GetView<WriteMessageController> {
   const WriteMessageScreen({super.key});

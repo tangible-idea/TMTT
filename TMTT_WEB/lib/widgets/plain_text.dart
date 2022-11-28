@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../resources/styles/txt_style.dart';
+import '../constants/txt_style.dart';
 
 class PlainText extends StatelessWidget {
 
