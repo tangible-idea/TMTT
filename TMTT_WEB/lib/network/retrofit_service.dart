@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import '../data/hutils.dart';
 import '../data/instagram.dart';
 
+part 'retrofit_service.g.dart';
 
 @RestApi()
 abstract class RetrofitService {
