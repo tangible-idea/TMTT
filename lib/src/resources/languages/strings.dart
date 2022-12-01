@@ -51,6 +51,7 @@ class Strings {
   // Message
   static String messageButtonReply = 'messageButtonReply';
   static String messageButtonWhoSentThis = 'messageButtonWhoSentThis';
+  static String messagePremiumMemberCanSee = 'messagePremiumMemberCanSee';
   static String messageEmptyState = 'messageEmptyState';
   static String messageEmptyStateBody = 'messageEmptyStateBody';
   static String messageHint1= 'messageHint1';

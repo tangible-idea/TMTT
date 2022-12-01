@@ -12,6 +12,8 @@ import 'package:tmtt/src/util/inapp_purchase_util.dart';
 import 'package:tmtt/src/widgets/bottom_button.dart';
 import 'package:tmtt/src/widgets/plain_text.dart';
 
+import '../resources/languages/strings.dart';
+
 
 class PaymentDialog extends BaseWidget {
 
@@ -42,7 +44,7 @@ class PaymentDialog extends BaseWidget {
             child: PlainText(
               marginTop: 32,
               marginBottom: 14,
-              text: "Who sent this",
+              text: Strings.messageButtonWhoSentThis.tr,
               style: MyTextStyle.body1Bold.copyWith(
                   fontSize: 20
               ),
@@ -61,9 +63,9 @@ class PaymentDialog extends BaseWidget {
               ),
             ),
           ),
-          Spacer(),
+          const Spacer(),
           Container(
-            margin: EdgeInsets.only(left: 14, right: 14, bottom: 14),
+            margin: const EdgeInsets.only(left: 14, right: 14, bottom: 14),
             child: BottomPlainButton(
               icon: SvgPicture.asset(Assets.imagesLockIcon),
               text: 'Unlock messages',
@@ -77,12 +79,12 @@ class PaymentDialog extends BaseWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.only(left: 14, right: 14, bottom: 14),
+            margin: const EdgeInsets.only(left: 14, right: 14, bottom: 14),
             child: Center(
               child: PlainText(
                 marginBottom: 14,
                 align: TextAlign.center,
-                text: "It renews for 'price' per week. 'Terms and Privacy'",
+                text: "It renews for 'price' per week. 'Terms of service'",
                 style: MyTextStyle.body1.copyWith(
                     fontSize: 12,
                     color: MyColor.gray_03

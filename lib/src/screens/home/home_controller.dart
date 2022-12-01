@@ -44,8 +44,6 @@ import '../../constants/firestore_key.dart';
 import '../../constants/local_storage_key_store.dart';
 import '../../constants/sample_questions.dart';
 import '../../resources/languages/strings.dart';
-import '../../resources/styles/my_color.dart';
-import '../../util/language_util.dart';
 import '../../util/my_dialog.dart';
 
 class HomeBinding implements Bindings {
