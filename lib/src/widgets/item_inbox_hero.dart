@@ -70,7 +70,7 @@ class InboxItem extends StatelessWidget {
                         radius: 35
                     ),
                   ): ClipOval(
-                    child: Image.asset(Assets.imagesHandHold),
+                    child: Image.asset(Assets.imagesHello, width: 70,),
                   ),
 
                   // TODO : 나중에 시간되면 추가.
