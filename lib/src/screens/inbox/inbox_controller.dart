@@ -2,6 +2,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:tmtt/data/model/hint.dart';
 import 'package:tmtt/data/model/message.dart';
@@ -49,13 +50,15 @@ class InboxController extends BaseGetController {
   void onClose() { }
 
   void onClickReply() async {
+
+    EasyLoading.show(status: 'Loading...');
     final bytes = await captureController.capture();
     if(bytes != null) {
-      PostingHelper.shareOnInstagramReply(bytes);
+      await PostingHelper.shareOnInstagramReply(bytes);
     }else{
       MySnackBar.show(title: "Error", message: "There's an error while replying.");
     }
-
+    EasyLoading.dismiss();
   }
 
   void onClickHint() async {
