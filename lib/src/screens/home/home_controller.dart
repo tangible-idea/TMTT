@@ -126,7 +126,7 @@ class HomeController extends BaseGetController {
       Get.back();
 
       if(alsoShare) {
-        EasyLoading.show(status: 'Loading...');
+        EasyLoading.show(status: 'Loading...', maskType: EasyLoadingMaskType.black);
         await saveMyLastMessage();
         await shareOnInstagram(context);
         EasyLoading.dismiss();

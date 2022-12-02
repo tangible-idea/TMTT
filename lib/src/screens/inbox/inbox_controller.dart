@@ -51,7 +51,7 @@ class InboxController extends BaseGetController {
 
   void onClickReply() async {
 
-    EasyLoading.show(status: 'Loading...');
+    EasyLoading.show(status: 'Loading...', maskType: EasyLoadingMaskType.black);
     final bytes = await captureController.capture();
     if(bytes != null) {
       await PostingHelper.shareOnInstagramReply(bytes);

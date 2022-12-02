@@ -41,7 +41,7 @@ class SettingFragment extends GetView<HomeController> {
     ];
 
     return FragmentContainer(
-      child: ListView(
+      child: Column(
         children: [
           AppSpaces.verticalSpace20,
 
@@ -124,8 +124,6 @@ class SettingFragment extends GetView<HomeController> {
               icon: Icons.policy,
             ),
           ),
-
-
           const Spacer(),
           Center(
             child: InkWell(
@@ -160,7 +158,8 @@ class SettingFragment extends GetView<HomeController> {
                 enabledObs: RxBool(true),
               ),
             ],
-          ) : const SizedBox(),
+          )
+          : const SizedBox(),
         ],
       ),
     );

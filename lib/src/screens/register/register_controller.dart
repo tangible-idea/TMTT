@@ -104,7 +104,7 @@ class RegisterController extends BaseGetController {
     if(errorObs.value != null) return; // return on validation error.
     if(blockList.contains(slug)) return; // (주의) 슬러그가 페이지명과 겹치면 안된다.
 
-    EasyLoading.show(status: 'Loading...');
+    EasyLoading.show(status: 'Loading...', maskType: EasyLoadingMaskType.black);
 
     var trimmedSlug= slug.trim();
 
@@ -181,7 +181,7 @@ class RegisterController extends BaseGetController {
       instagramBio: foundInsta.bio.toString(),
       instagramImageURL: foundInsta.imgurl.toString(),
       onYesPressed: () async {
-        EasyLoading.show(status: 'Loading...');
+        EasyLoading.show(status: 'Loading...', maskType: EasyLoadingMaskType.black);
         var isSuccess= await FireStore.linkMyPhotoFromInstagramAccountToStorage(foundInsta.imgurl.toString());
         goToHome();
       },
@@ -205,7 +205,7 @@ class RegisterController extends BaseGetController {
   }
 
   void signInWithApple() async {
-    EasyLoading.show(status: 'Signing in...');
+    EasyLoading.show(status: 'Signing in...' , maskType: EasyLoadingMaskType.black);
     try {
       UserCredential? credential= await FireAuth().signInWithApple();
       if(credential == null) {
@@ -222,7 +222,7 @@ class RegisterController extends BaseGetController {
 
   // google API with Firebase
   void signInWithGoogle() async {
-    EasyLoading.show(status: 'Signing in...');
+    EasyLoading.show(status: 'Signing in...', maskType: EasyLoadingMaskType.black);
     try {
       UserCredential credential= await getCredentialFromGoogleFirebase();
       await signInLogic(credential, LoginUserType.google);

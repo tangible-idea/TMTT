@@ -53,7 +53,7 @@ class HomeFragment extends GetView<HomeController> {
     // check whether you already have seen it.
     var alreadySeenHelpDialog= await LocalStorage.get(KeyStore.alreadySeenHelpDialog, false);
     if(alreadySeenHelpDialog && !forceShow) {
-      EasyLoading.show(status: 'Loading...');
+      EasyLoading.show(status: 'Loading...', maskType: EasyLoadingMaskType.black);
 
       await controller.saveMyLastMessage();
       await controller.shareOnInstagram(context);
