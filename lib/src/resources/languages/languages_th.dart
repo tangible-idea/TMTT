@@ -14,9 +14,9 @@ Map<String, String> translations_th = {
   Strings.pushNewMessageTitle       : "คุณได้รับข้อความใหม่",
   Strings.pushNewMessageContent     : "กดเพื่อเปิด 😀",
 
-  Strings.registerDesc1             : 'Get anonymous messages on any kind of \r\nsocial media apps such as Instagram!',
-  Strings.registerDesc2             : 'this web address is how people will find\r\nyour TMTT profile online.',
-  Strings.registerDesc3             : '(Your instagram ID to handle.)',
+  Strings.registerDesc1             : 'มารับข้อความบนโซเชียลมีเดียอย่างอินสตาแกรมแบบไม่ระบุตัวตนกัน!',
+  Strings.registerDesc2             : 'ลิงก์นี้จะช่วยให้ผู้คนเข้าถึงโปรไฟล์ TMTT ของคุณได้',
+  Strings.registerDesc3             : '(โปรดป้อนไอดีอินสตาแกรมของคุณเพื่อดำเนินการต่อ)',
   Strings.registerCreateYourOwnLInk : 'สร้างลิงก์ของคุณ',
 
   //home
@@ -52,8 +52,8 @@ Map<String, String> translations_th = {
   Strings.settingPrivacypolicy2       : 'อ่านนโยบายความเป็นส่วนตัวของ TMTT',
 
   // create your slug page
-  Strings.slugCreateError1            : 'There is another user with the same slug.',
-  Strings.slugCreateError2            : 'Slug can only use letters, numbers _ and .',
+  Strings.slugCreateError1            : 'ชื่อนี้มีคนใช้แล้ว!',
+  Strings.slugCreateError2            : 'ชื่อพ่วงท้ายลิงก์สามารถใช้ได้แค่ตัวอักษร ตัวเลข _ และ . เท่านั้น',
   Strings.slugPopupContent1           : 'ยืนยันบัญชีอินสตาแกรมของคุณ',
   Strings.slugPopupContent2           : 'นี่คือบัญชีของคุณใช่หรือไม่',
   Strings.slugPopupButtonYes          : 'ใช่! นี่คือบัญชีของฉัน',
@@ -66,13 +66,13 @@ Map<String, String> translations_th = {
   Strings.messageButtonReply          : 'ตอบกลับ',
   Strings.messageButtonWhoSentThis    : 'ใครส่งมา',
   Strings.messagePremiumMemberCanSee  : 'เฉพาะสมาชิกแบบพรีเมี่ยมเท่านั้นที่จะสามารถเห็นคำใบ้คนที่ส่งมาในแต่ละข้อความ',
-  Strings.messageEmptyState           : "It's empty here",
+  Strings.messageEmptyState           : "ยังไม่มีข้อความ",
   Strings.messageEmptyStateBody       : "คุณได้แชร์ข้อความกับผู้ติดตามคุณหรือไม่",
-  Strings.messageHint1                : 'City',
-  Strings.messageHint2                : 'Country',
-  Strings.messageHint3                : 'Time Sent',
-  Strings.messageHint4                : 'Carrier',
-  Strings.messageHint5                : 'Platform',
-  Strings.messageHint6                : 'Device',
-  Strings.messageHint7                : 'Software',
+  Strings.messageHint1                : 'จังหวัด',
+  Strings.messageHint2                : 'ประเทศ',
+  Strings.messageHint3                : 'เวลาที่ส่ง',
+  Strings.messageHint4                : 'อาชีพ',
+  Strings.messageHint5                : 'แพลตฟอร์ม',
+  Strings.messageHint6                : 'อุปกรณ์',
+  Strings.messageHint7                : 'ซอฟต์แวร์',
 };
