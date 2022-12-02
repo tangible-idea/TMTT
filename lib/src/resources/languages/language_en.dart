@@ -44,7 +44,7 @@ Map<String, String> translations_en = {
   Strings.settingFeedbackEmailBody    : "Tell us about your problem or feature you'd like to have but did not find.",
   Strings.settingLanguage1            : 'Language',
   Strings.settingLanguage2            : 'Change your app language.',
-  Strings.settingDeactivate1          : 'Deactivate Account',
+  Strings.settingDeactivate1          : 'Delete your Account',
   Strings.settingDeactivate2          : 'This cannot be undone.',
   Strings.settingDeactivate3          : "Confirm that you want to delete your account by typing 'confirm'",
   Strings.settingDeactivate4          : "Delete your account.",
