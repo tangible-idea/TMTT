@@ -68,6 +68,8 @@ Map<String, String> translations_kr = {
   Strings.settingLanguage2          : '언어 변경',
   Strings.settingDeactivate1        : '회원 탈퇴',
   Strings.settingDeactivate2        : '개인정보가 삭제됩니다.',
+  Strings.settingDeactivate3        : "'confirm'을 입력하고 '탈퇴하기'를 누르면 탈퇴됩니다.",
+  Strings.settingDeactivate4        : "탈퇴하기",
   Strings.settingPrivacypolicy1     : '개인정보 처리방침',
   Strings.settingPrivacypolicy2     : '고객님의 정보를 소중하게 여겨요.',
 

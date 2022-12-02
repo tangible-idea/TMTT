@@ -6,6 +6,8 @@ import 'package:tmtt/src/screens/base/base_dialog_container.dart';
 import 'package:tmtt/src/widgets/bottom_button.dart';
 import 'package:tmtt/src/widgets/plain_text_field.dart';
 
+import '../../resources/languages/strings.dart';
+
 class DropoutDialog extends StatelessWidget {
 
   Function() onConfirm;
@@ -20,9 +22,9 @@ class DropoutDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DialogContainer(
-      title: "탈퇴하기",
+      title: Strings.settingDeactivate1.tr,
       align: TextAlign.center,
-      content: "'confirm'을 입력하고 '탈퇴하기'를 누르면 탈퇴됩니다.",
+      content: Strings.settingDeactivate3.tr,
       child: Column(
         children: [
           PlainTextField(
@@ -30,7 +32,7 @@ class DropoutDialog extends StatelessWidget {
             hintText: "confirm",
           ),
           BottomPlainButton(
-            text: "탈퇴하기",
+            text: Strings.settingDeactivate4.tr,
             style: BtnStyle.negative,
             enabledObs: RxBool(true),
             onPressed: () => onPressedDropoutButton(),

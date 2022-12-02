@@ -70,6 +70,8 @@ class Strings {
   static String settingLanguage2 = 'settingLanguage2';
   static String settingDeactivate1 = 'settingDeactivate1';
   static String settingDeactivate2 = 'settingDeactivate2';
+  static String settingDeactivate3 = 'settingDeactivate3';
+  static String settingDeactivate4 = 'settingDeactivate4';
   static String settingPrivacypolicy1 = 'settingPrivacypolicy1';
   static String settingPrivacypolicy2 = 'settingPrivacypolicy2';
 

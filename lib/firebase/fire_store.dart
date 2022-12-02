@@ -271,6 +271,8 @@ class FireStore {
         .limit(10)
         .get();
 
+    if(snapshot.docs.isEmpty) return null;
+
     lastVisibleInbox = snapshot.docs.last;
     var messages = <Message>[];
     for (var doc in snapshot.docs) {

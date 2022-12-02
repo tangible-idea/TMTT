@@ -108,6 +108,7 @@ class HomeController extends BaseGetController {
   var myInfoObs = User().obs;
   var myLinkObs = ''.obs;
   var messagesObs = <Message>[].obs;
+  var isLoadingMyMessages= true.obs;
   var useHeaderObs = false.obs;
 
   var profileURL= ''.obs;
@@ -317,6 +318,8 @@ class HomeController extends BaseGetController {
 
   void getMyMessages() async {
 
+    isLoadingMyMessages.value= true;
+
     if(FireStore.lastVisibleInbox == null) {
       var message = await FireStore.getMyMessagesFirst();
       messagesObs.value.clear();
@@ -325,11 +328,14 @@ class HomeController extends BaseGetController {
       Log.d('call first page');
     } else {
       var message = await FireStore.getMyMessagesNext();
-      if(message == null) { return; }
+      message ?? messagesObs.value.clear();
+      message ??= await FireStore.getMyMessagesFirst(); // if there are no next page: just get the first page.
       messagesObs.value.addAll(message);
       messagesObs.refresh();
       Log.d('call next page');
     }
+
+    isLoadingMyMessages.value= false;
 
     // if(currentInboxPage == 0) {
     //   currentInboxPage+=1;

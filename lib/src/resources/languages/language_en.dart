@@ -46,6 +46,8 @@ Map<String, String> translations_en = {
   Strings.settingLanguage2            : 'Change your app language.',
   Strings.settingDeactivate1          : 'Deactivate Account',
   Strings.settingDeactivate2          : 'This cannot be undone.',
+  Strings.settingDeactivate3          : "Confirm that you want to delete your account by typing 'confirm'",
+  Strings.settingDeactivate4          : "Delete your account.",
   Strings.settingPrivacypolicy1       : 'Privacy policy',
   Strings.settingPrivacypolicy2       : 'Read privacy policy of TMTT',
 

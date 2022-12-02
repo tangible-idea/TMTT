@@ -48,6 +48,8 @@ Map<String, String> translations_th = {
   Strings.settingLanguage2            : 'เปลี่ยนภาษาในแอพ',
   Strings.settingDeactivate1          : 'ปิดการใช้งานบัญชีของคุณ',
   Strings.settingDeactivate2          : 'ไม่สามารถยกเลิกได้',
+  Strings.settingDeactivate3          : "หากคุณกดที่คำว่ายืนยัน บัญชีของคุณจะถูกปิดใช้งาน",
+  Strings.settingDeactivate4          : "ปิดการใช้งานบัญชีของคุณ",
   Strings.settingPrivacypolicy1       : 'นโยบายความเป็นส่วนตัว',
   Strings.settingPrivacypolicy2       : 'อ่านนโยบายความเป็นส่วนตัวของ TMTT',
 
