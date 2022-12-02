@@ -64,6 +64,7 @@ class HomeController extends BaseGetController {
     FcmService.setPushMessageListener();
     inboxScrollListener();
     purchaseTest();
+    putARandomMessage();
   }
 
   void purchaseTest() async {
@@ -155,7 +156,7 @@ class HomeController extends BaseGetController {
   Future<void> getMyInfo() async {
     var myInfo = await FireStore.getMyInfo();
     if (myInfo == null) { return; }
-    messageInputController.text = myInfo.message;
+    //messageInputController.text = myInfo.message;
     userNameObs.value = myInfo.slugId;
     myLinkObs.value = '${MyUrl.baseUrl}#/${myInfo.slugId}';
     myInfoObs.value = myInfo;
