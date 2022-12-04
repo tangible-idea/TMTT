@@ -1,5 +1,6 @@
 
 
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 
@@ -43,5 +44,11 @@ abstract class BaseGetController extends FullLifeCycleController with FullLifeCy
   void onBackPressed() {  }
   void onCancelPressed() {  }
 
+  void showLoading({String msg = 'Loading...'}) {
+    EasyLoading.show(status: msg, maskType: EasyLoadingMaskType.black);
+  }
 
+  void dismissLoading() {
+    EasyLoading.dismiss();
+  }
 }

@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:tmtt/data/model/hint.dart';
 import 'package:tmtt/data/model/message.dart';
 import 'package:tmtt/src/bottom_dialog/payment_dialog.dart';
@@ -65,13 +66,13 @@ class InboxController extends BaseGetController {
     var customerInfo = await Purchase.getCustomerInfo();
     if (customerInfo == null) { return; }
     var isSubscribe = await Purchase.isUserActiveSubscribe(customerInfo);
-    Log.d("isSubscribe: $isSubscribe");
     if(isSubscribe) {
       startHintDialog();
     } else {
       startPaymentDialog();
     }
   }
+
   void startHintDialog() {
     var dialog = HintDialog(
       email: 'email',
@@ -84,15 +85,46 @@ class InboxController extends BaseGetController {
       isFullScreen: false,
     );
   }
+
   void startPaymentDialog() {
     var dialog = PaymentDialog(
-      onPaySuccess: () => startHintDialog(),
+      onClickPay: () => startPayment(),
     );
     MyDialog.showBottom(
       widget: dialog,
       isEnableDrag: true,
       isFullScreen: false,
     );
+  }
+
+  void startPayment() async {
+    showLoading();
+    var offerings = await Purchase.displayProducts();
+
+    Package? product;
+    if(GetPlatform.isAndroid) {
+      product = offerings?.all["weekly_payment"]?.weekly;
+    } else if(GetPlatform.isIOS) {
+      product = offerings?.all["weekly_payment"]?.weekly;
+    }
+
+    if (offerings == null || product == null) {
+      dismissLoading();
+    }
+
+    if (offerings != null && product != null) {
+      var paymentResult = await Purchase.makePurchase(product);
+      if(paymentResult == null) {
+        dismissLoading();
+        return;
+      }
+      var isSubscribe = await Purchase.isUserActiveSubscribe(paymentResult);
+      dismissLoading();
+      if(isSubscribe) {
+        Get.back();
+        startHintDialog();
+      }
+    }
   }
 
 }

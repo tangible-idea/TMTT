@@ -17,10 +17,10 @@ import '../resources/languages/strings.dart';
 
 class PaymentDialog extends BaseWidget {
 
-  late Function() onPaySuccess;
+  late Function() onClickPay;
 
   PaymentDialog({
-    required this.onPaySuccess,
+    required this.onClickPay,
   });
 
   @override
@@ -75,7 +75,7 @@ class PaymentDialog extends BaseWidget {
                 }),
               ),
               enabledObs: RxBool(true),
-              onPressed: () => payment(),
+              onPressed: () => onClickPay(),
             ),
           ),
           Container(
@@ -95,26 +95,5 @@ class PaymentDialog extends BaseWidget {
         ],
       ),
     );
-  }
-
-  void payment() async {
-    var offerings = await Purchase.displayProducts();
-
-    Package? product;
-    if(GetPlatform.isAndroid) {
-      product = offerings?.current?.weekly;
-    } else if(GetPlatform.isIOS) {
-      product = offerings?.all["weekly_payment"]?.weekly;
-    }
-
-    if (offerings != null && product != null) {
-      var paymentResult = await Purchase.makePurchase(product);
-      if(paymentResult == null) return;
-      var isSubscribe = await Purchase.isUserActiveSubscribe(paymentResult);
-      if(isSubscribe) {
-        Get.back();
-        onPaySuccess();
-      }
-    }
   }
 }
