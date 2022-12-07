@@ -66,8 +66,7 @@ Map<String, String> translations_th = {
 
 // Message
   Strings.messageButtonReply          : 'ตอบกลับ',
-  Strings.messageButtonWhoSentThis    : 'ใครส่งมา',
-  Strings.messagePremiumMemberCanSee  : 'เฉพาะสมาชิกแบบพรีเมี่ยมเท่านั้นที่จะสามารถเห็นคำใบ้คนที่ส่งมาในแต่ละข้อความ',
+  Strings.messageButtonWhoSentThis    : 'ใครส่งมา?',
   Strings.messageEmptyState           : "ยังไม่มีข้อความ",
   Strings.messageEmptyStateBody       : "คุณได้แชร์ข้อความกับผู้ติดตามคุณหรือไม่",
   Strings.messageHint1                : 'จังหวัด',
@@ -77,4 +76,8 @@ Map<String, String> translations_th = {
   Strings.messageHint5                : 'แพลตฟอร์ม',
   Strings.messageHint6                : 'อุปกรณ์',
   Strings.messageHint7                : 'ซอฟต์แวร์',
+  Strings.messageUnlockTitle          : "ใครส่งมา?",
+  Strings.messageUnlockButton         : "ดูคำใบ้",
+  Strings.messageUnlockBody           : "เฉพาะสมาชิกแบบพรีเมี่ยมเท่านั้นที่จะสามารถเห็นคำใบ้ของคนที่ส่งข้อความมา",
+  Strings.messageUnlockRenewWarning   : "ต่ออายุสมาชิกทุกๆสัปดาห์ 'เงื่อนไขการให้บริการ'",
 };

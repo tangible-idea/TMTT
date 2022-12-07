@@ -57,7 +57,7 @@ class PaymentDialog extends BaseWidget {
               marginRight: 24,
               marginLeft: 24,
               align: TextAlign.center,
-              text: "Premium members can see exclusive hints on each message.",
+              text: Strings.messageUnlockBody.tr,
               style: MyTextStyle.body1.copyWith(
                   fontSize: 16
               ),
@@ -68,7 +68,7 @@ class PaymentDialog extends BaseWidget {
             margin: const EdgeInsets.only(left: 14, right: 14, bottom: 14),
             child: BottomPlainButton(
               icon: SvgPicture.asset(Assets.imagesLockIcon),
-              text: 'Unlock messages',
+              text: Strings.messageUnlockButton.tr,
               style: BtnStyle.plain.copyWith(
                 backgroundColor: MaterialStateProperty.resolveWith((states) {
                   return MyColor.kPink; // if (states.contains(MaterialState.pressed)) {}
@@ -84,7 +84,7 @@ class PaymentDialog extends BaseWidget {
               child: PlainText(
                 marginBottom: 14,
                 align: TextAlign.center,
-                text: "It renews for 'price' per week. 'Terms of service'",
+                text: Strings.messageUnlockRenewWarning.tr,
                 style: MyTextStyle.body1.copyWith(
                     fontSize: 12,
                     color: MyColor.gray_03

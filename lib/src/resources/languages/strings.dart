@@ -61,6 +61,10 @@ class Strings {
   static String messageHint5 = 'messageHint5';
   static String messageHint6 = 'messageHint6';
   static String messageHint7 = 'messageHint7';
+  static String messageUnlockBody= 'messageUnlockBody';
+  static String messageUnlockRenewWarning= 'messageUnlockRenewWarning';
+  static String messageUnlockTitle= 'messageUnlockTitle';
+  static String messageUnlockButton= 'messageUnlockButton';
 
   static String settingFeedback1 = 'settingFeedback1';
   static String settingFeedback2 = 'settingFeedback2';

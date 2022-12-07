@@ -59,6 +59,10 @@ Map<String, String> translations_kr = {
   Strings.messageHint5              : '플랫폼',
   Strings.messageHint6              : '기기명',
   Strings.messageHint7              : '소프트웨어',
+  Strings.messageUnlockTitle        : "누가 보냈어?",
+  Strings.messageUnlockButton       : "힌트 얻기",
+  Strings.messageUnlockBody         : "프리미엄 멤버는 모든 메시지에 대해서 보낸사람이 누군지 힌트를 얻을 수 있습니다.",
+  Strings.messageUnlockRenewWarning : "매주 자동결제 됩니다. 언제든지 해지할 수 있습니다. '사용자 이용약관'을 참고해주세요.",
 
   Strings.settingFeedback1          : '피드백',
   Strings.settingFeedback2          : '기술적인 문제 또는 제안사항.',
