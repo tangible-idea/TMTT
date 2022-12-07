@@ -124,6 +124,14 @@ class SettingFragment extends GetView<HomeController> {
               icon: Icons.policy,
             ),
           ),
+          InkWell(
+            onTap: () => controller.openTerms(),
+            child: SettingItem(
+              title: Strings.settingTermsOfUse1.tr,
+              subtitle: Strings.settingTermsOfUse2.tr,
+              icon: CupertinoIcons.doc,
+            ),
+          ),
           const Spacer(),
           Center(
             child: InkWell(

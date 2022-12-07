@@ -50,6 +50,8 @@ Map<String, String> translations_en = {
   Strings.settingDeactivate4          : "Delete your account.",
   Strings.settingPrivacypolicy1       : 'Privacy policy',
   Strings.settingPrivacypolicy2       : 'Read privacy policy of TMTT',
+  Strings.settingTermsOfUse1          : "Terms of use ",
+  Strings.settingTermsOfUse2          : "Read terms of use TMTT",
 
   // create your slug page
   Strings.slugCreateError1            : 'There is another user with the same slug.',
@@ -78,4 +80,5 @@ Map<String, String> translations_en = {
   Strings.messageUnlockButton         : "Unlock messages",
   Strings.messageUnlockBody           : "Premium members can see exclusive hints on each message.",
   Strings.messageUnlockRenewWarning   : "It renews every week. 'Terms of service'",
+
 };

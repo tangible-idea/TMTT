@@ -78,6 +78,8 @@ class Strings {
   static String settingDeactivate4 = 'settingDeactivate4';
   static String settingPrivacypolicy1 = 'settingPrivacypolicy1';
   static String settingPrivacypolicy2 = 'settingPrivacypolicy2';
+  static String settingTermsOfUse1 = 'settingTermsOfUse1';
+  static String settingTermsOfUse2 = 'settingTermsOfUse2';
 
   static String termsDesc1 = 'termsDesc1';
   static String termsDesc2 = 'termsDesc2';

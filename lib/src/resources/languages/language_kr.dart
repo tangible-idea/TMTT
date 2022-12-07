@@ -64,6 +64,7 @@ Map<String, String> translations_kr = {
   Strings.messageUnlockBody         : "프리미엄 멤버는 모든 메시지에 대해서 보낸사람이 누군지 힌트를 얻을 수 있습니다.",
   Strings.messageUnlockRenewWarning : "매주 자동결제 됩니다. 언제든지 해지할 수 있습니다.\n'사용자 이용약관'을 참고해주세요.",
 
+  // Settings
   Strings.settingFeedback1          : '피드백',
   Strings.settingFeedback2          : '기술적인 문제 또는 제안사항.',
   Strings.settingFeedbackEmailSubject: "TMTT 피드백",
@@ -76,5 +77,7 @@ Map<String, String> translations_kr = {
   Strings.settingDeactivate4        : "탈퇴하기",
   Strings.settingPrivacypolicy1     : '개인정보 처리방침',
   Strings.settingPrivacypolicy2     : '고객님의 정보를 소중하게 여겨요.',
+  Strings.settingTermsOfUse1        : "사용자 이용약관",
+  Strings.settingTermsOfUse2        : "TMTT 사용자 약관 읽기",
 
 };

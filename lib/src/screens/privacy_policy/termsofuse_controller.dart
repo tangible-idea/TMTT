@@ -1,22 +1,17 @@
 
-
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:tmtt/generated/assets.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import '../base/base_get_controller.dart';
 
-class PrivacyBinding implements Bindings {
+class TermsOfUseBinding implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => PrivacyController());
+    Get.lazyPut(() => TermsOfUseController());
   }
 }
 
-class PrivacyController extends BaseGetController {
+class TermsOfUseController extends BaseGetController {
 
   late WebViewController webViewController;
 
@@ -36,17 +31,8 @@ class PrivacyController extends BaseGetController {
     );
   }
 
-  _loadHtmlFromAssets() async {
-    String fileText = await rootBundle.loadString(Assets.wwwPrivacypolicy);
-    webViewController.loadUrl( Uri.dataFromString(
-        fileText,
-        mimeType: 'text/html',
-        encoding: Encoding.getByName('utf-8')
-    ).toString());
-  }
-
   _loadHtmlFromURL() async {
-    webViewController.loadUrl("https://tmtt.link/privacypolicy.html");
+    webViewController.loadUrl("https://tmtt.link/termsofuse.html");
   }
 
 }

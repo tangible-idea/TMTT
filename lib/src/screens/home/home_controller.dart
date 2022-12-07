@@ -457,6 +457,10 @@ class HomeController extends BaseGetController {
     MyNav.pushNamed(pageName: PageName.privacy);
   }
 
+  void openTerms() {
+    MyNav.pushNamed(pageName: PageName.terms);
+  }
+
   @override
   void onBackPressed() { }
 

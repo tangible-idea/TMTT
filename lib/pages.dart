@@ -8,6 +8,7 @@ import 'package:tmtt/src/screens/index_controller.dart';
 import 'package:tmtt/src/screens/index_screen.dart';
 import 'package:tmtt/src/screens/privacy_policy/privacy_controller.dart';
 import 'package:tmtt/src/screens/privacy_policy/privacy_screen.dart';
+import 'package:tmtt/src/screens/privacy_policy/termsofuse_screen.dart';
 import 'package:tmtt/src/screens/register/create_slug_screen.dart';
 import 'package:tmtt/src/screens/register/register_controller.dart';
 import 'package:tmtt/src/screens/register/register_screen.dart';
@@ -36,6 +37,7 @@ class PageName {
   static const String home         = '/home';
   static const String inbox        = '/inbox';
   static const String privacy      = '/privacy';
+  static const String terms         = '/terms';
   static const String writeMessage = '/:uid';
 }
 
@@ -72,6 +74,11 @@ List<BaseGetPage> kGetPages = [
   BaseGetPage(
     name: PageName.privacy,
     page: () => PrivacyScreen(),
+    binding: PrivacyBinding(),
+  ),
+  BaseGetPage(
+    name: PageName.terms,
+    page: () => TermsOfUseScreen(),
     binding: PrivacyBinding(),
   ),
   BaseGetPage(

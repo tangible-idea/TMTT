@@ -52,6 +52,8 @@ Map<String, String> translations_th = {
   Strings.settingDeactivate4          : "ปิดการใช้งานบัญชีของคุณ",
   Strings.settingPrivacypolicy1       : 'นโยบายความเป็นส่วนตัว',
   Strings.settingPrivacypolicy2       : 'อ่านนโยบายความเป็นส่วนตัวของ TMTT',
+  Strings.settingTermsOfUse1          : "ข้อกำหนดการใช้งาน",
+  Strings.settingTermsOfUse2          : "ข้อกำหนดการใช้งาน TMTT",
 
   // create your slug page
   Strings.slugCreateError1            : 'ชื่อนี้มีคนใช้แล้ว!',
