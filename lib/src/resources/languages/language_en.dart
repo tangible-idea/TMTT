@@ -79,6 +79,6 @@ Map<String, String> translations_en = {
   Strings.messageUnlockTitle          : "Who sent this?",
   Strings.messageUnlockButton         : "Unlock messages",
   Strings.messageUnlockBody           : "Premium members can see exclusive hints on each message.",
-  Strings.messageUnlockRenewWarning   : "It renews every week. 'Terms of service'",
+  Strings.messageUnlockRenewWarning   : "It renews for 7.49USD per week. You can cancel at anytime. 'Terms of service'",
 
 };
