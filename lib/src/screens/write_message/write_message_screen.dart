@@ -9,7 +9,10 @@ import 'package:tmtt/src/screens/write_message/write_message_controller.dart';
 import 'package:tmtt/src/util/my_navigator.dart';
 import 'package:tmtt/src/widgets/download_advertise_item.dart';
 
+import '../../resources/styles/btn_style.dart';
 import '../../resources/styles/my_color.dart';
+import '../../resources/styles/txt_style.dart';
+import '../../widgets/bottom_button.dart';
 
 class WriteMessageScreen extends GetView<WriteMessageController> {
   const WriteMessageScreen({super.key});
@@ -36,7 +39,12 @@ class WriteMessageScreen extends GetView<WriteMessageController> {
                   Expanded(
                     child: controller.pages[controller.currentPageIndexObs.value],
                   ),
-                  const DownloadAdvertiseItem(),
+                  BottomPlainButton(
+                    text: 'Get my own message!',
+                    textStyle: MyTextStyle.body2Bold.copyWith(color: MyColor.kPrimary,),
+                    onPressed: () => controller.onClickDownloadButton(),
+                    enabledObs: RxBool(true),
+                    style: BtnStyle.whiteOutlineRadius2)
                 ],
               ),
             ),
