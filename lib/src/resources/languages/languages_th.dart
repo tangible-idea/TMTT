@@ -34,14 +34,14 @@ Map<String, String> translations_th = {
 
   // home -> help dialog
   Strings.helpTitle                 : "วิธีแชร์",
-  Strings.helpSubtitle              : "Get many anonymous\ncompliments from your followers.",
+  Strings.helpSubtitle              : "มารับคำชมจากผู้ติดตามของคุณแบบไม่ระบุตัวตนกัน!",
   Strings.helpButtonDontShowAnymore : "อย่าแสดงให้ฉันเห็นอีก",
   Strings.helpButtonConfirm         : "Got it, Thanks!",
   Strings.helpButtonNext            : "ถัดไป",
 
   // Settings
   Strings.settingFeedback1            : 'ข้อเสนอแนะ',
-  Strings.settingFeedback2            : 'รายงานปัญหาทางเทคนิคหรือแนะนำลูกเล่นใหม่ๆ',
+  Strings.settingFeedback2            : 'รายงานปัญหาทางเทคนิคหรือ\nแนะนำลูกเล่นใหม่ๆ',
   Strings.settingFeedbackEmailSubject : "TMTT Feedback",
   Strings.settingFeedbackEmailBody    : "ลองบอกเราเกี่ยวกับปัญหาหรือ",
   Strings.settingLanguage1            : 'ภาษา',

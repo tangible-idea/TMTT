@@ -1,0 +1,20 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /message/{itemId} {
+      allow read: if isSignedIn(); //if request.auth.uid == resource.data.receive_user_id;
+      allow write: if true;
+    }
+
+    match /users/{itemId} {
+      allow create: if isSignedIn();
+      allow read: if true; // 웹에서도 볼 수 있도록
+      allow update: if isSignedIn();
+      allow delete: if false;
+    }
+    function isSignedIn() {
+      return request.auth != null;
+    }
+  }
+}

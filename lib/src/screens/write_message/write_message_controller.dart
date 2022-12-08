@@ -14,8 +14,8 @@ import 'package:tmtt/src/screens/write_message/send_success_fragment.dart';
 import 'package:tmtt/src/util/info_util.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../../resources/languages/strings.dart';
+//import 'dart:js' as js;
 
 class WriteMessageBinding implements Bindings {
   @override
@@ -81,13 +81,8 @@ class WriteMessageController extends BaseGetController {
 
   // app download dynamiclink
   void onClickDownloadButton() async {
-    var url = Uri.parse("https://tmtt.link/invitation/appdownload");
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url);
-      await FireStore.increasePointOf(currentUser.slugId, 2);
-    } else {
-      print("Could not launch $url");
-    }
+    // TODO: web version에서만 동작.
+    //js.context.callMethod('open', ["https://tmtt.link/invitation/appdownload"]);
   }
 
   Future<void> writeMessage() async {
