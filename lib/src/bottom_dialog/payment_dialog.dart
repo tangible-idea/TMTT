@@ -9,10 +9,13 @@ import 'package:tmtt/src/resources/styles/txt_style.dart';
 import 'package:tmtt/src/screens/base/base_dialog_container.dart';
 import 'package:tmtt/src/screens/base/base_widget.dart';
 import 'package:tmtt/src/util/inapp_purchase_util.dart';
+import 'package:tmtt/src/widgets/app_space.dart';
 import 'package:tmtt/src/widgets/bottom_button.dart';
 import 'package:tmtt/src/widgets/plain_text.dart';
 
+import '../../pages.dart';
 import '../resources/languages/strings.dart';
+import '../util/my_navigator.dart';
 
 
 class PaymentDialog extends BaseWidget {
@@ -78,20 +81,32 @@ class PaymentDialog extends BaseWidget {
               onPressed: () => onClickPay(),
             ),
           ),
-          Container(
-            margin: const EdgeInsets.only(left: 14, right: 14, bottom: 14),
-            child: Center(
-              child: PlainText(
-                marginBottom: 14,
-                align: TextAlign.center,
-                text: Strings.messageUnlockRenewWarning.tr,
-                style: MyTextStyle.body1.copyWith(
-                    fontSize: 12,
-                    color: MyColor.gray_03
-                ),
+          Center(
+            child: PlainText(
+              marginBottom: 14,
+              align: TextAlign.center,
+              text: Strings.messageUnlockRenewWarning.tr,
+              style: MyTextStyle.body1.copyWith(
+                  fontSize: 13,
+                  color: MyColor.gray_03
               ),
             ),
           ),
+          InkWell(
+              child: Center(
+                child: PlainText(
+                    text: Strings.settingTermsOfUse1.tr,
+                    align: TextAlign.center,
+                    style: MyTextStyle.body1.copyWith(
+                      fontSize: 13,
+                      color: MyColor.gray_04,
+                      decoration: TextDecoration.underline,
+                      ),
+                ),
+              ),
+            onTap: () => MyNav.pushNamed(pageName: PageName.terms)
+          ),
+          AppSpaces.verticalSpace10
         ],
       ),
     );
