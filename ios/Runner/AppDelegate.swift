@@ -4,6 +4,10 @@ import Firebase
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
+    
+
+    var tempA = "";
+    
   override func application(
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
@@ -33,6 +37,13 @@ import Firebase
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
     
+    // 백그라운드로 가는 시점.
+    override func applicationDidEnterBackground(_ application: UIApplication) {
+        //applicationLifeCycleChannel.sendMessage("applicationDidEnterBackground")
+        print("applicationDidEnterBackground::my link::" + tempA)
+        UIPasteboard.general.string = tempA
+    }
+    
     private func shareOnInstagram(call: FlutterMethodCall, result: FlutterResult) {
 
         let args = call.arguments as? Dictionary<String, Any>
@@ -40,9 +51,10 @@ import Firebase
         
         //Sharing story on instagram
         let stickerImage = args["imagePath"] as? String
+        let linkToShare = args["link"] as? String
         let backgroundTopColor = "#000000"
         let backgroundBottomColor = "#000000"
-        let attributionURL = "something"
+        let attributionURL = linkToShare
         //let backgroundImage = args["backgroundImage"] as? String
         
         guard let stickerImage = stickerImage else {
@@ -82,12 +94,26 @@ import Firebase
         ]
 
         let pasteboardOptions = [
-            UIPasteboard.OptionsKey.expirationDate: Date().addingTimeInterval(60 * 5)
+            UIPasteboard.OptionsKey.expirationDate: Date().addingTimeInterval(1)
         ]
 
 
+        tempA = linkToShare!
         UIPasteboard.general.setItems(pasteboardItems, options: pasteboardOptions)
         UIApplication.shared.open(urlScheme, options: [:], completionHandler: nil)
+//        UIApplication.shared.open(urlScheme) { success in
+//            if success {
+//                UIPasteboard.general.string = linkToShare
+//                print("Copy new string" + linkToShare!)
+//            }
+//        }
+        
+        // write to clipboard
+//        let pasteboard = UIPasteboard(name: "Board", create: true)
+//        pasteboard?.persistent = true
+//        pasteboard?.strings = linkToShare
+        
+       // UIPasteboard.general.setItems(pasteboardItems, options: pasteboardOptions)
 
         result("sharing")
     }
