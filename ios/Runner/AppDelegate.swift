@@ -43,7 +43,7 @@ import Firebase
         print("applicationDidEnterBackground::my link::" + tempA)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
           // 2초 후 실행될 부분
-          UIPasteboard.general.string = tempA
+            UIPasteboard.general.string = self.tempA
         }
     }
     
