@@ -101,7 +101,7 @@ import Firebase
         ]
 
 
-        tempA = linkToShare!
+        tempA = linkToShare ?? ""
         UIPasteboard.general.setItems(pasteboardItems, options: pasteboardOptions)
         UIApplication.shared.open(urlScheme, options: [:], completionHandler: nil)
 //        UIApplication.shared.open(urlScheme) { success in
