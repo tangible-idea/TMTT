@@ -40,10 +40,12 @@ import Firebase
     // 백그라운드로 가는 시점.
     override func applicationDidEnterBackground(_ application: UIApplication) {
         //applicationLifeCycleChannel.sendMessage("applicationDidEnterBackground")
+        //UIPasteboard.general.string = tempA
         print("applicationDidEnterBackground::my link::" + tempA)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-          // 2초 후 실행될 부분
-          UIPasteboard.general.string = tempA
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.015) {
+            print("0.015 seconds there")
+            // 0.015초 후 실행될 부분
+            UIPasteboard.general.string = self.tempA
         }
     }
     
@@ -101,15 +103,18 @@ import Firebase
         ]
 
 
+        print(linkToShare)
         tempA = linkToShare!
+        print(tempA)
         UIPasteboard.general.setItems(pasteboardItems, options: pasteboardOptions)
-        UIApplication.shared.open(urlScheme, options: [:], completionHandler: nil)
-//        UIApplication.shared.open(urlScheme) { success in
-//            if success {
-//                UIPasteboard.general.string = linkToShare
-//                print("Copy new string" + linkToShare!)
-//            }
-//        }
+        //UIApplication.shared.open(urlScheme, options: [:], completionHandler: nil)
+        UIApplication.shared.open(urlScheme) { success in
+            if success {
+                //UIPasteboard.general.string = linkToShare
+                print("success share to Instagram!")
+                //print("Copy new string" + linkToShare!)
+            }
+        }
         
         // write to clipboard
 //        let pasteboard = UIPasteboard(name: "Board", create: true)
