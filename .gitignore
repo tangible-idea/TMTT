@@ -135,3 +135,5 @@ firebase/functions/node_modules
 firebase/functions/lib
 
 app_secret.*
+TMTT_react/react-boilerplate/node_modules
+TMTT_react/tmtt/node_modules
