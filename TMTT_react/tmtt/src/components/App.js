@@ -1,8 +1,7 @@
-import logo from '../logo.svg';
-import firebase from "../firebase"
-//import Router from '../routes/Router';
-import Home from './Home';
-import AppRouter from '../routes/Router'
+import logo from 'logo.svg';
+import firebase from "myfirebase"
+import Home from 'components/Home';
+import AppRouter from 'routes/Router'
 
 console.log(firebase);
 
