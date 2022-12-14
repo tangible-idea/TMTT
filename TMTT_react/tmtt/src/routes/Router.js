@@ -11,7 +11,7 @@
             <Fragment>
             <Routes>
                 <Route exact path='/' element={<Home/>}/>
-                <Route path="profile/:id" element={<MyProfile/>} />
+                <Route path=":id" element={<MyProfile/>} />
             </Routes>
             </Fragment>
         </BrowserRouter>
