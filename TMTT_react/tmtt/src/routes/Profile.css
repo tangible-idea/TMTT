@@ -1,0 +1,36 @@
+.container {
+  position: relative;
+  width: 100px;/*Or whatever you want*/
+}
+.whiteborder {
+  position: relative;
+  width: 83%;
+  height: 900px;
+  margin: auto;
+  margin-top: 80px;
+  background-color: white;
+  border-radius: 20px;
+}
+.imageProfile {
+  position: absolute;
+  z-index: 3;
+  top: 9%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+h3 {
+  position: absolute;
+  width: 100%;
+  margin-top: 50px;
+  text-align: center;
+}
+
+span.message {
+  position: absolute;
+  color: gray;
+  margin: 20px;
+  margin-top: 75px;
+  font-size: small;
+  text-align: center;
+}
