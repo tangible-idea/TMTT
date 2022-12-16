@@ -1,4 +1,5 @@
 
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,6 +18,7 @@ import 'package:tmtt/src/util/my_logger.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../resources/languages/strings.dart';
 
+// ignore: avoid_web_libraries_in_flutter
 //import 'dart:js' as js;
 //import 'package:tmtt/src/util/download_link_native.dart' if (dart.library.html) 'package:tmtt/src/util/download_link.dart' as link;
 
@@ -35,6 +37,7 @@ class WriteMessageController extends BaseGetController {
     Log.d('onInit WriteMessageController');
     getUserId();
     setHint();
+    getPromotionImage();
   }
 
   late final inputController = TextEditingController();
@@ -47,6 +50,8 @@ class WriteMessageController extends BaseGetController {
   var currentUserId = '';
   var currentUser = User();
 
+  var promotionImageURL= ''.obs;
+
   final writePage = 0;
   final successPage = 1;
   final sendSuccessPage = 2;
@@ -57,6 +62,16 @@ class WriteMessageController extends BaseGetController {
     const MessageSendSuccessFragment(),
     const NotFoundUserFragment()
   ];
+
+
+  void getPromotionImage() async {
+    // Create a Reference to the file
+    Reference ref = FirebaseStorage.instance.ref()
+        .child('promotion')
+        .child('featured_card.png');
+    promotionImageURL.value= await ref.getDownloadURL();
+    //return await ref.getDownloadURL();
+  }
 
   Future<void> getUserId() async {
 
@@ -87,7 +102,7 @@ class WriteMessageController extends BaseGetController {
   void onClickDownloadButton() async {
     // TODO: web version에서만 동작.
     if(kIsWeb) {
-      //js.context.callMethod('open', ["https://tmtt.link/invitation/appdownload"]);
+     // js.context.callMethod('open', ["https://tmtt.link/invitation/appdownload"]);
       //launchDownloadLink();
     }
   }

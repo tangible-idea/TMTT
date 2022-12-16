@@ -77,7 +77,7 @@ Map<String, String> translations_en = {
   Strings.messageHint6                : 'Device',
   Strings.messageHint7                : 'Software',
   Strings.messageUnlockTitle          : "Who sent this?",
-  Strings.messageUnlockButton         : "Unlock",
+  Strings.messageUnlockButton         : "Unlock Premium",
   Strings.messageUnlockBody           : "Premium members can see exclusive hints on each message.",
   Strings.messageUnlockRenewWarning   : "'TMTT Premium' renews for 7.49USD/week",
 

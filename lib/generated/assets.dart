@@ -38,6 +38,7 @@ class Assets {
   static const String imagesEmojiSunglasses = 'assets/images/emoji_sunglasses.svg';
   static const String imagesEmojiSunglassesPng = 'assets/images/emoji_sunglasses_png.png';
   static const String imagesExplainationSocial = 'assets/images/explaination_social.svg';
+  static const String imagesFeaturedCard = 'assets/images/featured_card.png';
   static const String imagesGreetingGirl = 'assets/images/greeting_girl.svg';
   static const String imagesGreetingMan = 'assets/images/greeting_man.svg';
   static const String imagesHandHold = 'assets/images/hand_hold.png';
