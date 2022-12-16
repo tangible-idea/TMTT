@@ -47,8 +47,12 @@ const MyProfile = ()=> {
                     roundedSize="2"/>
             </div>
             <div class="whiteborder">
+                <form>
                 <h3>@{params.id}</h3>
-                <span class="message">{questionMessage}</span>
+                <span class="question">{questionMessage}</span>
+                <textarea class="inputMessage"
+                    placeholder="Send me an anonymous message..."/>
+                </form>
             </div>
         </div>
     )

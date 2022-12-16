@@ -2,6 +2,14 @@
   position: relative;
   width: 100px;/*Or whatever you want*/
 }
+.imageProfile {
+  position: absolute;
+  z-index: 3;
+  top: 9%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .whiteborder {
   position: relative;
   width: 83%;
@@ -11,26 +19,35 @@
   background-color: white;
   border-radius: 20px;
 }
-.imageProfile {
-  position: absolute;
-  z-index: 3;
-  top: 9%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
+form {
+  padding-top: 30px;
 }
+
 
 h3 {
-  position: absolute;
+  display: block;
   width: 100%;
-  margin-top: 50px;
   text-align: center;
+  margin-block-end: 3px;
 }
 
-span.message {
-  position: absolute;
+span.question {
+  display: block;
   color: gray;
-  margin: 20px;
-  margin-top: 75px;
+  margin-left: 20px;
+  margin-right: 20px;
   font-size: small;
-  text-align: center;
+}
+
+.inputMessage {
+  display: inline-block;
+  position: relative;
+  width: 80%;
+  height: 250px;
+  margin: 10px;
+  padding: 20px;
+  background-color: #EFEEFC;
+  border-radius: 20px;
+  border: 0px;
 }
