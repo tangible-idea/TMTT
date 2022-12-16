@@ -23,14 +23,17 @@ class IndexScreen extends GetView<IndexController> {
             //   text: 'index page. 앱 소개 페이지를 여기에 만들면 좋을듯',
             // ),
             PlainText(
-              text: 'index page\n'
-                  '${controller.infoObs.value}',
+              text: 'Welcome to TMTT',
             ),
-            PlainText(
-              marginTop: 24,
-              text: 'instaInfo\n'
-                  '${controller.instaInfoObs.value}',
-            ),
+            // PlainText(
+            //   text: 'index page\n'
+            //       '${controller.infoObs.value}',
+            // ),
+            // PlainText(
+            //   marginTop: 24,
+            //   text: 'instaInfo\n'
+            //       '${controller.instaInfoObs.value}',
+            // ),
             controller.instaProfilePictureObs.value.isEmpty ?
             Container() :
             Image.network(controller.instaProfilePictureObs.value),
