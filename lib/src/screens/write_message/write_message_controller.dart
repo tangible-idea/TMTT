@@ -1,4 +1,5 @@
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tmtt/data/model/hint.dart';
@@ -15,7 +16,10 @@ import 'package:tmtt/src/util/info_util.dart';
 import 'package:tmtt/src/util/my_logger.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../resources/languages/strings.dart';
+
 //import 'dart:js' as js;
+//import 'package:tmtt/src/util/download_link_native.dart' if (dart.library.html) 'package:tmtt/src/util/download_link.dart' as link;
+
 
 class WriteMessageBinding implements Bindings {
   @override
@@ -82,7 +86,10 @@ class WriteMessageController extends BaseGetController {
   // app download dynamiclink
   void onClickDownloadButton() async {
     // TODO: web version에서만 동작.
-    //js.context.callMethod('open', ["https://tmtt.link/invitation/appdownload"]);
+    if(kIsWeb) {
+      //js.context.callMethod('open', ["https://tmtt.link/invitation/appdownload"]);
+      //launchDownloadLink();
+    }
   }
 
   Future<void> writeMessage() async {

@@ -158,7 +158,7 @@ class HomeController extends BaseGetController {
     if (myInfo == null) { return; }
     //messageInputController.text = myInfo.message;
     userNameObs.value = myInfo.slugId;
-    myLinkObs.value = '${MyUrl.baseUrl}#/${myInfo.slugId}';
+    myLinkObs.value = '${MyUrl.baseUrl}${myInfo.slugId}';
     myInfoObs.value = myInfo;
 
     FlareLane.shared.setUserId(myInfo.documentId); // set email as user id.

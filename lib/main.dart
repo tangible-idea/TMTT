@@ -16,6 +16,7 @@ import 'package:tmtt/src/screens/index_screen.dart';
 import 'package:tmtt/src/util/language_util.dart';
 import 'package:tmtt/src/util/local_storage.dart';
 import 'package:tmtt/src/util/my_logger.dart';
+import 'package:url_strategy/url_strategy.dart';
 import 'firebase_options.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
@@ -45,7 +46,9 @@ void main() async {
   registerWebViewWebImplementation();
 
   // ensureInitialized() 이후 초기화 코드가 실행되도록 합니다
-  WidgetsFlutterBinding.ensureInitialized();
+  //WidgetsFlutterBinding.ensureInitialized();
+  setPathUrlStrategy();
+
   // 다음 초기화 코드 입력 with FlareLane project ID.
   FlareLane.shared.initialize(AppSecret.FLARELANE_PROEJCT_ID);
   FlareLane.shared.setLogLevel(LogLevel.verbose);

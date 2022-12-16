@@ -106,7 +106,7 @@ class PostingHelper {
 
     Map<String, dynamic> arguments = {
       "imagePath": filePath,
-      "link": "https://tmtt.link/#/${myinfo.slugId}"
+      "link": "https://tmtt.link/${myinfo.slugId}"
     };
     //final String resultFromAndroid= await shareInstaChannel.invokeMethod("sharePhotoToInstagram", arguments);
 

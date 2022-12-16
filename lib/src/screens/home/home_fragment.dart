@@ -244,7 +244,7 @@ class HomeFragment extends GetView<HomeController> {
 
                             AppSpaces.verticalSpace10,
                             PlainText(
-                                text: 'https://tmtt.link/#/${controller.userNameObs.value}'
+                                text: 'https://tmtt.link/${controller.userNameObs.value}'
                             ),
                             Padding(
                               padding: const EdgeInsets.fromLTRB(25, 0, 25, 10),
