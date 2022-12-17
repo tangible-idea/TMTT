@@ -7,7 +7,7 @@ import Firebase
     
 
     var tempA = "";
-    //var isNeedCopyOnBackground = false;
+    var isNeedCopyOnBackground = false;
     
   override func application(
     _ application: UIApplication,
@@ -26,10 +26,10 @@ import Firebase
                 }
               
               if(call.method == "shareInstagramImageStoryWithSticker") {
-                  //self?.isNeedCopyOnBackground = true;
+                  self?.isNeedCopyOnBackground = true;
                   self?.shareOnInstagram(call: call, result: result)
               }else{
-                  //self?.isNeedCopyOnBackground = false;
+                  self?.isNeedCopyOnBackground = false;
               }
               
               
@@ -59,7 +59,7 @@ import Firebase
 
         if(UIPasteboard.general.hasStrings == false) {
             print("applicationDidEnterBackground::my link::" + tempA)
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.015) {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.02) {
                 print("0.015 seconds there")
                 // 0.015초 후 실행될 부분
                 UIPasteboard.general.string = self.tempA
