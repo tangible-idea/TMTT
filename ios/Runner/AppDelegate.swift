@@ -59,7 +59,7 @@ import Firebase
 
         if(UIPasteboard.general.hasStrings == false) {
             print("applicationDidEnterBackground::my link::" + tempA)
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.02) {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.025) {
                 print("0.015 seconds there")
                 // 0.015초 후 실행될 부분
                 UIPasteboard.general.string = self.tempA
