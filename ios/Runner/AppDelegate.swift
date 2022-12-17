@@ -7,6 +7,7 @@ import Firebase
     
 
     var tempA = "";
+    //var isNeedCopyOnBackground = false;
     
   override func application(
     _ application: UIApplication,
@@ -23,7 +24,13 @@ import Firebase
                   result(FlutterMethodNotImplemented)
                   return
                 }
-              self?.shareOnInstagram(call: call, result: result)
+              
+              if(call.method == "shareInstagramImageStoryWithSticker") {
+                  //self?.isNeedCopyOnBackground = true;
+                  self?.shareOnInstagram(call: call, result: result)
+              }else{
+                  //self?.isNeedCopyOnBackground = false;
+              }
               
               
           })
@@ -36,17 +43,29 @@ import Firebase
     GeneratedPluginRegistrant.register(with: self)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
+
     
     // 백그라운드로 가는 시점.
     override func applicationDidEnterBackground(_ application: UIApplication) {
         //applicationLifeCycleChannel.sendMessage("applicationDidEnterBackground")
         //UIPasteboard.general.string = tempA
-        print("applicationDidEnterBackground::my link::" + tempA)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.015) {
-            print("0.015 seconds there")
-            // 0.015초 후 실행될 부분
-            UIPasteboard.general.string = self.tempA
+        
+        // read from clipboard
+//        let content = UIPasteboard.general.string ?? ""
+//        if(content.contains("tmtt.link")) {
+//            print("link is already in your clipboard: " + content)
+//            return
+//        }
+
+        if(UIPasteboard.general.hasStrings == false) {
+            print("applicationDidEnterBackground::my link::" + tempA)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.015) {
+                print("0.015 seconds there")
+                // 0.015초 후 실행될 부분
+                UIPasteboard.general.string = self.tempA
+            }
         }
+        
     }
     
     private func shareOnInstagram(call: FlutterMethodCall, result: FlutterResult) {
