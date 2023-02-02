@@ -66,6 +66,11 @@ class Assets {
   static const String imagesLockIcon = 'assets/images/lock_icon.svg';
   static const String imagesLogo = 'assets/images/logo.png';
   static const String imagesMytest = 'assets/images/mytest.png';
+  static const String imagesQuestionBackground = 'assets/images/question_background.png';
+  static const String imagesQuestionBoardabout = 'assets/images/question_boardabout.svg';
+  static const String imagesQuestionButtonActive = 'assets/images/question_button_active.svg';
+  static const String imagesQuestionButtonInactive = 'assets/images/question_button_inactive.svg';
+  static const String imagesQuestionInputBoard = 'assets/images/question_input_board.png';
   static const String imagesSettingIcon = 'assets/images/setting_icon.svg';
   static const String imagesSplashBackground = 'assets/images/splash_background.svg';
   static const String imagesSplashLogo = 'assets/images/splash_logo.png';

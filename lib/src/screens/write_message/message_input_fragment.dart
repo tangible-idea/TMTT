@@ -19,42 +19,44 @@ class MessageInputFragment extends GetView<WriteMessageController> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => Column(
-      children: [
-        Center(
-          child: PlainText(
-            marginTop: 30,
-            align: TextAlign.center,
-            text: controller.userNameObs.value,
-            style: MyTextStyle.h3,
-          ),
-        ),
-        Center(
-          child: PlainText(
-            marginTop: 4,
-            text: controller.userMessageObs.value,
-            style: MyTextStyle.body16.copyWith(color: MyColor.kGrey2),
-          ),
-        ),
-        AppSpaces.verticalSpace10,
-        MultiLineTextField(
-          maxLength: 100,
-          maxLine: 4,
-          hintText: 'Send me anonymouse message...',
-          controller: controller.inputController,
-        ),
-        BottomPlainButton(
-          icon: const Icon(
-            Icons.send_rounded,
-            color: MyColor.kPrimary,
-          ),
-          text: 'Send anonymously',
-          textStyle: MyTextStyle.body1Bold.copyWith(color: MyColor.kPrimary,),
-          onPressed: () => controller.writeMessage(),
-          enabledObs: RxBool(true),
-          style: BtnStyle.whiteOutlineRadius2,
-        ),
-      ],
-    ));
+    return Row(children: [],);
+    //   Obx(() =>
+    //     Column(
+    //     children: [
+    //       Center(
+    //         child: PlainText(
+    //           marginTop: 30,
+    //           align: TextAlign.center,
+    //           text: controller.userNameObs.value,
+    //           style: MyTextStyle.h3,
+    //         ),
+    //       ),
+    //       Center(
+    //         child: PlainText(
+    //           marginTop: 4,
+    //           text: controller.userMessageObs.value,
+    //           style: MyTextStyle.body16.copyWith(color: MyColor.kGrey2),
+    //         ),
+    //       ),
+    //       AppSpaces.verticalSpace10,
+    //       MultiLineTextField(
+    //         maxLength: 100,
+    //         maxLine: 4,
+    //         hintText: 'Send me anonymouse message...',
+    //         controller: controller.inputController,
+    //       ),
+    //       BottomPlainButton(
+    //         icon: const Icon(
+    //           Icons.send_rounded,
+    //           color: MyColor.kPrimary,
+    //         ),
+    //         text: 'Send anonymously',
+    //         textStyle: MyTextStyle.body1Bold.copyWith(color: MyColor.kPrimary,),
+    //         onPressed: () => controller.writeMessage(),
+    //         enabledObs: RxBool(true),
+    //         style: BtnStyle.whiteOutlineRadius2,
+    //       ),
+    //     ],
+    // ));
   }
 }
