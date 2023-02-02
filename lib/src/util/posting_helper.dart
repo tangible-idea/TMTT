@@ -151,7 +151,8 @@ class PostingHelper {
     File(filePath).writeAsBytesSync(encodePng(decodedBackgroundImage));
 
     Map<String, dynamic> arguments = {
-      "imagePath": filePath
+      "imagePath": filePath,
+      "link": ""
     };
     final String resultFromNative= await _shareInstaChannel.invokeMethod("shareInstagramImageStoryWithSticker", arguments);
 
