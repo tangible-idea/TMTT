@@ -15,6 +15,7 @@ class MultiLineTextField extends StatelessWidget {
   final TextAlign? textAlign;
   final TextStyle? textStyle;
   final FocusNode? focusNode;
+  final bool? filled;
 
   MultiLineTextField({
     Key? key,
@@ -26,6 +27,7 @@ class MultiLineTextField extends StatelessWidget {
     this.textAlign,
     this.textStyle,
     this.focusNode,
+    this.filled,
   }) : super(key: key);
 
   @override
@@ -35,7 +37,7 @@ class MultiLineTextField extends StatelessWidget {
       obscureText: false,
       maxLines: maxLine,
       cursorColor: MyColor.kPrimary,
-      style: textStyle ?? MyTextStyle.formInput,
+      style: textStyle ?? MyTextStyle.formInputBig,
       keyboardType: TextInputType.multiline,
       maxLength: maxLength,
       textAlign: textAlign ?? TextAlign.left,
@@ -47,12 +49,12 @@ class MultiLineTextField extends StatelessWidget {
       },
       focusNode: focusNode,
       decoration: InputDecoration(
-        filled: true,
+        filled: filled,
         fillColor: MyColor.kGrey5,
         focusedBorder: plainOutlineInputBorder(),
         enabledBorder: plainOutlineInputBorder(),
         hintText: hintText ?? '',
-        hintStyle: MyTextStyle.formInput,
+        hintStyle: textStyle ?? MyTextStyle.formInputBig,
         counterText:'',
       ),
     );

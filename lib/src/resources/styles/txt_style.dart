@@ -125,8 +125,14 @@ class MyTextStyle {
   static const TextStyle formInput = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w400,
-    
   );
+
+  static const TextStyle formInputBig = TextStyle(
+    fontSize: 26,
+    fontWeight: FontWeight.w400,
+    height: 1.5
+  );
+
 
   static const TextStyle formInput2 = TextStyle(
     fontSize: 20,
@@ -156,5 +162,12 @@ class MyTextStyle {
     fontSize: 14,
     fontWeight: FontWeight.w400,
     
+  );
+
+  static const TextStyle contentSmall = TextStyle(
+    fontSize: 11,
+    fontWeight: FontWeight.w400,
+    color: MyColor.kGrey2
+
   );
 }

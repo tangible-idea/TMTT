@@ -39,42 +39,18 @@ class WriteMessageScreen extends GetView<WriteMessageController> {
           constraints: const BoxConstraints.expand(),
           decoration: const BoxDecoration(
             image: DecorationImage(
+              repeat: ImageRepeat.repeat,
               image: AssetImage(Assets.imagesQuestionBackground),
-              fit: BoxFit.cover,
+              fit: BoxFit.none,
             ),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Stack(
-                alignment: Alignment.topCenter,
-                children: [
-                  SvgPicture.asset(Assets.imagesQuestionBoardabout),
-                  Positioned(
-                    top: -24,
-                    child: CircleAvatar(
-                      radius: 24,
-                      backgroundColor: MyColor.kLightBackground,
-                      foregroundImage: NetworkImage(controller.userImageObs.value),
-                    ),
-                  ),
-
-                ],
-              ),
-              AppSpaces.verticalSpace20,
-
-              Stack(
-                alignment: Alignment.bottomCenter,
-                children: [
-                  Positioned(
-                      child: Image.asset(Assets.imagesQuestionInputBoard)
-                  ),
-                  SvgPicture.asset(Assets.imagesQuestionButtonActive),
-                ],
-              ),
+              Expanded(
+                child: controller.pages[controller.currentPageIndexObs.value]),
               //AppSpaces.verticalSpace20,
-
             ],
           ),
         )

@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:tmtt/generated/assets.dart';
@@ -19,44 +20,104 @@ class MessageInputFragment extends GetView<WriteMessageController> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(children: [],);
-    //   Obx(() =>
-    //     Column(
-    //     children: [
-    //       Center(
-    //         child: PlainText(
-    //           marginTop: 30,
-    //           align: TextAlign.center,
-    //           text: controller.userNameObs.value,
-    //           style: MyTextStyle.h3,
-    //         ),
-    //       ),
-    //       Center(
-    //         child: PlainText(
-    //           marginTop: 4,
-    //           text: controller.userMessageObs.value,
-    //           style: MyTextStyle.body16.copyWith(color: MyColor.kGrey2),
-    //         ),
-    //       ),
-    //       AppSpaces.verticalSpace10,
-    //       MultiLineTextField(
-    //         maxLength: 100,
-    //         maxLine: 4,
-    //         hintText: 'Send me anonymouse message...',
-    //         controller: controller.inputController,
-    //       ),
-    //       BottomPlainButton(
-    //         icon: const Icon(
-    //           Icons.send_rounded,
-    //           color: MyColor.kPrimary,
-    //         ),
-    //         text: 'Send anonymously',
-    //         textStyle: MyTextStyle.body1Bold.copyWith(color: MyColor.kPrimary,),
-    //         onPressed: () => controller.writeMessage(),
-    //         enabledObs: RxBool(true),
-    //         style: BtnStyle.whiteOutlineRadius2,
-    //       ),
-    //     ],
-    // ));
+    return //Row(children: [],);
+      Obx(() =>
+        Column(
+          children: [
+            // Center(
+            //   child: PlainText(
+            //     marginTop: 30,
+            //     align: TextAlign.center,
+            //     text: controller.userNameObs.value,
+            //     style: MyTextStyle.h3.copyWith(color: MyColor.kWhite),
+            //   ),
+            // ),
+
+
+            AppSpaces.verticalSpace40,
+            Stack(
+              alignment: Alignment.topCenter,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0,30,0,0),
+                  child: SvgPicture.asset(Assets.imagesQuestionBoardabout),
+                ),
+                CircleAvatar(
+                  radius: 24,
+                  backgroundColor: MyColor.kLightBackground,
+                  foregroundImage: NetworkImage(controller.userImageObs.value),
+                ),
+
+                Center(
+                  child: PlainText(
+                    marginTop: 75,
+                    marginBottom: 50,
+                    marginLeft: 110,
+                    marginRight: 110,
+                    text: controller.userMessageObs.value,
+                    style: MyTextStyle.h5.copyWith(color: MyColor.kWhite),
+                  ),
+                ),
+
+              ],
+            ),
+
+            //AppSpaces.verticalSpace20,
+
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(25,0,0,0),
+                  child: Image.asset(Assets.imagesQuestionInputBoard),
+                ),
+                Column(
+                  children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(85, 50, 85, 0),
+                    child: MultiLineTextField(
+                      maxLength: 45,
+                      maxLine: 4,
+                      textStyle: MyTextStyle.formInputBig,
+                      filled: false,
+                      hintText: '메시지를 적어주세요.',
+                      controller: controller.inputController,
+                    ),
+                  ),
+
+                  Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 100),
+                        child: BottomPlainButton(
+                          text: '익명으로 초콜렛🍫 보내기  >',
+                          textStyle: MyTextStyle.body1Bold.copyWith(color: MyColor.kWhite,),
+                          onPressed: () => controller.writeMessage(),
+                          enabledObs: RxBool(true),
+                          style: BtnStyle.valentineButton,
+                        ),
+                      ),
+                      AppSpaces.verticalSpace5,
+                      PlainText(
+                        text: "🔒 메세지는 익명처리 되어집니다. 🔒",
+                        style: MyTextStyle.contentSmall,),
+                      AppSpaces.verticalSpace100,
+                      AppSpaces.verticalSpace50,
+                    ],
+                  ),
+
+                ],
+              ),
+
+              ],
+            ),
+
+
+
+            AppSpaces.verticalSpace10,
+
+
+          ],
+    ));
   }
 }

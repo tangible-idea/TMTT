@@ -97,6 +97,15 @@ class BtnStyle {
       )
   );
 
+  static ButtonStyle valentineButton = OutlinedButton.styleFrom(
+      backgroundColor: MyColor.kValenRed,
+      side: const BorderSide(color: MyColor.kValenRed, width: 0.8),
+      padding: const EdgeInsets.all(24),
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(5))
+      )
+  );
+
   static ButtonStyle negative = ButtonStyle(
     backgroundColor: MaterialStateProperty.resolveWith((states) {
       return MyColor.point02;
