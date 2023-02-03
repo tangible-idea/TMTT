@@ -27,7 +27,7 @@ class BtnStyle {
     ),
     shape: MaterialStateProperty.resolveWith<OutlinedBorder>((_) {
       return RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20)
+          borderRadius: BorderRadius.circular(6)
       );
     }),
   );
