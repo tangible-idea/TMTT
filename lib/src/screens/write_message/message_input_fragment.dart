@@ -75,9 +75,9 @@ class MessageInputFragment extends GetView<WriteMessageController> {
                 Column(
                   children: [
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(45, 50, 45, 0),
+                    padding: const EdgeInsets.fromLTRB(45, 60, 50, 0),
                     child: SizedBox(
-                      width: 260,
+                      width: 280,
                       child: MultiLineTextField(
                         maxLength: 45,
                         maxLine: 4,
@@ -92,12 +92,12 @@ class MessageInputFragment extends GetView<WriteMessageController> {
                   Column(
                     children: [
                       SizedBox(
-                        width: 240,
+                        width: 260,
                         child: BottomPlainButton(
                           text: '익명으로 초콜렛🍫 보내기  >',
                           textStyle: MyTextStyle.body1Bold.copyWith(color: MyColor.kWhite,),
                           onPressed: () => controller.writeMessage(),
-                          enabledObs: true.obs,//controller.inputController.text.isNotEmpty.obs,
+                          enabledObs: controller.inputController.text.isNotEmpty.obs.value,//controller.inputController.text.isNotEmpty.obs,
                           style: BtnStyle.valentineButton,
                         ),
                       ),
