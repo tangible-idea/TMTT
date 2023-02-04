@@ -166,6 +166,8 @@ class HomeFragment extends GetView<HomeController> {
                 MultiLineTextField(
                   maxLength: 75,
                   maxLine: 3,
+                  filled: true,
+                  textStyle: MyTextStyle.formInput,
                   hintText: Strings.homeContent5.tr,
                   controller: controller.messageInputController,
                 ),
