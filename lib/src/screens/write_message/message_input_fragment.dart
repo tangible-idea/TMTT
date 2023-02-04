@@ -97,7 +97,7 @@ class MessageInputFragment extends GetView<WriteMessageController> {
                           text: '익명으로 초콜렛🍫 보내기  >',
                           textStyle: MyTextStyle.body1Bold.copyWith(color: MyColor.kWhite,),
                           onPressed: () => controller.writeMessage(),
-                          enabledObs: controller.inputController.text.isNotEmpty.obs.value,//controller.inputController.text.isNotEmpty.obs,
+                          enabledObs: true.obs,//controller.inputController.text.isNotEmpty.obs,
                           style: BtnStyle.valentineButton,
                         ),
                       ),
