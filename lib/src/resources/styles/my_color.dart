@@ -18,6 +18,7 @@ class MyColor {
   static const Color kGrey3 = Color(0xffcccccc);
   static const Color kGrey4 = Color(0xffe6e6e6);
   static const Color kGrey5 = Color(0xffefeefc);
+  static const Color kGreyB0 = Color(0xffb0b0b0);
   static const Color kWhite = Color(0xffffffff);
 
   static const Color kValenRed= Color(0xffFF3434);

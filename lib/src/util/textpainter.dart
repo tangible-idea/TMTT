@@ -24,6 +24,7 @@ class CustomTextPainter extends CustomPainter {
       color: color ?? Colors.black,
       fontFamily: "NanumSquareRound",
       fontSize: _size,
+      height: 1.6
     );
     final paragraphStyle = ui.ParagraphStyle(
       textDirection: TextDirection.ltr,
@@ -31,6 +32,7 @@ class CustomTextPainter extends CustomPainter {
     final paragraphBuilder = ui.ParagraphBuilder(paragraphStyle)
       ..pushStyle(textStyle)
       ..addText(_text);
+
     var constraints = ui.ParagraphConstraints(width: maxWidth ?? 700);
     final paragraph = paragraphBuilder.build();
     paragraph.layout(constraints);

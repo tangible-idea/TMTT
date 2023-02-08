@@ -19,6 +19,7 @@ class Assets {
   static const String imagesAnonymous = 'assets/images/anonymous.png';
   static const String imagesArrived = 'assets/images/arrived.png';
   static const String imagesBackArrow = 'assets/images/back_arrow.svg';
+  static const String imagesBackgroun9 = 'assets/images/background9.png';
   static const String imagesBackground51 = 'assets/images/background5_1.png';
   static const String imagesBackground52 = 'assets/images/background5_2.png';
   static const String imagesBackground7 = 'assets/images/background7.png';

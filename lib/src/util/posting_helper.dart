@@ -4,10 +4,13 @@ import 'dart:io';
 import 'dart:math';
 
 import 'dart:ui' as ui;
+import 'dart:ui';
 
 import 'package:firebase_core_platform_interface/firebase_core_platform_interface.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:image/image.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
@@ -44,7 +47,7 @@ class PostingHelper {
     String dirToSave= await _localPath;
 
     // Load story background image.
-    File backgroundImage= await ImageUtils.imageToFile(imageName: 'background5_2.png');
+    File backgroundImage= await ImageUtils.imageToFile(imageName: 'background9.png');
     final image = decodeImage(backgroundImage.readAsBytesSync())!;
 
     // Text를 이미지로 전환한다.
@@ -66,38 +69,49 @@ class PostingHelper {
       // 원본 이미지에 텍스트를 canvas로 그려서 입힌다. (가운데 좌표)
       drawImage(image, decodePng(listFont!)!,
           dstX: 150,
-          dstY: 510,
+          dstY: 550,
           dstW: painterDesc.pictureW.toInt(),
           dstH: painterDesc.pictureH.toInt());
     }
 
     // Load character image.
-    var randomInt= Random().nextInt(2)+1;
-    File characterFile= await ImageUtils.imageToFile(imageName: 'character_cat_$randomInt.png');
-    final characterImage = decodeImage(characterFile.readAsBytesSync())!;
-
-    drawImage(image, characterImage,
-        dstX: 0,
-        dstY: 800,
-        dstW: characterImage.width.toInt(),
-        dstH: characterImage.height.toInt());
+    // var randomInt= Random().nextInt(2)+1;
+    // File characterFile= await ImageUtils.imageToFile(imageName: 'character_cat_$randomInt.png');
+    // final characterImage = decodeImage(characterFile.readAsBytesSync())!;
+    //
+    // drawImage(image, characterImage,
+    //     dstX: 0,
+    //     dstY: 800,
+    //     dstW: characterImage.width.toInt(),
+    //     dstH: characterImage.height.toInt());
 
     // Load profile image. if it exists.
+    const width2= 385;
     if(profileImageBytes != null) {
       final profileImage = decodeImage(profileImageBytes)!;
       drawImage(image, profileImage,
-          dstX: 630,
-          dstY: 325,
-          dstW: profileImage.width.toInt() ~/ 3,
-          dstH: profileImage.height.toInt() ~/ 3);
+          dstX: width2,
+          dstY: 315,
+          dstW: profileImage.width.toInt() ~/ 2,
+          dstH: profileImage.height.toInt() ~/ 2);
     }
 
-    if(profileImageBytes != null) {
-      drawString(image, arial_24, 630, 300, "@${myinfo.slugId}");
-    }
-    else { // without profile photo
-      drawString(image, arial_24, 630, 400, "@${myinfo.slugId}");
-    }
+    // if(profileImageBytes != null) {
+    //   drawString(image, arial_24, width2, 300, "@${myinfo.slugId}");
+    // }
+    // else { // without profile photo
+    //   drawString(image, arial_24, width2, 400, "@${myinfo.slugId}");
+    // }
+    drawString(image, arial_24, 650, 1000, "@${myinfo.slugId}", color: MyColor.kGreyB0.value);
+
+    // Load story background image.
+    File linkPlaceholder= await ImageUtils.imageToFile(imageName: 'link_placeholder_${Get.locale!.languageCode.toString()}.png');
+    final imageLinkPlaceholder = decodeImage(linkPlaceholder.readAsBytesSync())!;
+    drawImage(image, imageLinkPlaceholder,
+        dstX: 165,
+        dstY: 1250,
+        dstW: imageLinkPlaceholder.width.toInt(),
+        dstH: imageLinkPlaceholder.height.toInt());
 
     // Save the image to disk as a PNG
     String filePath= '$dirToSave/export.png';
