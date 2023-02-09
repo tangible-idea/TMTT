@@ -69,7 +69,7 @@ class PostingHelper {
       // 원본 이미지에 텍스트를 canvas로 그려서 입힌다. (가운데 좌표)
       drawImage(image, decodePng(listFont!)!,
           dstX: 150,
-          dstY: 550,
+          dstY: 520,
           dstW: painterDesc.pictureW.toInt(),
           dstH: painterDesc.pictureH.toInt());
     }
@@ -86,12 +86,13 @@ class PostingHelper {
     //     dstH: characterImage.height.toInt());
 
     // Load profile image. if it exists.
-    const width2= 385;
+
     if(profileImageBytes != null) {
       final profileImage = decodeImage(profileImageBytes)!;
+      final profileWidth= image.width~/2 - profileImage.width~/4;
       drawImage(image, profileImage,
-          dstX: width2,
-          dstY: 315,
+          dstX: profileWidth,
+          dstY: 300,
           dstW: profileImage.width.toInt() ~/ 2,
           dstH: profileImage.height.toInt() ~/ 2);
     }
@@ -102,13 +103,14 @@ class PostingHelper {
     // else { // without profile photo
     //   drawString(image, arial_24, width2, 400, "@${myinfo.slugId}");
     // }
-    drawString(image, arial_24, 650, 1000, "@${myinfo.slugId}", color: MyColor.kGreyB0.value);
+    // insert a profile text
+    drawString(image, arial_48, 670 - myinfo.slugId.length * 18, 980, "@${myinfo.slugId}", color: MyColor.kGreyB0.value);
 
-    // Load story background image.
+    // Load link place holder by your language.
     File linkPlaceholder= await ImageUtils.imageToFile(imageName: 'link_placeholder_${Get.locale!.languageCode.toString()}.png');
     final imageLinkPlaceholder = decodeImage(linkPlaceholder.readAsBytesSync())!;
     drawImage(image, imageLinkPlaceholder,
-        dstX: 165,
+        dstX: image.width~/2 - imageLinkPlaceholder.width~/2,
         dstY: 1250,
         dstW: imageLinkPlaceholder.width.toInt(),
         dstH: imageLinkPlaceholder.height.toInt());
