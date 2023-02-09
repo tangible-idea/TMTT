@@ -63,6 +63,13 @@ Map<String, String> translations_kr = {
   Strings.messageUnlockButton       : "힌트 얻기",
   Strings.messageUnlockBody         : "프리미엄 멤버는 모든 메시지에 대해서 보낸사람이 누군지 힌트를 얻을 수 있습니다.",
   Strings.messageUnlockRenewWarning : "매주 자동결제 됩니다. 언제든지 해지할 수 있습니다.\n'사용자 이용약관'을 참고해주세요.",
+  Strings.messageWrite1             : "메시지를 적어주세요.",
+  Strings.messageWrite2             : "익명으로 초콜렛🍫 보내기  >",
+  Strings.messageWrite3             : "🔒 메세지는 익명처리 되어집니다. 🔒",
+
+  Strings.messageSendSuccess1       : "익명으로 친구에게 메시지를 보냈어요 🎁",
+  Strings.messageSendSuccess2       : "(클릭) TMTT 앱 다운로드",
+  Strings.messageSendSuccess3       : "TMTT로 친구들과 익명의 메시지를 주고받을 수 있어요",
 
   // Settings
   Strings.settingFeedback1          : '피드백',

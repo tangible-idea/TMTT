@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:tmtt/generated/assets.dart';
+import 'package:tmtt/src/resources/languages/strings.dart';
 import 'package:tmtt/src/resources/styles/btn_style.dart';
 import 'package:tmtt/src/resources/styles/my_color.dart';
 import 'package:tmtt/src/resources/styles/txt_style.dart';
@@ -79,12 +80,16 @@ class MessageInputFragment extends GetView<WriteMessageController> {
                     child: SizedBox(
                       width: 280,
                       child: MultiLineTextField(
-                        maxLength: 45,
+                        maxLength: 50,
                         maxLine: 4,
+                        keyboardType: TextInputType.text,
                         textStyle: MyTextStyle.formInputBig,
                         filled: false,
-                        hintText: '메시지를 적어주세요.',
+                        hintText: Strings.messageWrite1.tr,
                         controller: controller.inputController,
+                        onChanged: (text) => {
+                          controller.enableSendButtonObs.value = text.isNotEmpty
+                        }
                       ),
                     ),
                   ),
@@ -94,16 +99,17 @@ class MessageInputFragment extends GetView<WriteMessageController> {
                       SizedBox(
                         width: 260,
                         child: BottomPlainButton(
-                          text: '익명으로 초콜렛🍫 보내기  >',
+                          text: Strings.messageWrite2.tr,
                           textStyle: MyTextStyle.body1Bold.copyWith(color: MyColor.kWhite,),
                           onPressed: () => controller.writeMessage(),
-                          enabledObs: true.obs,//controller.inputController.text.isNotEmpty.obs,
+                          enabledObs: controller.enableSendButtonObs,//controller.inputController.text.isNotEmpty.obs,
                           style: BtnStyle.valentineButton,
+                          disableStyle: BtnStyle.valentineDisableButton,
                         ),
                       ),
                       AppSpaces.verticalSpace5,
                       PlainText(
-                        text: "🔒 메세지는 익명처리 되어집니다. 🔒",
+                        text: Strings.messageWrite3.tr,
                         style: MyTextStyle.contentSmall,),
                       AppSpaces.verticalSpace100,
                       AppSpaces.verticalSpace50,
