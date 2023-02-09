@@ -19,7 +19,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../resources/languages/strings.dart';
 
 // ignore: avoid_web_libraries_in_flutter
-import 'dart:js' as js;
+//import 'dart:js' as js;
 // import 'package:tmtt/src/util/download_link_native.dart'
 //   if (dart.library.html) 'package:tmtt/src/util/download_link.dart' as link;
 
@@ -103,9 +103,9 @@ class WriteMessageController extends BaseGetController {
 
   // app download dynamiclink
   void onClickDownloadButton() async {
-    // TODO: web version에서만 동작.
+    // TODO: web version에서만 주석해제
     if(kIsWeb) {
-      js.context.callMethod('open', ["https://tmtt.link/invitation/appdownload"]);
+      //js.context.callMethod('open', ["https://tmtt.link/invitation/appdownload"]);
       // launchDownloadLink();
     }
   }
