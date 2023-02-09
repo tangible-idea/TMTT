@@ -65,6 +65,13 @@ class Strings {
   static String messageUnlockRenewWarning= 'messageUnlockRenewWarning';
   static String messageUnlockTitle= 'messageUnlockTitle';
   static String messageUnlockButton= 'messageUnlockButton';
+  static String messageWrite1 = 'messageWrite1';
+  static String messageWrite2 = 'messageWrite2';
+  static String messageWrite3 = 'messageWrite3';
+
+  static String messageSendSuccess1 = 'messageSendSuccess1';
+  static String messageSendSuccess2 = 'messageSendSuccess2';
+  static String messageSendSuccess3 = 'messageSendSuccess3';
 
   static String settingFeedback1 = 'settingFeedback1';
   static String settingFeedback2 = 'settingFeedback2';

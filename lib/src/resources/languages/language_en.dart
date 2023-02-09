@@ -80,5 +80,12 @@ Map<String, String> translations_en = {
   Strings.messageUnlockButton         : "Unlock Premium",
   Strings.messageUnlockBody           : "Premium members can see exclusive hints on each message.",
   Strings.messageUnlockRenewWarning   : "'TMTT Premium' renews for 7.49USD/week",
+  Strings.messageWrite1               : "Please write your message.",
+  Strings.messageWrite2               : "Send chocolate🍫 anonymously  >",
+  Strings.messageWrite3               : "🔒 Messages are anonymous. 🔒",
+
+  Strings.messageSendSuccess1       : "Youy message has been sent\nanonymously 🎁",
+  Strings.messageSendSuccess2       : "(Click) Download TMTT App",
+  Strings.messageSendSuccess3       : "Send and receive anonymous messages with your friends with TMTT",
 
 };

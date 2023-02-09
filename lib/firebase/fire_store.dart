@@ -236,6 +236,9 @@ class FireStore {
     await instance
         .collection(Collections.message)
         .add(data.toJson());
+
+    // 메시지 받은 유저에게 3점 주기
+    FireStore.increasePointOf(user.slugId, 3);
   }
 
   static QueryDocumentSnapshot<Map<String, dynamic>>? lastVisibleInbox;
