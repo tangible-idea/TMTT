@@ -14,7 +14,7 @@ class CustomTextPainter extends CustomPainter {
   double get pictureW => _size * (_text.length);
 
   //this value can smaller.
-  double get pictureH => _size * (_text.length / 12) + _size; //there is 2 times _size due to text will around word-spacing.
+  double get pictureH => _size * (_text.length / 8) + _size; //there is 2 times _size due to text will around word-spacing.
 
   CustomTextPainter(this._text, this._size, {this.color, this.maxWidth});
 
