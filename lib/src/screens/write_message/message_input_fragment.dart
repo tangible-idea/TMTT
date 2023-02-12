@@ -60,25 +60,20 @@ class MessageInputFragment extends GetView<WriteMessageController> {
                     ),
                   ),
                 ),
-
               ],
             ),
 
-            //AppSpaces.verticalSpace20,
-
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(25,0,0,0),
-                  child: Image.asset(Assets.imagesQuestionInputBoard),
+            Expanded(
+              child: Container(
+                margin: const EdgeInsets.only(top: 25, left: 18, right: 18),
+                decoration: BoxDecoration(
+                  color: MyColor.white,
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                Column(
+                child: Column(
                   children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(45, 60, 50, 0),
-                    child: SizedBox(
-                      width: 280,
+                    Container(
+                      // margin: const EdgeInsets.only(left: 14, right: 14),
                       child: MultiLineTextField(
                         maxLength: 50,
                         maxLine: 4,
@@ -89,44 +84,31 @@ class MessageInputFragment extends GetView<WriteMessageController> {
                         controller: controller.inputController,
                         onChanged: (text) => {
                           controller.enableSendButtonObs.value = text.isNotEmpty
-                        }
+                        },
                       ),
                     ),
-                  ),
-
-                  Column(
-                    children: [
-                      SizedBox(
-                        width: 260,
-                        child: BottomPlainButton(
-                          text: Strings.messageWrite2.tr,
-                          textStyle: MyTextStyle.body1Bold.copyWith(color: MyColor.kWhite,),
-                          onPressed: () => controller.writeMessage(),
-                          enabledObs: controller.enableSendButtonObs,//controller.inputController.text.isNotEmpty.obs,
-                          style: BtnStyle.valentineButton,
-                          disableStyle: BtnStyle.valentineDisableButton,
-                        ),
+                    AppSpaces.verticalSpace20,
+                    Container(
+                      margin: const EdgeInsets.only(left: 14, right: 14),
+                      child: BottomPlainButton(
+                        text: Strings.messageWrite2.tr,
+                        textStyle: MyTextStyle.body1Bold.copyWith(color: MyColor.kWhite,),
+                        onPressed: () => controller.writeMessage(),
+                        enabledObs: controller.enableSendButtonObs,//controller.inputController.text.isNotEmpty.obs,
+                        style: BtnStyle.valentineButton,
+                        disableStyle: BtnStyle.valentineDisableButton,
                       ),
-                      AppSpaces.verticalSpace5,
-                      PlainText(
-                        text: Strings.messageWrite3.tr,
-                        style: MyTextStyle.contentSmall,),
-                      AppSpaces.verticalSpace100,
-                      AppSpaces.verticalSpace50,
-                    ],
-                  ),
-
-                ],
+                    ),
+                    AppSpaces.verticalSpace5,
+                    PlainText(
+                      text: Strings.messageWrite3.tr,
+                      style: MyTextStyle.contentSmall,),
+                    AppSpaces.verticalSpace50,
+                  ],
+                ),
               ),
-
-              ],
             ),
-
-
-
-            AppSpaces.verticalSpace10,
-
-
+            AppSpaces.verticalSpace50,
           ],
     ));
   }
