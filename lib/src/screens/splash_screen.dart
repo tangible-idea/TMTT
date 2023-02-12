@@ -40,7 +40,8 @@ class SplashScreen extends BaseWidget {
     bool isSetPermission = await LocalStorage.get(KeyStore.isLogin, false);
     Future.delayed(const Duration(milliseconds: 3000), () {
       if(isSetPermission) {
-        MyNav.pushReplacementNamed(pageName: PageName.home);
+        // MyNav.pushReplacementNamed(pageName: PageName.home);
+        MyNav.pushReplacementNamed(pageName: "/tangibleidea");
       } else {
         MyNav.pushReplacementNamed(pageName: PageName.register);
       }
